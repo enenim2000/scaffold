@@ -2,7 +2,7 @@ package com.enenim.scaffold.enums;
 
 import com.enenim.scaffold.interfaces.PersistableEnum;
 
-public enum WeekendLogin implements PersistableEnum<Integer>{
+public enum WeekendLogin implements PersistableEnum<Integer> {
     NO(0),
     YES(1);
     

@@ -5,6 +5,11 @@ public interface RouteConstant {
     String USER = "user";
     String REPORT = "report";
     String SERVICE = "service";
+    String VENDOR = "vendor";
+    String STAFF = "staff";
+    String BENEFICIARY = "beneficiary";
+    String SETTLEMENT = "settlement";
+    String CONSUMER = "consumer";
     String ADMINISTRATION = "administration";
 
 

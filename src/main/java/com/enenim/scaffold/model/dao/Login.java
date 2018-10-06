@@ -23,12 +23,11 @@ public class Login extends BaseModel {
     @Column(unique = true, length = 70)
     private String username;
 
-    @NotNull
-    @Column(length = 60)
+    @Column
     private String password;
 
     @NotNull
-    @Column(length = 10)
+    @Column(length = 50)
     @JsonProperty("user_type")
     private String userType;
 
@@ -36,12 +35,11 @@ public class Login extends BaseModel {
     @JsonProperty("user_id")
     private Long userId;
 
-
     @JsonProperty("last_logged_in")
     private Date lastLoggedIn;
 
     @NotNull
-    private LoginStatus status = LoginStatus.ENABLED;
+    private LoginStatus status = LoginStatus.DISABLED;
 
     @JsonBackReference
     @OneToOne(mappedBy = "login", fetch = FetchType.LAZY)

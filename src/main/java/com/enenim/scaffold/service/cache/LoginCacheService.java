@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class LoginCacheService implements LoginCacheRepository{
+public class LoginCacheService implements LoginCacheRepository {
 
     private static final String KEY = "LoginCache";
 
@@ -53,12 +53,19 @@ public class LoginCacheService implements LoginCacheRepository{
 
     @Override
     public void save(Map<String, LoginCache> data) {
-        //save(data.entrySet().iterator().next().getValue());
+        if(multipleLoginIsEnabled())throw new UnsupportedOperationException("Not allowed when multiple login is enabled");
+        save(data.entrySet().iterator().next().getValue());
     }
 
+    /**
+     *
+     * @param id points to the key that holds login sessions for a user group
+     * when multiple login is enabled
+     */
     @Override
-    public void delete(String s) {
-
+    public void delete(String id) {
+        if(multipleLoginIsEnabled())throw new UnsupportedOperationException("Not allowed when multiple login is enabled");
+        delete(id, null);
     }
 
     public void save(LoginCache data) {
