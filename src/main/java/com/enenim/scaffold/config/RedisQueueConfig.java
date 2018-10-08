@@ -1,6 +1,6 @@
 package com.enenim.scaffold.config;
 
-import com.enenim.scaffold.service.MessageSubscriberService;
+import com.enenim.scaffold.service.QueueEventSubscriberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -24,10 +24,10 @@ public class RedisQueueConfig {
     @Value("${redis.queue.password}")
     private String redisPassword;
 
-    private final MessageSubscriberService messageSubscriberService;
+    private final QueueEventSubscriberService messageSubscriberService;
 
     @Autowired
-    public RedisQueueConfig(MessageSubscriberService messageSubscriberService) {
+    public RedisQueueConfig(QueueEventSubscriberService messageSubscriberService) {
         this.messageSubscriberService = messageSubscriberService;
     }
 

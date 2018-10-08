@@ -6,7 +6,7 @@ import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MessageSubscriberService implements MessageListener {
+public class QueueEventSubscriberService implements MessageListener {
 
     @Override
     public void onMessage(@NotNull Message message, @NotNull byte[] pattern) {
