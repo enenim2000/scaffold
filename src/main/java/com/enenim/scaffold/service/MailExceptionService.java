@@ -6,6 +6,7 @@ import com.enenim.scaffold.shared.Mail;
 import com.enenim.scaffold.util.ErrorUtil;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ public class MailExceptionService  implements IMailService {
         this.mailService = mailService;
     }
 
+    @Override
+    @Async("processExecutor")
     public void send(Object obj){
         Exception exception = new Exception();
         Mail mail = new Mail();
