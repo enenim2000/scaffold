@@ -1,8 +1,10 @@
 package com.enenim.scaffold.controller;
 
+import com.enenim.scaffold.QueueEventTask;
 import com.enenim.scaffold.annotation.Get;
+import com.enenim.scaffold.service.QueueEventPublisherService;
+import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.QueueEvent;
-import com.enenim.scaffold.util.QueueEventPublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,10 +19,15 @@ public class TestController {
     }
 
     @Get("/test/queue")
-    public void getSubscribedEvents(){
-        System.out.println("About to queue task");
-        QueueEvent queueEvent = new QueueEvent();
-        queueEventPublisherService.enQueue(queueEvent);
-        System.out.println("Task queued");
+    public void getSubscribedEvents() throws ClassNotFoundException {
+        for(int i=0; i<10; i++){
+            QueueEvent queueEvent = new QueueEvent();
+            queueEvent.setEventMethod("run");
+            queueEvent.setEventType("email");
+            queueEvent.setEventClass(QueueEventTask.class.getName());
+            queueEvent.setEventTask(JsonConverter.getJson(new QueueEventTask(i)));
+            queueEventPublisherService.enQueue(queueEvent);
+        }
+        System.out.println("All task executed");
     }
 }

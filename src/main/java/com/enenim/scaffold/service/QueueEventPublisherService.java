@@ -1,6 +1,7 @@
-package com.enenim.scaffold.util;
+package com.enenim.scaffold.service;
 
 import com.enenim.scaffold.interfaces.QueueEventPublisher;
+import com.enenim.scaffold.util.QueueEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;

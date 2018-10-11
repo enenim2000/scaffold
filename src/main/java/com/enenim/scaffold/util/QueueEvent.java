@@ -5,8 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class QueueEvent {
+public class QueueEvent{
     private String eventType;
+    private String eventClass;
     private String eventMethod;
-    private Object eventService;
+    private String eventTask;
 }
