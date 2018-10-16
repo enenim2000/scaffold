@@ -39,7 +39,7 @@ public class Login extends BaseModel {
     private Date lastLoggedIn;
 
     @NotNull
-    private LoginStatus status = LoginStatus.DISABLED;
+    private LoginStatus status = LoginStatus.ENABLED;
 
     @JsonBackReference
     @OneToOne(mappedBy = "login", fetch = FetchType.LAZY)

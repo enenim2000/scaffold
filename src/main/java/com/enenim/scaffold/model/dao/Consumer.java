@@ -34,7 +34,7 @@ public class Consumer extends BaseModel {
     @Column(length = 30)
     private String phone;
 
-    private VerifyStatus verified = VerifyStatus.VERIFIED;
+    private VerifyStatus verified = VerifyStatus.NOT_VERIFIED;
 
     private EnabledStatus enabled = EnabledStatus.ENABLED;
 

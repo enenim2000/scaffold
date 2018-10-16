@@ -9,8 +9,6 @@ import java.util.List;
 
 @NoRepositoryBean
 public interface BaseRepository<T, ID extends Serializable> extends JpaRepository<T, ID> {
-    List<T> search();
-
     List<T> search(Pageable pageable);
 
     T findOrFail(ID id);

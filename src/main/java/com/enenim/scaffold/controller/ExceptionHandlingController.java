@@ -1,7 +1,7 @@
 package com.enenim.scaffold.controller;
 
 import com.enenim.scaffold.dto.response.ExceptionResponse;
-import com.enenim.scaffold.service.MailTypeResolverService;
+import com.enenim.scaffold.service.MailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 @ControllerAdvice
 @RestController
 public class ExceptionHandlingController {
-    private final MailTypeResolverService mailTypeResolverService;
+    private final MailSenderService mailTypeResolverService;
 
     @Autowired
-    public ExceptionHandlingController(MailTypeResolverService mailTypeResolverService) {
+    public ExceptionHandlingController(MailSenderService mailTypeResolverService) {
         this.mailTypeResolverService = mailTypeResolverService;
     }
 

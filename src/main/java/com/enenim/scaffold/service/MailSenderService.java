@@ -1,19 +1,22 @@
 package com.enenim.scaffold.service;
 
 import com.enenim.scaffold.interfaces.IMailService;
+import com.enenim.scaffold.model.dao.Consumer;
 import com.enenim.scaffold.model.dao.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MailTypeResolverService {
+public class MailSenderService {
 
     private final MailExceptionService mailExceptionService;
+    private final MailSignUpService mailSignUpService;
     private final MailTransactionService mailTransactionService;
 
     @Autowired
-    public MailTypeResolverService(MailExceptionService mailExceptionService, MailTransactionService mailTransactionService) {
+    public MailSenderService(MailExceptionService mailExceptionService, MailSignUpService mailSignUpService, MailTransactionService mailTransactionService) {
         this.mailExceptionService = mailExceptionService;
+        this.mailSignUpService = mailSignUpService;
         this.mailTransactionService = mailTransactionService;
     }
 
@@ -24,6 +27,8 @@ public class MailTypeResolverService {
             mailService = mailExceptionService;
         }else if(obj instanceof Transaction){
             mailService = mailTransactionService;
+        }else if(obj instanceof Consumer){
+            mailService = mailSignUpService;
         }else {
             return;
         }
