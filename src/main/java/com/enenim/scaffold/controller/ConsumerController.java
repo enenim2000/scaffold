@@ -73,22 +73,29 @@ public class ConsumerController {
     }
 
     @Post("/{code}/verify")
-    public BaseResponse<ModelResponse<Consumer>> verifyCode(@PathVariable("code") String code){
+    public BaseResponse<ModelResponse<Consumer>> verifyCode(@PathVariable("code") String code) throws Exception {
         Object value = sharedExpireCacheService.get(code);
-        Consumer consumer = null;
         if(!StringUtils.isEmpty(value)){
-            consumer = (Consumer)value;
+            Consumer consumer = (Consumer)value;
             Login login = loginService.getLoginByUsername(consumer.getEmail());
             if(!StringUtils.isEmpty(login)){
                 consumer.setVerified(VerifyStatus.VERIFIED);
                 consumerService.saveConsumer(consumer);
+                sharedExpireCacheService.delete(code);
+                return new BaseResponse<>(new ModelResponse<>(consumer));
             }
         }
-        return new BaseResponse<>(new ModelResponse<>(consumer));
+        throw new Exception("Expired/Invalid code");
     }
 
     @Post("/{email}/code/re-send")
     public BaseResponse<BooleanResponse> reSendCode(@PathVariable("email") String email){
+        Consumer consumer = consumerService.getConsumerByEmail(email);
+        if(!StringUtils.isEmpty(consumer)){
+            if (consumer.getVerified() == VerifyStatus.NOT_VERIFIED){
+                mailSenderService.send(consumer);
+            }
+        }
         return null;//new BaseResponse<>(new BooleanResponse<>(consumer));
     }
 

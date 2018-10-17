@@ -26,6 +26,10 @@ public class ConsumerService {
         return consumerRepository.findOrFail(id);
     }
 
+    public Consumer getConsumerByEmail(String email) {
+        return consumerRepository.findByEmail(email).orElse(null);
+    }
+
     public Consumer saveConsumer(Consumer consumer){
         return consumerRepository.save(consumer);
     }
