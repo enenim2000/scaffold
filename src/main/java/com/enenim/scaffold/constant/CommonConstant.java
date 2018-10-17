@@ -5,10 +5,10 @@ import java.io.File;
 public interface CommonConstant {
     int PAGE_SIZE = 50;
 
-    String PAGE = "page";
-    String Q = "q";
-    String FROM = "from";
-    String TO = "to";
+    String PAGE = "getPage";
+    String Q = "getQ";
+    String FROM = "getFrom";
+    String TO = "getTo";
     String IP_ADDRESS = "ip_address";
     String USER_AGENT = "user_agent";
 
@@ -16,12 +16,13 @@ public interface CommonConstant {
     String PER_PAGE = "per_page";
 
     String DIR_HOME = "user.home";
-    String ASSET_BASE = System.getProperty(DIR_HOME) + File.separator + CommonConstant.class + File.separator;
-    String API_KEY = "Api-Key";
+    String ASSET_BASE = System.getProperty(DIR_HOME) + File.separator + "scaffold" + File.separator;
+    String API_KEY = "api-key";
     String PLACE_HOLDER = "{}";
 
     String LOGIN_ID = "login_id";
     String LOGIN = "login";
 
-    Integer SETTING_TIMEOUT = 24;
+    Integer IDLE_TIMEOUT = 5; //In minutes
+    String LANG = "lang";
 }

@@ -22,7 +22,7 @@ import java.util.Set;
 public class Biller extends BaseModel {
 
     @Transient
-    public static String searchables = "name,address,email,phone,logo,code,testSecret,secret,tradingName,slug,parentId";
+    public static String searchables = "name,address,email,phoneNumber,logo,code,testSecret,secret,tradingName,slug,parentId";
 
     @Transient
     public static String table = "billers";

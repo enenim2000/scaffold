@@ -4,7 +4,7 @@ import com.enenim.scaffold.annotation.Get;
 import com.enenim.scaffold.annotation.Post;
 import com.enenim.scaffold.annotation.Put;
 import com.enenim.scaffold.constant.RoleConstant;
-import com.enenim.scaffold.dto.request.BaseRequest;
+import com.enenim.scaffold.dto.request.Request;
 import com.enenim.scaffold.dto.request.ConsumerRequest;
 import com.enenim.scaffold.dto.response.BaseResponse;
 import com.enenim.scaffold.dto.response.BooleanResponse;
@@ -22,8 +22,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/user/consumers")
@@ -52,13 +50,13 @@ public class ConsumerController {
     }
 
     @Post
-    public BaseResponse<ModelResponse<Consumer>> storeAnonymousConsumers(@Valid @RequestBody BaseRequest<ConsumerRequest> baseRequest){
-        return new BaseResponse<>(new ModelResponse<>(consumerService.saveConsumer(baseRequest.getData().validateRequest())));
+    public BaseResponse<ModelResponse<Consumer>> storeAnonymousConsumers(@RequestBody Request<ConsumerRequest> request){
+        return new BaseResponse<>(new ModelResponse<>(consumerService.saveConsumer(request.getBody().buildModel())));
     }
 
     @Post("/sign-up")
-    public BaseResponse<ModelResponse<Consumer>> signUpConsumers(@Valid @RequestBody BaseRequest<ConsumerRequest> baseRequest){
-        Consumer consumer = consumerService.saveConsumer(baseRequest.getData().validateRequest());
+    public BaseResponse<ModelResponse<Consumer>> signUpConsumers(@RequestBody Request<ConsumerRequest> request){
+        Consumer consumer = consumerService.saveConsumer(request.getBody().buildModel());
         if(!StringUtils.isEmpty(consumer)){
             Login login = new Login();
             login.setUsername(consumer.getEmail());

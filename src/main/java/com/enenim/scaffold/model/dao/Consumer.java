@@ -30,7 +30,7 @@ public class Consumer extends BaseModel {
     @Column(unique = true, length = 100)
     private String email;
 
-    @JsonProperty("phone")
+    @JsonProperty("phoneNumber")
     @Column(length = 30)
     private String phone;
 

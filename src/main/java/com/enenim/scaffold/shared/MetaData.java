@@ -36,9 +36,9 @@ public class MetaData<T>{
 
         setPerPage(Integer.valueOf(RequestUtil.perPage()));
 
-        int nextPage = RequestUtil.page() <= 0 ? 1 : RequestUtil.page() + 1;
+        int nextPage = RequestUtil.getPage() <= 0 ? 1 : RequestUtil.getPage() + 1;
 
-        int prevPage = RequestUtil.page() <= 0 ? 0 : RequestUtil.page() - 1;
+        int prevPage = RequestUtil.getPage() <= 0 ? 0 : RequestUtil.getPage() - 1;
 
         if(!result.getContent().isEmpty()){
             if(result.isFirst() && result.isLast()){
@@ -53,9 +53,9 @@ public class MetaData<T>{
             }
 
             setLastPage(result.getTotalPages());
-            setCurrentPage(RequestUtil.page());
-            setFrom(Long.valueOf(RequestUtil.from()));
-            setTo(Long.valueOf(RequestUtil.to()));
+            setCurrentPage(RequestUtil.getPage());
+            setFrom(Long.valueOf(RequestUtil.getFrom()));
+            setTo(Long.valueOf(RequestUtil.getTo()));
         }
     }
 }

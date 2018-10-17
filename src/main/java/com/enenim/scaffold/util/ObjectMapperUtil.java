@@ -22,7 +22,7 @@ public class ObjectMapperUtil {
     }
 
     /**
-     * Hide from public usage.
+     * Hide getFrom public usage.
      */
     private ObjectMapperUtil() {
     }
@@ -31,7 +31,7 @@ public class ObjectMapperUtil {
      * <p>Note: outClass object must have default constructor with no arguments</p>
      *
      * @param <D>      type of result object.
-     * @param <T>      type of source object to map from.
+     * @param <T>      type of source object to map getFrom.
      * @param entity   entity that needs to be mapped.
      * @param outClass class of result object.
      * @return new object of <code>outClass</code> type.
@@ -58,8 +58,8 @@ public class ObjectMapperUtil {
     /**
      * Maps {@code source} to {@code destination}.
      *
-     * @param source      object to map from
-     * @param destination object to map to
+     * @param source      object to map getFrom
+     * @param destination object getTo map getTo
      */
     public static <S, D> D map(final S source, D destination) {
         modelMapper.map(source, destination);

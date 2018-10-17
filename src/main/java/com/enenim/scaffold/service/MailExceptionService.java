@@ -60,7 +60,7 @@ public class MailExceptionService  implements IMailService {
         }
         mail.getData().put("errors", errors);
         System.out.println(end);
-        System.out.println("Exception mail to be sent");
+        System.out.println("Exception mail getTo be sent");
         mailService.sendMail(mail);
         System.out.println("Exception mail sent successfully");
     }

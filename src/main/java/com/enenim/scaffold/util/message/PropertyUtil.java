@@ -19,7 +19,7 @@ class PropertyUtil {
         try {
             input = PropertyUtil.class.getClassLoader().getResourceAsStream(fileName);
             if(input==null){
-                System.out.println("Sorry, unable to find " + fileName);
+                System.out.println("Sorry, unable getTo find " + fileName);
                 return null;
             }
             prop.load(input);

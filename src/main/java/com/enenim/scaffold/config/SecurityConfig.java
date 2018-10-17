@@ -18,7 +18,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
 			.antMatchers("/", "/lib/**", "/css/**", "/js/**", "/img/**", "/api/**").permitAll();
 	}
 
-	/* To allow Pre-flight [OPTIONS] request from browser */
+	/* To allow Pre-flight [OPTIONS] request getFrom browser */
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");

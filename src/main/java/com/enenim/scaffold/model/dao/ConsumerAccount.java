@@ -26,7 +26,7 @@ public class ConsumerAccount extends BaseModel {
     @Column(length = 70)
     private String email;
 
-    @JsonProperty("phone")
+    @JsonProperty("phoneNumber")
     @Column(length = 15)
     private String phone;
 

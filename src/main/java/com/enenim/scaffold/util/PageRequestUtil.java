@@ -26,11 +26,11 @@ public class PageRequestUtil {
     }
 
     private static int getPage(){
-        /* Subtract one from the value because PageRequest.of() first parameter starts from 0 index */
+        /* Subtract one getFrom the value because PageRequest.of() first parameter starts getFrom 0 index */
         return Integer.valueOf(RequestUtil.getRequest().getParameter(PAGE) != null ? RequestUtil.getRequest().getParameter(PAGE) : "1") - 1;
     }
 
     public static String q(){
-        return RequestUtil.getRequest().getParameter("q")==null?"":RequestUtil.getRequest().getParameter("q");
+        return RequestUtil.getRequest().getParameter("getQ")==null?"":RequestUtil.getRequest().getParameter("getQ");
     }
 }

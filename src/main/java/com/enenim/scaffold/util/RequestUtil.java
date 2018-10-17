@@ -20,7 +20,7 @@ public class RequestUtil {
 
     /**
      *
-     * @return IP Address from baseRequest; baseRequest.getIpAddress()
+     * @return IP Address getFrom baseRequest; baseRequest.getIpAddress()
      */
     public static String getIpAddress(){
         return getRequest().getParameter(CommonConstant.IP_ADDRESS);
@@ -28,7 +28,7 @@ public class RequestUtil {
 
     /**
      *
-     * @return Browser from baseRequest; baseRequest.getUserAgent()
+     * @return Browser getFrom baseRequest; baseRequest.getUserAgent()
      */
     public static String getUserAgent(){
         return getRequest().getParameter(CommonConstant.USER_AGENT);
@@ -56,7 +56,7 @@ public class RequestUtil {
 
     /**
      *
-     * @return T data in BaseRequest<T>, request.setAttribute("request", concatenate(baseRequest.getData() + uri + datetime))//rid => is the concatenation of baseRequest, uri, datetime via AOP
+     * @return T data in Request<T>, request.setAttribute("request", concatenate(baseRequest.getData() + uri + datetime))//rid => is the concatenation of baseRequest, uri, datetime via AOP
      */
     public static String getRID(){
         return (String)getRequest().getAttribute("rid");
@@ -64,21 +64,21 @@ public class RequestUtil {
 
     /**
      *
-     * @return T data in BaseRequest<T>, request.setAttribute("request", baseRequest.getData())
+     * @return T data in Request<T>, request.setAttribute("request", baseRequest.getData())
      */
     public static Object getBaseRequestBody(){
         return getRequest().getAttribute("request");
     }
 
-    public static String q(){
+    public static String getQ(){
         return getRequest().getParameter(Q)==null?"":getRequest().getParameter(Q);
     }
 
-    public static String to(){
+    public static String getTo(){
         return getRequest().getParameter(TO)==null?"":getRequest().getParameter(TO);
     }
 
-    public static String from(){
+    public static String getFrom(){
         return getRequest().getParameter(FROM)==null?"":getRequest().getParameter(FROM);
     }
 
@@ -86,7 +86,7 @@ public class RequestUtil {
         return getRequest().getParameter(PER_PAGE)==null?"":getRequest().getParameter(PER_PAGE);
     }
 
-    public static int page(){
+    public static int getPage(){
         return Integer.valueOf(getRequest().getParameter(PAGE) != null ? getRequest().getParameter(PAGE) : "1");
     }
 
@@ -96,5 +96,13 @@ public class RequestUtil {
 
     public static String getMessage(){
         return (String) getRequest().getAttribute(MESSAGE);
+    }
+
+    public static void setLang(String lang){
+        getRequest().setAttribute(LANG, lang);
+    }
+
+    public static String getLang(){
+        return (String) getRequest().getAttribute(LANG);
     }
 }

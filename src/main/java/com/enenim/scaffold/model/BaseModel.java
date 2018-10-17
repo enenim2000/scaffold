@@ -44,49 +44,49 @@ public abstract class BaseModel extends ResponseBody implements Serializable {
     protected Date updatedAt = new Date();
 
     /**
-     * This variable is added to hold the before state
+     * This variable is added getTo hold the before state
      */
     @Transient
     public static Object rBefore = null;
 
     /**
-     * This property is added to know if auditing should be skipped at runtime
+     * This property is added getTo know if auditing should be skipped at runtime
      */
     @Transient
     public static boolean rSkipAuditing = false;
 
     /**
-     * This property is added to know if authorization should be skipped at runtime
+     * This property is added getTo know if authorization should be skipped at runtime
      */
     @Transient
     public static boolean rSkipAuthorization = false;
 
     /**
-     * This property is added to accept custom message at runtime, e.g Updated Sharing Formula, Created Active Hour
+     * This property is added getTo accept custom message at runtime, e.g Updated Sharing Formula, Created Active Hour
      */
     @Transient
     public static String rUserAction = "";
 
     /**
-     * This property is added to accept CRUD action at runtime, e.g create, update, toggle, delete
+     * This property is added getTo accept CRUD action at runtime, e.g create, update, toggle, delete
      */
     @Transient
     public static String rCrudAction = "create";
 
     /**
-     * This property is added to accept response message at runtime, e.g Attempt to create item is pending authorization, Item created successfully
+     * This property is added getTo accept response message at runtime, e.g Attempt getTo create item is pending authorization, Item created successfully
      */
     @Transient
     public static String rMessage = "";
 
     /**
-     * This property is added to hold the toggle response message at runtime, e.g active or inactive
+     * This property is added getTo hold the toggle response message at runtime, e.g active or inactive
      */
     @Transient
     public static Object rResponse = null;
 
     /**
-     * This property is added to hold the toggle response message at runtime, e.g active or inactive
+     * This property is added getTo hold the toggle response message at runtime, e.g active or inactive
      */
     @Transient
     public static Object rToggle = null;
