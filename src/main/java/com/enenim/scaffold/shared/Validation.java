@@ -19,7 +19,6 @@ public class Validation {
 
     public HashMap<String, List<Object>> errors() {
         if(errors != null) return errors;
-
         return new HashMap<>();
     }
 

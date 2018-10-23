@@ -34,12 +34,6 @@ public class BaseRepositoryService<T, ID extends Serializable>
 
     @Transactional
     @Override
-    public List<T> search() {
-        return null;
-    }
-
-    @Transactional
-    @Override
     public List<T> search(Pageable pageable) {
         return null;
     }

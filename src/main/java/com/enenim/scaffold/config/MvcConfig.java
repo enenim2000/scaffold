@@ -3,6 +3,7 @@ package com.enenim.scaffold.config;
 import com.enenim.scaffold.constant.CommonConstant;
 import com.enenim.scaffold.interceptor.AuthenticationInterceptor;
 import com.enenim.scaffold.interceptor.BaseInterceptor;
+import com.enenim.scaffold.interceptor.RequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -15,11 +16,13 @@ import java.io.File;
 public class MvcConfig implements WebMvcConfigurer {
 	private final AuthenticationInterceptor authenticationInterceptor;
 	private final BaseInterceptor baseInterceptor;
+	private final RequestFilter requestFilter;
 
 	@Autowired
-	public MvcConfig(AuthenticationInterceptor authenticationInterceptor, BaseInterceptor baseInterceptor) {
+	public MvcConfig(AuthenticationInterceptor authenticationInterceptor, BaseInterceptor baseInterceptor, RequestFilter requestFilter) {
 		this.authenticationInterceptor = authenticationInterceptor;
 		this.baseInterceptor = baseInterceptor;
+		this.requestFilter = requestFilter;
 	}
 
 	@Override
@@ -32,5 +35,6 @@ public class MvcConfig implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(baseInterceptor).addPathPatterns("/**");
 		registry.addInterceptor(authenticationInterceptor).addPathPatterns("/**");
+		registry.addInterceptor(requestFilter).addPathPatterns("/**");
 	}
 }

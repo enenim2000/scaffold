@@ -6,7 +6,7 @@ import com.enenim.scaffold.annotation.Put;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.dto.request.Request;
 import com.enenim.scaffold.dto.request.ConsumerRequest;
-import com.enenim.scaffold.dto.response.BaseResponse;
+import com.enenim.scaffold.dto.response.Response;
 import com.enenim.scaffold.dto.response.BooleanResponse;
 import com.enenim.scaffold.dto.response.ModelResponse;
 import com.enenim.scaffold.dto.response.PageResponse;
@@ -40,22 +40,24 @@ public class ConsumerController {
     }
 
     @Get
-    public BaseResponse<PageResponse<Consumer>> getConsumers() {
-        return new BaseResponse<>(new PageResponse<>(consumerService.getConsumers()));
+    public Response<PageResponse<Consumer>> getConsumers() {
+        return new Response<>(new PageResponse<>(consumerService.getConsumers()));
     }
 
     @Get("/{id}")
-    public BaseResponse<ModelResponse<Consumer>> showConsumer(@PathVariable Long id) {
-        return new BaseResponse<>(new ModelResponse<>(consumerService.getConsumer(id)));
+    public Response<ModelResponse<Consumer>> showConsumer(@PathVariable Long id) {
+        return new Response<>(new ModelResponse<>(consumerService.getConsumer(id)));
     }
 
     @Post
-    public BaseResponse<ModelResponse<Consumer>> storeAnonymousConsumers(@RequestBody Request<ConsumerRequest> request){
-        return new BaseResponse<>(new ModelResponse<>(consumerService.saveConsumer(request.getBody().buildModel())));
+    public Response<ModelResponse<Consumer>> storeAnonymousConsumers(@RequestBody Request<ConsumerRequest> request){
+        request.getBody().validateRequest();
+        return new Response<>(new ModelResponse<>(consumerService.saveConsumer(request.getBody().buildModel())));
     }
 
     @Post("/sign-up")
-    public BaseResponse<ModelResponse<Consumer>> signUpConsumers(@RequestBody Request<ConsumerRequest> request){
+    public Response<ModelResponse<Consumer>> signUpConsumers(@RequestBody Request<ConsumerRequest> request){
+        request.getBody().validateRequest();
         Consumer consumer = consumerService.saveConsumer(request.getBody().buildModel());
         if(!StringUtils.isEmpty(consumer)){
             Login login = new Login();
@@ -67,11 +69,11 @@ public class ConsumerController {
                 mailSenderService.send(consumer);
             }
         }
-        return new BaseResponse<>(new ModelResponse<>(consumer));
+        return new Response<>(new ModelResponse<>(consumer));
     }
 
     @Post("/{code}/verify")
-    public BaseResponse<ModelResponse<Consumer>> verifyCode(@PathVariable("code") String code) throws Exception {
+    public Response<ModelResponse<Consumer>> verifyCode(@PathVariable("code") String code) throws Exception {
         Object value = sharedExpireCacheService.get(code);
         if(!StringUtils.isEmpty(value)){
             Consumer consumer = (Consumer)value;
@@ -80,25 +82,26 @@ public class ConsumerController {
                 consumer.setVerified(VerifyStatus.VERIFIED);
                 consumerService.saveConsumer(consumer);
                 sharedExpireCacheService.delete(code);
-                return new BaseResponse<>(new ModelResponse<>(consumer));
+                return new Response<>(new ModelResponse<>(consumer));
             }
         }
         throw new Exception("Expired/Invalid code");
     }
 
     @Post("/{email}/code/re-send")
-    public BaseResponse<BooleanResponse> reSendCode(@PathVariable("email") String email){
+    public Response<BooleanResponse> reSendCode(@PathVariable("email") String email){
         Consumer consumer = consumerService.getConsumerByEmail(email);
         if(!StringUtils.isEmpty(consumer)){
             if (consumer.getVerified() == VerifyStatus.NOT_VERIFIED){
                 mailSenderService.send(consumer);
+                return new Response<>(new BooleanResponse(true));
             }
         }
-        return null;//new BaseResponse<>(new BooleanResponse<>(consumer));
+        return new Response<>(new BooleanResponse(false));
     }
 
     @Put("/{id}/toggle")
-    public BaseResponse<BooleanResponse> toggle(@PathVariable Long id){
-        return  new BaseResponse<>(new BooleanResponse(consumerService.toggle(id)));
+    public Response<BooleanResponse> toggle(@PathVariable Long id){
+        return  new Response<>(new BooleanResponse(consumerService.toggle(id)));
     }
 }

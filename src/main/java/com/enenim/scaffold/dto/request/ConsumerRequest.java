@@ -61,7 +61,8 @@ public class ConsumerRequest extends RequestBody<Consumer>{
         new ErrorValidator()
                 .addError(Validation.validateInput(getFirstName(), MODEL_KEY, FIRST_NAME,  ValidationConstant.TYPE_REQUIRED))
                 .addError(Validation.validateInput(getLastName(), MODEL_KEY, LAST_NAME,  ValidationConstant.TYPE_REQUIRED))
-                .addError(Validation.validateInput(getEmail(), MODEL_KEY, EMAIL, ValidationConstant.TYPE_NUMBER))
+                .addError(Validation.validateInput(getEmail(), MODEL_KEY, EMAIL, ValidationConstant.TYPE_REQUIRED))
+                .addError(Validation.validateInput(getEmail(), MODEL_KEY, EMAIL, ValidationConstant.TYPE_PATTERN))
                 .addError(Validation.validateInput(getPhoneNumber(), MODEL_KEY, PHONE_NUMBER, ValidationConstant.TYPE_REQUIRED));
         return new Validation(errorValidator.build());
     }

@@ -10,21 +10,21 @@ import org.springframework.util.MultiValueMap;
 @Getter
 @Setter
 @ToString
-public class BaseResponse<T> extends ResponseEntity<T> {
+public class Response<T> extends ResponseEntity<T> {
 
-    public BaseResponse() {
+    public Response() {
         super(HttpStatus.OK);
     }
 
-    public BaseResponse(T body) {
+    public Response(T body) {
         super(body, HttpStatus.OK);
     }
 
-    public BaseResponse(MultiValueMap<String, String> headers) {
+    public Response(MultiValueMap<String, String> headers) {
         super(headers, HttpStatus.OK);
     }
 
-    public BaseResponse(T body, MultiValueMap<String, String> headers) {
+    public Response(T body, MultiValueMap<String, String> headers) {
         super(body, headers, HttpStatus.OK);
     }
 }
