@@ -102,6 +102,6 @@ public class ConsumerController {
 
     @Put("/{id}/toggle")
     public Response<BooleanResponse> toggle(@PathVariable Long id){
-        return  new Response<>(new BooleanResponse(consumerService.toggle(id)));
+        return new Response<>(new BooleanResponse(consumerService.toggle(id)));
     }
 }

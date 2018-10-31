@@ -1,7 +1,6 @@
 package com.enenim.scaffold.util.message;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,14 +37,32 @@ class PropertyUtil {
         return prop;
     }
 
-    static String msg(String key, String fileName){
-       return msg(StringUtils.isEmpty(lang) ? "en" : lang, key, fileName);
-    }
-
     static String msg(String lang, String key, String fileName){
         Properties property;
         String value;
         property = PropertyUtil.getProperties(fileName + "_" + lang + ".properties");
+        if(property != null){
+            value = property.getProperty(key);
+            if(value != null) {
+                return value;
+            }
+        }
+        return "Message not found";
+    }
+
+    static String msg(String key){
+        Properties property;
+        String value;
+        property = PropertyUtil.getProperties("application.properties");
+        if(property != null){
+            String env = property.getProperty("spring.profiles.active");
+            if("dev".equalsIgnoreCase(env)){
+                property = PropertyUtil.getProperties("application-dev.properties");
+            }else if("production".equalsIgnoreCase(env)){
+                property = PropertyUtil.getProperties("application-production.properties");
+            }
+        }
+
         if(property != null){
             value = property.getProperty(key);
             if(value != null){

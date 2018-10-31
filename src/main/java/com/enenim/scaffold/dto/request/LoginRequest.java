@@ -32,7 +32,7 @@ public class LoginRequest extends RequestBody<Login>{
     private String password;
 
     @Override
-    Login buildModel() {
+    public Login buildModel() {
         return ObjectMapperUtil.map(this, Login.class);
     }
 
@@ -42,7 +42,7 @@ public class LoginRequest extends RequestBody<Login>{
     }
 
     @Override
-    Validation validateRequest() {
+    public Validation validateRequest() {
         ErrorValidator errorValidator = new ErrorValidator();
         new ErrorValidator()
                 .addError(Validation.validateInput(getUsername(), MODEL_KEY, USERNAME,  ValidationConstant.TYPE_REQUIRED))

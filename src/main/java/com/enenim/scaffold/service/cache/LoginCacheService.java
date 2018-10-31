@@ -17,7 +17,7 @@ import java.util.Map;
 @Service
 public class LoginCacheService implements LoginCacheRepository {
 
-    private static final String KEY = "LoginCache";
+    private static final String LOGIN = "LoginCache";
 
     @Qualifier(value = "redisAuthenticationTemplate")
     private RedisTemplate<String, Map<String, LoginCache>> redisTemplate;
@@ -38,17 +38,17 @@ public class LoginCacheService implements LoginCacheRepository {
 
     @Override
     public Map<String, LoginCache> get(String id) {
-        return hashOps.get(KEY, id);
+        return hashOps.get(LOGIN, id);
     }
 
     @Override
     public List<Map<String, LoginCache>> get() {
-        return hashOps.values(KEY);
+        return hashOps.values(LOGIN);
     }
 
     @Override
     public Map<String, Map<String, LoginCache>> getAll() {
-        return hashOps.entries(KEY);
+        return hashOps.entries(LOGIN);
     }
 
     @Override
@@ -70,21 +70,26 @@ public class LoginCacheService implements LoginCacheRepository {
 
     public void save(LoginCache data) {
         String id = String.valueOf(data.getId());
-        Map<String, LoginCache> records = this.get(id);
-        if(StringUtils.isEmpty(records) || !multipleLoginIsEnabled()){
-            records = new HashMap<>();
+        Map<String, LoginCache> records = new HashMap<>();
+
+        if(multipleLoginIsEnabled()){
+            records = this.get(id);
+            if(StringUtils.isEmpty(records)){
+                records = new HashMap<>();
+            }
         }
+
         records.put(data.getTracker().getSessionId(), data);
-        hashOps.put(KEY, id, records);
+        hashOps.put(LOGIN, id, records);
     }
 
     public void delete(String id, String sessionId) {
         if(StringUtils.isEmpty(sessionId)){
-            hashOps.delete(KEY, id);
+            hashOps.delete(LOGIN, id);
         }else {
             Map<String, LoginCache> records = this.get(id);
             records.remove(sessionId);
-            hashOps.put(KEY, id, records);
+            hashOps.put(LOGIN, id, records);
         }
     }
 

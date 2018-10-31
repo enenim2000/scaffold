@@ -1,6 +1,7 @@
 package com.enenim.scaffold.service;
 
 import com.enenim.scaffold.constant.CommonConstant;
+import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.interfaces.IMailService;
 import com.enenim.scaffold.shared.Mail;
 import com.enenim.scaffold.util.ErrorUtil;
@@ -40,6 +41,10 @@ public class MailExceptionService  implements IMailService {
             begin = begin.replace(CommonConstant.PLACE_HOLDER, ConstraintViolationException.class.getSimpleName());
             end = end.replace(CommonConstant.PLACE_HOLDER, ConstraintViolationException.class.getSimpleName());
             exception = (ConstraintViolationException)obj;
+        }else if(obj instanceof ScaffoldException){
+            begin = begin.replace(CommonConstant.PLACE_HOLDER, ScaffoldException.class.getSimpleName());
+            end = end.replace(CommonConstant.PLACE_HOLDER, ScaffoldException.class.getSimpleName());
+            exception = (ScaffoldException)obj;
         }
 
         System.out.println(begin);

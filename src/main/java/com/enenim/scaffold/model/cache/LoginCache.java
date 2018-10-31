@@ -48,12 +48,12 @@ public class LoginCache {
      */
     private java.util.Date created;
 
-    public boolean hasExpired() {
+    public boolean hasExpired(long idleTimeout) {
         if(getCreated() == null){
             return true;
         }
         LocalDateTime localDateTime = getCreated().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-        localDateTime = localDateTime.plusHours(1);
+        localDateTime = localDateTime.plusMinutes(idleTimeout);
         return  Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant()).before(new Date());
     }
 }
