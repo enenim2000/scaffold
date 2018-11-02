@@ -22,8 +22,8 @@ public class Validation {
         return new HashMap<>();
     }
 
-    public boolean isEmpty(){
-        return this.errors == null || this.errors.isEmpty();
+    public boolean hasErrors(){
+        return !errors.isEmpty();
     }
 
     private static boolean isValidEmail(String email){

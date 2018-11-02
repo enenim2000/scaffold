@@ -15,4 +15,8 @@ public class ScaffoldException extends RuntimeException{
     public ScaffoldException(String key) {
         super(ExceptionMessage.msg(key));
     }
+
+    public ScaffoldException(String key, String role) {
+        super(ExceptionMessage.msg(key, role));
+    }
 }

@@ -2,10 +2,12 @@ package com.enenim.scaffold.model.dao;
 
 import com.enenim.scaffold.enums.LoggedIn;
 import com.enenim.scaffold.model.BaseModel;
+import com.enenim.scaffold.util.RequestUtil;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,6 +22,19 @@ import java.util.Date;
 @Entity
 @Table(name = "trackers")
 public class Tracker extends BaseModel {
+    public Tracker(){}
+
+    public Tracker (Login login, Date date){
+        Tracker tracker = new Tracker();
+        tracker.setDateLoggedIn(date);
+        tracker.setIpAddress(RequestUtil.getIpAddress());
+        tracker.setUserAgent(RequestUtil.getUserAgent());
+        tracker.setLoggedIn(LoggedIn.USER_LOGGED_IN);
+        tracker.setSessionId(new BCryptPasswordEncoder().encode(date.toString()) + Math.random());
+        tracker.setFailedAttempts(0);
+        tracker.setLogin(login);
+    }
+
     @NonNull
     @OneToOne
     private Login login;

@@ -1,20 +1,22 @@
 package com.enenim.scaffold.controller;
 
-
 import com.enenim.scaffold.annotation.Post;
 import com.enenim.scaffold.dto.request.LoginRequest;
 import com.enenim.scaffold.dto.request.Request;
 import com.enenim.scaffold.dto.response.Response;
 import com.enenim.scaffold.dto.response.StringResponse;
+import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.LoginStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.exception.UnAuthorizedException;
 import com.enenim.scaffold.model.cache.LoginCache;
 import com.enenim.scaffold.model.dao.Login;
+import com.enenim.scaffold.model.dao.Tracker;
 import com.enenim.scaffold.service.TokenAuthenticationService;
+import com.enenim.scaffold.service.UserResolverService;
+import com.enenim.scaffold.service.dao.AuditService;
 import com.enenim.scaffold.service.dao.LoginService;
 import com.enenim.scaffold.service.dao.TrackerService;
-import com.enenim.scaffold.util.message.ExceptionMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,13 +34,15 @@ public class UserAccountController {
     private final TrackerService trackerService;
 	private final TokenAuthenticationService tokenAuthenticationService;
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
+	private final UserResolverService userResolverService;
 
 	@Autowired
-	public UserAccountController(LoginService loginService, TrackerService trackerService, TokenAuthenticationService tokenAuthenticationService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+	public UserAccountController(LoginService loginService, TrackerService trackerService, TokenAuthenticationService tokenAuthenticationService, BCryptPasswordEncoder bCryptPasswordEncoder, UserResolverService userResolverService, AuditService auditService) {
 		this.loginService = loginService;
 		this.trackerService = trackerService;
 		this.tokenAuthenticationService = tokenAuthenticationService;
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+		this.userResolverService = userResolverService;
 	}
 
 	@Post("/authenticate")
@@ -47,22 +51,41 @@ public class UserAccountController {
 		Login login = loginService.getLoginByUsername(request.getBody().getUsername());
 		if(bCryptPasswordEncoder.matches(request.getBody().getUsername(), login.getPassword())){
 			if(login.getStatus() == LoginStatus.DISABLED){
-				throw new ScaffoldException(ExceptionMessage.msg("disabled_account"));
+				throw new ScaffoldException("disabled_account");
 			}else if(login.getStatus() == LoginStatus.LOCKED){
-				throw new ScaffoldException(ExceptionMessage.msg("blocked_account"));
+				throw new ScaffoldException("blocked_account");
 			}else {
-				String token = tokenAuthenticationService.encodeToken(buildLoginToken(request));
+				LoginCache loginToken = buildLoginToken(login);
+				String token = tokenAuthenticationService.encodeToken(loginToken);
+
+				/*
+				 * @Async is used on saveTracker to increase efficiency, tracker.getId() will never be used hence no need to wait for the result
+				 */
+				trackerService.saveTracker(loginToken.getTracker());
+
 				return new Response<>(new StringResponse(token));
 			}
 		}
-		throw new UnAuthorizedException(ExceptionMessage.msg("invalid_login"));
+		throw new UnAuthorizedException("invalid_login");
 	}
 
 	private LoginCache buildLoginToken(Login login){
+		Date date = new Date();
+		Tracker tracker = new Tracker(login, date);
+		tracker.setDateLoggedIn(date);
+
 		LoginCache loginCache = new LoginCache();
-		loginCache.setCreated(new Date());
+		loginCache.setCreated(date);
 		loginCache.setGlobalSettings(getGlobalSettings());
-		loginCache.setUser(null);
+		loginCache.setUser(userResolverService.getUser(login.getUserType(), login.getUserId()));
+		loginCache.setTracker(tracker);
+		loginCache.setEnabled(EnabledStatus.ENABLED);
+		loginCache.setId(login.getId());
+		loginCache.setLastLoggedIn(date);
+		loginCache.setUserType(login.getUserType());
+		loginCache.setUserId(login.getUserId());
+
+		return loginCache;
 	}
 
 	private HashMap<String, Object> getGlobalSettings(){

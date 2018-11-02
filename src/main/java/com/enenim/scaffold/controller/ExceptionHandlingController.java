@@ -3,7 +3,9 @@ package com.enenim.scaffold.controller;
 import com.enenim.scaffold.dto.response.ExceptionResponse;
 import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.exception.UnAuthorizedException;
+import com.enenim.scaffold.exception.ValidationException;
 import com.enenim.scaffold.service.MailSenderService;
+import com.enenim.scaffold.util.message.ExceptionMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +31,15 @@ public class ExceptionHandlingController {
         response.setErrorCode(HttpStatus.EXPECTATION_FAILED.toString());
         response.setMessage(ex, msgPrefix);
         return new ResponseEntity<>(response, HttpStatus.EXPECTATION_FAILED);
+    }
+
+    @ExceptionHandler(ValidationException.class)
+    public ResponseEntity<ExceptionResponse> validationException(ValidationException ex){
+        ExceptionResponse response = new ExceptionResponse();
+        response.setErrorCode(HttpStatus.BAD_REQUEST.toString());
+        response.setErrorMessage(ExceptionMessage.msg("validation_failure"));
+        response.setErrors( ex.getValidation().errors().isEmpty() ? null : ex.getValidation().errors());
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(NullPointerException.class)

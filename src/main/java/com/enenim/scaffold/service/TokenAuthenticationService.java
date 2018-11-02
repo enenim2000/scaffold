@@ -9,7 +9,6 @@ import com.enenim.scaffold.model.dao.Tracker;
 import com.enenim.scaffold.service.cache.LoginCacheService;
 import com.enenim.scaffold.util.ObjectMapperUtil;
 import com.enenim.scaffold.util.RequestUtil;
-import com.enenim.scaffold.util.message.ExceptionMessage;
 import com.enenim.scaffold.util.message.SpringMessage;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -56,7 +55,7 @@ public class TokenAuthenticationService {
 
     private String getToken(){
         String token = RequestUtil.getRequest().getHeader(HEADER_STRING);
-        if(StringUtils.isEmpty(token))throw new UnAuthorizedException(ExceptionMessage.msg("invalid_token_request"));
+        if(StringUtils.isEmpty(token))throw new UnAuthorizedException("invalid_token_request");
         return token.split(" ")[1];
     }
 
@@ -68,13 +67,14 @@ public class TokenAuthenticationService {
                     .setSigningKey(TOKEN_KEY)
                     .parseClaimsJws(token).getBody();
             Long id = Long.valueOf(String.valueOf(claims.get(ID)));
+            //return new ObjectMapper().convertValue(claims.get("login"), LoginToken.class);
             Tracker tracker = ObjectMapperUtil.map(claims.get(TRACKER), Tracker.class);
             String sessionId = tracker.getSessionId();
             return loginCacheService.get(String.valueOf(id)).get(sessionId);
         }catch (ExpiredJwtException e) {
-            throw new UnAuthorizedException(ExceptionMessage.msg("expired_token"));
-        } catch ( Exception e) {
-            throw new UnAuthorizedException(e.getMessage());
+            throw new UnAuthorizedException("expired_token");
+        } catch (Exception e) {
+            throw new UnAuthorizedException(e);
         }
     }
 

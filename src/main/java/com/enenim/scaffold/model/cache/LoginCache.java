@@ -29,7 +29,7 @@ public class LoginCache {
     private Tracker tracker;
 
     @JsonProperty("last_logged_in")
-    private java.sql.Date lastLoggedIn;
+    private Date lastLoggedIn;
 
     @JsonProperty("status")
     private EnabledStatus enabled;

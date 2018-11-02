@@ -38,10 +38,6 @@ public class ConsumerService {
         consumerRepository.deleteById(id);
     }
 
-    public List<Consumer> searchConsumer(){
-        return consumerRepository.search(PageRequestUtil.getPageRequest());
-    }
-
     public Object toggle(Long id) {
         return consumerRepository.toggle(id);
     }

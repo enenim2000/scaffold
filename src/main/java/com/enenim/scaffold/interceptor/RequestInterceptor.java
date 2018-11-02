@@ -20,8 +20,8 @@ import java.util.Enumeration;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 @Component
-public class RequestFilter implements HandlerInterceptor {
-    private static final Logger LOGGER = LoggerFactory.getLogger(RequestFilter.class);
+public class RequestInterceptor implements HandlerInterceptor {
+    private static final Logger LOGGER = LoggerFactory.getLogger(RequestInterceptor.class);
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

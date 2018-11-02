@@ -1,8 +1,10 @@
 package com.enenim.scaffold.model.dao;
 
+import com.enenim.scaffold.constant.CRUDConstant;
 import com.enenim.scaffold.enums.AuditStatus;
 import com.enenim.scaffold.interfaces.DataTypeConstant;
 import com.enenim.scaffold.model.BaseModel;
+import com.enenim.scaffold.util.RequestUtil;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,6 +18,23 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "audits")
 public class Audit extends BaseModel {
+    
+    public Audit(){
+        setBefore("");
+        setAfter("");
+        setAction(CRUDConstant.CREATE);
+        setAuthorization(null);
+        setRid(RequestUtil.getRID());
+        setLogin(login);
+        setIp(RequestUtil.getIpAddress());
+        setUserName(login.getUsername());
+        setStatus(AuditStatus.ACTIVE);
+        setTaskRoute(RequestUtil.getTaskRoute());
+        setTrailId(login.getUserId());
+        setTrailType(login.getUserType());
+        setTableName("audits");
+    }
+    
     @OneToOne
     private Login login;
 
@@ -24,7 +43,7 @@ public class Audit extends BaseModel {
 
     @NotNull
     @JsonProperty("trail_id")
-    private Integer trailId;
+    private Long trailId;
 
     @ManyToOne
     private Authorization authorization;

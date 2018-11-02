@@ -2,6 +2,7 @@ package com.enenim.scaffold.util;
 
 import com.enenim.scaffold.constant.CommonConstant;
 import com.enenim.scaffold.constant.RoleConstant;
+import com.enenim.scaffold.model.cache.LoginCache;
 import com.enenim.scaffold.model.dao.Biller;
 import com.enenim.scaffold.model.dao.Consumer;
 import com.enenim.scaffold.model.dao.Staff;
@@ -84,6 +85,10 @@ public class RequestUtil {
 
     public static String perPage(){
         return getRequest().getParameter(PER_PAGE)==null?"":getRequest().getParameter(PER_PAGE);
+    }
+
+    public static LoginCache getLoginToken(){
+        return new LoginCache();
     }
 
     public static int getPage(){
