@@ -25,11 +25,10 @@ public class ExceptionHandlingController {
 
     @ExceptionHandler(ScaffoldException.class)
     public ResponseEntity<ExceptionResponse> scaffoldException(ScaffoldException ex) {
-        String msgPrefix = "Scaffold exception occur, details => ";
         mailTypeResolverService.send(ex);
         ExceptionResponse response = new ExceptionResponse();
         response.setErrorCode(HttpStatus.EXPECTATION_FAILED.toString());
-        response.setMessage(ex, msgPrefix);
+        response.setMessage(ex.getMessage());
         return new ResponseEntity<>(response, HttpStatus.EXPECTATION_FAILED);
     }
 
@@ -54,11 +53,10 @@ public class ExceptionHandlingController {
 
     @ExceptionHandler(UnAuthorizedException.class)
     public ResponseEntity<ExceptionResponse> nullPointer(UnAuthorizedException ex) {
-        String msgPrefix = "Unauthorized exception occur, details => ";
         mailTypeResolverService.send(ex);
         ExceptionResponse response = new ExceptionResponse();
         response.setErrorCode(HttpStatus.UNAUTHORIZED.toString());
-        response.setMessage(ex, msgPrefix);
+        response.setMessage(ex.getMessage());
         return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
     }
 

@@ -67,7 +67,6 @@ public class TokenAuthenticationService {
                     .setSigningKey(TOKEN_KEY)
                     .parseClaimsJws(token).getBody();
             Long id = Long.valueOf(String.valueOf(claims.get(ID)));
-            //return new ObjectMapper().convertValue(claims.get("login"), LoginToken.class);
             Tracker tracker = ObjectMapperUtil.map(claims.get(TRACKER), Tracker.class);
             String sessionId = tracker.getSessionId();
             return loginCacheService.get(String.valueOf(id)).get(sessionId);
@@ -78,12 +77,12 @@ public class TokenAuthenticationService {
         }
     }
 
-    @Async
     public void refreshToken(LoginCache token){
         token.setCreated(new Date());
         saveToken(token);
     }
 
+    @Async
     public void saveToken(LoginCache token){
         loginCacheService.save(token);
     }

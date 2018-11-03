@@ -58,6 +58,7 @@ public class ConsumerController {
     @Post("/sign-up")
     public Response<ModelResponse<Consumer>> signUpConsumers(@RequestBody Request<ConsumerRequest> request){
         request.getBody().validateRequest();
+        consumerService.validateDependencies(request.getBody());
         Consumer consumer = consumerService.saveConsumer(request.getBody().buildModel());
         if(!StringUtils.isEmpty(consumer)){
             Login login = new Login();

@@ -14,7 +14,6 @@ import com.enenim.scaffold.model.dao.Login;
 import com.enenim.scaffold.model.dao.Tracker;
 import com.enenim.scaffold.service.TokenAuthenticationService;
 import com.enenim.scaffold.service.UserResolverService;
-import com.enenim.scaffold.service.dao.AuditService;
 import com.enenim.scaffold.service.dao.LoginService;
 import com.enenim.scaffold.service.dao.TrackerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +36,7 @@ public class UserAccountController {
 	private final UserResolverService userResolverService;
 
 	@Autowired
-	public UserAccountController(LoginService loginService, TrackerService trackerService, TokenAuthenticationService tokenAuthenticationService, BCryptPasswordEncoder bCryptPasswordEncoder, UserResolverService userResolverService, AuditService auditService) {
+	public UserAccountController(LoginService loginService, TrackerService trackerService, TokenAuthenticationService tokenAuthenticationService, BCryptPasswordEncoder bCryptPasswordEncoder, UserResolverService userResolverService) {
 		this.loginService = loginService;
 		this.trackerService = trackerService;
 		this.tokenAuthenticationService = tokenAuthenticationService;
@@ -49,20 +48,16 @@ public class UserAccountController {
 	public Response<StringResponse> accountAuth(@RequestBody Request<LoginRequest> request) {
 		request.getBody().validateRequest();
 		Login login = loginService.getLoginByUsername(request.getBody().getUsername());
-		if(bCryptPasswordEncoder.matches(request.getBody().getUsername(), login.getPassword())){
-			if(login.getStatus() == LoginStatus.DISABLED){
+		if (bCryptPasswordEncoder.matches(request.getBody().getUsername(), login.getPassword())) {
+			if (login.getStatus() == LoginStatus.DISABLED) {
 				throw new ScaffoldException("disabled_account");
-			}else if(login.getStatus() == LoginStatus.LOCKED){
+			} else if (login.getStatus() == LoginStatus.LOCKED) {
 				throw new ScaffoldException("blocked_account");
-			}else {
+			} else {
 				LoginCache loginToken = buildLoginToken(login);
 				String token = tokenAuthenticationService.encodeToken(loginToken);
-
-				/*
-				 * @Async is used on saveTracker to increase efficiency, tracker.getId() will never be used hence no need to wait for the result
-				 */
 				trackerService.saveTracker(loginToken.getTracker());
-
+				tokenAuthenticationService.saveToken(loginToken);
 				return new Response<>(new StringResponse(token));
 			}
 		}

@@ -59,7 +59,7 @@ public class UserResolverService {
         throw new UnAuthorizedException("invalid_actor", role);
     }
 
-    public boolean validRole(String roles){
+    public boolean isValidRole(String roles){
         LoginCache login = RequestUtil.getLoginToken();
         if(!roles.contains(",")){
             if(roles.equalsIgnoreCase(login.getUserType())){

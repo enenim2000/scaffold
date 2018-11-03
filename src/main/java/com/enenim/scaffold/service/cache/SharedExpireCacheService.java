@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -47,10 +48,12 @@ public class SharedExpireCacheService{
         return valueOps.get(key);
     }
 
+    @Async
     public void put(String key, Object value) {
         valueOps.set(key, value, durations.get(getPrefix(key)), units.get(getPrefix(key)));
     }
 
+    @Async
     public void delete(String key) {
         redisTemplate.delete(key);
     }

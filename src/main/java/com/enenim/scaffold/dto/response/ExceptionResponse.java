@@ -16,6 +16,10 @@ public class ExceptionResponse {
 
     private Object errors = null;
 
+    public void setMessage(String message){
+        this.setErrorMessage(message);
+    }
+
     public void setMessage(Exception ex, String ... params){
         String msgPrefix = "";
         if(params.length > 0){

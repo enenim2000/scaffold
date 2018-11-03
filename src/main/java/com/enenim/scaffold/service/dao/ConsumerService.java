@@ -1,5 +1,6 @@
 package com.enenim.scaffold.service.dao;
 
+import com.enenim.scaffold.dto.request.ConsumerRequest;
 import com.enenim.scaffold.model.dao.Consumer;
 import com.enenim.scaffold.repository.dao.ConsumerRepository;
 import com.enenim.scaffold.util.PageRequestUtil;
@@ -7,10 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
-public class ConsumerService {
+public class ConsumerService extends BaseModelService<ConsumerRequest>{
     private final ConsumerRepository consumerRepository;
 
     @Autowired
@@ -34,11 +33,12 @@ public class ConsumerService {
         return consumerRepository.save(consumer);
     }
 
-    public void deleteConsumer(Long id){
-        consumerRepository.deleteById(id);
-    }
-
     public Object toggle(Long id) {
         return consumerRepository.toggle(id);
+    }
+
+    @Override
+    public void validateDependencies(ConsumerRequest request) {
+
     }
 }
