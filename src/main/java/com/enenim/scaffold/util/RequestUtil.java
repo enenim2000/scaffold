@@ -88,7 +88,39 @@ public class RequestUtil {
     }
 
     public static LoginCache getLoginToken(){
-        return new LoginCache();
+        return (LoginCache) getRequest().getAttribute("loginToken");
+    }
+
+    public static void setLoginToken(LoginCache loginToken){
+        getRequest().setAttribute("loginToken", loginToken);
+    }
+
+    public static void setUserAgent(String userAgent){
+        getRequest().setAttribute(CommonConstant.USER_AGENT, userAgent);
+    }
+
+    public static void setIpAdress(String ipAdress){
+        getRequest().setAttribute(CommonConstant.IP_ADDRESS, ipAdress);
+    }
+
+    public static void setStaff(Object staff){
+        getRequest().setAttribute(RoleConstant.STAFF, staff);
+    }
+
+    public static void setBiller(Object biller){
+        getRequest().setAttribute(RoleConstant.BILLER, biller);
+    }
+
+    public static void setConsumer(Object consumer){
+        getRequest().setAttribute(RoleConstant.CONSUMER, consumer);
+    }
+
+    public static void setRID(String rid){
+        getRequest().setAttribute("rid", rid);
+    }
+
+    public static void setTaskRoute(String taskRoute){
+        getRequest().setAttribute("task_route", taskRoute);
     }
 
     public static int getPage(){

@@ -4,5 +4,6 @@ import com.enenim.scaffold.model.cache.SettingCache;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SettingCacheRepository extends CacheRepository<SettingCache, String>{
+public interface SettingCacheRepository extends GenericCacheRepository<SettingCache, String>{
+
 }

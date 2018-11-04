@@ -15,8 +15,6 @@ import java.util.Map;
 @Service
 public class SettingCacheService implements SettingCacheRepository{
 
-    private static final String KEY = "SettingCache";
-
     @Qualifier(value = "redisSettingTemplate")
     private RedisTemplate<String, SettingCache> redisTemplate;
 
@@ -34,28 +32,37 @@ public class SettingCacheService implements SettingCacheRepository{
         hashOps = redisTemplate.opsForHash();
     }
 
-    @Override
-    public SettingCache get(String id) {
-        return hashOps.get(KEY, id);
+    public SettingCache get(String key, String id){
+        return hashOps.get(key, id);
     }
 
     @Override
-    public List<SettingCache> get() {
-        return hashOps.values(KEY);
+    public List<SettingCache> get(String key) {
+        return hashOps.values(key);
     }
 
     @Override
-    public Map<String, SettingCache> getAll() {
-        return hashOps.entries(KEY);
+    public Map<String, SettingCache> getAll(String key) {
+        return hashOps.entries(key);
     }
 
     @Override
-    public void save(SettingCache data) {
-        hashOps.put(KEY, String.valueOf(data.getId()), data);
+    public void save(String key, SettingCache data){
+        hashOps.put(key, data.getKey(), data);
     }
 
     @Override
-    public void delete(String id) {
-        hashOps.delete(KEY, id);
+    public void save(String key, Map<String, SettingCache> data){
+        hashOps.putAll(key, data);
+    }
+
+    @Override
+    public void delete(String key, String id) {
+        hashOps.delete(key, id);
+    }
+
+    @Override
+    public void deleteAll(String key) {
+        hashOps.delete(key);
     }
 }
