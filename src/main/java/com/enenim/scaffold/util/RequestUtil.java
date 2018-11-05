@@ -5,6 +5,7 @@ import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.model.cache.LoginCache;
 import com.enenim.scaffold.model.dao.Biller;
 import com.enenim.scaffold.model.dao.Consumer;
+import com.enenim.scaffold.model.dao.Login;
 import com.enenim.scaffold.model.dao.Staff;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -91,8 +92,16 @@ public class RequestUtil {
         return (LoginCache) getRequest().getAttribute("loginToken");
     }
 
+    public static Login getLogin(){
+        return (Login) getRequest().getAttribute(CommonConstant.LOGIN);
+    }
+
     public static void setLoginToken(LoginCache loginToken){
         getRequest().setAttribute("loginToken", loginToken);
+    }
+
+    public static void setLogin(Login login){
+        getRequest().setAttribute(CommonConstant.LOGIN, login);
     }
 
     public static void setUserAgent(String userAgent){

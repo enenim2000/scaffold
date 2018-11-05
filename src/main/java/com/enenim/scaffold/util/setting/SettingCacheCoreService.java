@@ -5,6 +5,7 @@ import com.enenim.scaffold.service.cache.SettingCacheService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -26,7 +27,9 @@ public class SettingCacheCoreService {
     }
 
     public SettingCache getCoreSetting(String id){
-        return settingCacheService.get(KEY, id);
+        SettingCache settingCache = settingCacheService.get(KEY, id);
+        if(!StringUtils.isEmpty(settingCache)) return settingCache;
+        return SettingCacheCoreUtil.getSettingMap().get(id);
     }
 
     @Async
