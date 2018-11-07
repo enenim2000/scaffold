@@ -2,7 +2,7 @@ package com.enenim.scaffold.constant;
 
 public interface RouteConstant {
     //Modules
-    String USER = "user";
+    String USER = "app";
     String REPORT = "report";
     String SERVICE = "service";
     String VENDOR = "vendor";

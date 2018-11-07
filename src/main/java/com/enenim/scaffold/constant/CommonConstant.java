@@ -15,7 +15,7 @@ public interface CommonConstant {
     String MESSAGE = "message";
     String PER_PAGE = "per_page";
 
-    String DIR_HOME = "user.home";
+    String DIR_HOME = "app.home";
     String ASSET_BASE = System.getProperty(DIR_HOME) + File.separator + "scaffold" + File.separator;
     String API_KEY = "api-key";
     String PLACE_HOLDER = "{}";
@@ -25,4 +25,6 @@ public interface CommonConstant {
 
     Integer IDLE_TIMEOUT = 5; //In minutes
     String LANG = "lang";
+
+    String PAYMENT_CHANNEL = "payment_channel";
 }

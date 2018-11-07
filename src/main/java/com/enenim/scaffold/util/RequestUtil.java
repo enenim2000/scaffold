@@ -3,10 +3,7 @@ package com.enenim.scaffold.util;
 import com.enenim.scaffold.constant.CommonConstant;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.model.cache.LoginCache;
-import com.enenim.scaffold.model.dao.Biller;
-import com.enenim.scaffold.model.dao.Consumer;
-import com.enenim.scaffold.model.dao.Login;
-import com.enenim.scaffold.model.dao.Staff;
+import com.enenim.scaffold.model.dao.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -130,6 +127,18 @@ public class RequestUtil {
 
     public static void setTaskRoute(String taskRoute){
         getRequest().setAttribute("task_route", taskRoute);
+    }
+
+    public static String getApiKey(){
+        return getRequest().getHeader(CommonConstant.API_KEY);
+    }
+
+    public static void setChannel(PaymentChannel paymentChannel){
+        getRequest().setAttribute(PAYMENT_CHANNEL, paymentChannel);
+    }
+
+    public static PaymentChannel getChannel(){
+        return (PaymentChannel) getRequest().getAttribute(PAYMENT_CHANNEL);
     }
 
     public static int getPage(){

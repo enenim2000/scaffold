@@ -59,7 +59,7 @@ public class LoginCacheService implements LoginCacheRepository {
 
     /**
      *
-     * @param id points getTo the key that holds login sessions for a user group
+     * @param id points getTo the key that holds login sessions for a app group
      * when multiple login is enabled
      */
     @Override

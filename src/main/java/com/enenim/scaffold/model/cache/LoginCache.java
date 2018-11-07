@@ -20,7 +20,7 @@ public class LoginCache {
     @JsonProperty("user_type")
     private String userType;
 
-    @JsonProperty("user")
+    @JsonProperty("app")
     private Object user;
 
     @JsonProperty("user_id")

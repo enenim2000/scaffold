@@ -1,19 +1,25 @@
 
 package com.enenim.scaffold.interceptor;
 
-import ch.qos.logback.classic.gaffer.PropertyUtil;
 import com.enenim.scaffold.annotation.DataDecrypt;
 import com.enenim.scaffold.annotation.Permission;
 import com.enenim.scaffold.annotation.Role;
+import com.enenim.scaffold.constant.RoleConstant;
+import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.exception.UnAuthorizedException;
 import com.enenim.scaffold.model.cache.LoginCache;
 import com.enenim.scaffold.model.cache.SettingCache;
 import com.enenim.scaffold.model.dao.Login;
+import com.enenim.scaffold.model.dao.PaymentChannel;
 import com.enenim.scaffold.model.dao.Staff;
+import com.enenim.scaffold.service.ApiKeyService;
 import com.enenim.scaffold.service.TokenAuthenticationService;
 import com.enenim.scaffold.service.UserResolverService;
 import com.enenim.scaffold.service.dao.LoginService;
+import com.enenim.scaffold.service.dao.PaymentChannelService;
+import com.enenim.scaffold.service.dao.TaskService;
+import com.enenim.scaffold.shared.Channel;
 import com.enenim.scaffold.util.RequestUtil;
 import com.enenim.scaffold.util.setting.SettingCacheCoreService;
 import org.springframework.stereotype.Component;
@@ -24,6 +30,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Optional;
 
 @Component
 public class AuthenticationInterceptor implements HandlerInterceptor {
@@ -32,23 +39,42 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     private final LoginService loginService;
     private final SettingCacheCoreService settingCacheCoreService;
     private final UserResolverService userResolverService;
+    private final ApiKeyService apiKeyService;
+    private final PaymentChannelService paymentChannelService;
+    private final TaskService taskService;
 
-    public AuthenticationInterceptor(TokenAuthenticationService tokenAuthenticationService, LoginService loginService, SettingCacheCoreService settingCacheCoreService, UserResolverService userResolverService) {
+    public AuthenticationInterceptor(TokenAuthenticationService tokenAuthenticationService, LoginService loginService, SettingCacheCoreService settingCacheCoreService, UserResolverService userResolverService, ApiKeyService apiKeyService, PaymentChannelService paymentChannelService, TaskService taskService) {
         this.tokenAuthenticationService = tokenAuthenticationService;
         this.loginService = loginService;
         this.settingCacheCoreService = settingCacheCoreService;
         this.userResolverService = userResolverService;
+        this.apiKeyService = apiKeyService;
+        this.paymentChannelService = paymentChannelService;
+        this.taskService = taskService;
     }
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
+        /*
+         * Added for swagger to work smoothly
+         */
+        if(!(handler instanceof HandlerMethod)){
+            return true;
+        }
+
         validateApiKey();
+
+        HandlerMethod handlerMethod = (HandlerMethod)handler;
+
+        /*
+         * Added to allow none secured route to be accessible
+         */
+        if(!isSecuredRoute(handlerMethod)) return true;
 
         validateToken();
 
         InterceptorParamater interceptorParamater = new InterceptorParamater().setHttpServletRequest(request).setHttpServletResponse(response).setHandler(handler);
-
-        HandlerMethod handlerMethod = (HandlerMethod)handler;
 
         if(handlerMethod.getMethod().isAnnotationPresent(Role.class)){
             validateRole(interceptorParamater);
@@ -75,9 +101,12 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
     }
 
-
     private void validateApiKey(){
-
+        Channel channel = apiKeyService.validateKey(RequestUtil.getApiKey());
+        Optional<PaymentChannel> paymentChannel = paymentChannelService.getPaymentChannelByCode(channel.getCode());
+        if(!paymentChannel.isPresent())throw new UnAuthorizedException("unauthorized");
+        if(paymentChannel.get().getEnabled() != EnabledStatus.ENABLED) throw new ScaffoldException("channel_disabled");
+        RequestUtil.setChannel(paymentChannel.get());
     }
 
     /**
@@ -86,9 +115,11 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     private void validateToken(){
 
         LoginCache loginToken = tokenAuthenticationService.decodeToken();
+
         if(StringUtils.isEmpty(loginToken))throw new UnAuthorizedException("unauthorized");
 
         SettingCache settingCache = settingCacheCoreService.getCoreSetting("idle_timeout");
+
         if(loginToken.hasExpired(Long.valueOf(settingCache.getValue())))throw new ScaffoldException("session_expired");
 
         Login login = loginService.getLogin(loginToken.getId());
@@ -110,19 +141,23 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     }
 
     private void validatePermission(InterceptorParamater interceptorParamater){
-        String userType = userResolverService.formatUserType(RequestUtil.getLoginToken().getUserType());
-        if(userType.equalsIgnoreCase(ActorConstant.STAFF)){
-            Staff staff = (Staff) RequestUtil.loginToken.getUser();
+        String userType = RequestUtil.getLoginToken().getUserType();
+        if(userType.equalsIgnoreCase(RoleConstant.STAFF)){
+            Staff staff = RequestUtil.getStaff();
             HandlerMethod handlerMethod = (HandlerMethod)interceptorParamater.getHandler();
             String route = handlerMethod.getMethod().getAnnotation(Permission.class).value();
             if(!staff.getGroup().getTasks().contains( taskService.getTaskByRoute(route) )) {
-                throw new UnAuthorizedException(PropertyUtil.msg("unauthorized"));
+                throw new ScaffoldException("access_denied");
             }
         }
     }
 
     private void decrypt(InterceptorParamater interceptorParamater){
 
+    }
+
+    private boolean isSecuredRoute(HandlerMethod handlerMethod){
+        return handlerMethod.getMethod().isAnnotationPresent(Role.class) || handlerMethod.getMethod().isAnnotationPresent(Permission.class);
     }
 
     private class InterceptorParamater{
