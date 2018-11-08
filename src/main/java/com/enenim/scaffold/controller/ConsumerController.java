@@ -11,6 +11,7 @@ import com.enenim.scaffold.dto.response.BooleanResponse;
 import com.enenim.scaffold.dto.response.ModelResponse;
 import com.enenim.scaffold.dto.response.PageResponse;
 import com.enenim.scaffold.enums.VerifyStatus;
+import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.model.dao.Consumer;
 import com.enenim.scaffold.model.dao.Login;
 import com.enenim.scaffold.service.MailSenderService;
@@ -69,8 +70,9 @@ public class ConsumerController {
             if(!StringUtils.isEmpty(login.getId())){
                 mailSenderService.send(consumer);
             }
+            return new Response<>(new ModelResponse<>(consumer));
         }
-        return new Response<>(new ModelResponse<>(consumer));
+        throw new ScaffoldException("signup_failed");
     }
 
     @Post("/{code}/verify")
