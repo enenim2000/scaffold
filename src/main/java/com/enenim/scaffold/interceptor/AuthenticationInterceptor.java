@@ -4,6 +4,7 @@ package com.enenim.scaffold.interceptor;
 import com.enenim.scaffold.annotation.DataDecrypt;
 import com.enenim.scaffold.annotation.Permission;
 import com.enenim.scaffold.annotation.Role;
+import com.enenim.scaffold.constant.CommonConstant;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
@@ -19,16 +20,25 @@ import com.enenim.scaffold.service.dao.PaymentChannelService;
 import com.enenim.scaffold.service.dao.TaskService;
 import com.enenim.scaffold.shared.Channel;
 import com.enenim.scaffold.util.RequestUtil;
+import com.enenim.scaffold.util.Security;
+import com.enenim.scaffold.util.message.SpringMessage;
 import com.enenim.scaffold.util.setting.SettingCacheCoreService;
+import lombok.Data;
+import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.ContentCachingRequestWrapper;
+import org.springframework.web.util.ContentCachingResponseWrapper;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Optional;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 @Component
 public class AuthenticationInterceptor implements HandlerInterceptor {
@@ -70,7 +80,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         validateToken();
 
-        InterceptorParamater interceptorParamater = new InterceptorParamater().setHttpServletRequest(request).setHttpServletResponse(response).setHandler(handler);
+        InterceptorParamater interceptorParamater = new InterceptorParamater(request, response, handler);
 
         if(handlerMethod.getMethod().isAnnotationPresent(Role.class)){
             validateRole(interceptorParamater);
@@ -154,36 +164,30 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         return handlerMethod.getMethod().isAnnotationPresent(Role.class) || handlerMethod.getMethod().isAnnotationPresent(Permission.class);
     }
 
+    @Data
     private class InterceptorParamater{
-        HttpServletRequest httpServletRequest;
-        HttpServletResponse httpServletResponse;
         Object handler;
+        ContentCachingRequestWrapper request;
+        ContentCachingResponseWrapper response;
 
-        public HttpServletRequest getHttpServletRequest() {
-            return httpServletRequest;
-        }
-
-        private InterceptorParamater setHttpServletRequest(HttpServletRequest httpServletRequest) {
-            this.httpServletRequest = httpServletRequest;
-            return this;
-        }
-
-        private HttpServletResponse getHttpServletResponse() {
-            return httpServletResponse;
-        }
-
-        private InterceptorParamater setHttpServletResponse(HttpServletResponse httpServletResponse) {
-            this.httpServletResponse = httpServletResponse;
-            return this;
-        }
-
-        private Object getHandler() {
-            return handler;
-        }
-
-        private InterceptorParamater setHandler(Object handler) {
+        private InterceptorParamater(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object handler){
+            this.request = new ContentCachingRequestWrapper(httpServletRequest);
+            this.response = new ContentCachingResponseWrapper(httpServletResponse);
             this.handler = handler;
-            return this;
+            try {
+                buildRequestUtil(request);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        private void buildRequestUtil(ContentCachingRequestWrapper requestWrapper) throws IOException {
+            String requestBody = IOUtils.toString(requestWrapper.getInputStream(), UTF_8);
+            RequestUtil.setLang(SpringMessage.msg("lang"));
+            RequestUtil.setUserAgent(requestWrapper.getParameter(CommonConstant.USER_AGENT));
+            RequestUtil.setIpAdress(requestWrapper.getParameter(CommonConstant.IP_ADDRESS));
+            RequestUtil.setRequestBody(requestBody);
+            RequestUtil.setRID(Security.encypt(requestWrapper.getRequestURI() + requestBody + requestWrapper.getMethod()));
         }
     }
 }

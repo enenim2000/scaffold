@@ -6,6 +6,7 @@ import com.enenim.scaffold.model.cache.LoginCache;
 import com.enenim.scaffold.model.dao.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.util.ContentCachingRequestWrapper;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,7 +15,8 @@ import static com.enenim.scaffold.constant.CommonConstant.*;
 public class RequestUtil {
 
     public static HttpServletRequest getRequest(){
-        return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        return new ContentCachingRequestWrapper(request);
     }
 
     /**
@@ -65,8 +67,12 @@ public class RequestUtil {
      *
      * @return T data in Request<T>, request.setAttribute("request", baseRequest.getData())
      */
-    public static Object getBaseRequestBody(){
+    public static Object getRequestBody(){
         return getRequest().getAttribute("request");
+    }
+
+    public static void setRequestBody(Object request){
+        getRequest().setAttribute("request", request);
     }
 
     public static String getQ(){
