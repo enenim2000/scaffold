@@ -89,8 +89,8 @@ public class TokenAuthenticationService {
 
     public void validateLoginStatus(Login login) {
         if(login.getStatus() == LoginStatus.DISABLED || login.getStatus() == LoginStatus.LOCKED){
-            if(login.getStatus() == LoginStatus.DISABLED)throw new ScaffoldException("disabled_account");
-            if(login.getStatus() == LoginStatus.LOCKED)throw new ScaffoldException("blocked_account");
+            if(login.getStatus() == LoginStatus.DISABLED) throw new ScaffoldException("disabled_account");
+            if(login.getStatus() == LoginStatus.LOCKED) throw new ScaffoldException("blocked_account");
         }
     }
 }

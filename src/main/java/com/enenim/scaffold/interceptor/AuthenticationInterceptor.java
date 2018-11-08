@@ -10,13 +10,11 @@ import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.exception.UnAuthorizedException;
 import com.enenim.scaffold.model.cache.LoginCache;
 import com.enenim.scaffold.model.cache.SettingCache;
-import com.enenim.scaffold.model.dao.Login;
 import com.enenim.scaffold.model.dao.PaymentChannel;
 import com.enenim.scaffold.model.dao.Staff;
 import com.enenim.scaffold.service.ApiKeyService;
 import com.enenim.scaffold.service.TokenAuthenticationService;
 import com.enenim.scaffold.service.UserResolverService;
-import com.enenim.scaffold.service.dao.LoginService;
 import com.enenim.scaffold.service.dao.PaymentChannelService;
 import com.enenim.scaffold.service.dao.TaskService;
 import com.enenim.scaffold.shared.Channel;
@@ -36,16 +34,14 @@ import java.util.Optional;
 public class AuthenticationInterceptor implements HandlerInterceptor {
 
     private final TokenAuthenticationService tokenAuthenticationService;
-    private final LoginService loginService;
     private final SettingCacheCoreService settingCacheCoreService;
     private final UserResolverService userResolverService;
     private final ApiKeyService apiKeyService;
     private final PaymentChannelService paymentChannelService;
     private final TaskService taskService;
 
-    public AuthenticationInterceptor(TokenAuthenticationService tokenAuthenticationService, LoginService loginService, SettingCacheCoreService settingCacheCoreService, UserResolverService userResolverService, ApiKeyService apiKeyService, PaymentChannelService paymentChannelService, TaskService taskService) {
+    public AuthenticationInterceptor(TokenAuthenticationService tokenAuthenticationService, SettingCacheCoreService settingCacheCoreService, UserResolverService userResolverService, ApiKeyService apiKeyService, PaymentChannelService paymentChannelService, TaskService taskService) {
         this.tokenAuthenticationService = tokenAuthenticationService;
-        this.loginService = loginService;
         this.settingCacheCoreService = settingCacheCoreService;
         this.userResolverService = userResolverService;
         this.apiKeyService = apiKeyService;
@@ -82,6 +78,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         if(handlerMethod.getMethod().isAnnotationPresent(Permission.class)){
             validatePermission(interceptorParamater);
+            RequestUtil.setTaskRoute(handlerMethod.getMethod().getAnnotation(Permission.class).value());
         }
 
         if(handlerMethod.getMethod().isAnnotationPresent(DataDecrypt.class)){
@@ -104,7 +101,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     private void validateApiKey(){
         Channel channel = apiKeyService.validateKey(RequestUtil.getApiKey());
         Optional<PaymentChannel> paymentChannel = paymentChannelService.getPaymentChannelByCode(channel.getCode());
-        if(!paymentChannel.isPresent())throw new UnAuthorizedException("unauthorized");
+        if(!paymentChannel.isPresent()) throw new ScaffoldException("channel_not_found");
         if(paymentChannel.get().getEnabled() != EnabledStatus.ENABLED) throw new ScaffoldException("channel_disabled");
         RequestUtil.setChannel(paymentChannel.get());
     }
@@ -116,22 +113,19 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         LoginCache loginToken = tokenAuthenticationService.decodeToken();
 
-        if(StringUtils.isEmpty(loginToken))throw new UnAuthorizedException("unauthorized");
+        if(StringUtils.isEmpty(loginToken)) throw new UnAuthorizedException("invalid_token_request");
 
         SettingCache settingCache = settingCacheCoreService.getCoreSetting("idle_timeout");
 
         if(loginToken.hasExpired(Long.valueOf(settingCache.getValue())))throw new ScaffoldException("session_expired");
 
-        Login login = loginService.getLogin(loginToken.getId());
-
-        if(!StringUtils.isEmpty(login))throw new UnAuthorizedException("unauthorized");
-
-        tokenAuthenticationService.validateLoginStatus(login);
+        tokenAuthenticationService.validateLoginStatus(loginToken.getTracker().getLogin());
 
         tokenAuthenticationService.refreshToken(loginToken);
 
         RequestUtil.setLoginToken(loginToken);
-        RequestUtil.setLogin(login);
+
+        RequestUtil.setLogin(loginToken.getTracker().getLogin());
     }
 
     private void validateRole(InterceptorParamater interceptorParamater){

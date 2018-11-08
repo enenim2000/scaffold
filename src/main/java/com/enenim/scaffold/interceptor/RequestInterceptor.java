@@ -1,5 +1,9 @@
 package com.enenim.scaffold.interceptor;
 
+import com.enenim.scaffold.constant.CommonConstant;
+import com.enenim.scaffold.util.RequestUtil;
+import com.enenim.scaffold.util.Security;
+import com.enenim.scaffold.util.message.SpringMessage;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
@@ -14,6 +18,7 @@ import org.springframework.web.util.ContentCachingResponseWrapper;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.net.URI;
 import java.util.Enumeration;
 
@@ -61,5 +66,13 @@ public class RequestInterceptor implements HandlerInterceptor {
     @Override
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
 
+    }
+
+    private void buildRequestUtil(ContentCachingRequestWrapper requestWrapper) throws IOException{
+        String requestBody = IOUtils.toString(requestWrapper.getInputStream(), UTF_8);
+        RequestUtil.setLang(SpringMessage.msg("lang"));
+        RequestUtil.setUserAgent(requestWrapper.getParameter(CommonConstant.USER_AGENT));
+        RequestUtil.setIpAdress(requestWrapper.getParameter(CommonConstant.IP_ADDRESS));
+        RequestUtil.setRID(Security.encypt(requestWrapper.getRequestURI() + requestBody + requestWrapper.getMethod()));
     }
 }

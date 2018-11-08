@@ -22,7 +22,7 @@ public class RequestUtil {
      * @return IP Address getFrom baseRequest; baseRequest.getIpAddress()
      */
     public static String getIpAddress(){
-        return getRequest().getParameter(CommonConstant.IP_ADDRESS);
+        return (String) getRequest().getAttribute(CommonConstant.IP_ADDRESS);
     }
 
     /**
@@ -30,7 +30,7 @@ public class RequestUtil {
      * @return Browser getFrom baseRequest; baseRequest.getUserAgent()
      */
     public static String getUserAgent(){
-        return getRequest().getParameter(CommonConstant.USER_AGENT);
+        return (String) getRequest().getAttribute(CommonConstant.USER_AGENT);
     }
 
     public static Staff getStaff(){
