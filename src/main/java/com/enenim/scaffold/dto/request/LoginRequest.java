@@ -15,6 +15,7 @@ import javax.persistence.Transient;
 @Setter
 @ToString
 public class LoginRequest extends RequestBody<Login>{
+
     @Transient
     public static final String MODEL_KEY = "login";
 
@@ -30,6 +31,11 @@ public class LoginRequest extends RequestBody<Login>{
     private String username;
 
     private String password;
+
+    public LoginRequest(){
+        super();
+        validateRequest();
+    }
 
     @Override
     public Login buildModel() {

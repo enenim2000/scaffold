@@ -20,14 +20,6 @@ import java.util.Set;
 @Table(name = "groups")
 public class Group extends BaseModel {
 
-    public Group() {
-    }
-
-    public Group(Long id) {
-        super();
-        this.setId(id);
-    }
-
     @NotNull
     @Column(unique = true, length = 40)
     private String name;
@@ -38,6 +30,7 @@ public class Group extends BaseModel {
 
     @NotNull
     @OneToOne
+    @JsonProperty("active_hour")
     private ActiveHour activeHour;
 
     @NotNull
@@ -74,12 +67,10 @@ public class Group extends BaseModel {
     )
     private Set<Task> authorizerTasks = new HashSet<>();
 
-
     public void addTask(Task task) {
         authorizerTasks.add(task);
         task.getGroups().add(this);
     }
-
     
     public void removeTask(Task task) {
         authorizerTasks.remove(task);

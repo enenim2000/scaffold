@@ -22,12 +22,12 @@ public class VendorCacheService implements VendorCacheRepository{
     /**
      * h => key for caching vendors grouped by category
      */
-    public final static String VENDOR_BY_CATEGORY = "VendorCategory";
+    public final static String VENDOR_BY_CATEGORY = "VendorByCategory";
 
     /**
      * h => key for caching vendor's services grouped by vendor category
      */
-    public final static String VENDOR_SERVICE_BY_CATEGORY = "VendorServiceCategory";
+    public final static String VENDOR_SERVICE_BY_CATEGORY = "VendorServiceByCategory";
 
     @Qualifier(value = "redisVendorTemplate")
     private RedisTemplate<String, Object> redisTemplate;
@@ -46,32 +46,26 @@ public class VendorCacheService implements VendorCacheRepository{
         hashOps = redisTemplate.opsForHash();
     }
 
-    @Override
     public Object get(String h, String hk) {
         return hashOps.get(h, hk);
     }
 
-    @Override
     public List<Object> get(String h) {
         return hashOps.values(h);
     }
 
-    @Override
     public Map<String, Object> getAll(String h) {
         return hashOps.entries(h);
     }
 
-    @Override
     public void save(String h, String hk, Object hv) {
         hashOps.put(h, hk, hv);
     }
 
-    @Override
     public void delete(String h, String hk) {
         hashOps.delete(h, hk);
     }
 
-    @Override
     public void deleteAll(String h) {
         hashOps.delete(h);
     }

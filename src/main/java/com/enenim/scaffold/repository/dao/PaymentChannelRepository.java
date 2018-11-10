@@ -13,7 +13,7 @@ import java.util.Optional;
 @Transactional
 public interface PaymentChannelRepository extends BaseRepository<PaymentChannel, Long> {
 
-    @Query("SELECT  new ng.upperlink.shared.IdName(pm.id, pm.name) from PaymentChannel pm")
+    @Query("SELECT  new com.enenim.scaffold.shared.IdName(pm.id, pm.name) from PaymentChannel pm")
     List<PaymentChannel> findLists();
 
     @Query("SELECT pc from PaymentChannel pc where pc.code = ?1")

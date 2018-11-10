@@ -19,6 +19,6 @@ public interface ActiveHourRepository extends BaseRepository<ActiveHour, Long> {
     @Query("select activeHour from #{#entityName} activeHour where activeHour.enabled = ?1")
     Page<ActiveHour> findActiveHoursByStatus(EnabledStatus status, Pageable pageable);
 
-    @Query("select new ng.upperlink.shared.IdName(activeHour.id, activeHour.name) from #{#entityName} activeHour where activeHour.enabled = ng.upperlink.enums.EnabledStatus.ENABLED")
+    @Query("select new com.enenim.scaffold.shared.IdName(activeHour.id, activeHour.name) from #{#entityName} activeHour where activeHour.enabled = com.enenim.scaffold.enums.EnabledStatus.ENABLED")
     List<IdName> findEnabledActiveHours();
 }

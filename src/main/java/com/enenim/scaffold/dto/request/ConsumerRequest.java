@@ -16,6 +16,7 @@ import javax.persistence.Transient;
 @Setter
 @ToString
 public class ConsumerRequest extends RequestBody<Consumer>{
+
     @Transient
     public static final String MODEL_KEY = "consumer";
 
@@ -44,6 +45,11 @@ public class ConsumerRequest extends RequestBody<Consumer>{
 
     @JsonProperty(PHONE_NUMBER)
     private String phoneNumber;
+
+    public ConsumerRequest(){
+        super();
+        validateRequest();
+    }
 
     @Override
     public Consumer buildModel() {

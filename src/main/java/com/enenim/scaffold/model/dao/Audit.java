@@ -18,23 +18,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "audits")
 public class Audit extends BaseModel {
-    
-    public Audit(){
-        setBefore("");
-        setAfter("");
-        setAction(CRUDConstant.CREATE);
-        setAuthorization(null);
-        setRid(RequestUtil.getRID());
-        setLogin(login);
-        setIp(RequestUtil.getIpAddress());
-        setUserName(login.getUsername());
-        setStatus(AuditStatus.ACTIVE);
-        setTaskRoute(RequestUtil.getTaskRoute());
-        setTrailId(login.getUserId());
-        setTrailType(login.getUserType());
-        setTableName("audits");
-    }
-    
+
     @OneToOne
     private Login login;
 
@@ -91,5 +75,21 @@ public class Audit extends BaseModel {
 
     public void setAfter(String after){
         this.after = after;
+    }
+
+    public void build(){
+        setBefore("");
+        setAfter("");
+        setAction(CRUDConstant.CREATE);
+        setAuthorization(null);
+        setRid("RequestUtil.getRID()");
+        setLogin(login);
+        setIp(RequestUtil.getIpAddress());
+        setUserName(login.getUsername());
+        setStatus(AuditStatus.ACTIVE);
+        setTaskRoute(RequestUtil.getTaskRoute());
+        setTrailId(login.getUserId());
+        setTrailType(login.getUserType());
+        setTableName("audits");
     }
 }

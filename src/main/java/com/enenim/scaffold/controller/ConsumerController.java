@@ -12,6 +12,7 @@ import com.enenim.scaffold.dto.response.ModelResponse;
 import com.enenim.scaffold.dto.response.PageResponse;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
+import com.enenim.scaffold.exception.UnAuthorizedException;
 import com.enenim.scaffold.model.dao.Consumer;
 import com.enenim.scaffold.model.dao.Login;
 import com.enenim.scaffold.service.MailSenderService;
@@ -52,13 +53,11 @@ public class ConsumerController {
 
     @Post
     public Response<ModelResponse<Consumer>> storeAnonymousConsumers(@RequestBody Request<ConsumerRequest> request){
-        request.getBody().validateRequest();
         return new Response<>(new ModelResponse<>(consumerService.saveConsumer(request.getBody().buildModel())));
     }
 
     @Post("/sign-up")
     public Response<ModelResponse<Consumer>> signUpConsumers(@RequestBody Request<ConsumerRequest> request){
-        request.getBody().validateRequest();
         consumerService.validateDependencies(request.getBody());
         Consumer consumer = consumerService.saveConsumer(request.getBody().buildModel());
         if(!StringUtils.isEmpty(consumer)){
@@ -88,7 +87,7 @@ public class ConsumerController {
                 return new Response<>(new ModelResponse<>(consumer));
             }
         }
-        throw new Exception("Expired/Invalid code");
+        throw new UnAuthorizedException("invalid_expired_code");
     }
 
     @Post("/{email}/code/re-send")

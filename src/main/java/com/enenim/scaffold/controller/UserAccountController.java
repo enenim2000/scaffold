@@ -46,7 +46,6 @@ public class UserAccountController {
 
 	@Post("/authenticate")
 	public Response<StringResponse> accountAuth(@RequestBody Request<LoginRequest> request) {
-		request.getBody().validateRequest();
 		Login login = loginService.getLoginByUsername(request.getBody().getUsername());
 		if (bCryptPasswordEncoder.matches(request.getBody().getUsername(), login.getPassword())) {
 			if (login.getStatus() == LoginStatus.DISABLED) {

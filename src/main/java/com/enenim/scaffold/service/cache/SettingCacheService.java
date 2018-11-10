@@ -36,32 +36,26 @@ public class SettingCacheService implements SettingCacheRepository{
         return hashOps.get(key, id);
     }
 
-    @Override
     public List<SettingCache> get(String key) {
         return hashOps.values(key);
     }
 
-    @Override
     public Map<String, SettingCache> getAll(String key) {
         return hashOps.entries(key);
     }
 
-    @Override
     public void save(String key, SettingCache data){
         hashOps.put(key, data.getKey(), data);
     }
 
-    @Override
     public void save(String key, Map<String, SettingCache> data){
         hashOps.putAll(key, data);
     }
 
-    @Override
     public void delete(String key, String id) {
         hashOps.delete(key, id);
     }
 
-    @Override
     public void deleteAll(String key) {
         hashOps.delete(key);
     }

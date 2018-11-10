@@ -12,9 +12,9 @@ import javax.transaction.Transactional;
 @Transactional
 public interface SettingRepository extends BaseRepository<Setting, Long>{
     @Modifying
-    @Query("update Setting s set s._value = ?2 where s._key = ?1")
+    @Query("update Setting s set s.value = ?2 where s.key = ?1")
     Setting updateSettingByKey(String key, String value);
 
-    @Query("select s from Setting s where s._key = ?1")
+    @Query("select s from Setting s where s.key = ?1")
     Setting findSettingByKey(String key);
 }
