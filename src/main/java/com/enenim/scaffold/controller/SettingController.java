@@ -34,7 +34,6 @@ public class SettingController {
 
     @Put
     public Response<ModelResponse<SettingCache>> saveSetting(@RequestBody Request<SettingRequest> request){
-        request.getBody().validateRequest();
         Setting setting = settingService.saveSetting(request.getBody().buildModel());
         return new Response<>(new ModelResponse<>(SettingCacheCoreUtil.sync(setting)));
     }

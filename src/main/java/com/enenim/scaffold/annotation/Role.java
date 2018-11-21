@@ -7,5 +7,5 @@ import java.lang.annotation.*;
 @Inherited
 @Documented
 public @interface Role {
-    String value();
+    String[] value();
 }

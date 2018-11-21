@@ -3,12 +3,13 @@ package com.enenim.scaffold.controller;
 import com.enenim.scaffold.dto.response.ExceptionResponse;
 import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.exception.UnAuthorizedException;
-import com.enenim.scaffold.exception.ValidationException;
 import com.enenim.scaffold.service.MailSenderService;
-import com.enenim.scaffold.util.message.ExceptionMessage;
+import com.enenim.scaffold.shared.ErrorValidator;
+import com.enenim.scaffold.util.message.ValidationMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,12 +33,12 @@ public class ExceptionHandlingController {
         return new ResponseEntity<>(response, HttpStatus.EXPECTATION_FAILED);
     }
 
-    @ExceptionHandler(ValidationException.class)
-    public ResponseEntity<ExceptionResponse> validationException(ValidationException ex){
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ExceptionResponse> validationError(MethodArgumentNotValidException ex) {
         ExceptionResponse response = new ExceptionResponse();
         response.setErrorCode(HttpStatus.BAD_REQUEST.toString());
-        response.setErrorMessage(ExceptionMessage.msg("validation_failure"));
-        response.setErrors( ex.getValidation().errors().isEmpty() ? null : ex.getValidation().errors());
+        response.setErrorMessage(ValidationMessage.msg("validation_failure"));
+        response.setErrors(ErrorValidator.errors(ex));
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
@@ -52,7 +53,7 @@ public class ExceptionHandlingController {
     }
 
     @ExceptionHandler(UnAuthorizedException.class)
-    public ResponseEntity<ExceptionResponse> nullPointer(UnAuthorizedException ex) {
+    public ResponseEntity<ExceptionResponse> unAuthorized(UnAuthorizedException ex) {
         mailTypeResolverService.send(ex);
         ExceptionResponse response = new ExceptionResponse();
         response.setErrorCode(HttpStatus.UNAUTHORIZED.toString());

@@ -33,6 +33,7 @@ public class MailSignUpService implements IMailService {
         mail.getData().put("consumer", consumer);
         String key = SharedExpireCacheService.SINGUP + code;
         sharedExpireCacheService.put(key, obj);
+        System.out.println("\n\n\n\n\nmail = " + mail);
         mailService.sendMail(mail);
     }
 }

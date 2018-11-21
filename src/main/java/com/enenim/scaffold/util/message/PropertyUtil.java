@@ -1,15 +1,10 @@
 package com.enenim.scaffold.util.message;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-class PropertyUtil {
-
-    @Value("${lang}")
-    private static String lang;
+public class PropertyUtil {
 
     private static Properties getProperties(String fileName){
         Properties prop = new Properties();
@@ -18,7 +13,7 @@ class PropertyUtil {
         try {
             input = PropertyUtil.class.getClassLoader().getResourceAsStream(fileName);
             if(input==null){
-                System.out.println("Sorry, unable getTo find " + fileName);
+                System.out.println("Sorry, unable to find " + fileName);
                 return null;
             }
             prop.load(input);
@@ -37,7 +32,7 @@ class PropertyUtil {
         return prop;
     }
 
-    static String msg(String lang, String key, String fileName){
+    static String msg(String key, String lang, String fileName){
         Properties property;
         String value;
         property = PropertyUtil.getProperties(fileName + "_" + lang + ".properties");
@@ -50,7 +45,7 @@ class PropertyUtil {
         return "Message not found";
     }
 
-    static String msg(String key){
+    public static String msg(String key){
         Properties property;
         String value;
         property = PropertyUtil.getProperties("application.properties");

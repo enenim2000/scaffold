@@ -30,9 +30,9 @@ public class Consumer extends BaseModel {
     @Column(unique = true, length = 100)
     private String email;
 
-    @JsonProperty("phoneNumber")
+    @JsonProperty("phone_number")
     @Column(length = 30)
-    private String phone;
+    private String phoneNumber;
 
     private VerifyStatus verified = VerifyStatus.NOT_VERIFIED;
 

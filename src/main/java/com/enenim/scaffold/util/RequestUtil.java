@@ -4,6 +4,8 @@ import com.enenim.scaffold.constant.CommonConstant;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.model.cache.LoginCache;
 import com.enenim.scaffold.model.dao.*;
+import com.enenim.scaffold.util.message.SpringMessage;
+import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.util.ContentCachingRequestWrapper;
@@ -88,7 +90,7 @@ public class RequestUtil {
     }
 
     public static String perPage(){
-        return getRequest().getParameter(PER_PAGE)==null?"":getRequest().getParameter(PER_PAGE);
+        return StringUtils.isEmpty(getRequest().getParameter(PER_PAGE)) ? String.valueOf(PAGE_SIZE) :getRequest().getParameter(PER_PAGE);
     }
 
     public static LoginCache getLoginToken(){
@@ -164,6 +166,9 @@ public class RequestUtil {
     }
 
     public static String getLang(){
+        if(StringUtils.isEmpty(getRequest().getAttribute(LANG))){
+            return SpringMessage.msg(LANG);
+        }
         return (String) getRequest().getAttribute(LANG);
     }
 }

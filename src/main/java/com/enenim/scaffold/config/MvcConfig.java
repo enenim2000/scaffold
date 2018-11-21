@@ -35,6 +35,6 @@ public class MvcConfig implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(baseInterceptor).addPathPatterns("/**");
 		registry.addInterceptor(authenticationInterceptor).addPathPatterns("/**");
-		registry.addInterceptor(requestInterceptor).addPathPatterns("/**");
+		//registry.addInterceptor(requestInterceptor).addPathPatterns("/**");
 	}
 }

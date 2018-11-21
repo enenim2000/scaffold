@@ -111,7 +111,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     private void validateApiKey(){
         Channel channel = apiKeyService.validateKey(RequestUtil.getApiKey());
         Optional<PaymentChannel> paymentChannel = paymentChannelService.getPaymentChannelByCode(channel.getCode());
-        if(!paymentChannel.isPresent()) throw new ScaffoldException("channel_not_found");
+        if(!paymentChannel.isPresent()) throw new ScaffoldException("channel_not_configured");
         if(paymentChannel.get().getEnabled() != EnabledStatus.ENABLED) throw new ScaffoldException("channel_disabled");
         RequestUtil.setChannel(paymentChannel.get());
     }
@@ -140,7 +140,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
     private void validateRole(InterceptorParamater interceptorParamater){
         HandlerMethod handlerMethod = (HandlerMethod)interceptorParamater.getHandler();
-        String roles = handlerMethod.getMethod().getAnnotation(Role.class).value();
+        String[] roles = handlerMethod.getMethod().getAnnotation(Role.class).value();
         if(!userResolverService.isValidRole(roles))throw new ScaffoldException("access_denied");
     }
 
@@ -153,6 +153,8 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             if(!staff.getGroup().getTasks().contains( taskService.getTaskByRoute(route) )) {
                 throw new ScaffoldException("access_denied");
             }
+        }else {
+            throw new ScaffoldException("access_denied");
         }
     }
 

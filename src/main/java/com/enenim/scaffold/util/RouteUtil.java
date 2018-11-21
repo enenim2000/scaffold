@@ -9,7 +9,7 @@ import java.util.Map;
 
 import static com.enenim.scaffold.constant.RouteConstant.*;
 
-public class RouteDependencyUtil {
+public class RouteUtil {
 
     /**
      * Dependencies Initialization Begins

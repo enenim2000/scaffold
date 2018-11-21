@@ -4,16 +4,21 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class CommonUtil {
     public static String getCode(){
         StringBuilder code = new StringBuilder();
 
-        ThreadLocalRandom.current()
-                .ints(0, 100)
-                .distinct()
-                .limit(6).forEach((value) -> code.append(String.valueOf(value)));
+        Random random = new Random();
+        random.setSeed(System.currentTimeMillis());
+        for(int i=1; i<=6; i++){
+            code.append(random.nextInt(9));
+        }
+//
+//        ThreadLocalRandom.current()
+//                .ints(0, 9)
+//                .distinct()
+//                .limit(6).forEach((value) -> code.append(String.valueOf(value)));
 
         return code.toString();
     }

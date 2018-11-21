@@ -17,17 +17,23 @@ import com.enenim.scaffold.service.UserResolverService;
 import com.enenim.scaffold.service.dao.LoginService;
 import com.enenim.scaffold.service.dao.TrackerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.Date;
 import java.util.HashMap;
 
 @RestController
 @RequestMapping("/user/accounts")
 public class UserAccountController {
+
+	@Value("${lang}")
+	private String lang;
 
 	private final LoginService loginService;
     private final TrackerService trackerService;
@@ -45,9 +51,9 @@ public class UserAccountController {
 	}
 
 	@Post("/authenticate")
-	public Response<StringResponse> accountAuth(@RequestBody Request<LoginRequest> request) {
+	public Response<StringResponse> accountAuth(@Valid @RequestBody Request<LoginRequest> request) {
 		Login login = loginService.getLoginByUsername(request.getBody().getUsername());
-		if (bCryptPasswordEncoder.matches(request.getBody().getUsername(), login.getPassword())) {
+		if (!StringUtils.isEmpty(login) && bCryptPasswordEncoder.matches(request.getBody().getPassword(), login.getPassword())) {
 			if (login.getStatus() == LoginStatus.DISABLED) {
 				throw new ScaffoldException("disabled_account");
 			} else if (login.getStatus() == LoginStatus.LOCKED) {
