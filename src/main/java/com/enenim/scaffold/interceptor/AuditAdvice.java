@@ -1,5 +1,6 @@
 package com.enenim.scaffold.interceptor;
 
+import com.enenim.scaffold.enums.AuditStatus;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.interfaces.IAudit;
 import com.enenim.scaffold.interfaces.IAuthorization;
@@ -9,6 +10,7 @@ import com.enenim.scaffold.service.AuthorizationService;
 import com.enenim.scaffold.service.dao.AuditService;
 import com.enenim.scaffold.service.dao.TaskService;
 import com.enenim.scaffold.shared.Toggle;
+import com.enenim.scaffold.util.CommonUtil;
 import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.ReflectionUtil;
 import com.enenim.scaffold.util.RequestUtil;
@@ -119,18 +121,18 @@ public class AuditAdvice {
     }
 
     private void auditOperation(ProceedingJoinPoint jp, Object entity, InterceptorParams params){
-        /*params.getAudit().setIp(RequestUtil.getIpAddress());
-        params.getAudit().setLogin(RequestUtil.login);
-        if(entity instanceof IAuthorization) params.getAudit().setRid("");
-        else params.getAudit().setRid( CommonUtil.getHash(CommonUtil.getHash(RequestUtil.getBaseRequestBody())) );
-        params.getAudit().setStatus(AuditStatus.ACTIVE);  //if is going through authorization
+        params.getAudit().setIp(RequestUtil.getIpAddress());
+        params.getAudit().setLogin(RequestUtil.getLogin());
+        if(entity instanceof IAuthorization) params.getAudit().setRid(null);
+        else params.getAudit().setRid(RequestUtil.getRID());
+        params.getAudit().setStatus(AuditStatus.ACTIVE);
         params.getAudit().setTableName(entity.getClass().getSimpleName());
         params.getAudit().setTaskRoute(RequestUtil.getTaskRoute());
-        params.getAudit().setTrailType("App\\" + entity.getClass().getSimpleName());*/
+        params.getAudit().setTrailType(entity.getClass().getSimpleName());
     }
 
     private void authorizationOperation(ProceedingJoinPoint jp, Object entity, InterceptorParams params){
-        /*if(RequestUtil.getAuthorizationId() != null) params.getAudit().setAuthorization(authorizationService.getAuthorization(RequestUtil.getAuthorizationId()));
+        if(RequestUtil.getAuthorizationId() != null) params.getAudit().setAuthorization(authorizationService.getAuthorization(RequestUtil.getAuthorizationId()));
         Authorization authorization = new Authorization();
         authorization.setAction("");//
         authorization.setComment("");//Should be null but holds "Reject" if the authorization is rejected
@@ -138,10 +140,10 @@ public class AuditAdvice {
         //if(systemSettingService.getSetting(key) == "not_forwarded")authorization.setStatus(AuthorizationStatus.NOT_FORWARDED);
         //if(systemSettingService.getSetting(key) == "pending")authorization.setStatus(AuthorizationStatus.PENDING);
         authorization.setStaff(RequestUtil.getStaff());
-        authorization.setRid(CommonUtil.getHash(CommonUtil.getHash(RequestUtil.getBaseRequestBody())));
+        authorization.setRid(RequestUtil.getRID());
         params.getAudit().setDependency("item.id");
         params.getAudit().setStatus(AuditStatus.AWAITING_AUTHORIZATION);
-        params.getAudit().setAuthorization(authorization);*/
+        params.getAudit().setAuthorization(authorization);
     }
 
     @Around("execution(* javax.persistence.EntityManager.persist(..)) && !execution(* javax.persistence.EntityManager.persist(com.enenim.scaffold.model.dao.Audit)) && !execution(* javax.persistence.EntityManager.persist(com.enenim.scaffold.model.dao.Authorization))" + " && args(entity,..)")
@@ -171,12 +173,16 @@ public class AuditAdvice {
         params.getAudit().setTrailId( (Long) ReflectionUtil.getFieldValue(entity.getClass(), ID, entity) );
         params.getAudit().setBefore(JsonConverter.getJsonRecursive(entity));
         params.getAudit().setAfter(null);
+        params.getAudit().setRid(RequestUtil.getRID());
+        params.getAudit().setTaskRoute(RequestUtil.getTaskRoute());
+        params.getAudit().setUserAction(RequestUtil.getUserAction());
         return intercept(jp, entity, params);
     }
 
     private class InterceptorParams{
         private Audit audit;
         private Authorization authorization;
+
         public Audit getAudit() {
             return StringUtils.isEmpty(audit) ? new Audit() : audit;
         }

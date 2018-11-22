@@ -25,6 +25,7 @@ import com.enenim.scaffold.util.message.SpringMessage;
 import com.enenim.scaffold.util.setting.SettingCacheCoreService;
 import lombok.Data;
 import org.apache.commons.io.IOUtils;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.method.HandlerMethod;
@@ -141,20 +142,20 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     private void validateRole(InterceptorParamater interceptorParamater){
         HandlerMethod handlerMethod = (HandlerMethod)interceptorParamater.getHandler();
         String[] roles = handlerMethod.getMethod().getAnnotation(Role.class).value();
-        if(!userResolverService.isValidRole(roles))throw new ScaffoldException("access_denied");
+        String role = userResolverService.isValidRole(roles);
+        if(StringUtils.isEmpty(role))throw new UnAuthorizedException("invalid_role", role);
+        userResolverService.setUserByRole(role);
     }
 
     private void validatePermission(InterceptorParamater interceptorParamater){
         String userType = RequestUtil.getLoginToken().getUserType();
-        if(userType.equalsIgnoreCase(RoleConstant.STAFF)){
+        if(RoleConstant.STAFF.equalsIgnoreCase(userType)){
             Staff staff = RequestUtil.getStaff();
             HandlerMethod handlerMethod = (HandlerMethod)interceptorParamater.getHandler();
             String route = handlerMethod.getMethod().getAnnotation(Permission.class).value();
             if(!staff.getGroup().getTasks().contains( taskService.getTaskByRoute(route) )) {
-                throw new ScaffoldException("access_denied");
+                throw new ScaffoldException("access_denied", HttpStatus.FORBIDDEN);
             }
-        }else {
-            throw new ScaffoldException("access_denied");
         }
     }
 

@@ -29,44 +29,26 @@ public class UserResolverService {
         if(RoleConstant.STAFF.equalsIgnoreCase(userType))return staffService.getStaff(userId);
         if(RoleConstant.BILLER.equalsIgnoreCase(userType))return billerService.getBiller(userId);
         if(RoleConstant.CONSUMER.equalsIgnoreCase(userType))return consumerService.getConsumer(userId);
-        throw new ScaffoldException("invalid_actor", userType);
+        throw new ScaffoldException("invalid_role", userType);
     }
 
-    public Object getUsers(String userType){
-        if(RoleConstant.STAFF.equalsIgnoreCase(userType))return staffService.getStaff();
-        if(RoleConstant.BILLER.equalsIgnoreCase(userType))return billerService.getBillers();
-        if(RoleConstant.CONSUMER.equalsIgnoreCase(userType))return consumerService.getConsumers();
-        throw new ScaffoldException("invalid_actor", userType);
-    }
-
-    private void setUsers(String roles){
-        if(roles.contains(",")){
-            String[] actors = roles.split(",");
-            for(String actor : actors){
-                setUser(actor);
-            }
-        }else {
-            setUser(roles);
-        }
-    }
-
-    private void setUser(String role){
-        LoginCache login = RequestUtil.getLoginToken();
-        Object user = login.getUser();
-        if(user instanceof Staff) RequestUtil.getRequest().setAttribute(RoleConstant.STAFF, user);
-        if(user instanceof Biller)RequestUtil.getRequest().setAttribute(RoleConstant.BILLER, user);
-        if(user instanceof Consumer)RequestUtil.getRequest().setAttribute(RoleConstant.CONSUMER, user);
-        throw new UnAuthorizedException("invalid_actor", role);
-    }
-
-    public boolean isValidRole(String[] roles){
+    public String isValidRole(String[] roles){
         LoginCache login = RequestUtil.getLoginToken();
         for(String role : roles){
             if(role.equalsIgnoreCase(login.getUserType())){
-                setUsers(login.getUserType());
-                return true;
+                return role;
             }
         }
-        return false;
+        return null;
+    }
+
+    public void setUserByRole(String role){
+        Object user = RequestUtil.getLoginToken().getUser();
+        if(RoleConstant.STAFF.equalsIgnoreCase(role)) RequestUtil.setStaff((Staff) user);
+        else if(RoleConstant.BILLER.equalsIgnoreCase(role))RequestUtil.setBiller((Biller) user);
+        else if(RoleConstant.CONSUMER.equalsIgnoreCase(role))RequestUtil.setConsumer((Consumer) user);
+        else {
+            throw new UnAuthorizedException("invalid_role", role);
+        }
     }
 }

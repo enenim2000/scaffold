@@ -117,15 +117,15 @@ public class RequestUtil {
         getRequest().setAttribute(CommonConstant.IP_ADDRESS, ipAdress);
     }
 
-    public static void setStaff(Object staff){
+    public static void setStaff(Staff staff){
         getRequest().setAttribute(RoleConstant.STAFF, staff);
     }
 
-    public static void setBiller(Object biller){
+    public static void setBiller(Biller biller){
         getRequest().setAttribute(RoleConstant.BILLER, biller);
     }
 
-    public static void setConsumer(Object consumer){
+    public static void setConsumer(Consumer consumer){
         getRequest().setAttribute(RoleConstant.CONSUMER, consumer);
     }
 
@@ -163,6 +163,14 @@ public class RequestUtil {
 
     public static void setLang(String lang){
         getRequest().setAttribute(LANG, lang);
+    }
+
+    public static void setUserAction(String userAction){
+        getRequest().setAttribute("user_action", userAction);
+    }
+
+    public static String getUserAction(){
+        return (String) getRequest().getAttribute("user_action");
     }
 
     public static String getLang(){

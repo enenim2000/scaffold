@@ -6,19 +6,22 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.*;
 
 public class CommonUtil {
+
     public static String getCode(){
         StringBuilder code = new StringBuilder();
+        int numberOfDigits = 6;
 
-        Random random = new Random();
-        random.setSeed(System.currentTimeMillis());
-        for(int i=1; i<=6; i++){
-            code.append(random.nextInt(9));
+        ArrayList<Integer> list = new ArrayList<>();
+
+        for (int i=1; i<11; i++) {
+            list.add(i);
         }
-//
-//        ThreadLocalRandom.current()
-//                .ints(0, 9)
-//                .distinct()
-//                .limit(6).forEach((value) -> code.append(String.valueOf(value)));
+
+        Collections.shuffle(list);
+
+        for (int i=0; i<numberOfDigits; i++) {
+            code.append(list.get(i));
+        }
 
         return code.toString();
     }

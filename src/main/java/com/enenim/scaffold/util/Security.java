@@ -32,7 +32,7 @@ public class Security{
 	    return new String(values);
 	}
 
-	public static String decrypt(String input, String key){
+	private static String decrypt(String input, String key){
 	    byte[] output = "".getBytes();
 	    try{
 	      SecretKeySpec skey = new SecretKeySpec(key.getBytes(), "AES");

@@ -28,9 +28,9 @@ public class ExceptionHandlingController {
     public ResponseEntity<ExceptionResponse> scaffoldException(ScaffoldException ex) {
         mailTypeResolverService.send(ex);
         ExceptionResponse response = new ExceptionResponse();
-        response.setErrorCode(HttpStatus.EXPECTATION_FAILED.toString());
+        response.setErrorCode(ex.getStatus().toString());
         response.setMessage(ex.getMessage());
-        return new ResponseEntity<>(response, HttpStatus.EXPECTATION_FAILED);
+        return new ResponseEntity<>(response, ex.getStatus());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
