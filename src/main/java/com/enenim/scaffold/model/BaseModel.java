@@ -47,59 +47,55 @@ public abstract class BaseModel extends ResponseBody implements Serializable {
      * This variable is added getTo hold the before state
      */
     @Transient
-    public static Object rBefore = null;
+    public static Object before = null;
 
     /**
      * This property is added getTo know if auditing should be skipped at runtime
      */
     @Transient
-    public static boolean rSkipAuditing = false;
+    public static boolean skipAuditing = false;
 
     /**
      * This property is added getTo know if authorization should be skipped at runtime
      */
     @Transient
-    public static boolean rSkipAuthorization = false;
+    public static boolean skipAuthorization = false;
 
     /**
      * This property is added getTo accept custom message at runtime, e.g Updated Sharing Formula, Created Active Hour
      */
     @Transient
-    public static String rUserAction = "";
+    public static String userAction = "";
 
     /**
      * This property is added getTo accept CRUD action at runtime, e.g create, update, toggle, delete
      */
     @Transient
-    public static String rCrudAction = "create";
+    public static String crudAction = "";
 
     /**
      * This property is added getTo accept response message at runtime, e.g Attempt getTo create item is pending authorization, Item created successfully
      */
     @Transient
-    public static String rMessage = "";
+    public static String message = "";
 
     /**
      * This property is added getTo hold the toggle response message at runtime, e.g active or inactive
      */
     @Transient
-    public static Object rResponse = null;
+    public static Object response = null;
 
     /**
      * This property is added getTo hold the toggle response message at runtime, e.g active or inactive
      */
     @Transient
-    public static Object rToggle = null;
+    public static Object toggle = null;
 
     public void skipAudit(boolean status){
-        rSkipAuditing = status;
+        skipAuditing = status;
     }
 
     public void skipAuthorization(boolean status){
-        rSkipAuthorization = status;
-    }
-
-    public void userAction(String action){
-        rUserAction = action;
+        skipAuthorization = status;
     }
 }

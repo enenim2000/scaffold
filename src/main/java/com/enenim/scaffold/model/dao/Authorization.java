@@ -6,11 +6,10 @@ import com.enenim.scaffold.model.BaseModel;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -40,12 +39,11 @@ public class Authorization extends BaseModel {
     private String rid;
 
     @NotNull
-    @Column(columnDefinition = DataTypeConstant.TEXT)
     private AuthorizationStatus status = AuthorizationStatus.NOT_FORWARDED;
 
     @Column(columnDefinition = DataTypeConstant.TEXT)
     private String comment = "";
-/*
+
     @OneToMany(mappedBy = "authorization", fetch = FetchType.LAZY)
-    private Set<Audit> audits = new HashSet<>();*/
+    private Set<Audit> audits = new HashSet<>();
 }

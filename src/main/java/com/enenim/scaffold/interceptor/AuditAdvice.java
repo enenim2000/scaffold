@@ -1,5 +1,6 @@
 package com.enenim.scaffold.interceptor;
 
+import com.enenim.scaffold.annotation.Permission;
 import com.enenim.scaffold.enums.AuditStatus;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.interfaces.IAudit;
@@ -10,7 +11,6 @@ import com.enenim.scaffold.service.AuthorizationService;
 import com.enenim.scaffold.service.dao.AuditService;
 import com.enenim.scaffold.service.dao.TaskService;
 import com.enenim.scaffold.shared.Toggle;
-import com.enenim.scaffold.util.CommonUtil;
 import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.ReflectionUtil;
 import com.enenim.scaffold.util.RequestUtil;
@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.PersistenceContext;
+import javax.persistence.Table;
 
 import static com.enenim.scaffold.constant.CommonConstant.PLACE_HOLDER;
 import static com.enenim.scaffold.constant.ModelFieldConstant.*;
@@ -122,11 +123,15 @@ public class AuditAdvice {
 
     private void auditOperation(ProceedingJoinPoint jp, Object entity, InterceptorParams params){
         params.getAudit().setIp(RequestUtil.getIpAddress());
+        params.getAudit().setUserAction(RequestUtil.getUserAction());
         params.getAudit().setLogin(RequestUtil.getLogin());
+        params.getAudit().setTrailId(RequestUtil.getLogin().getUserId());
+        params.getAudit().setTrailType(RequestUtil.getLogin().getUserType());
+        params.getAudit().setUserName(RequestUtil.getLogin().getUsername());
         if(entity instanceof IAuthorization) params.getAudit().setRid(null);
         else params.getAudit().setRid(RequestUtil.getRID());
         params.getAudit().setStatus(AuditStatus.ACTIVE);
-        params.getAudit().setTableName(entity.getClass().getSimpleName());
+        params.getAudit().setTableName(entity.getClass().getAnnotation(Table.class).name());
         params.getAudit().setTaskRoute(RequestUtil.getTaskRoute());
         params.getAudit().setTrailType(entity.getClass().getSimpleName());
     }

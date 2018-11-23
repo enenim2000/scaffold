@@ -27,4 +27,5 @@ public interface CommonConstant {
     String LANG = "lang";
 
     String PAYMENT_CHANNEL = "payment_channel";
+    String NOT_FOUND = "not_found";
 }
