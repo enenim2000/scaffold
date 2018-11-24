@@ -40,6 +40,13 @@ public class GroupService {
 		return groupRepository.save(group);
 	}
 
+	public Group updatePermissionAuthorizations(Set<Task> tasks, Long id) {
+		Group group = this.getGroup(id);
+		group.getAuthorizerTasks().removeAll(group.getAuthorizerTasks());
+		group.setAuthorizerTasks(tasks);
+		return groupRepository.save(group);
+	}
+
 	public Group saveGroup(Group group) {
 		return groupRepository.save(group);
 	}

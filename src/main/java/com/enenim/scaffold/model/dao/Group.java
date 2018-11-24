@@ -22,11 +22,11 @@ public class Group extends BaseModel {
 
     @NotNull
     @Column(unique = true, length = 40)
-    private String name;
+    private String name; //System Testers
 
     @NotNull
     @Column(unique = true, length = 40)
-    private String role;
+    private String role; //system_testers auto-formed by system
 
     @NotNull
     @OneToOne
@@ -49,7 +49,7 @@ public class Group extends BaseModel {
     private Set<Staff> staff = new HashSet<>();
 
     @JsonBackReference
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinTable(name = "permission",
             joinColumns = @JoinColumn(name = "group_id"),
             inverseJoinColumns = @JoinColumn(name = "task_id"),

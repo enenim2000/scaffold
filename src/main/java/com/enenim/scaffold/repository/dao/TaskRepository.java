@@ -13,9 +13,9 @@ import java.util.Set;
 @Repository
 @Transactional
 public interface TaskRepository extends BaseRepository<Task, Long> {
-    @Query("select task from #{#entityName} task where task.route = ?1")
+    @Query("select task from Task task where task.route = ?1")
     Optional<Task> findTaskByRoute(String taskRoute);
 
-    @Query("select task from #{#entityName} task where task.id in ?1")
+    @Query("select task from Task task where task.id in ?1")
     Set<Task> findTasksByIds (List<Long> ids);
 }

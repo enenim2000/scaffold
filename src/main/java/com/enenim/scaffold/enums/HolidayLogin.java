@@ -7,6 +7,7 @@ public enum HolidayLogin  implements PersistableEnum<Integer> {
     YES(1);
     
     Integer id;
+
     public Integer getValue(){
         return id;
     }
