@@ -23,6 +23,7 @@ public interface RouteConstant {
     String RESET = "reset";
     String TOGGLE = "toggle";
     String DESTROY = "destroy";
+    String SYNC = "sync";
     String DOT = ".";
 
 
@@ -97,7 +98,8 @@ public interface RouteConstant {
     String TASK = DOT + "task" + DOT;
     String ADMINISTRATION_TASK_INDEX = ADMINISTRATION + TASK + INDEX;
     String ADMINISTRATION_TASK_CREATE = ADMINISTRATION + TASK + CREATE;
-    String ADMINISTRATION_TASK_UPDATE= ADMINISTRATION + TASK + UPDATE;
+    String ADMINISTRATION_TASK_UPDATE = ADMINISTRATION + TASK + UPDATE;
+    String ADMINISTRATION_TASK_SYNC = ADMINISTRATION + TASK + SYNC;
     String ADMINISTRATION_TASK_DESTROY = ADMINISTRATION + TASK + DESTROY;
     String ADMINISTRATION_TASK_SHOW = ADMINISTRATION + TASK + SHOW;
 

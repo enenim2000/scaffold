@@ -38,7 +38,6 @@ public class CommonUtil {
     }
 
     public static <T> List<T> difference(Collection<T> listA,Collection<T> listB){
-
         List<T> newList = new ArrayList<>();
         for(T item : listB){
             if(!listA.contains(item)){
@@ -128,5 +127,14 @@ public class CommonUtil {
     public static <T> T fromMap(Map map, Class<T> tClass){
         ObjectMapper mapper = new ObjectMapper();
         return mapper.convertValue(map, tClass);
+    }
+
+    public static String capitaliseFirstLetter(String word){
+        String[] words = word.split(" ");
+        StringBuilder newWord = new StringBuilder();
+        for (String word1 : words) {
+            newWord.append(" ").append(word1.substring(0, 1).toUpperCase()).append(word1.substring(1));
+        }
+        return newWord.toString().trim();
     }
 }

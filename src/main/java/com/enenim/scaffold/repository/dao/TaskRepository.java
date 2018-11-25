@@ -18,4 +18,7 @@ public interface TaskRepository extends BaseRepository<Task, Long> {
 
     @Query("select task from Task task where task.id in ?1")
     Set<Task> findTasksByIds (List<Long> ids);
+
+    @Query("select task from Task task where task.route in ?1")
+    Set<Task> findTasksByRoutes (List<String> routes);
 }

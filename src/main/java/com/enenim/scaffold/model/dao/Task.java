@@ -28,8 +28,9 @@ public class Task extends BaseModel {
         this.setId(id);
     }
 
-    @ManyToOne
-    private Module module;
+    @NotNull
+    @Column(length = 50)
+    private String module;
 
     @NotNull
     @Column(length = 10)
@@ -55,7 +56,6 @@ public class Task extends BaseModel {
     private VisibilityStatus visibility = VisibilityStatus.YES;
 
     @JsonProperty("order")
-    @NotNull
     @Column(length = 11)
     private Integer _order;
 
