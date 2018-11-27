@@ -8,6 +8,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
+import static com.enenim.scaffold.constant.ModelFieldConstant.BEFORE;
+
 public class ReflectionUtil {
 
     public static boolean isEmpty(Object instance, String fieldName){
@@ -74,7 +76,7 @@ public class ReflectionUtil {
      *This set the value of before field to entity, here the type of entity may differ from the type of before
      */
     public static Object setFieldValue(Class type, Object fieldValue, Object instance){
-        return setFieldValue(type, "before", fieldValue, instance);
+        return setFieldValue(type, BEFORE, fieldValue, instance);
     }
 
     public static Object setFieldValue(Class type, String fieldName, Object fieldValue, Object instance){

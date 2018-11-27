@@ -31,7 +31,7 @@ public class AuthorizationService {
         return authorizationRepository.findOrFail(id);
     }
 
-    public Authorization saveAuthorization(Authorization authorization){
+    public Authorization saveAuthorization(String entityName, Authorization authorization){
         return authorizationRepository.save(authorization);
     }
 

@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 @Entity
 @Table(name = "staff")
-public class Staff extends BaseModel {
+public class Staff extends BaseModel{
 
     public Staff() {
     }

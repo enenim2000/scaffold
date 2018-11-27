@@ -1,7 +1,6 @@
 package com.enenim.scaffold.model.dao;
 
 import com.enenim.scaffold.enums.AuthorizationStatus;
-import com.enenim.scaffold.interfaces.DataTypeConstant;
 import com.enenim.scaffold.model.BaseModel;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,17 +30,13 @@ public class Authorization extends BaseModel {
     private Staff staff;
 
     @NotNull
-    @Column(length = 10)
-    private String action;
-
-    @NotNull
     @Column(length = 40)
     private String rid;
 
     @NotNull
     private AuthorizationStatus status = AuthorizationStatus.NOT_FORWARDED;
 
-    @Column(columnDefinition = DataTypeConstant.TEXT)
+    @Column
     private String comment = "";
 
     @OneToMany(mappedBy = "authorization", fetch = FetchType.LAZY)

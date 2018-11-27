@@ -1,10 +1,8 @@
 package com.enenim.scaffold.model.dao;
 
-import com.enenim.scaffold.constant.CRUDConstant;
 import com.enenim.scaffold.enums.AuditStatus;
 import com.enenim.scaffold.interfaces.DataTypeConstant;
 import com.enenim.scaffold.model.BaseModel;
-import com.enenim.scaffold.util.RequestUtil;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,29 +10,15 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-
 @Getter
 @Setter
 @Entity
 @Table(name = "audits")
 public class Audit extends BaseModel {
 
-    @OneToOne
-    private Login login;
-
-    @JsonProperty("trail_type")
-    private String trailType;
-
-    @NotNull
-    @JsonProperty("trail_id")
-    private Long trailId;
-
-    @ManyToOne
-    private Authorization authorization;
-
-    @Column(length = 60)
-    @JsonProperty("user_name")
-    private String userName = "";
+    @Column(length = 100)
+    @JsonProperty("entity_type")
+    private String entityType; //When new entity are created on the fly how to ensure they used the same authorization id
 
     @Column(length = 80)
     @JsonProperty("task_route")
@@ -42,20 +26,21 @@ public class Audit extends BaseModel {
 
     @Column(length = 200)
     @JsonProperty("user_action")
-    private String userAction;
-
-    @Column(length = 100)
-    @JsonProperty("table_name")
-    private String tableName;
+    private String userAction; //Create, Update or Delete
 
     @Column(length = 20)
-    private String action;
+    @JsonProperty("crud_action")
+    private String crudAction; // Created new Staff, Created new Group, Updated existing group
 
     @Column(length = 20)
     private String ip;
 
-    @Column(length = 40)
-    private String rid;
+    @Column(length = 150)
+    @JsonProperty("user_agent")
+    private String userAgent;
+
+    @Column(columnDefinition = DataTypeConstant.TEXT)
+    private String dependency;
 
     @NotNull
     private AuditStatus status = AuditStatus.ACTIVE;
@@ -66,8 +51,11 @@ public class Audit extends BaseModel {
     @Column(name = "_after", columnDefinition = DataTypeConstant.TEXT)
     private String after;
 
-    @Column(columnDefinition = DataTypeConstant.TEXT)
-    private String dependency;
+    @OneToOne
+    private Login login;
+
+    @ManyToOne
+    private Authorization authorization;
 
     public void setBefore(String before){
         this.before = before;
@@ -75,21 +63,5 @@ public class Audit extends BaseModel {
 
     public void setAfter(String after){
         this.after = after;
-    }
-
-    public void build(){
-        setBefore("");
-        setAfter("");
-        setAction(CRUDConstant.CREATE);
-        setAuthorization(null);
-        setRid("RequestUtil.getRID()");
-        setLogin(login);
-        setIp(RequestUtil.getIpAddress());
-        setUserName(login.getUsername());
-        setStatus(AuditStatus.ACTIVE);
-        setTaskRoute(RequestUtil.getTaskRoute());
-        setTrailId(login.getUserId());
-        setTrailType(login.getUserType());
-        setTableName("audits");
     }
 }

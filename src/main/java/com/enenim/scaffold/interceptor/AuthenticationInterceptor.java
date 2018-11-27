@@ -191,6 +191,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             RequestUtil.setIpAdress(requestWrapper.getParameter(CommonConstant.IP_ADDRESS));
             RequestUtil.setRequestBody(requestBody);
             RequestUtil.setRID(Security.encypt(requestWrapper.getRequestURI() + requestBody + requestWrapper.getMethod()));
+            RequestUtil.setAuthorization(null);
         }
     }
 }

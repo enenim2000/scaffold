@@ -68,7 +68,7 @@ public abstract class BaseModel extends ResponseBody implements Serializable {
     public static String userAction = "";
 
     /**
-     * This property is added getTo accept CRUD action at runtime, e.g create, update, toggle, delete
+     * This property is added getTo accept CRUD crudAction at runtime, e.g create, update, toggle, delete
      */
     @Transient
     public static String crudAction = "";

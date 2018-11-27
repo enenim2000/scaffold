@@ -25,6 +25,10 @@ public interface CommonConstant {
 
     Integer IDLE_TIMEOUT = 5; //In minutes
     String LANG = "lang";
+    String COMMENT = "comment";
+    String STATUS = "status";
+    String AUTHORIZATION = "authorization";
+    String AUDIT_STATUS = "audit_status";
 
     String PAYMENT_CHANNEL = "payment_channel";
     String NOT_FOUND = "not_found";

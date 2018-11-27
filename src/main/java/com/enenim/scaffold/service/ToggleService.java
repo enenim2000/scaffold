@@ -59,7 +59,7 @@ public class ToggleService<T> {
 
         String newStatus = "";
 
-        if(!canToggle())throw new UnAuthorizedException(PropertyUtil.msg("unauthorized"));
+        if(!canToggle())throw new UnAuthorizedException("unauthorized");
 
         if(entity instanceof Biller)billerToggleCheck();
         if(entity instanceof Consumer)consumerToggleCheck();

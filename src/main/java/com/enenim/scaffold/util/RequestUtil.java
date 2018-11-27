@@ -2,15 +2,21 @@ package com.enenim.scaffold.util;
 
 import com.enenim.scaffold.constant.CommonConstant;
 import com.enenim.scaffold.constant.RoleConstant;
+import com.enenim.scaffold.enums.AuditStatus;
+import com.enenim.scaffold.enums.AuthorizationStatus;
 import com.enenim.scaffold.model.cache.LoginCache;
 import com.enenim.scaffold.model.dao.*;
 import com.enenim.scaffold.util.message.SpringMessage;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.enenim.scaffold.constant.CommonConstant.*;
 
@@ -163,6 +169,35 @@ public class RequestUtil {
 
     public static void setLang(String lang){
         getRequest().setAttribute(LANG, lang);
+    }
+
+    public static AuthorizationStatus getAuthorizationStatus(){
+        return (AuthorizationStatus) getRequest().getAttribute(STATUS);
+    }
+
+    public static void setAuthorizationStatus(AuthorizationStatus status){
+        getRequest().setAttribute(STATUS, status);
+    }
+
+    public static Map<String, Authorization> getAuthorizations(){
+        if(StringUtils.isEmpty(getRequest().getAttribute(AUTHORIZATION))){
+            return new HashMap<>();
+        }else {
+            return new ObjectMapper().convertValue(getRequest().getAttribute(AUTHORIZATION), new TypeReference<Map<String, Object>>(){});
+        }
+    }
+
+    public static void setAuthorization(String entityName, Authorization authorization){
+        Map<String, Authorization> authorizations = getAuthorizations();
+        authorizations.put(entityName, authorization);
+    }
+
+    public static AuditStatus getAuditStatus(){
+        return (AuditStatus) getRequest().getAttribute(AUDIT_STATUS);
+    }
+
+    public static void setAuditStatus(AuditStatus auditStatus){
+        getRequest().setAttribute(AUDIT_STATUS, auditStatus);
     }
 
     public static void setUserAction(String userAction){
