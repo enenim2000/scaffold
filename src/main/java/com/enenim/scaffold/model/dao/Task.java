@@ -33,9 +33,8 @@ public class Task extends BaseModel {
     private String module;
 
     @NotNull
-    @Column(length = 10)
     @JsonProperty("parent_task_id")
-    private Integer parentTaskId;
+    private Long parentTaskId;
 
     @NotNull
     @Column(unique = true, length = 100)

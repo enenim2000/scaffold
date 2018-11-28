@@ -155,8 +155,11 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             Staff staff = RequestUtil.getStaff();
             HandlerMethod handlerMethod = (HandlerMethod)interceptorParamater.getHandler();
             String route = handlerMethod.getMethod().getAnnotation(Permission.class).value();
-            if(!staff.getGroup().getTasks().contains( taskService.getTaskByRoute(route) )) {
-                throw new ScaffoldException("access_denied", HttpStatus.FORBIDDEN);
+
+            if(!RequestUtil.getLoginToken().getUsername().equalsIgnoreCase("system")){
+                if(!staff.getGroup().getTasks().contains( taskService.getTaskByRoute(route) )) {
+                    throw new ScaffoldException("access_denied", HttpStatus.FORBIDDEN);
+                }
             }
         }
     }
