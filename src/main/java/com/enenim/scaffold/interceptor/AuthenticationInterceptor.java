@@ -19,6 +19,7 @@ import com.enenim.scaffold.service.UserResolverService;
 import com.enenim.scaffold.service.dao.PaymentChannelService;
 import com.enenim.scaffold.service.dao.TaskService;
 import com.enenim.scaffold.shared.Channel;
+import com.enenim.scaffold.util.CommonUtil;
 import com.enenim.scaffold.util.RequestUtil;
 import com.enenim.scaffold.util.Security;
 import com.enenim.scaffold.util.message.SpringMessage;
@@ -37,6 +38,7 @@ import org.springframework.web.util.ContentCachingResponseWrapper;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Optional;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -186,9 +188,29 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         private void buildRequestUtil(ContentCachingRequestWrapper requestWrapper) throws IOException {
             String requestBody = IOUtils.toString(requestWrapper.getInputStream(), UTF_8);
+
+            System.out.println("requestBody = " + requestBody);
+
+            String ipAddress;
+            String userAgent;
+
+            Map<String, Object> requestMap = CommonUtil.toMap(requestBody);
+
+            if(requestMap.containsKey(CommonConstant.IP_ADDRESS)){
+                ipAddress = (String) requestMap.get(CommonConstant.IP_ADDRESS);
+            }else {
+                ipAddress = requestWrapper.getParameter(CommonConstant.IP_ADDRESS);
+            }
+
+            if(requestMap.containsKey(CommonConstant.USER_AGENT)){
+                userAgent = (String) requestMap.get(CommonConstant.USER_AGENT);
+            }else {
+                userAgent = requestWrapper.getParameter(CommonConstant.USER_AGENT);
+            }
+
             RequestUtil.setLang(SpringMessage.msg("lang"));
-            RequestUtil.setUserAgent(requestWrapper.getParameter(CommonConstant.USER_AGENT));
-            RequestUtil.setIpAdress(requestWrapper.getParameter(CommonConstant.IP_ADDRESS));
+            RequestUtil.setUserAgent(userAgent);
+            RequestUtil.setIpAdress(ipAddress);
             RequestUtil.setRequestBody(requestBody);
             RequestUtil.setRID(Security.encypt(requestWrapper.getRequestURI() + requestBody + requestWrapper.getMethod()));
             RequestUtil.setAuthorization(null);

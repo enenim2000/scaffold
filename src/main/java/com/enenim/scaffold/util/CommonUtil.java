@@ -2,7 +2,10 @@ package com.enenim.scaffold.util;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.*;
 
 public class CommonUtil {
@@ -127,6 +130,11 @@ public class CommonUtil {
     public static <T> T fromMap(Map map, Class<T> tClass){
         ObjectMapper mapper = new ObjectMapper();
         return mapper.convertValue(map, tClass);
+    }
+
+    public static Map<String, Object> toMap(String json){
+        Type type = new TypeToken<Map<String, Object>>(){}.getType();
+        return new Gson().fromJson(json, type);
     }
 
     public static String capitaliseFirstLetter(String word){

@@ -1,6 +1,7 @@
 package com.enenim.scaffold.interceptor;
 
 import com.enenim.scaffold.enums.AuditStatus;
+import com.enenim.scaffold.enums.AuthorizationStatus;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.interfaces.IAudit;
 import com.enenim.scaffold.interfaces.IAuthorization;
@@ -41,7 +42,7 @@ public class AuditAdvice {
         this.taskService = taskService;
     }
 
-    private Object intercept(ProceedingJoinPoint jp, Object entity, InterceptorParams params){
+    private Object intercept(ProceedingJoinPoint jp, Object entity, Audit audit){
         Toggle toggle = (Toggle) ReflectionUtil.getFieldValue(entity.getClass(), TOGGLE, entity);
         boolean skipAudit, skipAuthorization;
         if(toggle != null){
@@ -56,12 +57,11 @@ public class AuditAdvice {
 
         Object response = null;
         String message = null;
-        Object entityBefore = entity;
         Object entityAfter = entity;
 
         if(entity instanceof IAuthorization && !skipAuthorization){
 
-            authorizationOperation(params);
+            authorizationOperation();
 
             if(toggle != null){
                 String newStatus = toggle.getNewStatus();
@@ -71,9 +71,9 @@ public class AuditAdvice {
                     response = "active";
                 }
                 message = EntityMessage.msg("toggle_authorization_message").replace(PLACE_HOLDER, EntityMessage.msg(entity.getClass().getSimpleName()));
-            }else if("Update".equalsIgnoreCase(params.getAudit().getCrudAction()) || "Delete".equalsIgnoreCase(params.getAudit().getCrudAction())){
+            }else if("Update".equalsIgnoreCase(audit.getCrudAction()) || "Delete".equalsIgnoreCase(audit.getCrudAction())){
                 response = false;
-                if("Update".equalsIgnoreCase(params.getAudit().getCrudAction())){
+                if("Update".equalsIgnoreCase(audit.getCrudAction())){
                     message = EntityMessage.msg("update_authorization_message").replace(PLACE_HOLDER, EntityMessage.msg(entity.getClass().getSimpleName()));
                 }else {
                     message = EntityMessage.msg("delete_authorization_message").replace(PLACE_HOLDER, EntityMessage.msg(entity.getClass().getSimpleName()));
@@ -85,6 +85,7 @@ public class AuditAdvice {
         }else {
             try {
                 response = jp.proceed();
+                RequestUtil.setAuthorization(null);
                 entityAfter = response;
                 if(toggle != null){
                     String newStatus = toggle.getNewStatus();
@@ -94,9 +95,9 @@ public class AuditAdvice {
                         response = "inactive";
                     }
                     message = EntityMessage.msg("toggle_message").replace(PLACE_HOLDER, EntityMessage.msg(entity.getClass().getSimpleName()));
-                }else if("Update".equalsIgnoreCase(params.getAudit().getCrudAction()) || "Delete".equalsIgnoreCase(params.getAudit().getCrudAction())){
+                }else if("Update".equalsIgnoreCase(audit.getCrudAction()) || "Delete".equalsIgnoreCase(audit.getCrudAction())){
                     response = true;
-                    if("Update".equalsIgnoreCase(params.getAudit().getCrudAction())){
+                    if("Update".equalsIgnoreCase(audit.getCrudAction())){
                         message = EntityMessage.msg("update_message").replace(PLACE_HOLDER, EntityMessage.msg(entity.getClass().getSimpleName()));
                     }else {
                         message = EntityMessage.msg("delete_message").replace(PLACE_HOLDER, EntityMessage.msg(entity.getClass().getSimpleName()));
@@ -108,91 +109,72 @@ public class AuditAdvice {
                 throwable.printStackTrace();
             }
         }
-        RequestUtil.setMessage(message);
-        ReflectionUtil.setFieldValue(entity.getClass(), TOGGLE, null, entity);
 
         if(entity instanceof IAudit){
-           Audit audit = auditOperation(entityBefore, entityAfter, params).getAudit();
-           auditService.saveAudit(audit);
+            auditOperation(entity, entityAfter, audit);
         }
+        
+        RequestUtil.setMessage(message);
+        ReflectionUtil.setFieldValue(entity.getClass(), TOGGLE, null, entity);
 
         return response;
     }
 
-    private InterceptorParams auditOperation(Object entityBefore, Object entityAfter, InterceptorParams params){
-        params.getAudit().setIp(RequestUtil.getIpAddress());
-        params.getAudit().setUserAgent(RequestUtil.getUserAgent());
+    private void auditOperation(Object entityBefore, Object entityAfter, Audit audit){
+        audit.setIp(RequestUtil.getIpAddress());
+        audit.setUserAgent(RequestUtil.getUserAgent());
+        audit.setLogin(RequestUtil.getLogin());
+        audit.setStatus(AuditStatus.ACTIVE);
+        audit.setTaskRoute(RequestUtil.getTaskRoute());
+        audit.setEntityType(entityAfter.getClass().getSimpleName());
+        audit.setBefore((String) ReflectionUtil.getFieldValue(entityAfter.getClass(), BEFORE, entityBefore));
+        audit.setAfter(JsonConverter.getJsonRecursive(entityAfter));
+        audit.setDependency(null);
+        audit.setAuthorization(RequestUtil.getAuthorization());
+        audit.setStatus(RequestUtil.getAuditStatus());
+
+        /*
+         *This gives priority to userAction set at the controller level as compared to that done at the AuditAdvice class
+         */
         if(!StringUtils.isEmpty(RequestUtil.getUserAction())){
-            params.getAudit().setUserAction(RequestUtil.getUserAction());
+            audit.setUserAction(RequestUtil.getUserAction());
         }
-        params.getAudit().setLogin(RequestUtil.getLogin());
-        params.getAudit().setStatus(AuditStatus.ACTIVE);
-        params.getAudit().setTaskRoute(RequestUtil.getTaskRoute());
-        params.getAudit().setEntityType(entityAfter.getClass().getSimpleName());
-        params.getAudit().setBefore((String) ReflectionUtil.getFieldValue(entityAfter.getClass(), BEFORE, entityBefore));
-        params.getAudit().setAfter(JsonConverter.getJsonRecursive(entityAfter));
 
-        params.getAudit().setDependency("");
-        params.getAudit().setAuthorization(RequestUtil.getAuthorization());
-        params.getAudit().setStatus(RequestUtil.getAuditStatus());
-
-        return params;
+        auditService.saveAudit(audit);
     }
 
-    private InterceptorParams authorizationOperation(Object entity, InterceptorParams params){
+    private void authorizationOperation(){
         Authorization authorization = new Authorization();
         authorization.setTask(taskService.getTaskByRoute(RequestUtil.getTaskRoute()));
-        authorization.setStatus(RequestUtil.getAuthorizationStatus());
+        authorization.setStatus(AuthorizationStatus.FORWARDED);
         authorization.setStaff(RequestUtil.getStaff());
         authorization.setRid(RequestUtil.getRID());
         authorization = authorizationService.saveAuthorization(authorization);
         RequestUtil.setAuthorization(authorization);
         RequestUtil.setAuditStatus(AuditStatus.AWAITING_AUTHORIZATION);
-        return params;
     }
 
     @Around("execution(* javax.persistence.EntityManager.persist(..)) && !execution(* javax.persistence.EntityManager.persist(com.enenim.scaffold.model.dao.Audit)) && !execution(* javax.persistence.EntityManager.persist(com.enenim.scaffold.model.dao.Authorization))" + " && args(entity,..)")
     public Object interceptCreate(ProceedingJoinPoint jp, Object entity) {
-        InterceptorParams params = new InterceptorParams();
-        params.getAudit().setCrudAction("Create");
-        params.getAudit().setUserAction("Created new " + entity.getClass().getSimpleName());
-        return intercept(jp, entity, params);
+        Audit audit = new Audit();
+        audit.setCrudAction("Create");
+        audit.setUserAction(EntityMessage.msg("audit_create").replace(PLACE_HOLDER, EntityMessage.msg(entity.getClass().getSimpleName())));
+        return intercept(jp, entity, audit);
     }
 
     @Around("execution(* javax.persistence.EntityManager.merge(..)) && !execution(* javax.persistence.EntityManager.merge(com.enenim.scaffold.model.dao.Audit)) && !execution(* javax.persistence.EntityManager.merge(com.enenim.scaffold.model.dao.Authorization))" + " && args(entity,..)")
     public Object interceptUpdate(ProceedingJoinPoint jp, Object entity) {
-        InterceptorParams params = new InterceptorParams();
-        params.getAudit().setCrudAction("Update");
-        params.getAudit().setUserAction("Updated existing " + entity.getClass().getSimpleName());
-        return intercept(jp, entity, params);
+        Audit audit = new Audit();
+        audit.setCrudAction("Update");
+        audit.setUserAction(EntityMessage.msg("audit_update").replace(PLACE_HOLDER, EntityMessage.msg(entity.getClass().getSimpleName())));
+        return intercept(jp, entity, audit);
     }
 
     @Around("execution(* javax.persistence.EntityManager.remove(..)) && !execution(* javax.persistence.EntityManager.remove(com.enenim.scaffold.model.dao.Audit)) && !execution(* javax.persistence.EntityManager.remove(com.enenim.scaffold.model.dao.Authorization))" + " && args(entity,..)")
     public Object interceptDelete(ProceedingJoinPoint jp, Object entity) {
-        InterceptorParams params = new InterceptorParams();
-        params.getAudit().setCrudAction("Delete");
-        params.getAudit().setUserAction("Deleted existing " + entity.getClass().getSimpleName());
-        return intercept(jp, entity, params);
-    }
-
-    private class InterceptorParams{
-        private Audit audit;
-        private Authorization authorization;
-
-        public Audit getAudit() {
-            return StringUtils.isEmpty(audit) ? new Audit() : audit;
-        }
-
-        public void setAudit(Audit audit) {
-            this.audit = audit;
-        }
-
-        public Authorization getAuthorization() {
-            return StringUtils.isEmpty(authorization) ? new Authorization() : authorization;
-        }
-
-        public void setAuthorization(Authorization authorization) {
-            this.authorization = authorization;
-        }
+        Audit audit = new Audit();
+        audit.setCrudAction("Delete");
+        audit.setUserAction(EntityMessage.msg("audit_delete").replace(PLACE_HOLDER, EntityMessage.msg(entity.getClass().getSimpleName())));
+        return intercept(jp, entity, audit);
     }
 }
