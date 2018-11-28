@@ -3,6 +3,7 @@ package com.enenim.scaffold.controller;
 import com.enenim.scaffold.annotation.*;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.dto.request.Request;
+import com.enenim.scaffold.dto.request.StaffRequest;
 import com.enenim.scaffold.dto.response.ModelResponse;
 import com.enenim.scaffold.dto.response.PageResponse;
 import com.enenim.scaffold.dto.response.Response;
@@ -45,23 +46,23 @@ public class StaffController {
     @Get("/{id}/lookup")
     @Role({RoleConstant.STAFF})
     @Permission(USER_STAFF_ACCOUNT_LOOKUP)
-    public Response<Staff> lookupStaff(@PathVariable Long id) {
-        return new Response<>(staffService.getStaff(id));
+    public Response<ModelResponse<Staff>> lookupStaff(@PathVariable Long id) {
+        return new Response<>(new ModelResponse<>(staffService.getStaff(id)));
     }
 
     @Post
     @Role({RoleConstant.STAFF})
     @Permission(USER_STAFF_CREATE)
-    public Response<Staff> createStaff(@Valid @RequestBody Request<StaffRequest> request){
-        return new Response<>(staffService.saveStaff(request.getBody().validateRequest()));
+    public Response<ModelResponse<Staff>> createStaff(@Valid @RequestBody Request<StaffRequest> request){
+        return new Response<>(new ModelResponse<>(staffService.saveStaff(request.getBody().buildModel())));
     }
 
     @Put("/{id}")
     @Role({RoleConstant.STAFF})
     @Permission(USER_STAFF_UPDATE)
-    public Response<Staff> updateStaff(@PathVariable Long id, @RequestBody Request<StaffRequest> request){
+    public Response<ModelResponse<Staff>> updateStaff(@PathVariable Long id, @RequestBody Request<StaffRequest> request){
         Staff staff = staffService.getStaff(id);
-        return new Response<>(staffService.saveStaff(request.getBody().validateRequest(staff)));
+        return new Response<>(new ModelResponse<>(staffService.saveStaff(request.getBody().buildModel(staff))));
     }
 
     @Put("/{id}/toggle")

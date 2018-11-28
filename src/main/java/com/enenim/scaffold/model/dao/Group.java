@@ -20,6 +20,15 @@ import java.util.Set;
 @Table(name = "groups")
 public class Group extends BaseModel {
 
+    public Group(){
+        super();
+    }
+
+    public Group(Long id){
+        super();
+        setId(id);
+    }
+
     @NotNull
     @Column(unique = true, length = 40)
     private String name; //System Testers

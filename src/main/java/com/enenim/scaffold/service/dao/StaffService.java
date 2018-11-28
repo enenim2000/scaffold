@@ -28,5 +28,4 @@ public class StaffService {
     public Staff saveStaff(Staff staff) {
         return staffRepository.save(staff);
     }
-
 }

@@ -4,21 +4,58 @@ import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.HolidayLogin;
 import com.enenim.scaffold.enums.WeekendLogin;
 import com.enenim.scaffold.model.BaseModel;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "staff")
 public class Staff extends BaseModel{
+
+    @NotNull
+    @Column(unique = true, length = 20)
+    @JsonProperty("employee_id")
+    private String employeeId;
+
+    @ManyToOne
+    private ActiveHour activeHour;
+
+    @NotNull
+    @Column(length = 60)
+    @JsonProperty("fullname")
+    private String fullName;
+
+    @NotNull
+    @Column(unique = true, length = 100)
+    private String email;
+
+    @JsonProperty("holiday_login")
+    private HolidayLogin holidayLogin;
+
+    @JsonProperty("weekend_login")
+    private WeekendLogin weekendLogin;
+
+    @NotNull
+    private EnabledStatus enabled = EnabledStatus.ENABLED;
+
+    @ManyToOne
+    private Branch branch;
+
+    @NotNull
+    @ManyToOne
+    private Group group;
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "staff", fetch = FetchType.LAZY)
+    private Set<Transaction> transactions = new HashSet<>();
 
     public Staff() {
     }
@@ -27,46 +64,4 @@ public class Staff extends BaseModel{
         super();
         this.setId(id);
     }
-
-    @NotNull
-    @ManyToOne
-    private Branch branch = null;
-
-    @NotNull
-    @ManyToOne
-    private Group group = null;
-
-    @NotNull
-    @Column(unique = true, length = 20)
-    @JsonProperty("employee_id")
-    private String employeeId = null;
-
-    @ManyToOne
-    private ActiveHour activeHour = null;
-
-    @NotNull
-    @Column(length = 60)
-    @JsonProperty("fullname")
-    private String fullName = null;
-
-    @NotNull
-    @Column(unique = true, length = 100)
-    private String email;
-
-    @JsonProperty("holiday_login")
-    private HolidayLogin holidayLogin = null;
-
-    @JsonProperty("weekend_login")
-    private WeekendLogin weekendLogin = null;
-
-    @NotNull
-    private EnabledStatus enabled = EnabledStatus.ENABLED;
-
-    /*@JsonBackReference
-    @OneToOne(mappedBy = "staff", fetch = FetchType.LAZY)
-    private TillProfile tillProfile;
-
-    @JsonBackReference
-    @OneToMany(mappedBy = "staff", fetch = FetchType.LAZY)
-    private Set<Transaction> transactions = new HashSet<>();*/
 }
