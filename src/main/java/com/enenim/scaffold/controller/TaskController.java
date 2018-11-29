@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import javax.validation.Valid;
 
@@ -28,10 +29,12 @@ import static com.enenim.scaffold.constant.RouteConstant.*;
 public class TaskController {
 
     private final TaskService taskService;
+    private final RequestMappingHandlerMapping requestMappingHandlerMapping;
 
     @Autowired
-    public TaskController(TaskService taskService) {
+    public TaskController(TaskService taskService, RequestMappingHandlerMapping requestMappingHandlerMapping) {
         this.taskService = taskService;
+        this.requestMappingHandlerMapping = requestMappingHandlerMapping;
     }
 
     @Get
@@ -60,6 +63,6 @@ public class TaskController {
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_TASK_SYNC)
     public Response<BooleanResponse> syncTasks() {
-        return new Response<>(new BooleanResponse(taskService.syncTask()));
+        return new Response<>(new BooleanResponse(taskService.syncTask(requestMappingHandlerMapping)));
     }
 }

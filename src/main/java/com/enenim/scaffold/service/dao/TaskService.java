@@ -17,12 +17,10 @@ import java.util.*;
 @Service
 public class TaskService {
     private final TaskRepository taskRepository;
-    private final RequestMappingHandlerMapping requestMappingHandlerMapping;
 
     @Autowired
-    public TaskService(TaskRepository taskRepository, RequestMappingHandlerMapping requestMappingHandlerMapping) {
+    public TaskService(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
-        this.requestMappingHandlerMapping = requestMappingHandlerMapping;
     }
 
     public Page<Task> getTasks(){
@@ -41,7 +39,7 @@ public class TaskService {
         taskRepository.deleteById(id);
     }
 
-    public boolean syncTask(){
+    public boolean syncTask(RequestMappingHandlerMapping requestMappingHandlerMapping){
         Map<RequestMappingInfo, HandlerMethod> endpoints = requestMappingHandlerMapping.getHandlerMethods();
         Iterator it = endpoints.entrySet().iterator();
         HandlerMethod handlerMethod;

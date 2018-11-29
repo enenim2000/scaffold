@@ -96,9 +96,7 @@ public class AuthorizationController {
     @Permission(ADMINISTRATION_AUTHORIZE_FORWARD)
     public Response<Authorization> forwardAuthorization(@PathVariable Long id){
         Authorization authorization = authorizationService.getAuthorization(id);
-        authorization.setAction("Forward Authorization");
         authorization.setStatus(AuthorizationStatus.FORWARDED);
-        RequestUtil.setAuthorizationStatus(AuthorizationStatus.FORWARDED);
         return new Response<>(authorizationService.saveAuthorization(authorization));
     }
 
@@ -106,10 +104,8 @@ public class AuthorizationController {
     @Permission(ADMINISTRATION_AUTHORIZE_APPROVE)
     public Response<Authorization> approveAuthorization(@PathVariable Long id){
         Authorization authorization = authorizationService.getAuthorization(id);
-        authorization.setAction("Approved Authorization");
         authorization.setStatus(AuthorizationStatus.AUTHORIZED);
         authorization.setStaff(new Staff(RequestUtil.getLoginToken().getUserId()));
-        RequestUtil.setAuthorizationStatus(AuthorizationStatus.AUTHORIZED);
         return new Response<>(authorizationService.saveAuthorization(authorization));
     }
 
@@ -118,17 +114,14 @@ public class AuthorizationController {
     public Response<Authorization> rejectAuthorization(@PathVariable Long id, @RequestBody String comment){
         if(StringUtils.isEmpty(comment))throw new ScaffoldException("invalid_comment");
         Authorization authorization = authorizationService.getAuthorization(id);
-        authorization.setAction("Rejected Authorization");
         authorization.setStatus(AuthorizationStatus.REJECTED);
         authorization.setComment(comment);
-        RequestUtil.setAuthorizationStatus(AuthorizationStatus.REJECTED);
         return new Response<>(authorizationService.saveAuthorization(authorization));
     }
 
     @Put("/forward")
     @Permission(ADMINISTRATION_AUTHORIZE_FORWARD)
     public Response<Collection<Authorization>> forwardManyAuthorization(List<Long> authorizationIds){
-        RequestUtil.setAuthorizationStatus(AuthorizationStatus.FORWARDED);
         List<Authorization> authorizations = authorizationService.saveAuthorizations(buildDependencies(authorizationIds));
         return new Response<>(authorizations);
     }
@@ -137,11 +130,9 @@ public class AuthorizationController {
         List<Authorization> authorizations = new ArrayList<>();
         for(Long authorizationId : authorizationIds){
             Authorization authorization = new Authorization(authorizationId);
-            authorization.setAction("Forwarded Authorization");
             authorization.setStatus(AuthorizationStatus.FORWARDED);
             authorizations.add(authorization);
         }
         return authorizations;
     }
-
 }
