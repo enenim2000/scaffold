@@ -21,7 +21,7 @@ public class MailSignUpService implements IMailService {
     }
 
     @Override
-    @Async("processExecutor")
+    @Async
     public void send(Object obj){
         Consumer consumer = (Consumer)obj;
         String code = CommonUtil.getCode();
