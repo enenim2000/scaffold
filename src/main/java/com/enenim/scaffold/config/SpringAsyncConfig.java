@@ -11,7 +11,7 @@ import java.util.concurrent.Executor;
 @EnableAsync(proxyTargetClass=true)
 public class SpringAsyncConfig {
 
-    @Bean(name = "processExecutor")
+    @Bean(name = "taskExecutor")
     public Executor threadPoolTaskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(5);

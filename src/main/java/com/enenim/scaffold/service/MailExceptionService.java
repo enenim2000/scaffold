@@ -23,7 +23,7 @@ public class MailExceptionService  implements IMailService {
     }
 
     @Override
-    @Async("processExecutor")
+    @Async
     public void send(Object obj){
         Exception exception = new Exception();
         Mail mail = new Mail();

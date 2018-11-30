@@ -16,7 +16,7 @@ public class MailTransactionService implements IMailService {
     }
 
     @Override
-    @Async("processExecutor")
+    @Async
     public void send(Object obj){
         Mail mail = new Mail();
         mail.setTo("enenim2000@yahoo.com,basso4real2000@gmail.com");
