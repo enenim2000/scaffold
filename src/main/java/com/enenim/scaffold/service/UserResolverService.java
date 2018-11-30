@@ -11,6 +11,7 @@ import com.enenim.scaffold.service.dao.BillerService;
 import com.enenim.scaffold.service.dao.ConsumerService;
 import com.enenim.scaffold.service.dao.StaffService;
 import com.enenim.scaffold.util.RequestUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,6 +20,7 @@ public class UserResolverService {
     private final BillerService billerService;
     private final ConsumerService consumerService;
 
+    @Autowired
     public UserResolverService(StaffService staffService, BillerService billerService, ConsumerService consumerService) {
         this.staffService = staffService;
         this.billerService = billerService;
