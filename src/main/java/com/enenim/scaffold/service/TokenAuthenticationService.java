@@ -17,7 +17,6 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -82,7 +81,7 @@ public class TokenAuthenticationService {
         saveToken(token);
     }
 
-    @Async
+    //@Async
     public void saveToken(LoginCache token){
         loginCacheService.save(token);
     }

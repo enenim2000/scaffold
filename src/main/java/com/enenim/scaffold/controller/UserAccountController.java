@@ -84,6 +84,9 @@ public class UserAccountController {
 		loginCache.setLastLoggedIn(date);
 		loginCache.setUserType(login.getUserType());
 		loginCache.setUserId(login.getUserId());
+		loginCache.setUsername(login.getUsername());
+
+		System.out.println("loginCache = " + loginCache);
 
 		return loginCache;
 	}

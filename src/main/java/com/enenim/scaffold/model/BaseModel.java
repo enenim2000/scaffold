@@ -53,25 +53,13 @@ public abstract class BaseModel extends ResponseBody implements Serializable {
      * This property is added getTo know if auditing should be skipped at runtime
      */
     @Transient
-    public static boolean skipAuditing = false;
+    public static boolean skipAudit = false;
 
     /**
      * This property is added getTo know if authorization should be skipped at runtime
      */
     @Transient
     public static boolean skipAuthorization = false;
-
-    /**
-     * This property is added getTo accept custom message at runtime, e.g Updated Sharing Formula, Created Active Hour
-     */
-    @Transient
-    public static String userAction = "";
-
-    /**
-     * This property is added getTo accept CRUD crudAction at runtime, e.g create, update, toggle, delete
-     */
-    @Transient
-    public static String crudAction = "";
 
     /**
      * This property is added getTo accept response message at runtime, e.g Attempt getTo create item is pending authorization, Item created successfully
@@ -92,7 +80,7 @@ public abstract class BaseModel extends ResponseBody implements Serializable {
     public static Object toggle = null;
 
     public void skipAudit(boolean status){
-        skipAuditing = status;
+        skipAudit = status;
     }
 
     public void skipAuthorization(boolean status){

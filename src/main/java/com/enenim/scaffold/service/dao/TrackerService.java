@@ -5,7 +5,6 @@ import com.enenim.scaffold.repository.dao.TrackerRepository;
 import com.enenim.scaffold.util.PageRequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,8 +24,8 @@ public class TrackerService {
         return trackerRepository.findOrFail(id);
     }
 
-    @Async
     public void saveTracker(Tracker tracker){
+        System.out.println("tracker = " + tracker);
         trackerRepository.save(tracker);
     }
 

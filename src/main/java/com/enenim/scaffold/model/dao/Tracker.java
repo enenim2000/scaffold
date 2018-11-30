@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Column;
@@ -21,18 +22,18 @@ import java.util.Date;
 @Setter
 @Entity
 @Table(name = "trackers")
+@ToString
 public class Tracker extends BaseModel {
     public Tracker(){}
 
     public Tracker (Login login, Date date){
-        Tracker tracker = new Tracker();
-        tracker.setDateLoggedIn(date);
-        tracker.setIpAddress(RequestUtil.getIpAddress());
-        tracker.setUserAgent(RequestUtil.getUserAgent());
-        tracker.setLoggedIn(LoggedIn.USER_LOGGED_IN);
-        tracker.setSessionId(new BCryptPasswordEncoder().encode(date.toString()) + Math.random());
-        tracker.setFailedAttempts(0);
-        tracker.setLogin(login);
+        setDateLoggedIn(date);
+        setIpAddress(RequestUtil.getIpAddress());
+        setUserAgent(RequestUtil.getUserAgent());
+        setLoggedIn(LoggedIn.USER_LOGGED_IN);
+        setSessionId(new BCryptPasswordEncoder().encode(date.toString()) + Math.random());
+        setFailedAttempts(0);
+        setLogin(login);
     }
 
     @NonNull
