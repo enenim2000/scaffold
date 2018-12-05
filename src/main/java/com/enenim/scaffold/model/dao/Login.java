@@ -58,6 +58,6 @@ public class Login extends BaseModel {
     private Set<PasswordReset> passwordResets = new HashSet<>();
 
     @JsonBackReference
-    @OneToOne(mappedBy = "login", fetch = FetchType.LAZY)
-    private Tracker tracker;
+    @OneToMany(mappedBy = "login", fetch = FetchType.LAZY)
+    private Set<Tracker> trackers = new HashSet<>();
 }

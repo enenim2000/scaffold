@@ -3,6 +3,7 @@ package com.enenim.scaffold.model.dao;
 import com.enenim.scaffold.enums.LoggedIn;
 import com.enenim.scaffold.model.BaseModel;
 import com.enenim.scaffold.util.RequestUtil;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NonNull;
@@ -12,7 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
@@ -33,14 +34,11 @@ public class Tracker extends BaseModel {
         setLoggedIn(LoggedIn.USER_LOGGED_IN);
         setSessionId(new BCryptPasswordEncoder().encode(date.toString()) + Math.random());
         setFailedAttempts(0);
+        login.setPassword(null);
         setLogin(login);
     }
 
-    @NonNull
-    @OneToOne
-    private Login login;
-
-    @Column(length = 200)
+    @Column(length = 200, unique = true)
     @JsonProperty("session_id")
     private String sessionId;
 
@@ -68,4 +66,9 @@ public class Tracker extends BaseModel {
     @NotNull
     @JsonProperty("logged_in")
     private LoggedIn loggedIn = LoggedIn.USER_NOT_LOGGED_IN;
+
+    @NonNull
+    @ManyToOne
+    @JsonManagedReference
+    private Login login;
 }

@@ -2,9 +2,7 @@ package com.enenim.scaffold.util.setting;
 
 import com.enenim.scaffold.model.cache.SettingCache;
 import com.enenim.scaffold.model.dao.Setting;
-import com.enenim.scaffold.service.dao.ActiveHourService;
 import com.enenim.scaffold.shared.IdName;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,8 +11,8 @@ import java.util.Map;
 
 public class SettingCacheCoreUtil {
 
-    @Autowired
-    private static ActiveHourService activeHourService;
+//    @Autowired
+//    private static ActiveHourService activeHourService;
 
     private static Map<String, String> PAYLOAD_YES_NO = new HashMap<String, String>() {{put("yes", "YES"); put("no", "NO");}};
     private static Map<String, String> PAYLOAD_YES_ONE = new HashMap<String, String>() {{put("1", "Yes"); put("0", "No");}};
@@ -51,7 +49,7 @@ public class SettingCacheCoreUtil {
     private static final List<SettingCache> SETTINGS = new ArrayList<SettingCache>(){{
         add( new SettingCache(category(0), "ad_service", "Active Directory Service",  "no", PAYLOAD_YES_NO,  null) );
         add( new SettingCache(category(0), "enable_login", "Enable Login",  "yes", PAYLOAD_YES_NO,  null) );
-        add( new SettingCache(category(0), "def_active_hour", "Default Active Hour",  "1", activeHourService.options(),  null) );
+        //add( new SettingCache(category(0), "def_active_hour", "Default Active Hour",  "1", activeHourService.options(),  null) );
         add( new SettingCache(category(0), "dormant_period", "Staff Dormant Period in days",  "60", null,  "required|integer") );
 
 

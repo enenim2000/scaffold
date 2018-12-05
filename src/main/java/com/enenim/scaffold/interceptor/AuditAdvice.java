@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.PersistenceContext;
+import java.io.IOException;
 
 import static com.enenim.scaffold.constant.CommonConstant.PLACE_HOLDER;
 import static com.enenim.scaffold.constant.ModelFieldConstant.*;
@@ -42,7 +43,7 @@ public class AuditAdvice {
         this.taskService = taskService;
     }
 
-    private Object intercept(ProceedingJoinPoint jp, Object entity, Audit audit){
+    private Object intercept(ProceedingJoinPoint jp, Object entity, Audit audit) throws IOException {
         Toggle toggle = (Toggle) ReflectionUtil.getFieldValue(entity.getClass(), TOGGLE, entity);
         boolean skipAudit, skipAuthorization;
         if(toggle != null){
@@ -155,7 +156,7 @@ public class AuditAdvice {
     }
 
     @Around("execution(* javax.persistence.EntityManager.persist(..)) && !execution(* javax.persistence.EntityManager.persist(com.enenim.scaffold.model.dao.Audit)) && !execution(* javax.persistence.EntityManager.persist(com.enenim.scaffold.model.dao.Authorization))" + " && args(entity,..)")
-    public Object interceptCreate(ProceedingJoinPoint jp, Object entity) {
+    public Object interceptCreate(ProceedingJoinPoint jp, Object entity) throws IOException {
         Audit audit = new Audit();
         audit.setCrudAction("Create");
         audit.setUserAction(EntityMessage.msg("audit_create").replace(PLACE_HOLDER, EntityMessage.msg(entity.getClass().getSimpleName())));
@@ -163,7 +164,7 @@ public class AuditAdvice {
     }
 
     @Around("execution(* javax.persistence.EntityManager.merge(..)) && !execution(* javax.persistence.EntityManager.merge(com.enenim.scaffold.model.dao.Audit)) && !execution(* javax.persistence.EntityManager.merge(com.enenim.scaffold.model.dao.Authorization))" + " && args(entity,..)")
-    public Object interceptUpdate(ProceedingJoinPoint jp, Object entity) {
+    public Object interceptUpdate(ProceedingJoinPoint jp, Object entity) throws IOException {
         Audit audit = new Audit();
         audit.setCrudAction("Update");
         audit.setUserAction(EntityMessage.msg("audit_update").replace(PLACE_HOLDER, EntityMessage.msg(entity.getClass().getSimpleName())));
@@ -171,7 +172,7 @@ public class AuditAdvice {
     }
 
     @Around("execution(* javax.persistence.EntityManager.remove(..)) && !execution(* javax.persistence.EntityManager.remove(com.enenim.scaffold.model.dao.Audit)) && !execution(* javax.persistence.EntityManager.remove(com.enenim.scaffold.model.dao.Authorization))" + " && args(entity,..)")
-    public Object interceptDelete(ProceedingJoinPoint jp, Object entity) {
+    public Object interceptDelete(ProceedingJoinPoint jp, Object entity) throws IOException {
         Audit audit = new Audit();
         audit.setCrudAction("Delete");
         audit.setUserAction(EntityMessage.msg("audit_delete").replace(PLACE_HOLDER, EntityMessage.msg(entity.getClass().getSimpleName())));

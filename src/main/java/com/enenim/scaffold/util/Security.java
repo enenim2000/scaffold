@@ -1,10 +1,10 @@
 package com.enenim.scaffold.util;
 
+import com.enenim.scaffold.util.message.SpringMessage;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.StringUtils;
 
 import javax.crypto.Cipher;
@@ -14,8 +14,7 @@ public class Security{
 
 	private static final Logger logger = LoggerFactory.getLogger(Security.class);
 
-	@Value("${security_decode_key}")
-    private static String KEY;
+    private static String KEY = SpringMessage.msg("security_decode_key");
 
 	private static String encrypt(String input, String key){
         byte[] crypted = null;

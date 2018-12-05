@@ -16,6 +16,8 @@ import com.enenim.scaffold.service.TokenAuthenticationService;
 import com.enenim.scaffold.service.UserResolverService;
 import com.enenim.scaffold.service.dao.LoginService;
 import com.enenim.scaffold.service.dao.TrackerService;
+import com.enenim.scaffold.util.RequestUtil;
+import com.enenim.scaffold.util.message.CommonMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -52,6 +54,8 @@ public class UserAccountController {
 
 	@Post("/authenticate")
 	public Response<StringResponse> accountAuth(@Valid @RequestBody Request<LoginRequest> request) {
+		RequestUtil.setCommonRequestProperties(request);
+		RequestUtil.setMessage(CommonMessage.msg("successful_logged_in"));
 		Login login = loginService.getLoginByUsername(request.getBody().getUsername());
 		if (!StringUtils.isEmpty(login) && bCryptPasswordEncoder.matches(request.getBody().getPassword(), login.getPassword())) {
 			if (login.getStatus() == LoginStatus.DISABLED) {
@@ -85,8 +89,6 @@ public class UserAccountController {
 		loginCache.setUserType(login.getUserType());
 		loginCache.setUserId(login.getUserId());
 		loginCache.setUsername(login.getUsername());
-
-		System.out.println("loginCache = " + loginCache);
 
 		return loginCache;
 	}

@@ -79,6 +79,7 @@ public class LoginCacheService implements LoginCacheRepository {
             }
         }
 
+        System.out.println(" session id in save = " + data.getTracker().getSessionId());
         records.put(data.getTracker().getSessionId(), data);
         hashOps.put(LOGIN, id, records);
     }

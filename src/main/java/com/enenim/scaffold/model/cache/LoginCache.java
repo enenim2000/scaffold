@@ -38,15 +38,15 @@ public class LoginCache {
     private HashMap<String, Object> globalSettings = new HashMap<>();
 
     @JsonProperty(ModelFieldConstant.CREATED_AT)
-    private java.sql.Date createdAt;
+    private Date createdAt;
 
     @JsonProperty(ModelFieldConstant.UPDATED_AT)
-    private java.sql.Date updatedAt;
+    private Date updatedAt;
 
     /**
      * This is use for token expiration time
      */
-    private java.util.Date created;
+    private Date created;
 
     public boolean hasExpired(long idleTimeout) {
         if(getCreated() == null){

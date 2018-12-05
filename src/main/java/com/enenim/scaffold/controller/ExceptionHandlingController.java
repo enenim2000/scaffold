@@ -54,7 +54,7 @@ public class ExceptionHandlingController {
 
     @ExceptionHandler(UnAuthorizedException.class)
     public ResponseEntity<ExceptionResponse> unAuthorized(UnAuthorizedException ex) {
-        mailTypeResolverService.send(ex);
+        //mailTypeResolverService.send(ex);
         ExceptionResponse response = new ExceptionResponse();
         response.setErrorCode(HttpStatus.UNAUTHORIZED.toString());
         response.setMessage(ex.getMessage());
@@ -64,7 +64,7 @@ public class ExceptionHandlingController {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ExceptionResponse> exception(Exception ex) {
         String msgPrefix = "Exception occur, details => ";
-        mailTypeResolverService.send(ex);
+        //mailTypeResolverService.send(ex);
         ExceptionResponse response = new ExceptionResponse();
         response.setErrorCode(HttpStatus.INTERNAL_SERVER_ERROR.toString());
         response.setMessage(ex, msgPrefix);

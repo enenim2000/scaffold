@@ -4,7 +4,6 @@ package com.enenim.scaffold.interceptor;
 import com.enenim.scaffold.annotation.DataDecrypt;
 import com.enenim.scaffold.annotation.Permission;
 import com.enenim.scaffold.annotation.Role;
-import com.enenim.scaffold.constant.CommonConstant;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
@@ -19,13 +18,10 @@ import com.enenim.scaffold.service.UserResolverService;
 import com.enenim.scaffold.service.dao.PaymentChannelService;
 import com.enenim.scaffold.service.dao.TaskService;
 import com.enenim.scaffold.shared.Channel;
-import com.enenim.scaffold.util.CommonUtil;
 import com.enenim.scaffold.util.RequestUtil;
-import com.enenim.scaffold.util.Security;
 import com.enenim.scaffold.util.message.SpringMessage;
 import com.enenim.scaffold.util.setting.SettingCacheCoreService;
 import lombok.Data;
-import org.apache.commons.io.IOUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -37,11 +33,7 @@ import org.springframework.web.util.ContentCachingResponseWrapper;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.Map;
 import java.util.Optional;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
 
 @Component
 public class AuthenticationInterceptor implements HandlerInterceptor {
@@ -76,14 +68,14 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         HandlerMethod handlerMethod = (HandlerMethod)handler;
 
+        InterceptorParamater interceptorParamater = new InterceptorParamater(request, response, handler);
+
         /*
          * Added to allow none secured route to be accessible
          */
         if(!isSecuredRoute(handlerMethod)) return true;
 
         validateToken();
-
-        InterceptorParamater interceptorParamater = new InterceptorParamater(request, response, handler);
 
         if(handlerMethod.getMethod().isAnnotationPresent(Role.class)){
             validateRole(interceptorParamater);
@@ -156,7 +148,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             HandlerMethod handlerMethod = (HandlerMethod)interceptorParamater.getHandler();
             String route = handlerMethod.getMethod().getAnnotation(Permission.class).value();
 
-            if(!RequestUtil.getLoginToken().getUsername().equalsIgnoreCase("system")){
+            if(!staff.getGroup().getRole().equalsIgnoreCase("System")){
                 if(!staff.getGroup().getTasks().contains( taskService.getTaskByRoute(route) )) {
                     throw new ScaffoldException("access_denied", HttpStatus.FORBIDDEN);
                 }
@@ -182,40 +174,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             this.request = new ContentCachingRequestWrapper(httpServletRequest);
             this.response = new ContentCachingResponseWrapper(httpServletResponse);
             this.handler = handler;
-            try {
-                buildRequestUtil(request);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        private void buildRequestUtil(ContentCachingRequestWrapper requestWrapper) throws IOException {
-            String requestBody = IOUtils.toString(requestWrapper.getInputStream(), UTF_8);
-
-            System.out.println("requestBody = " + requestBody);
-
-            String ipAddress;
-            String userAgent;
-
-            Map<String, Object> requestMap = CommonUtil.toMap(requestBody);
-
-            if(requestMap.containsKey(CommonConstant.IP_ADDRESS)){
-                ipAddress = (String) requestMap.get(CommonConstant.IP_ADDRESS);
-            }else {
-                ipAddress = requestWrapper.getParameter(CommonConstant.IP_ADDRESS);
-            }
-
-            if(requestMap.containsKey(CommonConstant.USER_AGENT)){
-                userAgent = (String) requestMap.get(CommonConstant.USER_AGENT);
-            }else {
-                userAgent = requestWrapper.getParameter(CommonConstant.USER_AGENT);
-            }
-
             RequestUtil.setLang(SpringMessage.msg("lang"));
-            RequestUtil.setUserAgent(userAgent);
-            RequestUtil.setIpAdress(ipAddress);
-            RequestUtil.setRequestBody(requestBody);
-            RequestUtil.setRID(Security.encypt(requestWrapper.getRequestURI() + requestBody + requestWrapper.getMethod()));
             RequestUtil.setAuthorization(null);
         }
     }
