@@ -3,6 +3,7 @@ package com.enenim.scaffold.util.setting;
 import com.enenim.scaffold.model.cache.SettingCache;
 import com.enenim.scaffold.model.dao.Setting;
 import com.enenim.scaffold.shared.IdName;
+import com.enenim.scaffold.util.JsonConverter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,8 +12,8 @@ import java.util.Map;
 
 public class SettingCacheCoreUtil {
 
-//    @Autowired
-//    private static ActiveHourService activeHourService;
+    //@Autowired
+    //private static ActiveHourService activeHourService;
 
     private static Map<String, String> PAYLOAD_YES_NO = new HashMap<String, String>() {{put("yes", "YES"); put("no", "NO");}};
     private static Map<String, String> PAYLOAD_YES_ONE = new HashMap<String, String>() {{put("1", "Yes"); put("0", "No");}};
@@ -87,7 +88,11 @@ public class SettingCacheCoreUtil {
 
     public static Map<String, SettingCache> getSettingMap(){
         Map<String, SettingCache> settings = new HashMap<>();
-        SETTINGS.forEach((setting)-> settings.put(setting.getKey(), setting));
+        SETTINGS.forEach((setting)->{
+            System.out.println("setting.getKey() = " + setting.getKey());
+            settings.put(setting.getKey(), setting);
+        });
+        System.out.println("JsonConverter.getJsonRecursive(settings) = " + JsonConverter.getJsonRecursive(settings));
         return settings;
     }
 

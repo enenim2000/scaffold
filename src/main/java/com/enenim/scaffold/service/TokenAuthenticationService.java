@@ -28,7 +28,7 @@ import static com.enenim.scaffold.constant.ModelFieldConstant.ID;
 
 @Service
 public class TokenAuthenticationService {
-    private static final long EXPIRATION_TIME = 1000 * 60 * 60 * 24 * 7; // 7 days
+    private static final long EXPIRATION_TIME = 1000 * 60 * 20; //20mins//1000 * 60 * 60 * 24 * 7; // 7 days
 
     private static final String TRACKER = "tracker";
 
@@ -57,7 +57,7 @@ public class TokenAuthenticationService {
         String token = RequestUtil.getRequest().getHeader(HEADER_STRING);
         System.out.println("token in getToken = " + token);
 
-        if(StringUtils.isEmpty(token))throw new UnAuthorizedException("invalid_token_request");
+        if(StringUtils.isEmpty(token))throw new UnAuthorizedException("invalid_token");
         return token.split(" ")[1];
     }
 
@@ -81,8 +81,11 @@ public class TokenAuthenticationService {
 
             System.out.println(" loginCacheService.get(String.valueOf(id)) = " + JsonConverter.getJsonRecursive(loginCacheService.get(String.valueOf(id))));
 
-            System.out.println("loginCacheService.get(String.valueOf(id)).get(sessionId) = " + JsonConverter.getJsonRecursive(loginCacheService.get(String.valueOf(id)).get(sessionId)));
+            //System.out.println("loginCacheService.get(String.valueOf(id)).get(sessionId) = " + JsonConverter.getJsonRecursive(loginCacheService.get(String.valueOf(id)).get(sessionId)));
 
+            if(StringUtils.isEmpty(loginCacheService.get(String.valueOf(id)))){
+                throw new ScaffoldException("session_expired");
+            }
             Object loginCache = loginCacheService.get(String.valueOf(id)).get(sessionId);
 
             System.out.println("loginCache = " + JsonConverter.getJsonRecursive(loginCache));
