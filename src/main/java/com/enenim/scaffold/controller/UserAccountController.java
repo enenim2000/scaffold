@@ -76,13 +76,15 @@ public class UserAccountController {
 	private LoginCache buildLoginToken(Login login){
 		Date date = new Date();
 		Tracker tracker = new Tracker(login, date);
-		tracker.setDateLoggedIn(date);
 
 		LoginCache loginCache = new LoginCache();
 		loginCache.setCreated(date);
 		loginCache.setGlobalSettings(getGlobalSettings());
 		loginCache.setUser(userResolverService.getUser(login.getUserType(), login.getUserId()));
 		loginCache.setTracker(tracker);
+
+		System.out.println("tracker = " + tracker);
+
 		loginCache.setEnabled(EnabledStatus.ENABLED);
 		loginCache.setId(login.getId());
 		loginCache.setLastLoggedIn(date);
