@@ -2,6 +2,7 @@ package com.enenim.scaffold.service.cache;
 
 import com.enenim.scaffold.model.cache.LoginCache;
 import com.enenim.scaffold.repository.cache.LoginCacheRepository;
+import com.enenim.scaffold.util.JsonConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.HashOperations;
@@ -36,9 +37,13 @@ public class LoginCacheService implements LoginCacheRepository {
         hashOps = redisTemplate.opsForHash();
     }
 
+    /**
+     * This allows us to get all active session using a particular group
+     * say all those currently using system, identified by h = login.getId()
+     */
     @Override
-    public Map<String, LoginCache> get(String id) {
-        return hashOps.get(LOGIN, id);
+    public Map<String, LoginCache> get(String h) {
+        return hashOps.get(LOGIN, h);
     }
 
     @Override
@@ -69,6 +74,7 @@ public class LoginCacheService implements LoginCacheRepository {
     }
 
     public void save(LoginCache data) {
+        System.out.println(" loginToken in save = " + JsonConverter.getJsonRecursive(data));
         String id = String.valueOf(data.getId());
         Map<String, LoginCache> records = new HashMap<>();
 
@@ -79,7 +85,6 @@ public class LoginCacheService implements LoginCacheRepository {
             }
         }
 
-        System.out.println(" session id in save = " + data.getTracker().getSessionId());
         records.put(data.getTracker().getSessionId(), data);
         hashOps.put(LOGIN, id, records);
     }
