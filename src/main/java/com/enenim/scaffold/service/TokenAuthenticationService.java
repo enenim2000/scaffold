@@ -7,7 +7,6 @@ import com.enenim.scaffold.model.cache.LoginCache;
 import com.enenim.scaffold.model.dao.Login;
 import com.enenim.scaffold.service.cache.LoginCacheService;
 import com.enenim.scaffold.util.JsonConverter;
-import com.enenim.scaffold.util.ObjectMapperUtil;
 import com.enenim.scaffold.util.RequestUtil;
 import com.enenim.scaffold.util.message.SpringMessage;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -88,9 +87,13 @@ public class TokenAuthenticationService {
             }
             Object loginCache = loginCacheService.get(String.valueOf(id)).get(sessionId);
 
-            System.out.println("loginCache = " + JsonConverter.getJsonRecursive(loginCache));
+            System.out.println("loginToken before typecast = " + JsonConverter.getJsonRecursive(loginCache));
 
-            return ObjectMapperUtil.map(loginCache, LoginCache.class);
+            ObjectMapper mapper = new ObjectMapper();
+            byte[] json = mapper.writeValueAsBytes(loginCache);
+            LoginCache loginToken  = mapper.readValue(json, LoginCache.class);
+            System.out.println("loginToken after typecast = " + loginToken);
+            return loginToken;
         }catch (ExpiredJwtException e) {
             throw new UnAuthorizedException("expired_token");
         } catch (Exception e) {
