@@ -18,7 +18,6 @@ import com.enenim.scaffold.service.UserResolverService;
 import com.enenim.scaffold.service.dao.PaymentChannelService;
 import com.enenim.scaffold.service.dao.TaskService;
 import com.enenim.scaffold.shared.Channel;
-import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.RequestUtil;
 import com.enenim.scaffold.util.message.SpringMessage;
 import com.enenim.scaffold.util.setting.SettingCacheCoreService;
@@ -126,8 +125,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         if(loginToken.hasExpired(Long.valueOf(settingCache.getValue())))throw new ScaffoldException("session_expired");
 
         tokenAuthenticationService.validateLoginStatus(loginToken.getTracker().getLogin());
-
-        System.out.println("JsonConverter.getJsonRecursive(loginToken) = " + JsonConverter.getJsonRecursive(loginToken));
 
         tokenAuthenticationService.refreshToken(loginToken);
 

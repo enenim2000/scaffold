@@ -92,7 +92,7 @@ public class TokenAuthenticationService {
 
             System.out.println("loginCache typecast = " + JsonConverter.getJsonRecursive(ObjectMapperUtil.map(loginCache, LoginCache.class)));
 
-            return ObjectMapperUtil.map(loginCache, LoginCache.class);
+            return (LoginCache)loginCache;
         }catch (ExpiredJwtException e) {
             throw new UnAuthorizedException("expired_token");
         } catch (Exception e) {
