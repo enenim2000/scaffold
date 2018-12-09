@@ -63,9 +63,11 @@ public class UserAccountController {
 			} else if (login.getStatus() == LoginStatus.LOCKED) {
 				throw new ScaffoldException("blocked_account");
 			} else {
-				LoginCache loginToken = buildLoginToken(login);
+				Date date = new Date();
+				Tracker tracker = new Tracker(login, date);
+				LoginCache loginToken = buildLoginToken(login, date, tracker);
 				String token = tokenAuthenticationService.encodeToken(loginToken);
-				trackerService.saveTracker(loginToken.getTracker());
+				trackerService.saveTracker(tracker);
 				tokenAuthenticationService.saveToken(loginToken);
 				return new Response<>(new StringResponse(token));
 			}
@@ -73,16 +75,19 @@ public class UserAccountController {
 		throw new UnAuthorizedException("invalid_login");
 	}
 
-	private LoginCache buildLoginToken(Login login){
-		Date date = new Date();
-		Tracker tracker = new Tracker(login, date);
-		tracker.setDateLoggedIn(date);
-
+	private LoginCache buildLoginToken(Login login, Date date, Tracker tracker){
 		LoginCache loginCache = new LoginCache();
 		loginCache.setCreated(date);
 		loginCache.setGlobalSettings(getGlobalSettings());
 		loginCache.setUser(userResolverService.getUser(login.getUserType(), login.getUserId()));
-		loginCache.setTracker(tracker);
+		loginCache.setLoginStatus(login.getStatus());
+		loginCache.setSessionId(tracker.getSessionId());
+		loginCache.setDateLoggedIn(tracker.getDateLoggedIn());
+		loginCache.setDateLoggedOut(tracker.getDateLoggedOut());
+		loginCache.setIpAddress(tracker.getIpAddress());
+		loginCache.setUserAgent(tracker.getUserAgent());
+		loginCache.setTimeOfLastActivity(tracker.getTimeOfLastActivity());
+		loginCache.setFailedAttempts(tracker.getFailedAttempts());
 		loginCache.setEnabled(EnabledStatus.ENABLED);
 		loginCache.setId(login.getId());
 		loginCache.setLastLoggedIn(date);

@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 
+import static com.enenim.scaffold.constant.CommonConstant.DATE_FORMAT;
+
 public class JsonConverter {
     public static <T> T getElement(String value, Class<T> clazz) {
         return getGson().fromJson(value, clazz);
@@ -41,7 +43,9 @@ public class JsonConverter {
     }
 
     private static Gson getGson(){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        //SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz");
+        SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
         dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
         GsonBuilder gsonBuilder = new GsonBuilder().setDateFormat(dateFormat.toPattern());
         gsonBuilder.registerTypeAdapter(new TypeToken<Map<String, Object>>(){}.getType(),  new MapDeserializerDoubleAsIntFix());

@@ -46,6 +46,21 @@ public class LoginCacheService implements LoginCacheRepository {
         return hashOps.get(LOGIN, h);
     }
 
+    /**
+     *
+     * @param h = login.id
+     * @param hk = login.tracker.sessionId
+     * @return LoginCache
+     */
+    public LoginCache get(String h, String hk) {
+        Map<String, LoginCache> loginsPerGroup = hashOps.get(LOGIN, h);
+        if(!StringUtils.isEmpty(loginsPerGroup) && !loginsPerGroup.entrySet().isEmpty()){
+            System.out.println(" loginToken in get(hk) = " + JsonConverter.getJsonRecursive(loginsPerGroup.get(hk)));
+            return loginsPerGroup.get(hk);
+        }
+        return null;
+    }
+
     @Override
     public List<Map<String, LoginCache>> get() {
         return hashOps.values(LOGIN);
@@ -85,7 +100,7 @@ public class LoginCacheService implements LoginCacheRepository {
             }
         }
 
-        records.put(data.getTracker().getSessionId(), data);
+        records.put(data.getSessionId(), data);
         hashOps.put(LOGIN, id, records);
     }
 

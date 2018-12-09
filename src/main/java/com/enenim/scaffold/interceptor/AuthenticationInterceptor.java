@@ -10,11 +10,13 @@ import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.exception.UnAuthorizedException;
 import com.enenim.scaffold.model.cache.LoginCache;
 import com.enenim.scaffold.model.cache.SettingCache;
+import com.enenim.scaffold.model.dao.Login;
 import com.enenim.scaffold.model.dao.PaymentChannel;
 import com.enenim.scaffold.model.dao.Staff;
 import com.enenim.scaffold.service.ApiKeyService;
 import com.enenim.scaffold.service.TokenAuthenticationService;
 import com.enenim.scaffold.service.UserResolverService;
+import com.enenim.scaffold.service.dao.LoginService;
 import com.enenim.scaffold.service.dao.PaymentChannelService;
 import com.enenim.scaffold.service.dao.TaskService;
 import com.enenim.scaffold.shared.Channel;
@@ -44,14 +46,16 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     private final ApiKeyService apiKeyService;
     private final PaymentChannelService paymentChannelService;
     private final TaskService taskService;
+    private final LoginService loginService;
 
-    public AuthenticationInterceptor(TokenAuthenticationService tokenAuthenticationService, SettingCacheCoreService settingCacheCoreService, UserResolverService userResolverService, ApiKeyService apiKeyService, PaymentChannelService paymentChannelService, TaskService taskService) {
+    public AuthenticationInterceptor(TokenAuthenticationService tokenAuthenticationService, SettingCacheCoreService settingCacheCoreService, UserResolverService userResolverService, ApiKeyService apiKeyService, PaymentChannelService paymentChannelService, TaskService taskService, LoginService loginService) {
         this.tokenAuthenticationService = tokenAuthenticationService;
         this.settingCacheCoreService = settingCacheCoreService;
         this.userResolverService = userResolverService;
         this.apiKeyService = apiKeyService;
         this.paymentChannelService = paymentChannelService;
         this.taskService = taskService;
+        this.loginService = loginService;
     }
 
     @Override
@@ -77,6 +81,8 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         validateToken();
 
+        System.out.println(" after validateToken();");
+
         if(handlerMethod.getMethod().isAnnotationPresent(Role.class)){
             validateRole(interceptorParamater);
         }
@@ -89,6 +95,8 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         if(handlerMethod.getMethod().isAnnotationPresent(DataDecrypt.class)){
             decrypt(interceptorParamater);
         }
+
+        System.out.println(" about to return true");
 
         return true;
     }
@@ -124,13 +132,15 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         if(loginToken.hasExpired(Long.valueOf(settingCache.getValue())))throw new ScaffoldException("session_expired");
 
-        tokenAuthenticationService.validateLoginStatus(loginToken.getTracker().getLogin());
+        Login login = loginService.getLogin(loginToken.getId());
+
+        tokenAuthenticationService.validateLoginStatus(login);
 
         tokenAuthenticationService.refreshToken(loginToken);
 
         RequestUtil.setLoginToken(loginToken);
 
-        RequestUtil.setLogin(loginToken.getTracker().getLogin());
+        RequestUtil.setLogin(login);
     }
 
     private void validateRole(InterceptorParamater interceptorParamater){

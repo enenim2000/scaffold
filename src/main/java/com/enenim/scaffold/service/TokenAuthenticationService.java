@@ -4,7 +4,9 @@ import com.enenim.scaffold.enums.LoginStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.exception.UnAuthorizedException;
 import com.enenim.scaffold.model.cache.LoginCache;
+import com.enenim.scaffold.model.dao.Consumer;
 import com.enenim.scaffold.model.dao.Login;
+import com.enenim.scaffold.model.dao.Tracker;
 import com.enenim.scaffold.service.cache.LoginCacheService;
 import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.ObjectMapperUtil;
@@ -64,35 +66,26 @@ public class TokenAuthenticationService {
     public LoginCache decodeToken() {
         try {
             String token = getToken();
-            System.out.println("decoded token = " + token);
             Claims claims;
             claims = Jwts.parser()
                     .setSigningKey(TOKEN_KEY)
                     .parseClaimsJws(token).getBody();
-            System.out.println("claims = " + JsonConverter.getJsonRecursive(claims));
             Long id = Long.valueOf(String.valueOf(claims.get(ID)));
-            System.out.println("tracker before conversion= " + JsonConverter.getJsonRecursive(claims.get(TRACKER)));
 
-            Map<String, Object> tracker = new ObjectMapper().convertValue(claims.get(TRACKER), new TypeReference<Map<String, Object>>(){});
-
-            System.out.println("tracker after conversion= " + tracker);
-            String sessionId = (String) tracker.get("session_id");
-            System.out.println("sessionId = " + sessionId);
-
-            System.out.println(" loginCacheService.get(String.valueOf(id)) = " + JsonConverter.getJsonRecursive(loginCacheService.get(String.valueOf(id))));
-
-            //System.out.println("loginCacheService.get(String.valueOf(id)).get(sessionId) = " + JsonConverter.getJsonRecursive(loginCacheService.get(String.valueOf(id)).get(sessionId)));
+            String sessionId = (String) claims.get("session_id");
 
             if(StringUtils.isEmpty(loginCacheService.get(String.valueOf(id)))){
                 throw new ScaffoldException("session_expired");
             }
             Object loginCache = loginCacheService.get(String.valueOf(id)).get(sessionId);
 
-            System.out.println("loginCache = " + JsonConverter.getJsonRecursive(loginCache));
+            String loginCacheJson = JsonConverter.getJsonRecursive(loginCache);
 
-            System.out.println("loginCache typecast = " + JsonConverter.getJsonRecursive(ObjectMapperUtil.map(loginCache, LoginCache.class)));
+            System.out.println("loginToken before typecast = " + loginCacheJson);
 
-            return (LoginCache)loginCache;
+            LoginCache loginToken  = new ObjectMapper().readValue(loginCacheJson, LoginCache.class);
+            System.out.println("loginToken after typecast = " + loginToken);
+            return loginToken;
         }catch (ExpiredJwtException e) {
             throw new UnAuthorizedException("expired_token");
         } catch (Exception e) {

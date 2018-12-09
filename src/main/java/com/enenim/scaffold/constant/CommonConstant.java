@@ -32,4 +32,5 @@ public interface CommonConstant {
 
     String PAYMENT_CHANNEL = "payment_channel";
     String NOT_FOUND = "not_found";
+    String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss.SSSSSS";
 }
