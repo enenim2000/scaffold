@@ -1,29 +1,22 @@
 package com.enenim.scaffold.util;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
 import java.text.SimpleDateFormat;
-import java.util.List;
+import java.util.Date;
 import java.util.Map;
 import java.util.TimeZone;
 
 import static com.enenim.scaffold.constant.CommonConstant.DATE_FORMAT;
 
 public class JsonConverter {
-    public static <T> T getElement(String value, Class<T> clazz) {
-        return getGson().fromJson(value, clazz);
-    }
-
-    public static <T> T[] getElements(String value, Class<T[]> clazz) {
-        return getGson().fromJson(value, clazz);
-    }
-
-    public static <T> List<T> getList(String value, Class<List<T>> clazz) {
-        return getGson().fromJson(value, clazz);
+    public static <T> T getObject(String json, Class<T> clazz) {
+        return getGson().fromJson(json, clazz);
     }
 
     public static <T> String getJson(T element) {
@@ -32,6 +25,8 @@ public class JsonConverter {
 
     public static <T> String getJsonRecursive(T element) {
         ObjectMapper mapper = new ObjectMapper();
+        mapper.setDefaultPropertyInclusion(
+                JsonInclude.Value.construct(JsonInclude.Include.ALWAYS, JsonInclude.Include.NON_NULL));
         String jsonInString;
         try {
             jsonInString = mapper.writeValueAsString(element);
@@ -49,6 +44,8 @@ public class JsonConverter {
         dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
         GsonBuilder gsonBuilder = new GsonBuilder().setDateFormat(dateFormat.toPattern());
         gsonBuilder.registerTypeAdapter(new TypeToken<Map<String, Object>>(){}.getType(),  new MapDeserializerDoubleAsIntFix());
+        gsonBuilder.registerTypeAdapter(Date.class, new GsonDateSerializer());
+        //gsonBuilder.registerTypeAdapter(Date.class, new DateLongFormatTypeAdapter());
         return  gsonBuilder.create();
     }
 }

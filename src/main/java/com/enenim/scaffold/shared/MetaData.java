@@ -54,8 +54,10 @@ public class MetaData<T>{
 
             setLastPage(result.getTotalPages());
             setCurrentPage(RequestUtil.getPage());
-            setFrom(Long.valueOf(RequestUtil.getFrom()));
-            setTo(Long.valueOf(RequestUtil.getTo()));
+            int $from = ((RequestUtil.getPage() - 1) * getPerPage()) + 1;
+            int $to = ((RequestUtil.getPage() - 1) * getPerPage()) + result.getContent().size();
+            setFrom(Long.valueOf($from + ""));
+            setTo(Long.valueOf($to + ""));
         }
     }
 }

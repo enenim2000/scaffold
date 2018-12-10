@@ -2,7 +2,6 @@ package com.enenim.scaffold.service.cache;
 
 import com.enenim.scaffold.model.cache.LoginCache;
 import com.enenim.scaffold.repository.cache.LoginCacheRepository;
-import com.enenim.scaffold.util.JsonConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.HashOperations;
@@ -53,9 +52,10 @@ public class LoginCacheService implements LoginCacheRepository {
      * @return LoginCache
      */
     public LoginCache get(String h, String hk) {
+        System.out.println("h = " + h);
+        System.out.println("hk = " + hk);
         Map<String, LoginCache> loginsPerGroup = hashOps.get(LOGIN, h);
         if(!StringUtils.isEmpty(loginsPerGroup) && !loginsPerGroup.entrySet().isEmpty()){
-            System.out.println(" loginToken in get(hk) = " + JsonConverter.getJsonRecursive(loginsPerGroup.get(hk)));
             return loginsPerGroup.get(hk);
         }
         return null;
@@ -89,7 +89,6 @@ public class LoginCacheService implements LoginCacheRepository {
     }
 
     public void save(LoginCache data) {
-        System.out.println(" loginToken in save = " + JsonConverter.getJsonRecursive(data));
         String id = String.valueOf(data.getId());
         Map<String, LoginCache> records = new HashMap<>();
 
@@ -100,7 +99,9 @@ public class LoginCacheService implements LoginCacheRepository {
             }
         }
 
-        records.put(data.getSessionId(), data);
+        System.out.println("data.getSessionId() = " + data.getTracker().getSessionId());
+
+        records.put(data.getTracker().getSessionId(), data);
         hashOps.put(LOGIN, id, records);
     }
 

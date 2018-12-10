@@ -65,9 +65,9 @@ public class UserAccountController {
 			} else {
 				Date date = new Date();
 				Tracker tracker = new Tracker(login, date);
+				tracker = trackerService.saveTracker(tracker);
 				LoginCache loginToken = buildLoginToken(login, date, tracker);
 				String token = tokenAuthenticationService.encodeToken(loginToken);
-				trackerService.saveTracker(tracker);
 				tokenAuthenticationService.saveToken(loginToken);
 				return new Response<>(new StringResponse(token));
 			}
@@ -77,17 +77,10 @@ public class UserAccountController {
 
 	private LoginCache buildLoginToken(Login login, Date date, Tracker tracker){
 		LoginCache loginCache = new LoginCache();
-		loginCache.setCreated(date);
 		loginCache.setGlobalSettings(getGlobalSettings());
 		loginCache.setUser(userResolverService.getUser(login.getUserType(), login.getUserId()));
 		loginCache.setLoginStatus(login.getStatus());
-		loginCache.setSessionId(tracker.getSessionId());
-		loginCache.setDateLoggedIn(tracker.getDateLoggedIn());
-		loginCache.setDateLoggedOut(tracker.getDateLoggedOut());
-		loginCache.setIpAddress(tracker.getIpAddress());
-		loginCache.setUserAgent(tracker.getUserAgent());
-		loginCache.setTimeOfLastActivity(tracker.getTimeOfLastActivity());
-		loginCache.setFailedAttempts(tracker.getFailedAttempts());
+		loginCache.setTracker(tracker);
 		loginCache.setEnabled(EnabledStatus.ENABLED);
 		loginCache.setId(login.getId());
 		loginCache.setLastLoggedIn(date);

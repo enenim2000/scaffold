@@ -82,7 +82,7 @@ public class ToggleService<T> {
         }
 
         objJson = objJson.replaceFirst(ENABLED+"\":\"" + status, ENABLED+"\":\""+newStatus);
-        entity = JsonConverter.getElement(objJson, type);
+        entity = JsonConverter.getObject(objJson, type);
         ReflectionUtil.setFieldValue(type, TOGGLE, toggle, entity);
 
         return (String) entityManager.merge(entity);

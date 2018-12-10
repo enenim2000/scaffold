@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -34,12 +35,14 @@ public abstract class BaseModel extends ResponseBody implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @JsonSerialize(using = JsonDateSerializer.class)
     @JsonProperty(ModelFieldConstant.CREATED_AT)
+    @SerializedName(ModelFieldConstant.CREATED_AT)
     @CreatedDate
     protected Date createdAt = new Date();
 
     @Temporal(TemporalType.TIMESTAMP)
     @JsonSerialize(using = JsonDateSerializer.class)
     @JsonProperty(ModelFieldConstant.UPDATED_AT)
+    @SerializedName(ModelFieldConstant.UPDATED_AT)
     @LastModifiedDate
     protected Date updatedAt = new Date();
 

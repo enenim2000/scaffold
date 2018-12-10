@@ -35,6 +35,7 @@ import org.springframework.web.util.ContentCachingResponseWrapper;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.Optional;
 
 @Component
@@ -81,8 +82,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         validateToken();
 
-        System.out.println(" after validateToken();");
-
         if(handlerMethod.getMethod().isAnnotationPresent(Role.class)){
             validateRole(interceptorParamater);
         }
@@ -95,8 +94,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         if(handlerMethod.getMethod().isAnnotationPresent(DataDecrypt.class)){
             decrypt(interceptorParamater);
         }
-
-        System.out.println(" about to return true");
 
         return true;
     }
@@ -126,18 +123,26 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         LoginCache loginToken = tokenAuthenticationService.decodeToken();
 
+        System.out.println("1");
+
         if(StringUtils.isEmpty(loginToken)) throw new UnAuthorizedException("invalid_token");
+
+        System.out.println("loginToken = " + loginToken);
 
         SettingCache settingCache = settingCacheCoreService.getCoreSetting("idle_timeout");
 
+        System.out.println("2");
+
         if(loginToken.hasExpired(Long.valueOf(settingCache.getValue())))throw new ScaffoldException("session_expired");
-
+        System.out.println("3");
         Login login = loginService.getLogin(loginToken.getId());
-
+        System.out.println("4");
         tokenAuthenticationService.validateLoginStatus(login);
-
-        tokenAuthenticationService.refreshToken(loginToken);
-
+        System.out.println("5");
+        Date date = new Date();
+        tokenAuthenticationService.refreshToken(loginToken, date);
+        tokenAuthenticationService.refreshTracker(loginToken.getTracker(), date);
+        System.out.println("6");
         RequestUtil.setLoginToken(loginToken);
 
         RequestUtil.setLogin(login);
@@ -147,7 +152,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         HandlerMethod handlerMethod = (HandlerMethod)interceptorParamater.getHandler();
         String[] roles = handlerMethod.getMethod().getAnnotation(Role.class).value();
         String role = userResolverService.isValidRole(roles);
-        if(StringUtils.isEmpty(role))throw new UnAuthorizedException("invalid_role", role);
         userResolverService.setUserByRole(role);
     }
 
@@ -157,6 +161,9 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             Staff staff = RequestUtil.getStaff();
             HandlerMethod handlerMethod = (HandlerMethod)interceptorParamater.getHandler();
             String route = handlerMethod.getMethod().getAnnotation(Permission.class).value();
+
+            System.out.println("staff.getGroup().getRole() = " + staff.getGroup().getRole());
+            System.out.println("staff.employee id = " + staff.getEmployeeId());
 
             if(!staff.getGroup().getRole().equalsIgnoreCase("System")){
                 if(!staff.getGroup().getTasks().contains( taskService.getTaskByRoute(route) )) {

@@ -99,10 +99,18 @@ public class RequestUtil {
         return getRequest().getParameter(Q)==null?"":getRequest().getParameter(Q);
     }
 
+    /**
+     *
+     * @return end date
+     */
     public static String getTo(){
         return getRequest().getParameter(TO)==null?"":getRequest().getParameter(TO);
     }
 
+    /**
+     *
+     * @return start date
+     */
     public static String getFrom(){
         return getRequest().getParameter(FROM)==null?"":getRequest().getParameter(FROM);
     }

@@ -14,10 +14,10 @@ public class QueueEventSubscriberService implements MessageListener {
     @Override
     public void onMessage(@NotNull Message message, @NotNull byte[] pattern) {
         String json = new String (message.getBody());
-        QueueEvent queueEvent = JsonConverter.getElement(json, QueueEvent.class);
+        QueueEvent queueEvent = JsonConverter.getObject(json, QueueEvent.class);
         try {
             if(Class.forName(queueEvent.getEventClass()).equals(QueueEventTask.class)){
-                JsonConverter.getElement(queueEvent.getEventTask(), QueueEventTask.class).execute();
+                JsonConverter.getObject(queueEvent.getEventTask(), QueueEventTask.class).execute();
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

@@ -23,6 +23,11 @@ public class ScaffoldException extends RuntimeException{
         this.status = status;
     }
 
+    public ScaffoldException(String key, String role, HttpStatus status) {
+        super(ExceptionMessage.msg(key, role));
+        this.status = status;
+    }
+
     public ScaffoldException(String key, String role) {
         super(ExceptionMessage.msg(key, role));
         status = HttpStatus.EXPECTATION_FAILED;

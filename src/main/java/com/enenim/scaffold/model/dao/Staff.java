@@ -6,8 +6,10 @@ import com.enenim.scaffold.enums.WeekendLogin;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -18,11 +20,13 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "staff")
+@ToString
 public class Staff extends BaseModel{
 
     @NotNull
     @Column(unique = true, length = 20)
     @JsonProperty("employee_id")
+    @SerializedName("employee_id")
     private String employeeId;
 
     @ManyToOne
@@ -31,6 +35,7 @@ public class Staff extends BaseModel{
     @NotNull
     @Column(length = 60)
     @JsonProperty("fullname")
+    @SerializedName("fullname")
     private String fullName;
 
     @NotNull
@@ -38,9 +43,11 @@ public class Staff extends BaseModel{
     private String email;
 
     @JsonProperty("holiday_login")
+    @SerializedName("holiday_login")
     private HolidayLogin holidayLogin;
 
     @JsonProperty("weekend_login")
+    @SerializedName("weekend_login")
     private WeekendLogin weekendLogin;
 
     @NotNull

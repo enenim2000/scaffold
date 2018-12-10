@@ -10,8 +10,10 @@ import com.enenim.scaffold.model.dao.Staff;
 import com.enenim.scaffold.service.dao.BillerService;
 import com.enenim.scaffold.service.dao.ConsumerService;
 import com.enenim.scaffold.service.dao.StaffService;
+import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.RequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -41,12 +43,18 @@ public class UserResolverService {
                 return role;
             }
         }
-        return null;
+        throw new ScaffoldException("invalid_role", login.getUserType(), HttpStatus.FORBIDDEN);
     }
 
     public void setUserByRole(String role){
         Object user = RequestUtil.getLoginToken().getUser();
-        if(RoleConstant.STAFF.equalsIgnoreCase(role)) RequestUtil.setStaff((Staff) user);
+        if(RoleConstant.STAFF.equalsIgnoreCase(role)) {
+            System.out.println("JsonConverter.getJson(user) = " + JsonConverter.getJson(user));
+            Staff staff = JsonConverter.getObject(JsonConverter.getJson(user), Staff.class);
+            System.out.println("staff = " + staff);
+            System.out.println("staff.employee id = " + staff.getEmployeeId());
+            RequestUtil.setStaff(staff);
+        }
         else if(RoleConstant.BILLER.equalsIgnoreCase(role))RequestUtil.setBiller((Biller) user);
         else if(RoleConstant.CONSUMER.equalsIgnoreCase(role))RequestUtil.setConsumer((Consumer) user);
         else {
