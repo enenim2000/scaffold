@@ -38,14 +38,11 @@ public class JsonConverter {
     }
 
     private static Gson getGson(){
-        //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        //SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz");
         SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
         dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
         GsonBuilder gsonBuilder = new GsonBuilder().setDateFormat(dateFormat.toPattern());
-        gsonBuilder.registerTypeAdapter(new TypeToken<Map<String, Object>>(){}.getType(),  new MapDeserializerDoubleAsIntFix());
         gsonBuilder.registerTypeAdapter(Date.class, new GsonDateSerializer());
-        //gsonBuilder.registerTypeAdapter(Date.class, new DateLongFormatTypeAdapter());
+        gsonBuilder.registerTypeAdapter(new TypeToken<Map<String, Object>>(){}.getType(),  new MapDeserializerDoubleAsIntFix());
         return  gsonBuilder.create();
     }
 }
