@@ -37,7 +37,6 @@ public class Tracker extends BaseModel {
         setSessionId(new BCryptPasswordEncoder().encode(date.toString()) + Math.random());
         setFailedAttempts(0);
         setTimeOfLastActivity(date);
-        login.setPassword(null);
         setLogin(login);
     }
 
