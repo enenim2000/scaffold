@@ -57,14 +57,16 @@ public class UserAccountController {
 		RequestUtil.setCommonRequestProperties(request);
 		RequestUtil.setMessage(CommonMessage.msg("successful_logged_in"));
 		Login login = loginService.getLoginByUsername(request.getBody().getUsername());
+
+		Date date = new Date();
+		Tracker tracker = new Tracker(login, date);
+
 		if (!StringUtils.isEmpty(login) && bCryptPasswordEncoder.matches(request.getBody().getPassword(), login.getPassword())) {
 			if (login.getStatus() == LoginStatus.DISABLED) {
 				throw new ScaffoldException("disabled_account");
 			} else if (login.getStatus() == LoginStatus.LOCKED) {
 				throw new ScaffoldException("blocked_account");
 			} else {
-				Date date = new Date();
-				Tracker tracker = new Tracker(login, date);
 				tracker = trackerService.saveTracker(tracker);
 				LoginCache loginToken = buildLoginToken(login, date, tracker);
 				String token = tokenAuthenticationService.encodeToken(loginToken);
@@ -72,6 +74,7 @@ public class UserAccountController {
 				return new Response<>(new StringResponse(token));
 			}
 		}
+
 		throw new UnAuthorizedException("invalid_login");
 	}
 

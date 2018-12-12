@@ -30,6 +30,8 @@ public class Staff extends BaseModel{
     private String employeeId;
 
     @ManyToOne
+    @JsonProperty("active_hour")
+    @SerializedName("active_hour")
     private ActiveHour activeHour;
 
     @NotNull

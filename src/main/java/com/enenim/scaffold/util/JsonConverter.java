@@ -4,8 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.reflect.TypeToken;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -41,8 +40,14 @@ public class JsonConverter {
         SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
         dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
         GsonBuilder gsonBuilder = new GsonBuilder().setDateFormat(dateFormat.toPattern());
-        gsonBuilder.registerTypeAdapter(Date.class, new GsonDateSerializer());
+        gsonBuilder.setLongSerializationPolicy( LongSerializationPolicy.STRING );
         gsonBuilder.registerTypeAdapter(new TypeToken<Map<String, Object>>(){}.getType(),  new MapDeserializerDoubleAsIntFix());
+        gsonBuilder.registerTypeAdapter(Date.class, new GsonDateSerializer());
+        gsonBuilder.registerTypeAdapter(Double.class, (JsonSerializer<Double>) (src, typeOfSrc, context) -> {
+            if(src == src.longValue())
+                return new JsonPrimitive(src.longValue());
+            return new JsonPrimitive(src);
+        });
         return  gsonBuilder.create();
     }
 }

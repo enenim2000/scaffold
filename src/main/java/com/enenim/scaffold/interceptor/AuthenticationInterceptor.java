@@ -123,28 +123,22 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         LoginCache loginToken = tokenAuthenticationService.decodeToken();
 
-        System.out.println("1");
-
         if(StringUtils.isEmpty(loginToken)) throw new UnAuthorizedException("invalid_token");
-
-        System.out.println("loginToken = " + loginToken);
 
         SettingCache settingCache = settingCacheCoreService.getCoreSetting("idle_timeout");
 
-        System.out.println("2");
-
         if(loginToken.hasExpired(Long.valueOf(settingCache.getValue())))throw new ScaffoldException("session_expired");
-        System.out.println("3");
+
         Login login = loginService.getLogin(loginToken.getId());
-        System.out.println("4");
+
         tokenAuthenticationService.validateLoginStatus(login);
-        System.out.println("5");
+
         Date date = new Date();
+
         tokenAuthenticationService.refreshToken(loginToken, date);
         tokenAuthenticationService.refreshTracker(loginToken.getTracker(), date);
-        System.out.println("6");
-        RequestUtil.setLoginToken(loginToken);
 
+        RequestUtil.setLoginToken(loginToken);
         RequestUtil.setLogin(login);
     }
 
@@ -161,10 +155,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             Staff staff = RequestUtil.getStaff();
             HandlerMethod handlerMethod = (HandlerMethod)interceptorParamater.getHandler();
             String route = handlerMethod.getMethod().getAnnotation(Permission.class).value();
-
-            System.out.println("staff.getGroup().getRole() = " + staff.getGroup().getRole());
-            System.out.println("staff.employee id = " + staff.getEmployeeId());
-
             if(!staff.getGroup().getRole().equalsIgnoreCase("System")){
                 if(!staff.getGroup().getTasks().contains( taskService.getTaskByRoute(route) )) {
                     throw new ScaffoldException("access_denied", HttpStatus.FORBIDDEN);

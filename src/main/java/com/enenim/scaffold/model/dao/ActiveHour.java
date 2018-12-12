@@ -5,8 +5,8 @@ import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -17,8 +17,8 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@NoArgsConstructor
 @Table(name = "active_hours" , uniqueConstraints = @UniqueConstraint(columnNames={"beginTime", "endTime"}))
+@ToString
 public class ActiveHour extends BaseModel {
     @NotNull
     @Column(unique = true, length = 100)
