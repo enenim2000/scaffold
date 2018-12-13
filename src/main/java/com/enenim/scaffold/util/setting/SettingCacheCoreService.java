@@ -32,6 +32,15 @@ public class SettingCacheCoreService {
         return SettingCacheCoreUtil.getSettingMap().get(id);
     }
 
+    public Boolean multipleSessionIsEnabled() {
+        String id = "multiple_session";
+        SettingCache settingCache = settingCacheService.get(KEY, id);
+        if(StringUtils.isEmpty(settingCache)){
+            settingCache = SettingCacheCoreUtil.getSettingMap().get(id);
+        }
+        return !StringUtils.isEmpty(settingCache) && "yes".equalsIgnoreCase(settingCache.getValue());
+    }
+
     @Async
     public void saveCoreSetting(SettingCache setting){
         settingCacheService.save(KEY, setting);

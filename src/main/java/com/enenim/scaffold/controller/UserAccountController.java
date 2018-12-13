@@ -1,8 +1,10 @@
 package com.enenim.scaffold.controller;
 
+import com.enenim.scaffold.annotation.Get;
 import com.enenim.scaffold.annotation.Post;
 import com.enenim.scaffold.dto.request.LoginRequest;
 import com.enenim.scaffold.dto.request.Request;
+import com.enenim.scaffold.dto.response.BooleanResponse;
 import com.enenim.scaffold.dto.response.Response;
 import com.enenim.scaffold.dto.response.StringResponse;
 import com.enenim.scaffold.enums.EnabledStatus;
@@ -76,6 +78,17 @@ public class UserAccountController {
 		}
 
 		throw new UnAuthorizedException("invalid_login");
+	}
+
+	@Get("/logout")
+	public Response<BooleanResponse> logout() {
+		Boolean logoutStatus = tokenAuthenticationService.logout();
+		if(logoutStatus){
+			RequestUtil.setMessage(CommonMessage.msg("successful_logged_out"));
+		}else {
+			RequestUtil.setMessage(CommonMessage.msg("failed_logged_out"));
+		}
+		return new Response<>(new BooleanResponse(logoutStatus));
 	}
 
 	private LoginCache buildLoginToken(Login login, Date date, Tracker tracker){

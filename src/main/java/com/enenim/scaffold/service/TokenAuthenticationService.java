@@ -11,6 +11,7 @@ import com.enenim.scaffold.service.dao.TrackerService;
 import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.RequestUtil;
 import com.enenim.scaffold.util.message.SpringMessage;
+import com.enenim.scaffold.util.setting.SettingCacheCoreService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
@@ -35,13 +36,15 @@ public class TokenAuthenticationService {
 
     private final LoginCacheService loginCacheService;
     private final TrackerService trackerService;
+    private final SettingCacheCoreService settingCacheCoreService;
 
     private static String TOKEN_KEY = SpringMessage.msg("jwt");
 
     @Autowired
-    public TokenAuthenticationService(LoginCacheService loginCacheService, TrackerService trackerService) {
+    public TokenAuthenticationService(LoginCacheService loginCacheService, TrackerService trackerService, SettingCacheCoreService settingCacheCoreService) {
         this.loginCacheService = loginCacheService;
         this.trackerService = trackerService;
+        this.settingCacheCoreService = settingCacheCoreService;
     }
 
     public String encodeToken(LoginCache loginToken){
@@ -108,5 +111,26 @@ public class TokenAuthenticationService {
             if(login.getStatus() == LoginStatus.DISABLED) throw new ScaffoldException("disabled_account");
             if(login.getStatus() == LoginStatus.LOCKED) throw new ScaffoldException("blocked_account");
         }
+    }
+
+    public boolean logout(){
+        LoginCache loginToken = RequestUtil.getLoginToken();
+        String loginId = String.valueOf(loginToken.getId());
+        String sessionId = loginToken.getTracker().getSessionId();
+        if(settingCacheCoreService.multipleSessionIsEnabled()) {
+            loginToken = loginCacheService.get(sessionId).get(sessionId);
+            if(!StringUtils.isEmpty(loginToken)){
+                loginCacheService.delete(loginToken.getId(), loginToken.getTracker().getSessionId());
+                return true;
+            }
+        }else {
+            loginToken = loginCacheService.get(sessionId).get(sessionId);
+            if(!StringUtils.isEmpty(loginToken)){
+                loginCacheService.delete(loginId);
+                return true;
+            }
+            loginCacheService.delete(loginId);
+        }
+        return false;
     }
 }

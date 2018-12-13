@@ -26,10 +26,8 @@ public class JsonConverter {
         ObjectMapper mapper = new ObjectMapper();
         mapper.setDefaultPropertyInclusion(
                 JsonInclude.Value.construct(JsonInclude.Include.ALWAYS, JsonInclude.Include.NON_NULL));
-        String jsonInString;
         try {
-            jsonInString = mapper.writeValueAsString(element);
-            return jsonInString;
+            return mapper.writeValueAsString(element);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             return null;
