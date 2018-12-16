@@ -1,7 +1,9 @@
 package com.enenim.scaffold;
 
+import com.enenim.scaffold.config.FileStorageProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
@@ -9,6 +11,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 @SpringBootApplication
+@EnableConfigurationProperties({
+		FileStorageProperties.class
+})
 public class ScaffoldApplication {
 
 	public static void main(String[] args) {
