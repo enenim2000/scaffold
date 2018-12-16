@@ -8,5 +8,5 @@ import java.util.Map;
 @Repository
 public interface LoginCacheRepository extends CacheRepository<Map<String, LoginCache>, String>{
     void save(LoginCache data);
-    void delete(String id, String sessionId);
+    void delete(Long id, String sessionId);
 }

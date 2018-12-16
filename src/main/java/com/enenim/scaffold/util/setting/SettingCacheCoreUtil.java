@@ -72,11 +72,12 @@ public class SettingCacheCoreUtil {
 
         add( new SettingCache(category(4), "consumer_system_state", "Consumer System State",  "1", PAYLOAD_CONSUMER_SYSTEM_STATE,  null) );
         add( new SettingCache(category(4), "consumer_trans", "Consumer Transactions",  "1", PAYLOAD_CONSUMER_TRANS,  null) );
-        add( new SettingCache(category(4), "failure_notification_freq", "Failure Notification Frequency (Minutes)",  "15", PAYLOAD_FAILURE_NOTIFICATION_FREQ,  null) );
+        add( new SettingCache(category(4), "failure_notification_freq", "Failure Notification Frequency (minutes)",  "15", PAYLOAD_FAILURE_NOTIFICATION_FREQ,  null) );
         add( new SettingCache(category(4), "error_mail_to", "Error Notification Email",  "enenim2000@gmail.com", null,  "required") );
 
 
-        add( new SettingCache(category(7), "idle_timeout", "Idle Timeout in minutes",  "30", null,  "required|integer") );
+        add( new SettingCache(category(7), "idle_timeout", "Idle Timeout (minutes)",  "30", null,  "required|integer") );
+        add( new SettingCache(category(7), "multiple_session", "Allow Multiple Login Session",  "no", PAYLOAD_YES_NO,  null) );
 
     }};
 

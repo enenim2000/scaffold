@@ -2,6 +2,7 @@ package com.enenim.scaffold.service.cache;
 
 import com.enenim.scaffold.model.cache.LoginCache;
 import com.enenim.scaffold.repository.cache.LoginCacheRepository;
+import com.enenim.scaffold.util.setting.SettingCacheCoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.HashOperations;
@@ -24,11 +25,12 @@ public class LoginCacheService implements LoginCacheRepository {
 
     private HashOperations<String, String, Map<String, LoginCache>> hashOps;
 
-    public LoginCacheService(){}
+    private final SettingCacheCoreService settingCacheCoreService;
 
     @Autowired
-    private LoginCacheService(RedisTemplate<String, Map<String, LoginCache>> redisTemplate) {
+    private LoginCacheService(RedisTemplate<String, Map<String, LoginCache>> redisTemplate, SettingCacheCoreService settingCacheCoreService) {
         this.redisTemplate = redisTemplate;
+        this.settingCacheCoreService = settingCacheCoreService;
     }
 
     @PostConstruct
@@ -73,7 +75,7 @@ public class LoginCacheService implements LoginCacheRepository {
 
     @Override
     public void save(Map<String, LoginCache> data) {
-        if(multipleLoginIsEnabled())throw new UnsupportedOperationException("Not allowed when multiple login is enabled");
+        if(settingCacheCoreService.multipleSessionIsEnabled())throw new UnsupportedOperationException("Not allowed when multiple login session is enabled");
         save(data.entrySet().iterator().next().getValue());
     }
 
@@ -84,15 +86,15 @@ public class LoginCacheService implements LoginCacheRepository {
      */
     @Override
     public void delete(String id) {
-        if(multipleLoginIsEnabled())throw new UnsupportedOperationException("Not allowed when multiple login is enabled");
-        delete(id, null);
+        if(settingCacheCoreService.multipleSessionIsEnabled()) throw new UnsupportedOperationException("Not allowed when multiple login is enabled");
+        delete(Long.valueOf(id), null);
     }
 
     public void save(LoginCache data) {
         String id = String.valueOf(data.getId());
         Map<String, LoginCache> records = new HashMap<>();
 
-        if(multipleLoginIsEnabled()){
+        if(settingCacheCoreService.multipleSessionIsEnabled()){
             records = this.get(id);
             if(StringUtils.isEmpty(records)){
                 records = new HashMap<>();
@@ -100,12 +102,14 @@ public class LoginCacheService implements LoginCacheRepository {
         }
 
         System.out.println("data.getSessionId() = " + data.getTracker().getSessionId());
+        System.out.println("LoginCache id = " + id);
 
         records.put(data.getTracker().getSessionId(), data);
         hashOps.put(LOGIN, id, records);
     }
 
-    public void delete(String id, String sessionId) {
+    public void delete(Long loginId, String sessionId) {
+        String id = String.valueOf(loginId);
         if(StringUtils.isEmpty(sessionId)){
             hashOps.delete(LOGIN, id);
         }else {
@@ -113,9 +117,5 @@ public class LoginCacheService implements LoginCacheRepository {
             records.remove(sessionId);
             hashOps.put(LOGIN, id, records);
         }
-    }
-
-    private boolean multipleLoginIsEnabled(){
-        return true;
     }
 }
