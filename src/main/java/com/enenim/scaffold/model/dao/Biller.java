@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -83,9 +82,6 @@ public class Biller extends BaseModel {
 
     @NotNull
     private BillerType type = BillerType.REGULAR;
-
-    @JsonProperty("parent_id")
-    private Integer parentId;
 
     @NotNull
     private EnabledStatus enabled = EnabledStatus.ENABLED;
