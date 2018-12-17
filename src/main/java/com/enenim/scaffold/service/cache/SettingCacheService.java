@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class SettingCacheService implements SettingCacheRepository{
+public class SettingCacheService implements SettingCacheRepository {
 
     @Qualifier(value = "redisSettingTemplate")
     private RedisTemplate<String, SettingCache> redisTemplate;

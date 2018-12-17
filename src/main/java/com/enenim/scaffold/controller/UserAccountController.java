@@ -92,6 +92,7 @@ public class UserAccountController {
 	}
 
 	private LoginCache buildLoginToken(Login login, Date date, Tracker tracker){
+
 		LoginCache loginCache = new LoginCache();
 		loginCache.setGlobalSettings(getGlobalSettings());
 		loginCache.setUser(userResolverService.getUser(login.getUserType(), login.getUserId()));
