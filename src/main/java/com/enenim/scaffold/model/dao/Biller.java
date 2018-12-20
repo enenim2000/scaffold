@@ -2,6 +2,7 @@ package com.enenim.scaffold.model.dao;
 
 import com.enenim.scaffold.enums.BillerType;
 import com.enenim.scaffold.enums.EnabledStatus;
+import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -82,6 +83,9 @@ public class Biller extends BaseModel {
 
     @NotNull
     private BillerType type = BillerType.REGULAR;
+
+    @NotNull
+    private VerifyStatus verified = VerifyStatus.NOT_VERIFIED;
 
     @NotNull
     private EnabledStatus enabled = EnabledStatus.ENABLED;

@@ -4,9 +4,8 @@ import com.enenim.scaffold.annotation.*;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.constant.RouteConstant;
 import com.enenim.scaffold.dto.request.BillerRequest;
-import com.enenim.scaffold.dto.request.ConsumerRequest;
+import com.enenim.scaffold.dto.request.BillerSignUpVerifyRequest;
 import com.enenim.scaffold.dto.request.Request;
-import com.enenim.scaffold.dto.request.SignUpVerifyRequest;
 import com.enenim.scaffold.dto.response.BooleanResponse;
 import com.enenim.scaffold.dto.response.ModelResponse;
 import com.enenim.scaffold.dto.response.PageResponse;
@@ -15,7 +14,6 @@ import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.exception.UnAuthorizedException;
 import com.enenim.scaffold.model.dao.Biller;
-import com.enenim.scaffold.model.dao.Consumer;
 import com.enenim.scaffold.model.dao.Login;
 import com.enenim.scaffold.service.MailSenderService;
 import com.enenim.scaffold.service.cache.SharedExpireCacheService;
@@ -70,43 +68,46 @@ public class BillerController {
         Biller biller = request.getBody().buildModel();
         biller.setTestSecret(bCryptPasswordEncoder.encode(new Date().toString() + Math.random()));
         biller.setSecret(bCryptPasswordEncoder.encode(new Date().toString() + Math.random()));
+        biller.setVerified(VerifyStatus.VERIFIED);
         return new Response<>(new ModelResponse<>(billerService.saveBiller(biller)));
     }
 
     @Post("/sign-up")
-    public Response<ModelResponse<Consumer>> signUpConsumers(@Valid @RequestBody Request<ConsumerRequest> request){
-        consumerService.validateDependencies(request.getBody());
-        Consumer consumer = request.getBody().buildModel();
-        consumer.skipAuthorization(true);
-        consumer = consumerService.saveConsumer(consumer);
-        if(!StringUtils.isEmpty(consumer)){
+    @Role({RoleConstant.BILLER})
+    public Response<ModelResponse<Biller>> signUpConsumers(@Valid @RequestBody Request<BillerRequest> request){
+        billerService.validateDependencies(request.getBody());
+        Biller biller = request.getBody().buildModel();
+        biller.skipAuthorization(true);
+        biller = billerService.saveBiller(biller);
+
+        if(!StringUtils.isEmpty(biller)){
             Login login = new Login();
-            login.setUsername(consumer.getEmail());
-            login.setUserType(RoleConstant.CONSUMER);
-            login.setUserId(consumer.getId());
+            login.setUsername(biller.getEmail());
+            login.setUserType(RoleConstant.BILLER);
+            login.setUserId(biller.getId());
             login = loginService.saveLogin(login);
             if(!StringUtils.isEmpty(login.getId())){
-                mailSenderService.send(consumer);
+                mailSenderService.send(biller);
             }
-            return new Response<>(new ModelResponse<>(consumer));
+            return new Response<>(new ModelResponse<>(biller));
         }
-        throw new ScaffoldException("signup_failed");
+        throw new ScaffoldException("biller_signup_failed");
     }
 
     @Put("/{code}/verify")
-    public Response<ModelResponse<Consumer>> verifyCode(@PathVariable("code") String code, @Valid @RequestBody SignUpVerifyRequest request) throws Exception {
+    public Response<ModelResponse<Biller>> verifyCode(@PathVariable("code") String code, @Valid @RequestBody BillerSignUpVerifyRequest request) throws Exception {
         Object value = sharedExpireCacheService.get(code);
         if(!StringUtils.isEmpty(value)){
-            Consumer consumer = (Consumer)value;
-            Login login = loginService.getLoginByUsername(consumer.getEmail());
+            Biller biller = (Biller)value;
+            Login login = loginService.getLoginByUsername(biller.getEmail());
             login.setPassword(bCryptPasswordEncoder.encode(request.getPassword()));
             login = loginService.saveLogin(login);
             if(!StringUtils.isEmpty(login)){
-                consumer.setVerified(VerifyStatus.VERIFIED);
-                consumer.skipAuthorization(true);
-                consumer = consumerService.saveConsumer(consumer);
+                biller.setVerified(VerifyStatus.VERIFIED);
+                biller.skipAuthorization(true);
+                biller = billerService.saveBiller(biller);
                 sharedExpireCacheService.delete(code);
-                return new Response<>(new ModelResponse<>(consumer));
+                return new Response<>(new ModelResponse<>(biller));
             }
         }
         throw new UnAuthorizedException("invalid_expired_code");
@@ -114,11 +115,13 @@ public class BillerController {
 
     @Post("/{email}/code/re-send")
     public Response<BooleanResponse> reSendCode(@PathVariable("email") String email){
-        Consumer consumer = consumerService.getConsumerByEmail(email);
-        if(!StringUtils.isEmpty(consumer)){
-            if (consumer.getVerified() == VerifyStatus.NOT_VERIFIED){
-                mailSenderService.send(consumer);
+        Biller biller = billerService.getBillerByEmail(email);
+        if(!StringUtils.isEmpty(biller)){
+            if (biller.getVerified() == VerifyStatus.NOT_VERIFIED){
+                mailSenderService.send(biller);
                 return new Response<>(new BooleanResponse(true));
+            }else if(biller.getVerified() == VerifyStatus.VERIFIED){
+                throw new ScaffoldException("verification_biller_status");
             }
         }
         return new Response<>(new BooleanResponse(false));
@@ -126,8 +129,8 @@ public class BillerController {
 
     @Put("/{id}/toggle")
     @Role({RoleConstant.STAFF})
-    @Permission(RouteConstant.USER_CONSUMER_TOGGLE)
+    @Permission(RouteConstant.USER_BILLER_TOGGLE)
     public Response<BooleanResponse> toggle(@PathVariable Long id){
-        return new Response<>(new BooleanResponse(consumerService.toggle(id)));
+        return new Response<>(new BooleanResponse(billerService.toggle(id)));
     }
 }

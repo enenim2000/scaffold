@@ -115,6 +115,8 @@ public class ConsumerController {
             if (consumer.getVerified() == VerifyStatus.NOT_VERIFIED){
                 mailSenderService.send(consumer);
                 return new Response<>(new BooleanResponse(true));
+            }else if(consumer.getVerified() == VerifyStatus.VERIFIED){
+                throw new ScaffoldException("verification_consumer_status");
             }
         }
         return new Response<>(new BooleanResponse(false));
