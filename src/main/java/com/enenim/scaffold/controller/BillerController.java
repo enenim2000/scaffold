@@ -48,14 +48,12 @@ public class BillerController {
     }
 
     @Get
-    @Role({RoleConstant.BILLER, RoleConstant.STAFF})
     @Permission(RouteConstant.USER_BILLER_INDEX)
     public Response<PageResponse<Biller>> getBillers() {
         return new Response<>(new PageResponse<>(billerService.getBillers()));
     }
 
     @Get("/{id}")
-    @Role({RoleConstant.BILLER, RoleConstant.STAFF})
     @Permission(RouteConstant.USER_BILLER_SHOW)
     public Response<ModelResponse<Biller>> showConsumer(@PathVariable Long id) {
         return new Response<>(new ModelResponse<>(billerService.getBiller(id)));
@@ -73,7 +71,6 @@ public class BillerController {
     }
 
     @Post("/sign-up")
-    @Role({RoleConstant.BILLER})
     public Response<ModelResponse<Biller>> signUpConsumers(@Valid @RequestBody Request<BillerRequest> request){
         billerService.validateDependencies(request.getBody());
         Biller biller = request.getBody().buildModel();

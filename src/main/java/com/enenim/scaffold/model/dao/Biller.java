@@ -55,7 +55,8 @@ public class Biller extends BaseModel {
 
     @NotNull
     @Column(length = 20)
-    private String phone;
+    @JsonProperty("phone_number")
+    private String phoneNumber;
 
     private String logo;
 

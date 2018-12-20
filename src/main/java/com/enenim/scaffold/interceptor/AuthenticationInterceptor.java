@@ -84,9 +84,11 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         if(handlerMethod.getMethod().isAnnotationPresent(Role.class)){
             validateRole(interceptorParamater);
+        }else {
+            userResolverService.setUserByRole(RequestUtil.getLogin().getUserType());
         }
 
-        if(handlerMethod.getMethod().isAnnotationPresent(Permission.class)){
+        if(handlerMethod.getMethod().isAnnotationPresent(Permission.class) && RequestUtil.getLogin().getUserType().equalsIgnoreCase(RoleConstant.STAFF)){
             validatePermission(interceptorParamater);
             RequestUtil.setTaskRoute(handlerMethod.getMethod().getAnnotation(Permission.class).value());
         }

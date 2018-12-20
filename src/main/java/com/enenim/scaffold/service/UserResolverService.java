@@ -55,8 +55,12 @@ public class UserResolverService {
             System.out.println("staff.employee id = " + staff.getEmployeeId());
             RequestUtil.setStaff(staff);
         }
-        else if(RoleConstant.BILLER.equalsIgnoreCase(role))RequestUtil.setBiller((Biller) user);
-        else if(RoleConstant.CONSUMER.equalsIgnoreCase(role))RequestUtil.setConsumer((Consumer) user);
+        else if(RoleConstant.BILLER.equalsIgnoreCase(role)){
+            RequestUtil.setBiller(JsonConverter.getObject(JsonConverter.getJson(user), Biller.class));
+        }
+        else if(RoleConstant.CONSUMER.equalsIgnoreCase(role)){
+            RequestUtil.setConsumer(JsonConverter.getObject(JsonConverter.getJson(user), Consumer.class));
+        }
         else {
             throw new UnAuthorizedException("invalid_role", role);
         }
