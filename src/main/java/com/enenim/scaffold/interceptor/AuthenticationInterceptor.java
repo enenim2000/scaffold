@@ -107,7 +107,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
     @Override
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
-
+        RequestUtil.setMessage("");
     }
 
     private void validateApiKey(){

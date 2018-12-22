@@ -1,7 +1,6 @@
 package com.enenim.scaffold.service.cache;
 
 import com.enenim.scaffold.model.cache.LoginCache;
-import com.enenim.scaffold.repository.cache.LoginCacheRepository;
 import com.enenim.scaffold.util.setting.SettingCacheCoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class LoginCacheService implements LoginCacheRepository {
+public class LoginCacheService {
 
     private static final String LOGIN = "LoginCache";
 
@@ -42,7 +41,6 @@ public class LoginCacheService implements LoginCacheRepository {
      * This allows us to get all active session using a particular group
      * say all those currently using system, identified by h = login.getId()
      */
-    @Override
     public Map<String, LoginCache> get(String h) {
         return hashOps.get(LOGIN, h);
     }
@@ -63,17 +61,14 @@ public class LoginCacheService implements LoginCacheRepository {
         return null;
     }
 
-    @Override
     public List<Map<String, LoginCache>> get() {
         return hashOps.values(LOGIN);
     }
 
-    @Override
     public Map<String, Map<String, LoginCache>> getAll() {
         return hashOps.entries(LOGIN);
     }
 
-    @Override
     public void save(Map<String, LoginCache> data) {
         if(settingCacheCoreService.multipleSessionIsEnabled())throw new UnsupportedOperationException("Not allowed when multiple login session is enabled");
         save(data.entrySet().iterator().next().getValue());
@@ -84,7 +79,6 @@ public class LoginCacheService implements LoginCacheRepository {
      * @param id points getTo the key that holds login sessions for a app group
      * when multiple login is enabled
      */
-    @Override
     public void delete(String id) {
         if(settingCacheCoreService.multipleSessionIsEnabled()) throw new UnsupportedOperationException("Not allowed when multiple login is enabled");
         delete(Long.valueOf(id), null);

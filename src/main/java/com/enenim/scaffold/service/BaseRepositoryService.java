@@ -1,12 +1,11 @@
 package com.enenim.scaffold.service;
 
-import com.enenim.scaffold.constant.CommonConstant;
 import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.interfaces.IAudit;
 import com.enenim.scaffold.repository.BaseRepository;
 import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.ReflectionUtil;
-import com.enenim.scaffold.util.message.PropertyUtil;
+import com.enenim.scaffold.util.message.EntityMessage;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.JpaEntityInformationSupport;
@@ -45,7 +44,7 @@ public class BaseRepositoryService<T, ID extends Serializable>
         Class<T> domainType = this.getDomainClass();
         T entity = Optional.ofNullable(this.entityManager.find(domainType, id)).orElse(null);
         if(entity == null){
-            Object message = PropertyUtil.msg(NOT_FOUND).replace(CommonConstant.PLACE_HOLDER, PropertyUtil.msg(domainType.getSimpleName()));
+            Object message = EntityMessage.msg(NOT_FOUND).replaceFirst("\\{}", EntityMessage.msg(domainType.getSimpleName())).replaceFirst("\\{}", id+"");
             throw new ScaffoldException(message);
         }
 

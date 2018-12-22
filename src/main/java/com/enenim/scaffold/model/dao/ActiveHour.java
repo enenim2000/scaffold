@@ -43,6 +43,8 @@ public class ActiveHour extends BaseModel {
     @OneToMany(mappedBy = "activeHour", fetch = FetchType.LAZY)
     private Set<Group> groups = new HashSet<>();
 
+    public ActiveHour(){}
+
     public ActiveHour(Long id) {
         super();
         this.id = id;
