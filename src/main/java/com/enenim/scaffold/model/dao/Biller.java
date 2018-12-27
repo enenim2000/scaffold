@@ -58,8 +58,6 @@ public class Biller extends BaseModel {
     @JsonProperty("phone_number")
     private String phoneNumber;
 
-    private String logo;
-
     @NotNull
     @Column(unique = true, length = 100)
     private String code;
@@ -81,6 +79,9 @@ public class Biller extends BaseModel {
     @NotNull
     @Column(unique = true, length = 50)
     private String slug;
+
+    @JsonProperty("logo_path")
+    private String logoPath;
 
     @NotNull
     private BillerType type = BillerType.REGULAR;

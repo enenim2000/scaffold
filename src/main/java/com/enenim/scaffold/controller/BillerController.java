@@ -15,16 +15,19 @@ import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.exception.UnAuthorizedException;
 import com.enenim.scaffold.model.dao.Biller;
 import com.enenim.scaffold.model.dao.Login;
+import com.enenim.scaffold.service.FileStorageService;
 import com.enenim.scaffold.service.MailSenderService;
 import com.enenim.scaffold.service.cache.SharedExpireCacheService;
 import com.enenim.scaffold.service.dao.BillerService;
 import com.enenim.scaffold.service.dao.LoginService;
+import com.enenim.scaffold.util.JsonConverter;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.util.Date;
@@ -38,13 +41,16 @@ public class BillerController {
     private final MailSenderService mailSenderService;
     private final SharedExpireCacheService sharedExpireCacheService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final FileStorageService fileStorageService;
 
-    public BillerController(BillerService billerService, LoginService loginService, MailSenderService mailSenderService, SharedExpireCacheService sharedExpireCacheService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    @Autowired
+    public BillerController(BillerService billerService, LoginService loginService, MailSenderService mailSenderService, SharedExpireCacheService sharedExpireCacheService, BCryptPasswordEncoder bCryptPasswordEncoder, FileStorageService fileStorageService) {
         this.billerService = billerService;
         this.loginService = loginService;
         this.mailSenderService = mailSenderService;
         this.sharedExpireCacheService = sharedExpireCacheService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.fileStorageService = fileStorageService;
     }
 
     @Get
@@ -60,13 +66,27 @@ public class BillerController {
     }
 
     @Post
-    @Role({RoleConstant.STAFF})
+    @Role({RoleConstant.STAFF, RoleConstant.BILLER})
     @Permission(RouteConstant.USER_BILLER_CREATE)
-    public Response<ModelResponse<Biller>> createBiller(@Valid @RequestBody Request<BillerRequest> request){
-        Biller biller = request.getBody().buildModel();
+    public Response<ModelResponse<Biller>> createBiller(@RequestParam("biller") String billerRequest, @RequestParam(value = "file", required = false) MultipartFile file){
+        BillerRequest request = JsonConverter.getObject(billerRequest, BillerRequest.class);
+        Biller biller = request.buildModel();
         biller.setTestSecret(bCryptPasswordEncoder.encode(new Date().toString() + Math.random()));
         biller.setSecret(bCryptPasswordEncoder.encode(new Date().toString() + Math.random()));
         biller.setVerified(VerifyStatus.VERIFIED);
+
+        String slug = RandomStringUtils.randomAlphanumeric(30);
+        biller.setSlug(slug);
+
+        if(!StringUtils.isEmpty(file)){
+            String fileName = fileStorageService.storeFile(file, "image_" + slug);
+            String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                    .path("/assets/logos/")
+                    .path(fileName)
+                    .toUriString();
+            biller.setLogoPath(fileDownloadUri);
+        }
+
         return new Response<>(new ModelResponse<>(billerService.saveBiller(biller)));
     }
 
