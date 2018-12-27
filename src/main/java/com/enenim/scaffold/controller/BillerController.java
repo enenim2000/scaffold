@@ -23,11 +23,11 @@ import com.enenim.scaffold.service.dao.LoginService;
 import com.enenim.scaffold.util.JsonConverter;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.util.Date;
@@ -79,12 +79,15 @@ public class BillerController {
         biller.setSlug(slug);
 
         if(!StringUtils.isEmpty(file)){
-            String fileName = fileStorageService.storeFile(file, "image_" + slug);
-            String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                    .path("/assets/logos/")
-                    .path(fileName)
-                    .toUriString();
-            biller.setLogoPath(fileDownloadUri);
+
+            long file_size = 10000;
+            if(file.getSize() > file_size){
+                String file_size_kb = (file_size/1000) + "";
+                throw new ScaffoldException("file_size_biller", file_size_kb,  HttpStatus.PAYLOAD_TOO_LARGE);
+            }
+
+            String fileName = fileStorageService.storeFile(file, "image-" + slug + ".jpg");
+            biller.setLogoPath("/assets/logos/" + fileName);
         }
 
         return new Response<>(new ModelResponse<>(billerService.saveBiller(biller)));

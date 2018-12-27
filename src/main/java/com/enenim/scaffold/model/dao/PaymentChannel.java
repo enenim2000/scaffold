@@ -20,6 +20,7 @@ public class PaymentChannel extends BaseModel {
 
     public PaymentChannel() {
     }
+
     public PaymentChannel(Long id) {
         super();
         this.setId(id);
@@ -27,20 +28,20 @@ public class PaymentChannel extends BaseModel {
 
     @NotNull
     @Column(unique = true)
-    private String name = null;
+    private String name;
 
     @NotNull
     @Column(unique = true)
-    private String code = null;
+    private String code;
 
     @Column(length = 7)
     @JsonProperty("txn_prefix")
-    private String txnPrefix = null;
+    private String txnPrefix;
 
     @NotNull
     @Column(length = 20)
     @JsonProperty("notification_medium")
-    private String notificationMedium = null;
+    private String notificationMedium;
 
     @NotNull
     private EnabledStatus enabled = EnabledStatus.ENABLED;
