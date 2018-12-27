@@ -21,7 +21,7 @@ public class ApiKeyService {
         String apiConfigValue;
         for(Map.Entry<String, Channel> entry : apiKeyConfig.entrySet()){
             apiConfigValue = SpringMessage.msg(entry.getKey());
-            if(apiKeyRequestValue.equalsIgnoreCase(apiConfigValue)){
+            if(apiConfigValue.equalsIgnoreCase(apiKeyRequestValue)){
                 entry.getValue().setKey(entry.getKey());
                 entry.getValue().setValue(apiConfigValue);
                 return entry.getValue();

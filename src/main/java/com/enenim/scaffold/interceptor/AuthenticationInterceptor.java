@@ -69,6 +69,8 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             return true;
         }
 
+        RequestUtil.setLang(SpringMessage.msg("lang"));
+
         validateApiKey();
 
         HandlerMethod handlerMethod = (HandlerMethod)handler;
@@ -183,7 +185,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             this.request = new ContentCachingRequestWrapper(httpServletRequest);
             this.response = new ContentCachingResponseWrapper(httpServletResponse);
             this.handler = handler;
-            RequestUtil.setLang(SpringMessage.msg("lang"));
             RequestUtil.setAuthorization(null);
         }
     }

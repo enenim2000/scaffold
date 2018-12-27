@@ -7,6 +7,9 @@ public class ExceptionMessage {
     private static final String FILE_NAME = "exception";
 
     public static String msg(String key) {
+        System.out.println("key = " + key);
+        System.out.println("FILE_NAME = " + FILE_NAME);
+        System.out.println("RequestUtil.getLang() = " + RequestUtil.getLang());
         return PropertyUtil.msg(key, RequestUtil.getLang(), FILE_NAME);
     }
 
