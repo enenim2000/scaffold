@@ -19,6 +19,7 @@ import com.enenim.scaffold.service.MailSenderService;
 import com.enenim.scaffold.service.cache.SharedExpireCacheService;
 import com.enenim.scaffold.service.dao.ConsumerService;
 import com.enenim.scaffold.service.dao.LoginService;
+import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.RequestUtil;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.StringUtils;
@@ -94,12 +95,13 @@ public class ConsumerController {
     }
 
     @Put("/{code}/verify")
-    public Response<ModelResponse<Consumer>> verifyCode(@PathVariable("code") String code, @Valid @RequestBody SignUpVerifyRequest request) throws Exception {
-        Object value = sharedExpireCacheService.get(code);
+    public Response<ModelResponse<Consumer>> verifyCode(@PathVariable("code") String code, @Valid @RequestBody Request<SignUpVerifyRequest> request) throws Exception {
+        Object value = sharedExpireCacheService.get( SharedExpireCacheService.SINGUP + SharedExpireCacheService.SEPARATOR + code);
         if(!StringUtils.isEmpty(value)){
-            Consumer consumer = (Consumer)value;
+            String consumerJson = JsonConverter.getJsonRecursive(value);
+            Consumer consumer = JsonConverter.getObject(consumerJson, Consumer.class);
             Login login = loginService.getLoginByUsername(consumer.getEmail());
-            login.setPassword(bCryptPasswordEncoder.encode(request.getPassword()));
+            login.setPassword(bCryptPasswordEncoder.encode(request.getBody().getPassword()));
             login = loginService.saveLogin(login);
             if(!StringUtils.isEmpty(login)){
                 consumer.setVerified(VerifyStatus.VERIFIED);
