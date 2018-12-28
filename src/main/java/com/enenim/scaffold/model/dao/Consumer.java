@@ -5,6 +5,7 @@ import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,18 +20,22 @@ import java.util.Set;
 public class Consumer extends BaseModel {
 
     @JsonProperty("first_name")
+    @SerializedName("first_name")
     @Column(length = 30)
     private String firstName;
 
     @JsonProperty("last_name")
+    @SerializedName("last_name")
     @Column(length = 30)
     private String lastName;
 
     @JsonProperty("email")
+    @SerializedName("email")
     @Column(unique = true, length = 100)
     private String email;
 
     @JsonProperty("phone_number")
+    @SerializedName("phone_number")
     @Column(length = 30)
     private String phoneNumber;
 

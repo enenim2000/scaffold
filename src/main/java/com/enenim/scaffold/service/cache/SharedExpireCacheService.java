@@ -1,11 +1,13 @@
 package com.enenim.scaffold.service.cache;
 
+import com.enenim.scaffold.util.JsonConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 import java.util.HashMap;
@@ -15,9 +17,9 @@ import java.util.concurrent.TimeUnit;
 @Service(value = "sharedExpireCacheService")
 public class SharedExpireCacheService{
 
-    private static final String SEPARATOR = "::";
+    public static final String SEPARATOR = "::";
 
-    public static final String SINGUP = "signup" + SEPARATOR;
+    public static final String SINGUP = "signup";
 
     private static final Map<String, Long> durations = new HashMap<String, Long>() {{
         put(SINGUP, 2L);
@@ -50,7 +52,15 @@ public class SharedExpireCacheService{
 
     @Async
     public void put(String key, Object value) {
-        valueOps.set(key, value, durations.get(getPrefix(key)), units.get(getPrefix(key)));
+
+        System.out.println("key = " + key);
+        System.out.println("value = " + JsonConverter.getJsonRecursive(value));
+        String cachePrefix = getPrefix(key);
+        System.out.println("cachePrefix = " + cachePrefix);
+        if(StringUtils.isEmpty(valueOps)){
+            System.out.println(" valueOps is empty ");
+        }
+        valueOps.set(key, value, durations.get(cachePrefix), units.get(cachePrefix));
     }
 
     @Async

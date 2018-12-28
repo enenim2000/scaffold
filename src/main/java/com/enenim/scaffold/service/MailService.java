@@ -1,6 +1,7 @@
 package com.enenim.scaffold.service;
 
 import com.enenim.scaffold.shared.Mail;
+import com.enenim.scaffold.util.message.SpringMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -46,7 +47,8 @@ public class MailService {
             helper.setTo(mail.getTo());
             helper.setText(html, true);
             helper.setSubject(mail.getSubject());
-            helper.setFrom(mail.getFrom());
+            helper.setFrom(SpringMessage.msg("spring.mail.username"));
+            //helper.setFrom(mail.getFrom());
 
         } catch (MessagingException e) {
             e.printStackTrace();
