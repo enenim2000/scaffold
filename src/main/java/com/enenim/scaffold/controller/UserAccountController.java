@@ -56,7 +56,6 @@ public class UserAccountController {
 
 	@Post("/authenticate")
 	public Response<StringResponse> accountAuth(@Valid @RequestBody Request<LoginRequest> request) {
-
 		RequestUtil.setCommonRequestProperties(request);
 		RequestUtil.setMessage(CommonMessage.msg("successful_logged_in"));
 		Login login = loginService.getLoginByUsername(request.getBody().getUsername());
