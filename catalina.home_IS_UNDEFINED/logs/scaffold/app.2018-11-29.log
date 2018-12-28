@@ -1,0 +1,1341 @@
+2018-11-29 04:59:28 WARN [HikariPool-1 housekeeper] c.z.h.p.HikariPool
+                [HikariPool.java:758] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6h36m44s684ms387µs795ns).
+2018-11-29 21:31:18 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:50] Starting ScaffoldApplication on DESKTOP-PPDBD7C with PID 13960 (C:\Users\Admin\IdeaProjects\scaffold\target\classes started by Admin in C:\Users\Admin\IdeaProjects\scaffold)
+2018-11-29 21:31:18 DEBUG [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:53] Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+2018-11-29 21:31:18 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [SpringApplication.java:684] The following profiles are active: dev
+2018-11-29 21:31:18 INFO [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext
+                [AbstractApplicationContext.java:590] Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@10f5ca2a: startup date [Thu Nov 29 21:31:18 WAT 2018]; root of context hierarchy
+2018-11-29 21:31:25 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate
+                [RepositoryConfigurationDelegate.java:172] Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-11-29 21:31:26 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate
+                [RepositoryConfigurationDelegate.java:172] Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-11-29 21:31:26 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ActiveHourRepository.
+2018-11-29 21:31:26 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AuditRepository.
+2018-11-29 21:31:26 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AuthorizationRepository.
+2018-11-29 21:31:26 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.BillerRepository.
+2018-11-29 21:31:26 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.CategoryRepository.
+2018-11-29 21:31:26 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerAccountRepository.
+2018-11-29 21:31:26 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerRepository.
+2018-11-29 21:31:26 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerSettingRepository.
+2018-11-29 21:31:26 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.DisputeMessageRepository.
+2018-11-29 21:31:26 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.GroupRepository.
+2018-11-29 21:31:26 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LogEventRepository.
+2018-11-29 21:31:26 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LoginRepository.
+2018-11-29 21:31:26 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LogWebServiceRepository.
+2018-11-29 21:31:26 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PasswordResetRepository.
+2018-11-29 21:31:26 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PaymentChannelRepository.
+2018-11-29 21:31:26 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PublicHolidayRepository.
+2018-11-29 21:31:26 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.SettingRepository.
+2018-11-29 21:31:26 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.StaffRepository.
+2018-11-29 21:31:26 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TaskRepository.
+2018-11-29 21:31:26 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TrackerRepository.
+2018-11-29 21:31:26 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker
+                [PostProcessorRegistrationDelegate.java:326] Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$c24cf60d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-11-29 21:31:26 INFO [restartedMain] o.s.w.s.a.s.AnnotationActionEndpointMapping
+                [AbstractAddressingEndpointMapping.java:236] Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2018-11-29 21:31:26 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker
+                [PostProcessorRegistrationDelegate.java:326] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$1db5310e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-11-29 21:31:27 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer
+                [TomcatWebServer.java:91] Tomcat initialized with port(s): 8080 (http)
+2018-11-29 21:31:27 INFO [restartedMain] o.a.c.h.Http11NioProtocol
+                [DirectJDKLog.java:180] Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-29 21:31:27 INFO [restartedMain] o.a.c.c.StandardService
+                [DirectJDKLog.java:180] Starting service [Tomcat]
+2018-11-29 21:31:27 INFO [restartedMain] o.a.c.c.StandardEngine
+                [DirectJDKLog.java:180] Starting Servlet Engine: Apache Tomcat/8.5.34
+2018-11-29 21:31:27 INFO [localhost-startStop-1] o.a.c.c.AprLifecycleListener
+                [DirectJDKLog.java:180] The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_144\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk1.8.0_144\bin;C:\apache-maven-3.5.0-bin\bin;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\nodejs\;%M2_HOME%\bin;C:\Users\Admin\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Microsoft VS Code\bin;C:\Users\Admin\AppData\Roaming\Composer\vendor\bin;C:\Users\Admin\AppData\Roaming\npm;.]
+2018-11-29 21:31:28 INFO [localhost-startStop-1] o.a.c.c.C.[.[.[/]
+                [DirectJDKLog.java:180] Initializing Spring embedded WebApplicationContext
+2018-11-29 21:31:28 INFO [localhost-startStop-1] o.s.w.c.ContextLoader
+                [ServletWebServerApplicationContext.java:285] Root WebApplicationContext: initialization completed in 9166 ms
+2018-11-29 21:31:29 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-29 21:31:29 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2018-11-29 21:31:29 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'sessionRepositoryFilter' to: [/*]
+2018-11-29 21:31:29 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-29 21:31:29 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-11-29 21:31:29 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-29 21:31:29 INFO [localhost-startStop-1] o.s.b.w.s.DelegatingFilterProxyRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'springSecurityFilterChain' to: [/*]
+2018-11-29 21:31:29 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'httpTraceFilter' to: [/*]
+2018-11-29 21:31:29 INFO [localhost-startStop-1] o.s.b.w.s.ServletRegistrationBean
+                [ServletRegistrationBean.java:187] Servlet dispatcherServlet mapped to [/]
+2018-11-29 21:31:29 INFO [localhost-startStop-1] o.s.b.w.s.ServletRegistrationBean
+                [ServletRegistrationBean.java:187] Servlet messageDispatcherServlet mapped to [/services/*]
+2018-11-29 21:31:29 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean
+                [LocalContainerEntityManagerFactoryBean.java:361] Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-11-29 21:31:29 INFO [restartedMain] o.h.j.i.u.LogHelper
+                [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-11-29 21:31:29 INFO [restartedMain] o.h.Version
+                [Version.java:45] HHH000412: Hibernate Core {5.2.17.Final}
+2018-11-29 21:31:29 INFO [restartedMain] o.h.c.Environment
+                [Environment.java:213] HHH000206: hibernate.properties not found
+2018-11-29 21:31:29 INFO [restartedMain] o.h.a.c.Version
+                [JavaReflectionManager.java:66] HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-11-29 21:31:29 INFO [restartedMain] c.z.h.HikariDataSource
+                [HikariDataSource.java:110] HikariPool-1 - Starting...
+2018-11-29 21:31:30 INFO [restartedMain] c.z.h.HikariDataSource
+                [HikariDataSource.java:123] HikariPool-1 - Start completed.
+2018-11-29 21:31:30 INFO [restartedMain] o.h.d.Dialect
+                [Dialect.java:157] HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2018-11-29 21:31:34 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean
+                [AbstractEntityManagerFactoryBean.java:415] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-11-29 21:31:35 INFO [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator
+                [QueryTranslatorFactoryInitiator.java:47] HHH000397: Using ASTQueryTranslatorFactory
+2018-11-29 21:31:36 WARN [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration
+                [JpaBaseConfiguration.java:237] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Authorization> com.enenim.scaffold.controller.AuthorizationController.getAuthorization(java.lang.Long)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/me/{type}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getMyAuthorizationsByType(java.lang.String)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/{id}/forward],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Authorization> com.enenim.scaffold.controller.AuthorizationController.forwardAuthorization(java.lang.Long)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/all],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getAllAuthorizations()
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/checked/{type}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getCheckedAuthorizationsByType(java.lang.String)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/forward],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<java.util.Collection<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.forwardManyAuthorization(java.util.List<java.lang.Long>)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getAuthorizations()
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/me],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getMyAuthorizations()
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/all/{type}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getAllAuthorizationsByType(java.lang.String)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/checked],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getCheckedAuthorization()
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/{id}/approve],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Authorization> com.enenim.scaffold.controller.AuthorizationController.approveAuthorization(java.lang.Long)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/{id}/reject],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Authorization> com.enenim.scaffold.controller.AuthorizationController.rejectAuthorization(java.lang.Long,java.lang.String)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/toggle],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.ConsumerController.toggle(java.lang.Long)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{code}/verify],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.verifyCode(java.lang.String,com.enenim.scaffold.dto.request.SignUpVerifyRequest) throws java.lang.Exception
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.showConsumer(java.lang.Long)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{email}/code/re-send],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.ConsumerController.reSendCode(java.lang.String)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.getConsumers()
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/sign-up],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.signUpConsumers(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.ConsumerRequest>)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.storeAnonymousConsumers(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.ConsumerRequest>)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Group> com.enenim.scaffold.controller.GroupController.update(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.GroupRequest>)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/tasks],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.GroupController.getPermission(java.lang.Long)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Group> com.enenim.scaffold.controller.GroupController.createGroup(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.GroupRequest>)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Group>> com.enenim.scaffold.controller.GroupController.getGroups()
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/tasks],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Group>> com.enenim.scaffold.controller.GroupController.updatePermission(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.PermissionRequest>)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Group> com.enenim.scaffold.controller.GroupController.show(java.lang.Long)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/authorizations],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.GroupController.getPermissionAuthorizations(java.lang.Long)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/authorizations],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Group>> com.enenim.scaffold.controller.GroupController.updatePermissionAuthorizations(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.PermissionRequest>)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.cache.SettingCache>> com.enenim.scaffold.controller.SettingController.saveSetting(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.SettingRequest>)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings/{key}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.cache.SettingCache>> com.enenim.scaffold.controller.SettingController.getSetting(java.lang.String)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.createStaff(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.StaffRequest>)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}/lookup],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.lookupStaff(java.lang.Long)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.updateStaff(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.StaffRequest>)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.getStaff(java.lang.Long)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.getStaff()
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}/toggle],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Staff> com.enenim.scaffold.controller.StaffController.toggleStaff(java.lang.Long)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.TaskController.getTask(java.lang.Long)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.TaskController.getTasks()
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks/sync],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.TaskController.syncTasks()
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.TaskController.updateTask(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.TaskRequest>)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/test/password],methods=[GET],produces=[application/json]}" onto public void com.enenim.scaffold.controller.TestController.generatePassword() throws java.lang.ClassNotFoundException
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/test/queue],methods=[GET],produces=[application/json]}" onto public void com.enenim.scaffold.controller.TestController.getSubscribedEvents() throws java.lang.ClassNotFoundException
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/accounts/authenticate],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.StringResponse> com.enenim.scaffold.controller.UserAccountController.accountAuth(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.LoginRequest>)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-11-29 21:31:36 INFO [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration
+                [UserDetailsServiceAutoConfiguration.java:86] 
+
+Using generated security password: db506842-6d88-499c-a874-7c04a2361b7a
+
+2018-11-29 21:31:36 INFO [restartedMain] o.s.s.w.DefaultSecurityFilterChain
+                [DefaultSecurityFilterChain.java:43] Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2018-11-29 21:31:36 INFO [restartedMain] o.s.s.w.DefaultSecurityFilterChain
+                [DefaultSecurityFilterChain.java:43] Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@af9d3e9, org.springframework.security.web.context.SecurityContextPersistenceFilter@5b3171fb, org.springframework.security.web.header.HeaderWriterFilter@4b743009, org.springframework.security.web.authentication.logout.LogoutFilter@4f68ebb9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1245eefe, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4d64637e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5633797a, org.springframework.security.web.session.SessionManagementFilter@769d1efd, org.springframework.security.web.access.ExceptionTranslationFilter@58e01d3a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7bbdc1ab]
+2018-11-29 21:31:36 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor
+                [ExecutorConfigurationSupport.java:171] Initializing ExecutorService 
+2018-11-29 21:31:36 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor
+                [ExecutorConfigurationSupport.java:171] Initializing ExecutorService  'processExecutor'
+2018-11-29 21:31:36 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-29 21:31:37 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerAdapter
+                [RequestMappingHandlerAdapter.java:588] Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@10f5ca2a: startup date [Thu Nov 29 21:31:18 WAT 2018]; root of context hierarchy
+2018-11-29 21:31:37 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-29 21:31:37 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-29 21:31:37 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/assets/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-29 21:31:37 INFO [restartedMain] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver
+                [ExceptionHandlerExceptionResolver.java:288] Detected @ExceptionHandler methods in exceptionHandlingController
+2018-11-29 21:31:37 INFO [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping
+                [WelcomePageHandlerMapping.java:61] Adding welcome page template: index
+2018-11-29 21:31:39 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext
+                [AbstractApplicationContext.java:558] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'enableRedisKeyspaceNotificationsInitializer' defined in class path resource [org/springframework/boot/autoconfigure/session/RedisSessionConfiguration$SpringBootRedisHttpSessionConfiguration.class]: Invocation of init method failed; nested exception is org.springframework.data.redis.RedisConnectionFailureException: Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+2018-11-29 21:31:39 INFO [restartedMain] o.s.j.e.a.AnnotationMBeanExporter
+                [MBeanExporter.java:451] Unregistering JMX-exposed beans on shutdown
+2018-11-29 21:31:39 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor
+                [ExecutorConfigurationSupport.java:208] Shutting down ExecutorService 'processExecutor'
+2018-11-29 21:31:39 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean
+                [AbstractEntityManagerFactoryBean.java:597] Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-11-29 21:31:39 INFO [restartedMain] c.z.h.HikariDataSource
+                [HikariDataSource.java:381] HikariPool-1 - Shutdown initiated...
+2018-11-29 21:31:39 INFO [restartedMain] c.z.h.HikariDataSource
+                [HikariDataSource.java:383] HikariPool-1 - Shutdown completed.
+2018-11-29 21:31:39 INFO [restartedMain] o.a.c.c.StandardService
+                [DirectJDKLog.java:180] Stopping service [Tomcat]
+2018-11-29 21:31:39 INFO [restartedMain] o.s.b.a.l.ConditionEvaluationReportLoggingListener
+                [ConditionEvaluationReportLoggingListener.java:101] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2018-11-29 21:31:39 ERROR [restartedMain] o.s.b.SpringApplication
+                [SpringApplication.java:863] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'enableRedisKeyspaceNotificationsInitializer' defined in class path resource [org/springframework/boot/autoconfigure/session/RedisSessionConfiguration$SpringBootRedisHttpSessionConfiguration.class]: Invocation of init method failed; nested exception is org.springframework.data.redis.RedisConnectionFailureException: Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1699)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:573)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:759)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:780)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1277)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1265)
+	at com.enenim.scaffold.ScaffoldApplication.main(ScaffoldApplication.java:15)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.data.redis.RedisConnectionFailureException: Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:286)
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.getConnection(JedisConnectionFactory.java:469)
+	at org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration$EnableRedisKeyspaceNotificationsInitializer.afterPropertiesSet(RedisHttpSessionConfiguration.java:284)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1758)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1695)
+	... 21 common frames omitted
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at redis.clients.util.Pool.getResource(Pool.java:53)
+	at redis.clients.jedis.JedisPool.getResource(JedisPool.java:226)
+	at redis.clients.jedis.JedisPool.getResource(JedisPool.java:16)
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:276)
+	... 25 common frames omitted
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: java.net.ConnectException: Connection refused: connect
+	at redis.clients.jedis.Connection.connect(Connection.java:207)
+	at redis.clients.jedis.BinaryClient.connect(BinaryClient.java:93)
+	at redis.clients.jedis.BinaryJedis.connect(BinaryJedis.java:1767)
+	at redis.clients.jedis.JedisFactory.makeObject(JedisFactory.java:106)
+	at org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:889)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:433)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:362)
+	at redis.clients.util.Pool.getResource(Pool.java:49)
+	... 28 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at redis.clients.jedis.Connection.connect(Connection.java:184)
+	... 35 common frames omitted
+2018-11-29 21:47:41 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:50] Starting ScaffoldApplication on DESKTOP-PPDBD7C with PID 4300 (C:\Users\Admin\IdeaProjects\scaffold\target\classes started by Admin in C:\Users\Admin\IdeaProjects\scaffold)
+2018-11-29 21:47:41 DEBUG [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:53] Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+2018-11-29 21:47:41 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [SpringApplication.java:684] The following profiles are active: dev
+2018-11-29 21:47:41 INFO [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext
+                [AbstractApplicationContext.java:590] Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2d3ac74: startup date [Thu Nov 29 21:47:41 WAT 2018]; root of context hierarchy
+2018-11-29 21:47:43 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate
+                [RepositoryConfigurationDelegate.java:172] Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-11-29 21:47:44 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate
+                [RepositoryConfigurationDelegate.java:172] Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-11-29 21:47:44 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ActiveHourRepository.
+2018-11-29 21:47:44 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AuditRepository.
+2018-11-29 21:47:44 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AuthorizationRepository.
+2018-11-29 21:47:44 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.BillerRepository.
+2018-11-29 21:47:44 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.CategoryRepository.
+2018-11-29 21:47:44 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerAccountRepository.
+2018-11-29 21:47:44 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerRepository.
+2018-11-29 21:47:44 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerSettingRepository.
+2018-11-29 21:47:44 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.DisputeMessageRepository.
+2018-11-29 21:47:44 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.GroupRepository.
+2018-11-29 21:47:44 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LogEventRepository.
+2018-11-29 21:47:44 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LoginRepository.
+2018-11-29 21:47:44 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LogWebServiceRepository.
+2018-11-29 21:47:44 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PasswordResetRepository.
+2018-11-29 21:47:44 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PaymentChannelRepository.
+2018-11-29 21:47:44 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PublicHolidayRepository.
+2018-11-29 21:47:44 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.SettingRepository.
+2018-11-29 21:47:44 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.StaffRepository.
+2018-11-29 21:47:44 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TaskRepository.
+2018-11-29 21:47:44 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TrackerRepository.
+2018-11-29 21:47:45 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker
+                [PostProcessorRegistrationDelegate.java:326] Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$40b3fbd] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-11-29 21:47:45 INFO [restartedMain] o.s.w.s.a.s.AnnotationActionEndpointMapping
+                [AbstractAddressingEndpointMapping.java:236] Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2018-11-29 21:47:45 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker
+                [PostProcessorRegistrationDelegate.java:326] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$5f737abe] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-11-29 21:47:45 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer
+                [TomcatWebServer.java:91] Tomcat initialized with port(s): 8080 (http)
+2018-11-29 21:47:45 INFO [restartedMain] o.a.c.h.Http11NioProtocol
+                [DirectJDKLog.java:180] Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-29 21:47:45 INFO [restartedMain] o.a.c.c.StandardService
+                [DirectJDKLog.java:180] Starting service [Tomcat]
+2018-11-29 21:47:45 INFO [restartedMain] o.a.c.c.StandardEngine
+                [DirectJDKLog.java:180] Starting Servlet Engine: Apache Tomcat/8.5.34
+2018-11-29 21:47:45 INFO [localhost-startStop-1] o.a.c.c.AprLifecycleListener
+                [DirectJDKLog.java:180] The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_144\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk1.8.0_144\bin;C:\apache-maven-3.5.0-bin\bin;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\nodejs\;%M2_HOME%\bin;C:\Users\Admin\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Microsoft VS Code\bin;C:\Users\Admin\AppData\Roaming\Composer\vendor\bin;C:\Users\Admin\AppData\Roaming\npm;.]
+2018-11-29 21:47:46 INFO [localhost-startStop-1] o.a.c.c.C.[.[.[/]
+                [DirectJDKLog.java:180] Initializing Spring embedded WebApplicationContext
+2018-11-29 21:47:46 INFO [localhost-startStop-1] o.s.w.c.ContextLoader
+                [ServletWebServerApplicationContext.java:285] Root WebApplicationContext: initialization completed in 4729 ms
+2018-11-29 21:47:47 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-29 21:47:47 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2018-11-29 21:47:47 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'sessionRepositoryFilter' to: [/*]
+2018-11-29 21:47:47 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-29 21:47:47 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-11-29 21:47:47 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-29 21:47:47 INFO [localhost-startStop-1] o.s.b.w.s.DelegatingFilterProxyRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'springSecurityFilterChain' to: [/*]
+2018-11-29 21:47:47 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'httpTraceFilter' to: [/*]
+2018-11-29 21:47:47 INFO [localhost-startStop-1] o.s.b.w.s.ServletRegistrationBean
+                [ServletRegistrationBean.java:187] Servlet dispatcherServlet mapped to [/]
+2018-11-29 21:47:47 INFO [localhost-startStop-1] o.s.b.w.s.ServletRegistrationBean
+                [ServletRegistrationBean.java:187] Servlet messageDispatcherServlet mapped to [/services/*]
+2018-11-29 21:47:47 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean
+                [LocalContainerEntityManagerFactoryBean.java:361] Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-11-29 21:47:47 INFO [restartedMain] o.h.j.i.u.LogHelper
+                [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-11-29 21:47:47 INFO [restartedMain] o.h.Version
+                [Version.java:45] HHH000412: Hibernate Core {5.2.17.Final}
+2018-11-29 21:47:47 INFO [restartedMain] o.h.c.Environment
+                [Environment.java:213] HHH000206: hibernate.properties not found
+2018-11-29 21:47:47 INFO [restartedMain] o.h.a.c.Version
+                [JavaReflectionManager.java:66] HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-11-29 21:47:47 INFO [restartedMain] c.z.h.HikariDataSource
+                [HikariDataSource.java:110] HikariPool-1 - Starting...
+2018-11-29 21:47:47 INFO [restartedMain] c.z.h.HikariDataSource
+                [HikariDataSource.java:123] HikariPool-1 - Start completed.
+2018-11-29 21:47:47 INFO [restartedMain] o.h.d.Dialect
+                [Dialect.java:157] HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2018-11-29 21:47:51 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean
+                [AbstractEntityManagerFactoryBean.java:415] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-11-29 21:47:51 INFO [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator
+                [QueryTranslatorFactoryInitiator.java:47] HHH000397: Using ASTQueryTranslatorFactory
+2018-11-29 21:47:52 WARN [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration
+                [JpaBaseConfiguration.java:237] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/me],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getMyAuthorizations()
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/all/{type}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getAllAuthorizationsByType(java.lang.String)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/me/{type}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getMyAuthorizationsByType(java.lang.String)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/all],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getAllAuthorizations()
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getAuthorizations()
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/{id}/approve],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Authorization> com.enenim.scaffold.controller.AuthorizationController.approveAuthorization(java.lang.Long)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/forward],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<java.util.Collection<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.forwardManyAuthorization(java.util.List<java.lang.Long>)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/{id}/forward],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Authorization> com.enenim.scaffold.controller.AuthorizationController.forwardAuthorization(java.lang.Long)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/checked/{type}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getCheckedAuthorizationsByType(java.lang.String)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/checked],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getCheckedAuthorization()
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/{id}/reject],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Authorization> com.enenim.scaffold.controller.AuthorizationController.rejectAuthorization(java.lang.Long,java.lang.String)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Authorization> com.enenim.scaffold.controller.AuthorizationController.getAuthorization(java.lang.Long)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/toggle],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.ConsumerController.toggle(java.lang.Long)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.storeAnonymousConsumers(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.ConsumerRequest>)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{code}/verify],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.verifyCode(java.lang.String,com.enenim.scaffold.dto.request.SignUpVerifyRequest) throws java.lang.Exception
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/sign-up],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.signUpConsumers(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.ConsumerRequest>)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.getConsumers()
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.showConsumer(java.lang.Long)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{email}/code/re-send],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.ConsumerController.reSendCode(java.lang.String)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Group> com.enenim.scaffold.controller.GroupController.update(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.GroupRequest>)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/tasks],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.GroupController.getPermission(java.lang.Long)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Group> com.enenim.scaffold.controller.GroupController.createGroup(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.GroupRequest>)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Group>> com.enenim.scaffold.controller.GroupController.getGroups()
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/authorizations],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Group>> com.enenim.scaffold.controller.GroupController.updatePermissionAuthorizations(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.PermissionRequest>)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/authorizations],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.GroupController.getPermissionAuthorizations(java.lang.Long)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Group> com.enenim.scaffold.controller.GroupController.show(java.lang.Long)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/tasks],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Group>> com.enenim.scaffold.controller.GroupController.updatePermission(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.PermissionRequest>)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.cache.SettingCache>> com.enenim.scaffold.controller.SettingController.saveSetting(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.SettingRequest>)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings/{key}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.cache.SettingCache>> com.enenim.scaffold.controller.SettingController.getSetting(java.lang.String)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.getStaff(java.lang.Long)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.getStaff()
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}/toggle],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Staff> com.enenim.scaffold.controller.StaffController.toggleStaff(java.lang.Long)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.createStaff(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.StaffRequest>)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.updateStaff(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.StaffRequest>)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}/lookup],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.lookupStaff(java.lang.Long)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.TaskController.getTask(java.lang.Long)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.TaskController.getTasks()
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.TaskController.updateTask(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.TaskRequest>)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks/sync],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.TaskController.syncTasks()
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/test/queue],methods=[GET],produces=[application/json]}" onto public void com.enenim.scaffold.controller.TestController.getSubscribedEvents() throws java.lang.ClassNotFoundException
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/test/password],methods=[GET],produces=[application/json]}" onto public void com.enenim.scaffold.controller.TestController.generatePassword() throws java.lang.ClassNotFoundException
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/accounts/authenticate],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.StringResponse> com.enenim.scaffold.controller.UserAccountController.accountAuth(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.LoginRequest>)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-11-29 21:47:52 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-11-29 21:47:53 INFO [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration
+                [UserDetailsServiceAutoConfiguration.java:86] 
+
+Using generated security password: d265aa63-7975-4c2c-875c-8a44fb2d0198
+
+2018-11-29 21:47:53 INFO [restartedMain] o.s.s.w.DefaultSecurityFilterChain
+                [DefaultSecurityFilterChain.java:43] Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2018-11-29 21:47:53 INFO [restartedMain] o.s.s.w.DefaultSecurityFilterChain
+                [DefaultSecurityFilterChain.java:43] Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1d3efe24, org.springframework.security.web.context.SecurityContextPersistenceFilter@4bc179af, org.springframework.security.web.header.HeaderWriterFilter@68bb086, org.springframework.security.web.authentication.logout.LogoutFilter@29021fb6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1027bf7d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@be2929e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@18580166, org.springframework.security.web.session.SessionManagementFilter@454d0faf, org.springframework.security.web.access.ExceptionTranslationFilter@cbd86b5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5d0a7eba]
+2018-11-29 21:47:53 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor
+                [ExecutorConfigurationSupport.java:171] Initializing ExecutorService 
+2018-11-29 21:47:53 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor
+                [ExecutorConfigurationSupport.java:171] Initializing ExecutorService  'processExecutor'
+2018-11-29 21:47:53 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-29 21:47:53 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerAdapter
+                [RequestMappingHandlerAdapter.java:588] Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2d3ac74: startup date [Thu Nov 29 21:47:41 WAT 2018]; root of context hierarchy
+2018-11-29 21:47:53 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-29 21:47:53 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-29 21:47:53 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/assets/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-29 21:47:53 INFO [restartedMain] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver
+                [ExceptionHandlerExceptionResolver.java:288] Detected @ExceptionHandler methods in exceptionHandlingController
+2018-11-29 21:47:53 INFO [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping
+                [WelcomePageHandlerMapping.java:61] Adding welcome page template: index
+2018-11-29 21:47:54 INFO [restartedMain] o.s.b.a.e.w.EndpointLinksResolver
+                [EndpointLinksResolver.java:59] Exposing 2 endpoint(s) beneath base path '/actuator'
+2018-11-29 21:47:54 INFO [restartedMain] o.s.b.a.e.w.s.WebMvcEndpointHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-11-29 21:47:54 INFO [restartedMain] o.s.b.a.e.w.s.WebMvcEndpointHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-11-29 21:47:54 INFO [restartedMain] o.s.b.a.e.w.s.WebMvcEndpointHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-11-29 21:47:55 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer
+                [OptionalLiveReloadServer.java:57] LiveReload server is running on port 35729
+2018-11-29 21:47:55 INFO [restartedMain] o.s.j.e.a.AnnotationMBeanExporter
+                [MBeanExporter.java:433] Registering beans for JMX exposure on startup
+2018-11-29 21:47:55 INFO [restartedMain] o.s.j.e.a.AnnotationMBeanExporter
+                [MBeanExporter.java:895] Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-11-29 21:47:55 INFO [restartedMain] o.s.j.e.a.AnnotationMBeanExporter
+                [MBeanExporter.java:668] Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2018-11-29 21:47:55 INFO [restartedMain] o.s.c.s.DefaultLifecycleProcessor
+                [DefaultLifecycleProcessor.java:356] Starting beans in phase 2147483647
+2018-11-29 21:47:55 INFO [restartedMain] o.s.s.a.ScheduledAnnotationBeanPostProcessor
+                [ScheduledAnnotationBeanPostProcessor.java:276] No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2018-11-29 21:47:55 INFO [restartedMain] o.a.c.h.Http11NioProtocol
+                [DirectJDKLog.java:180] Starting ProtocolHandler ["http-nio-8080"]
+2018-11-29 21:47:55 INFO [restartedMain] o.a.t.u.n.NioSelectorPool
+                [DirectJDKLog.java:180] Using a shared selector for servlet write/read
+2018-11-29 21:47:55 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer
+                [TomcatWebServer.java:206] Tomcat started on port(s): 8080 (http) with context path ''
+2018-11-29 21:47:55 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:59] Started ScaffoldApplication in 14.595 seconds (JVM running for 15.656)
+2018-11-29 21:49:30 INFO [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/]
+                [DirectJDKLog.java:180] Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-11-29 21:49:30 INFO [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet
+                [FrameworkServlet.java:494] FrameworkServlet 'dispatcherServlet': initialization started
+2018-11-29 21:49:30 INFO [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet
+                [FrameworkServlet.java:509] FrameworkServlet 'dispatcherServlet': initialization completed in 37 ms
+2018-11-29 21:49:32 ERROR [Asynchronous Process-2] o.s.a.i.SimpleAsyncUncaughtExceptionHandler
+                [SimpleAsyncUncaughtExceptionHandler.java:38] Unexpected error occurred invoking async method: public void com.enenim.scaffold.service.TokenAuthenticationService.saveToken(com.enenim.scaffold.model.cache.LoginCache)
+org.springframework.data.redis.serializer.SerializationException: Could not write JSON: Null key for a Map not allowed in JSON (use a converting NullKeySerializer?) (through reference chain: java.util.HashMap["null"]); nested exception is com.fasterxml.jackson.databind.JsonMappingException: Null key for a Map not allowed in JSON (use a converting NullKeySerializer?) (through reference chain: java.util.HashMap["null"])
+	at org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer.serialize(Jackson2JsonRedisSerializer.java:88)
+	at org.springframework.data.redis.core.AbstractOperations.rawHashValue(AbstractOperations.java:184)
+	at org.springframework.data.redis.core.DefaultHashOperations.put(DefaultHashOperations.java:175)
+	at com.enenim.scaffold.service.cache.LoginCacheService.save(LoginCacheService.java:83)
+	at com.enenim.scaffold.service.cache.LoginCacheService$$FastClassBySpringCGLIB$$e79fdea.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:746)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+	at com.enenim.scaffold.service.cache.LoginCacheService$$EnhancerBySpringCGLIB$$4292d37c.save(<generated>)
+	at com.enenim.scaffold.service.TokenAuthenticationService.saveToken(TokenAuthenticationService.java:87)
+	at com.enenim.scaffold.service.TokenAuthenticationService$$FastClassBySpringCGLIB$$bd69dbea.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:746)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.fasterxml.jackson.databind.JsonMappingException: Null key for a Map not allowed in JSON (use a converting NullKeySerializer?) (through reference chain: java.util.HashMap["null"])
+	at com.fasterxml.jackson.databind.JsonMappingException.from(JsonMappingException.java:284)
+	at com.fasterxml.jackson.databind.SerializerProvider.mappingException(SerializerProvider.java:1251)
+	at com.fasterxml.jackson.databind.SerializerProvider.reportMappingProblem(SerializerProvider.java:1145)
+	at com.fasterxml.jackson.databind.ser.impl.FailingSerializer.serialize(FailingSerializer.java:35)
+	at com.fasterxml.jackson.databind.ser.std.MapSerializer.serializeFields(MapSerializer.java:701)
+	at com.fasterxml.jackson.databind.ser.std.MapSerializer.serialize(MapSerializer.java:639)
+	at com.fasterxml.jackson.databind.ser.std.MapSerializer.serialize(MapSerializer.java:33)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319)
+	at com.fasterxml.jackson.databind.ObjectMapper._configAndWriteValue(ObjectMapper.java:3905)
+	at com.fasterxml.jackson.databind.ObjectMapper.writeValueAsBytes(ObjectMapper.java:3243)
+	at org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer.serialize(Jackson2JsonRedisSerializer.java:86)
+	... 21 common frames omitted
+2018-11-29 21:49:32 ERROR [Asynchronous Process-1] o.s.a.i.SimpleAsyncUncaughtExceptionHandler
+                [SimpleAsyncUncaughtExceptionHandler.java:38] Unexpected error occurred invoking async method: public void com.enenim.scaffold.service.dao.TrackerService.saveTracker(com.enenim.scaffold.model.dao.Tracker)
+java.lang.NullPointerException: null
+	at com.enenim.scaffold.util.RequestUtil.getRequest(RequestUtil.java:21)
+	at com.enenim.scaffold.util.RequestUtil.getLang(RequestUtil.java:202)
+	at com.enenim.scaffold.util.message.EntityMessage.msg(EntityMessage.java:9)
+	at com.enenim.scaffold.interceptor.AuditAdvice.interceptCreate(AuditAdvice.java:161)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:644)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:633)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:174)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
+	at com.sun.proxy.$Proxy144.persist(Unknown Source)
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.save(SimpleJpaRepository.java:490)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:377)
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:200)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:641)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.doInvoke(RepositoryFactorySupport.java:605)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.invoke(RepositoryFactorySupport.java:590)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:59)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:294)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:135)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.data.repository.core.support.SurroundingTransactionDetectorMethodInterceptor.invoke(SurroundingTransactionDetectorMethodInterceptor.java:61)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
+	at com.sun.proxy.$Proxy172.save(Unknown Source)
+	at com.enenim.scaffold.service.dao.TrackerService.saveTracker(TrackerService.java:34)
+	at com.enenim.scaffold.service.dao.TrackerService$$FastClassBySpringCGLIB$$a40c77f.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:746)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:294)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-11-29 21:56:28 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:50] Starting ScaffoldApplication on DESKTOP-PPDBD7C with PID 10164 (C:\Users\Admin\IdeaProjects\scaffold\target\classes started by Admin in C:\Users\Admin\IdeaProjects\scaffold)
+2018-11-29 21:56:28 DEBUG [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:53] Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+2018-11-29 21:56:28 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [SpringApplication.java:684] The following profiles are active: dev
+2018-11-29 21:56:28 INFO [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext
+                [AbstractApplicationContext.java:590] Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@d34bac7: startup date [Thu Nov 29 21:56:28 WAT 2018]; root of context hierarchy
+2018-11-29 21:56:29 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate
+                [RepositoryConfigurationDelegate.java:172] Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-11-29 21:56:30 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate
+                [RepositoryConfigurationDelegate.java:172] Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-11-29 21:56:30 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ActiveHourRepository.
+2018-11-29 21:56:30 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AuditRepository.
+2018-11-29 21:56:30 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AuthorizationRepository.
+2018-11-29 21:56:30 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.BillerRepository.
+2018-11-29 21:56:30 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.CategoryRepository.
+2018-11-29 21:56:30 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerAccountRepository.
+2018-11-29 21:56:30 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerRepository.
+2018-11-29 21:56:30 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerSettingRepository.
+2018-11-29 21:56:30 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.DisputeMessageRepository.
+2018-11-29 21:56:30 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.GroupRepository.
+2018-11-29 21:56:30 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LogEventRepository.
+2018-11-29 21:56:30 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LoginRepository.
+2018-11-29 21:56:30 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LogWebServiceRepository.
+2018-11-29 21:56:30 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PasswordResetRepository.
+2018-11-29 21:56:30 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PaymentChannelRepository.
+2018-11-29 21:56:30 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PublicHolidayRepository.
+2018-11-29 21:56:30 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.SettingRepository.
+2018-11-29 21:56:30 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.StaffRepository.
+2018-11-29 21:56:30 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TaskRepository.
+2018-11-29 21:56:30 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TrackerRepository.
+2018-11-29 21:56:30 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker
+                [PostProcessorRegistrationDelegate.java:326] Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$f149c4a1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-11-29 21:56:30 INFO [restartedMain] o.s.w.s.a.s.AnnotationActionEndpointMapping
+                [AbstractAddressingEndpointMapping.java:236] Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2018-11-29 21:56:30 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker
+                [PostProcessorRegistrationDelegate.java:326] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4cb1ffa2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-11-29 21:56:31 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer
+                [TomcatWebServer.java:91] Tomcat initialized with port(s): 8080 (http)
+2018-11-29 21:56:31 INFO [restartedMain] o.a.c.h.Http11NioProtocol
+                [DirectJDKLog.java:180] Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-29 21:56:31 INFO [restartedMain] o.a.c.c.StandardService
+                [DirectJDKLog.java:180] Starting service [Tomcat]
+2018-11-29 21:56:31 INFO [restartedMain] o.a.c.c.StandardEngine
+                [DirectJDKLog.java:180] Starting Servlet Engine: Apache Tomcat/8.5.34
+2018-11-29 21:56:31 INFO [localhost-startStop-1] o.a.c.c.AprLifecycleListener
+                [DirectJDKLog.java:180] The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_144\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk1.8.0_144\bin;C:\apache-maven-3.5.0-bin\bin;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\nodejs\;%M2_HOME%\bin;C:\Users\Admin\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Microsoft VS Code\bin;C:\Users\Admin\AppData\Roaming\Composer\vendor\bin;C:\Users\Admin\AppData\Roaming\npm;.]
+2018-11-29 21:56:31 INFO [localhost-startStop-1] o.a.c.c.C.[.[.[/]
+                [DirectJDKLog.java:180] Initializing Spring embedded WebApplicationContext
+2018-11-29 21:56:31 INFO [localhost-startStop-1] o.s.w.c.ContextLoader
+                [ServletWebServerApplicationContext.java:285] Root WebApplicationContext: initialization completed in 3735 ms
+2018-11-29 21:56:33 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-29 21:56:33 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2018-11-29 21:56:33 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'sessionRepositoryFilter' to: [/*]
+2018-11-29 21:56:33 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-29 21:56:33 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-11-29 21:56:33 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-29 21:56:33 INFO [localhost-startStop-1] o.s.b.w.s.DelegatingFilterProxyRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'springSecurityFilterChain' to: [/*]
+2018-11-29 21:56:33 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'httpTraceFilter' to: [/*]
+2018-11-29 21:56:33 INFO [localhost-startStop-1] o.s.b.w.s.ServletRegistrationBean
+                [ServletRegistrationBean.java:187] Servlet dispatcherServlet mapped to [/]
+2018-11-29 21:56:33 INFO [localhost-startStop-1] o.s.b.w.s.ServletRegistrationBean
+                [ServletRegistrationBean.java:187] Servlet messageDispatcherServlet mapped to [/services/*]
+2018-11-29 21:56:33 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean
+                [LocalContainerEntityManagerFactoryBean.java:361] Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-11-29 21:56:33 INFO [restartedMain] o.h.j.i.u.LogHelper
+                [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-11-29 21:56:33 INFO [restartedMain] o.h.Version
+                [Version.java:45] HHH000412: Hibernate Core {5.2.17.Final}
+2018-11-29 21:56:33 INFO [restartedMain] o.h.c.Environment
+                [Environment.java:213] HHH000206: hibernate.properties not found
+2018-11-29 21:56:33 INFO [restartedMain] o.h.a.c.Version
+                [JavaReflectionManager.java:66] HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-11-29 21:56:33 INFO [restartedMain] c.z.h.HikariDataSource
+                [HikariDataSource.java:110] HikariPool-1 - Starting...
+2018-11-29 21:56:33 INFO [restartedMain] c.z.h.HikariDataSource
+                [HikariDataSource.java:123] HikariPool-1 - Start completed.
+2018-11-29 21:56:33 INFO [restartedMain] o.h.d.Dialect
+                [Dialect.java:157] HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2018-11-29 21:56:37 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean
+                [AbstractEntityManagerFactoryBean.java:415] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-11-29 21:56:38 INFO [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator
+                [QueryTranslatorFactoryInitiator.java:47] HHH000397: Using ASTQueryTranslatorFactory
+2018-11-29 21:56:38 WARN [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration
+                [JpaBaseConfiguration.java:237] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/checked/{type}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getCheckedAuthorizationsByType(java.lang.String)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/{id}/reject],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Authorization> com.enenim.scaffold.controller.AuthorizationController.rejectAuthorization(java.lang.Long,java.lang.String)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/{id}/approve],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Authorization> com.enenim.scaffold.controller.AuthorizationController.approveAuthorization(java.lang.Long)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/all],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getAllAuthorizations()
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/forward],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<java.util.Collection<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.forwardManyAuthorization(java.util.List<java.lang.Long>)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getAuthorizations()
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/all/{type}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getAllAuthorizationsByType(java.lang.String)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/{id}/forward],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Authorization> com.enenim.scaffold.controller.AuthorizationController.forwardAuthorization(java.lang.Long)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/me],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getMyAuthorizations()
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/checked],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getCheckedAuthorization()
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/me/{type}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getMyAuthorizationsByType(java.lang.String)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Authorization> com.enenim.scaffold.controller.AuthorizationController.getAuthorization(java.lang.Long)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/toggle],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.ConsumerController.toggle(java.lang.Long)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.storeAnonymousConsumers(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.ConsumerRequest>)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/sign-up],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.signUpConsumers(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.ConsumerRequest>)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{email}/code/re-send],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.ConsumerController.reSendCode(java.lang.String)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{code}/verify],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.verifyCode(java.lang.String,com.enenim.scaffold.dto.request.SignUpVerifyRequest) throws java.lang.Exception
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.showConsumer(java.lang.Long)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.getConsumers()
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Group> com.enenim.scaffold.controller.GroupController.update(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.GroupRequest>)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/tasks],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.GroupController.getPermission(java.lang.Long)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Group> com.enenim.scaffold.controller.GroupController.createGroup(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.GroupRequest>)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Group>> com.enenim.scaffold.controller.GroupController.getGroups()
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/authorizations],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.GroupController.getPermissionAuthorizations(java.lang.Long)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/authorizations],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Group>> com.enenim.scaffold.controller.GroupController.updatePermissionAuthorizations(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.PermissionRequest>)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/tasks],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Group>> com.enenim.scaffold.controller.GroupController.updatePermission(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.PermissionRequest>)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Group> com.enenim.scaffold.controller.GroupController.show(java.lang.Long)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.cache.SettingCache>> com.enenim.scaffold.controller.SettingController.saveSetting(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.SettingRequest>)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings/{key}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.cache.SettingCache>> com.enenim.scaffold.controller.SettingController.getSetting(java.lang.String)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.createStaff(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.StaffRequest>)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}/toggle],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Staff> com.enenim.scaffold.controller.StaffController.toggleStaff(java.lang.Long)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.getStaff(java.lang.Long)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.getStaff()
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.updateStaff(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.StaffRequest>)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}/lookup],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.lookupStaff(java.lang.Long)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.TaskController.getTask(java.lang.Long)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.TaskController.updateTask(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.TaskRequest>)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks/sync],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.TaskController.syncTasks()
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.TaskController.getTasks()
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/test/queue],methods=[GET],produces=[application/json]}" onto public void com.enenim.scaffold.controller.TestController.getSubscribedEvents() throws java.lang.ClassNotFoundException
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/test/password],methods=[GET],produces=[application/json]}" onto public void com.enenim.scaffold.controller.TestController.generatePassword() throws java.lang.ClassNotFoundException
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/accounts/authenticate],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.StringResponse> com.enenim.scaffold.controller.UserAccountController.accountAuth(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.LoginRequest>)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-11-29 21:56:39 INFO [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration
+                [UserDetailsServiceAutoConfiguration.java:86] 
+
+Using generated security password: 286667da-1873-4f6c-bbfa-6d725888bc31
+
+2018-11-29 21:56:39 INFO [restartedMain] o.s.s.w.DefaultSecurityFilterChain
+                [DefaultSecurityFilterChain.java:43] Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2018-11-29 21:56:39 INFO [restartedMain] o.s.s.w.DefaultSecurityFilterChain
+                [DefaultSecurityFilterChain.java:43] Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@418b1dd7, org.springframework.security.web.context.SecurityContextPersistenceFilter@35ba0ed8, org.springframework.security.web.header.HeaderWriterFilter@3bb0af6f, org.springframework.security.web.authentication.logout.LogoutFilter@3cabea8a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@26279fd9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1caf4f52, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@8da0009, org.springframework.security.web.session.SessionManagementFilter@299d3e49, org.springframework.security.web.access.ExceptionTranslationFilter@4257f57a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@43acbcb5]
+2018-11-29 21:56:39 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor
+                [ExecutorConfigurationSupport.java:171] Initializing ExecutorService 
+2018-11-29 21:56:39 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor
+                [ExecutorConfigurationSupport.java:171] Initializing ExecutorService  'processExecutor'
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerAdapter
+                [RequestMappingHandlerAdapter.java:588] Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@d34bac7: startup date [Thu Nov 29 21:56:28 WAT 2018]; root of context hierarchy
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/assets/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-29 21:56:39 INFO [restartedMain] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver
+                [ExceptionHandlerExceptionResolver.java:288] Detected @ExceptionHandler methods in exceptionHandlingController
+2018-11-29 21:56:39 INFO [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping
+                [WelcomePageHandlerMapping.java:61] Adding welcome page template: index
+2018-11-29 21:56:41 INFO [restartedMain] o.s.b.a.e.w.EndpointLinksResolver
+                [EndpointLinksResolver.java:59] Exposing 2 endpoint(s) beneath base path '/actuator'
+2018-11-29 21:56:41 INFO [restartedMain] o.s.b.a.e.w.s.WebMvcEndpointHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-11-29 21:56:41 INFO [restartedMain] o.s.b.a.e.w.s.WebMvcEndpointHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-11-29 21:56:41 INFO [restartedMain] o.s.b.a.e.w.s.WebMvcEndpointHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-11-29 21:56:41 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer
+                [OptionalLiveReloadServer.java:57] LiveReload server is running on port 35729
+2018-11-29 21:56:41 INFO [restartedMain] o.s.j.e.a.AnnotationMBeanExporter
+                [MBeanExporter.java:433] Registering beans for JMX exposure on startup
+2018-11-29 21:56:41 INFO [restartedMain] o.s.j.e.a.AnnotationMBeanExporter
+                [MBeanExporter.java:895] Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-11-29 21:56:41 INFO [restartedMain] o.s.j.e.a.AnnotationMBeanExporter
+                [MBeanExporter.java:668] Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2018-11-29 21:56:41 INFO [restartedMain] o.s.c.s.DefaultLifecycleProcessor
+                [DefaultLifecycleProcessor.java:356] Starting beans in phase 2147483647
+2018-11-29 21:56:41 INFO [restartedMain] o.s.s.a.ScheduledAnnotationBeanPostProcessor
+                [ScheduledAnnotationBeanPostProcessor.java:276] No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2018-11-29 21:56:41 INFO [restartedMain] o.a.c.h.Http11NioProtocol
+                [DirectJDKLog.java:180] Starting ProtocolHandler ["http-nio-8080"]
+2018-11-29 21:56:41 INFO [restartedMain] o.a.t.u.n.NioSelectorPool
+                [DirectJDKLog.java:180] Using a shared selector for servlet write/read
+2018-11-29 21:56:41 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer
+                [TomcatWebServer.java:206] Tomcat started on port(s): 8080 (http) with context path ''
+2018-11-29 21:56:41 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:59] Started ScaffoldApplication in 14.154 seconds (JVM running for 15.091)
+2018-11-29 21:58:38 INFO [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]
+                [DirectJDKLog.java:180] Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-11-29 21:58:38 INFO [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet
+                [FrameworkServlet.java:494] FrameworkServlet 'dispatcherServlet': initialization started
+2018-11-29 21:58:38 INFO [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet
+                [FrameworkServlet.java:509] FrameworkServlet 'dispatcherServlet': initialization completed in 21 ms
+2018-11-29 21:58:39 ERROR [Asynchronous Process-2] o.s.a.i.SimpleAsyncUncaughtExceptionHandler
+                [SimpleAsyncUncaughtExceptionHandler.java:38] Unexpected error occurred invoking async method: public void com.enenim.scaffold.service.TokenAuthenticationService.saveToken(com.enenim.scaffold.model.cache.LoginCache)
+org.springframework.data.redis.serializer.SerializationException: Could not write JSON: Null key for a Map not allowed in JSON (use a converting NullKeySerializer?) (through reference chain: java.util.HashMap["null"]); nested exception is com.fasterxml.jackson.databind.JsonMappingException: Null key for a Map not allowed in JSON (use a converting NullKeySerializer?) (through reference chain: java.util.HashMap["null"])
+	at org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer.serialize(Jackson2JsonRedisSerializer.java:88)
+	at org.springframework.data.redis.core.AbstractOperations.rawHashValue(AbstractOperations.java:184)
+	at org.springframework.data.redis.core.DefaultHashOperations.put(DefaultHashOperations.java:175)
+	at com.enenim.scaffold.service.cache.LoginCacheService.save(LoginCacheService.java:83)
+	at com.enenim.scaffold.service.cache.LoginCacheService$$FastClassBySpringCGLIB$$e79fdea.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:746)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+	at com.enenim.scaffold.service.cache.LoginCacheService$$EnhancerBySpringCGLIB$$db3ce206.save(<generated>)
+	at com.enenim.scaffold.service.TokenAuthenticationService.saveToken(TokenAuthenticationService.java:87)
+	at com.enenim.scaffold.service.TokenAuthenticationService$$FastClassBySpringCGLIB$$bd69dbea.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:746)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.fasterxml.jackson.databind.JsonMappingException: Null key for a Map not allowed in JSON (use a converting NullKeySerializer?) (through reference chain: java.util.HashMap["null"])
+	at com.fasterxml.jackson.databind.JsonMappingException.from(JsonMappingException.java:284)
+	at com.fasterxml.jackson.databind.SerializerProvider.mappingException(SerializerProvider.java:1251)
+	at com.fasterxml.jackson.databind.SerializerProvider.reportMappingProblem(SerializerProvider.java:1145)
+	at com.fasterxml.jackson.databind.ser.impl.FailingSerializer.serialize(FailingSerializer.java:35)
+	at com.fasterxml.jackson.databind.ser.std.MapSerializer.serializeFields(MapSerializer.java:701)
+	at com.fasterxml.jackson.databind.ser.std.MapSerializer.serialize(MapSerializer.java:639)
+	at com.fasterxml.jackson.databind.ser.std.MapSerializer.serialize(MapSerializer.java:33)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319)
+	at com.fasterxml.jackson.databind.ObjectMapper._configAndWriteValue(ObjectMapper.java:3905)
+	at com.fasterxml.jackson.databind.ObjectMapper.writeValueAsBytes(ObjectMapper.java:3243)
+	at org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer.serialize(Jackson2JsonRedisSerializer.java:86)
+	... 21 common frames omitted
+2018-11-29 21:58:39 ERROR [Asynchronous Process-1] o.s.a.i.SimpleAsyncUncaughtExceptionHandler
+                [SimpleAsyncUncaughtExceptionHandler.java:38] Unexpected error occurred invoking async method: public void com.enenim.scaffold.service.dao.TrackerService.saveTracker(com.enenim.scaffold.model.dao.Tracker)
+java.lang.NullPointerException: null
+	at com.enenim.scaffold.util.RequestUtil.getRequest(RequestUtil.java:21)
+	at com.enenim.scaffold.util.RequestUtil.getLang(RequestUtil.java:202)
+	at com.enenim.scaffold.util.message.EntityMessage.msg(EntityMessage.java:9)
+	at com.enenim.scaffold.interceptor.AuditAdvice.interceptCreate(AuditAdvice.java:161)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:644)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:633)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:174)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
+	at com.sun.proxy.$Proxy144.persist(Unknown Source)
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.save(SimpleJpaRepository.java:490)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:377)
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:200)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:641)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.doInvoke(RepositoryFactorySupport.java:605)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.invoke(RepositoryFactorySupport.java:590)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:59)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:294)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:135)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.data.repository.core.support.SurroundingTransactionDetectorMethodInterceptor.invoke(SurroundingTransactionDetectorMethodInterceptor.java:61)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
+	at com.sun.proxy.$Proxy172.save(Unknown Source)
+	at com.enenim.scaffold.service.dao.TrackerService.saveTracker(TrackerService.java:34)
+	at com.enenim.scaffold.service.dao.TrackerService$$FastClassBySpringCGLIB$$a40c77f.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:746)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:294)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2018-11-29 22:11:21 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:50] Starting ScaffoldApplication on DESKTOP-PPDBD7C with PID 4056 (C:\Users\Admin\IdeaProjects\scaffold\target\classes started by Admin in C:\Users\Admin\IdeaProjects\scaffold)
+2018-11-29 22:11:21 DEBUG [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:53] Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+2018-11-29 22:11:21 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [SpringApplication.java:684] The following profiles are active: dev
+2018-11-29 22:11:21 INFO [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext
+                [AbstractApplicationContext.java:590] Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2a293523: startup date [Thu Nov 29 22:11:21 WAT 2018]; root of context hierarchy
+2018-11-29 22:11:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate
+                [RepositoryConfigurationDelegate.java:172] Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-11-29 22:11:24 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate
+                [RepositoryConfigurationDelegate.java:172] Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-11-29 22:11:24 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ActiveHourRepository.
+2018-11-29 22:11:24 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AuditRepository.
+2018-11-29 22:11:24 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AuthorizationRepository.
+2018-11-29 22:11:24 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.BillerRepository.
+2018-11-29 22:11:24 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.CategoryRepository.
+2018-11-29 22:11:24 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerAccountRepository.
+2018-11-29 22:11:24 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerRepository.
+2018-11-29 22:11:24 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerSettingRepository.
+2018-11-29 22:11:24 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.DisputeMessageRepository.
+2018-11-29 22:11:24 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.GroupRepository.
+2018-11-29 22:11:24 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LogEventRepository.
+2018-11-29 22:11:24 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LoginRepository.
+2018-11-29 22:11:24 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LogWebServiceRepository.
+2018-11-29 22:11:24 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PasswordResetRepository.
+2018-11-29 22:11:24 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PaymentChannelRepository.
+2018-11-29 22:11:24 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PublicHolidayRepository.
+2018-11-29 22:11:24 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.SettingRepository.
+2018-11-29 22:11:24 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.StaffRepository.
+2018-11-29 22:11:24 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TaskRepository.
+2018-11-29 22:11:24 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TrackerRepository.
+2018-11-29 22:11:24 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker
+                [PostProcessorRegistrationDelegate.java:326] Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$d51c7c8a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-11-29 22:11:24 INFO [restartedMain] o.s.w.s.a.s.AnnotationActionEndpointMapping
+                [AbstractAddressingEndpointMapping.java:236] Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2018-11-29 22:11:24 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker
+                [PostProcessorRegistrationDelegate.java:326] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$3084b78b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-11-29 22:11:25 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer
+                [TomcatWebServer.java:91] Tomcat initialized with port(s): 8080 (http)
+2018-11-29 22:11:25 INFO [restartedMain] o.a.c.h.Http11NioProtocol
+                [DirectJDKLog.java:180] Initializing ProtocolHandler ["http-nio-8080"]
+2018-11-29 22:11:25 INFO [restartedMain] o.a.c.c.StandardService
+                [DirectJDKLog.java:180] Starting service [Tomcat]
+2018-11-29 22:11:25 INFO [restartedMain] o.a.c.c.StandardEngine
+                [DirectJDKLog.java:180] Starting Servlet Engine: Apache Tomcat/8.5.34
+2018-11-29 22:11:25 INFO [localhost-startStop-1] o.a.c.c.AprLifecycleListener
+                [DirectJDKLog.java:180] The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_144\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk1.8.0_144\bin;C:\apache-maven-3.5.0-bin\bin;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\nodejs\;%M2_HOME%\bin;C:\Users\Admin\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Microsoft VS Code\bin;C:\Users\Admin\AppData\Roaming\Composer\vendor\bin;C:\Users\Admin\AppData\Roaming\npm;.]
+2018-11-29 22:11:25 INFO [localhost-startStop-1] o.a.c.c.C.[.[.[/]
+                [DirectJDKLog.java:180] Initializing Spring embedded WebApplicationContext
+2018-11-29 22:11:25 INFO [localhost-startStop-1] o.s.w.c.ContextLoader
+                [ServletWebServerApplicationContext.java:285] Root WebApplicationContext: initialization completed in 3945 ms
+2018-11-29 22:11:27 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-11-29 22:11:27 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2018-11-29 22:11:27 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'sessionRepositoryFilter' to: [/*]
+2018-11-29 22:11:27 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-11-29 22:11:27 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-11-29 22:11:27 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'requestContextFilter' to: [/*]
+2018-11-29 22:11:27 INFO [localhost-startStop-1] o.s.b.w.s.DelegatingFilterProxyRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'springSecurityFilterChain' to: [/*]
+2018-11-29 22:11:27 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'httpTraceFilter' to: [/*]
+2018-11-29 22:11:27 INFO [localhost-startStop-1] o.s.b.w.s.ServletRegistrationBean
+                [ServletRegistrationBean.java:187] Servlet dispatcherServlet mapped to [/]
+2018-11-29 22:11:27 INFO [localhost-startStop-1] o.s.b.w.s.ServletRegistrationBean
+                [ServletRegistrationBean.java:187] Servlet messageDispatcherServlet mapped to [/services/*]
+2018-11-29 22:11:27 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean
+                [LocalContainerEntityManagerFactoryBean.java:361] Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-11-29 22:11:27 INFO [restartedMain] o.h.j.i.u.LogHelper
+                [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-11-29 22:11:27 INFO [restartedMain] o.h.Version
+                [Version.java:45] HHH000412: Hibernate Core {5.2.17.Final}
+2018-11-29 22:11:27 INFO [restartedMain] o.h.c.Environment
+                [Environment.java:213] HHH000206: hibernate.properties not found
+2018-11-29 22:11:27 INFO [restartedMain] o.h.a.c.Version
+                [JavaReflectionManager.java:66] HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-11-29 22:11:27 INFO [restartedMain] c.z.h.HikariDataSource
+                [HikariDataSource.java:110] HikariPool-1 - Starting...
+2018-11-29 22:11:27 INFO [restartedMain] c.z.h.HikariDataSource
+                [HikariDataSource.java:123] HikariPool-1 - Start completed.
+2018-11-29 22:11:27 INFO [restartedMain] o.h.d.Dialect
+                [Dialect.java:157] HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2018-11-29 22:11:31 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean
+                [AbstractEntityManagerFactoryBean.java:415] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-11-29 22:11:31 INFO [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator
+                [QueryTranslatorFactoryInitiator.java:47] HHH000397: Using ASTQueryTranslatorFactory
+2018-11-29 22:11:32 WARN [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration
+                [JpaBaseConfiguration.java:237] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Authorization> com.enenim.scaffold.controller.AuthorizationController.getAuthorization(java.lang.Long)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/me],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getMyAuthorizations()
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/{id}/forward],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Authorization> com.enenim.scaffold.controller.AuthorizationController.forwardAuthorization(java.lang.Long)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/{id}/approve],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Authorization> com.enenim.scaffold.controller.AuthorizationController.approveAuthorization(java.lang.Long)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/me/{type}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getMyAuthorizationsByType(java.lang.String)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getAuthorizations()
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/{id}/reject],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Authorization> com.enenim.scaffold.controller.AuthorizationController.rejectAuthorization(java.lang.Long,java.lang.String)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/checked],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getCheckedAuthorization()
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/checked/{type}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getCheckedAuthorizationsByType(java.lang.String)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/all],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getAllAuthorizations()
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/all/{type}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.getAllAuthorizationsByType(java.lang.String)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/authorize/forward],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<java.util.Collection<com.enenim.scaffold.model.dao.Authorization>> com.enenim.scaffold.controller.AuthorizationController.forwardManyAuthorization(java.util.List<java.lang.Long>)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/toggle],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.ConsumerController.toggle(java.lang.Long)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.showConsumer(java.lang.Long)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{code}/verify],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.verifyCode(java.lang.String,com.enenim.scaffold.dto.request.SignUpVerifyRequest) throws java.lang.Exception
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{email}/code/re-send],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.ConsumerController.reSendCode(java.lang.String)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/sign-up],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.signUpConsumers(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.ConsumerRequest>)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.getConsumers()
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.storeAnonymousConsumers(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.ConsumerRequest>)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Group> com.enenim.scaffold.controller.GroupController.update(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.GroupRequest>)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/tasks],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.GroupController.getPermission(java.lang.Long)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Group> com.enenim.scaffold.controller.GroupController.createGroup(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.GroupRequest>)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Group>> com.enenim.scaffold.controller.GroupController.getGroups()
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/tasks],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Group>> com.enenim.scaffold.controller.GroupController.updatePermission(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.PermissionRequest>)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Group> com.enenim.scaffold.controller.GroupController.show(java.lang.Long)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/authorizations],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Group>> com.enenim.scaffold.controller.GroupController.updatePermissionAuthorizations(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.PermissionRequest>)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/authorizations],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.GroupController.getPermissionAuthorizations(java.lang.Long)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.cache.SettingCache>> com.enenim.scaffold.controller.SettingController.saveSetting(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.SettingRequest>)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings/{key}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.cache.SettingCache>> com.enenim.scaffold.controller.SettingController.getSetting(java.lang.String)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.getStaff(java.lang.Long)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.getStaff()
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.createStaff(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.StaffRequest>)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}/toggle],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Staff> com.enenim.scaffold.controller.StaffController.toggleStaff(java.lang.Long)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}/lookup],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.lookupStaff(java.lang.Long)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.updateStaff(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.StaffRequest>)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.TaskController.getTask(java.lang.Long)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.TaskController.getTasks()
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.TaskController.updateTask(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.TaskRequest>)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks/sync],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.TaskController.syncTasks()
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/test/password],methods=[GET],produces=[application/json]}" onto public void com.enenim.scaffold.controller.TestController.generatePassword() throws java.lang.ClassNotFoundException
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/test/queue],methods=[GET],produces=[application/json]}" onto public void com.enenim.scaffold.controller.TestController.getSubscribedEvents() throws java.lang.ClassNotFoundException
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/accounts/authenticate],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.StringResponse> com.enenim.scaffold.controller.UserAccountController.accountAuth(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.LoginRequest>)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-11-29 22:11:32 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-11-29 22:11:33 INFO [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration
+                [UserDetailsServiceAutoConfiguration.java:86] 
+
+Using generated security password: 53d133c7-2c0d-4cf9-bac2-9c9b801353a7
+
+2018-11-29 22:11:33 INFO [restartedMain] o.s.s.w.DefaultSecurityFilterChain
+                [DefaultSecurityFilterChain.java:43] Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2018-11-29 22:11:33 INFO [restartedMain] o.s.s.w.DefaultSecurityFilterChain
+                [DefaultSecurityFilterChain.java:43] Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4f31b88, org.springframework.security.web.context.SecurityContextPersistenceFilter@1a3c132f, org.springframework.security.web.header.HeaderWriterFilter@5371519, org.springframework.security.web.authentication.logout.LogoutFilter@671c1307, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3a72a0d9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2f085918, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@516434d0, org.springframework.security.web.session.SessionManagementFilter@457b4214, org.springframework.security.web.access.ExceptionTranslationFilter@1cdc8954, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@49175660]
+2018-11-29 22:11:33 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor
+                [ExecutorConfigurationSupport.java:171] Initializing ExecutorService 
+2018-11-29 22:11:33 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor
+                [ExecutorConfigurationSupport.java:171] Initializing ExecutorService  'processExecutor'
+2018-11-29 22:11:33 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-29 22:11:33 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerAdapter
+                [RequestMappingHandlerAdapter.java:588] Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2a293523: startup date [Thu Nov 29 22:11:21 WAT 2018]; root of context hierarchy
+2018-11-29 22:11:33 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-29 22:11:33 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-29 22:11:33 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/assets/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-11-29 22:11:33 INFO [restartedMain] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver
+                [ExceptionHandlerExceptionResolver.java:288] Detected @ExceptionHandler methods in exceptionHandlingController
+2018-11-29 22:11:33 INFO [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping
+                [WelcomePageHandlerMapping.java:61] Adding welcome page template: index
+2018-11-29 22:11:34 INFO [restartedMain] o.s.b.a.e.w.EndpointLinksResolver
+                [EndpointLinksResolver.java:59] Exposing 2 endpoint(s) beneath base path '/actuator'
+2018-11-29 22:11:34 INFO [restartedMain] o.s.b.a.e.w.s.WebMvcEndpointHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-11-29 22:11:34 INFO [restartedMain] o.s.b.a.e.w.s.WebMvcEndpointHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-11-29 22:11:34 INFO [restartedMain] o.s.b.a.e.w.s.WebMvcEndpointHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-11-29 22:11:34 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer
+                [OptionalLiveReloadServer.java:57] LiveReload server is running on port 35729
+2018-11-29 22:11:34 INFO [restartedMain] o.s.j.e.a.AnnotationMBeanExporter
+                [MBeanExporter.java:433] Registering beans for JMX exposure on startup
+2018-11-29 22:11:34 INFO [restartedMain] o.s.j.e.a.AnnotationMBeanExporter
+                [MBeanExporter.java:895] Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-11-29 22:11:34 INFO [restartedMain] o.s.j.e.a.AnnotationMBeanExporter
+                [MBeanExporter.java:668] Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2018-11-29 22:11:34 INFO [restartedMain] o.s.c.s.DefaultLifecycleProcessor
+                [DefaultLifecycleProcessor.java:356] Starting beans in phase 2147483647
+2018-11-29 22:11:34 INFO [restartedMain] o.s.s.a.ScheduledAnnotationBeanPostProcessor
+                [ScheduledAnnotationBeanPostProcessor.java:276] No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2018-11-29 22:11:34 INFO [restartedMain] o.a.c.h.Http11NioProtocol
+                [DirectJDKLog.java:180] Starting ProtocolHandler ["http-nio-8080"]
+2018-11-29 22:11:34 INFO [restartedMain] o.a.t.u.n.NioSelectorPool
+                [DirectJDKLog.java:180] Using a shared selector for servlet write/read
+2018-11-29 22:11:34 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer
+                [TomcatWebServer.java:206] Tomcat started on port(s): 8080 (http) with context path ''
+2018-11-29 22:11:34 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:59] Started ScaffoldApplication in 13.679 seconds (JVM running for 14.685)
+2018-11-29 22:11:53 INFO [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/]
+                [DirectJDKLog.java:180] Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-11-29 22:11:53 INFO [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet
+                [FrameworkServlet.java:494] FrameworkServlet 'dispatcherServlet': initialization started
+2018-11-29 22:11:53 INFO [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet
+                [FrameworkServlet.java:509] FrameworkServlet 'dispatcherServlet': initialization completed in 22 ms
+2018-11-29 22:11:54 WARN [http-nio-8080-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver
+                [AbstractHandlerExceptionResolver.java:194] Resolved exception caused by handler execution: java.lang.NullPointerException
+2018-11-29 22:11:54 ERROR [Asynchronous Process-1] o.s.a.i.SimpleAsyncUncaughtExceptionHandler
+                [SimpleAsyncUncaughtExceptionHandler.java:38] Unexpected error occurred invoking async method: public void com.enenim.scaffold.service.MailExceptionService.send(java.lang.Object)
+org.springframework.mail.MailSendException: Mail server connection failed; nested exception is com.sun.mail.util.MailConnectException: Couldn't connect to host, port: smtp.gmail.com, 587; timeout 10000;
+  nested exception is:
+	java.net.UnknownHostException: smtp.gmail.com. Failed messages: com.sun.mail.util.MailConnectException: Couldn't connect to host, port: smtp.gmail.com, 587; timeout 10000;
+  nested exception is:
+	java.net.UnknownHostException: smtp.gmail.com
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:446)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:359)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:354)
+	at com.enenim.scaffold.service.MailService.sendMail(MailService.java:54)
+	at com.enenim.scaffold.service.MailExceptionService.send(MailExceptionService.java:69)
+	at com.enenim.scaffold.service.MailExceptionService$$FastClassBySpringCGLIB$$c309ab03.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:746)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.sun.mail.util.MailConnectException: Couldn't connect to host, port: smtp.gmail.com, 587; timeout 10000
+	at com.sun.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:2209)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:740)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:515)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:435)
+	... 13 common frames omitted
+Caused by: java.net.UnknownHostException: smtp.gmail.com
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.sun.mail.util.WriteTimeoutSocket.connect(WriteTimeoutSocket.java:115)
+	at com.sun.mail.util.SocketFetcher.createSocket(SocketFetcher.java:357)
+	at com.sun.mail.util.SocketFetcher.getSocket(SocketFetcher.java:238)
+	at com.sun.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:2175)
+	... 17 common frames omitted
