@@ -49,17 +49,14 @@ public class UserResolverService {
     public void setUserByRole(String role){
         Object user = RequestUtil.getLoginToken().getUser();
         if(RoleConstant.STAFF.equalsIgnoreCase(role)) {
-            System.out.println("JsonConverter.getJson(user) = " + JsonConverter.getJson(user));
-            Staff staff = JsonConverter.getObject(JsonConverter.getJson(user), Staff.class);
-            System.out.println("staff = " + staff);
-            System.out.println("staff.employee id = " + staff.getEmployeeId());
+            Staff staff = JsonConverter.getObject(user, Staff.class);
             RequestUtil.setStaff(staff);
         }
         else if(RoleConstant.BILLER.equalsIgnoreCase(role)){
-            RequestUtil.setBiller(JsonConverter.getObject(JsonConverter.getJson(user), Biller.class));
+            RequestUtil.setBiller(JsonConverter.getObject(user, Biller.class));
         }
         else if(RoleConstant.CONSUMER.equalsIgnoreCase(role)){
-            RequestUtil.setConsumer(JsonConverter.getObject(JsonConverter.getJson(user), Consumer.class));
+            RequestUtil.setConsumer(JsonConverter.getObject(user, Consumer.class));
         }
         else {
             throw new UnAuthorizedException("invalid_role", role);

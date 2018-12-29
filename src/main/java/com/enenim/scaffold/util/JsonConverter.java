@@ -14,7 +14,17 @@ import java.util.TimeZone;
 import static com.enenim.scaffold.constant.CommonConstant.DATE_FORMAT;
 
 public class JsonConverter {
-    public static <T> T getObject(String json, Class<T> clazz) {
+    /*public static <T> T getObject(String json, Class<T> clazz) {
+        return getGson().fromJson(json, clazz);
+    }*/
+
+    public static <T> T getObject(Object obj, Class<T> clazz) {
+        String json;
+        if(obj instanceof String){
+            json = (String)obj;
+        }else {
+            json = getJsonRecursive(obj);
+        }
         return getGson().fromJson(json, clazz);
     }
 

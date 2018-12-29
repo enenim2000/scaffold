@@ -98,8 +98,7 @@ public class ConsumerController {
     public Response<ModelResponse<Consumer>> verifyCode(@PathVariable("code") String code, @Valid @RequestBody Request<SignUpVerifyRequest> request) throws Exception {
         Object value = sharedExpireCacheService.get( SharedExpireCacheService.SINGUP + SharedExpireCacheService.SEPARATOR + code);
         if(!StringUtils.isEmpty(value)){
-            String consumerJson = JsonConverter.getJsonRecursive(value);
-            Consumer consumer = JsonConverter.getObject(consumerJson, Consumer.class);
+            Consumer consumer = JsonConverter.getObject(value, Consumer.class);
             Login login = loginService.getLoginByUsername(consumer.getEmail());
             login.setPassword(bCryptPasswordEncoder.encode(request.getBody().getPassword()));
             login = loginService.saveLogin(login);
