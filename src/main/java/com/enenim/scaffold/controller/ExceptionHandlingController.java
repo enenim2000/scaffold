@@ -29,8 +29,12 @@ public class ExceptionHandlingController {
 
     @ExceptionHandler(ScaffoldException.class)
     public ResponseEntity<ExceptionResponse> scaffoldException(ScaffoldException ex) {
-        mailTypeResolverService.send(ex);
         ExceptionResponse response = new ExceptionResponse();
+        if(ex.getStatus() == HttpStatus.BAD_REQUEST){
+            response.setErrors(ex.getErrors());
+        }else {
+            mailTypeResolverService.send(ex);
+        }
         response.setErrorCode(ex.getStatus().toString());
         response.setMessage(ex.getMessage());
         return new ResponseEntity<>(response, ex.getStatus());
@@ -47,6 +51,7 @@ public class ExceptionHandlingController {
 
     @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
     public ResponseEntity<ExceptionResponse> httpMediaType(HttpMediaTypeNotSupportedException ex) {
+        mailTypeResolverService.send(ex);
         ExceptionResponse response = new ExceptionResponse();
         response.setErrorCode(HttpStatus.UNSUPPORTED_MEDIA_TYPE.toString());
         response.setErrorMessage(ExceptionMessage.msg("unsupported_media_type"));
@@ -56,6 +61,7 @@ public class ExceptionHandlingController {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ExceptionResponse> messageNotReadableException(HttpMessageNotReadableException ex) {
+        mailTypeResolverService.send(ex);
         ExceptionResponse response = new ExceptionResponse();
         response.setErrorCode(HttpStatus.NO_CONTENT.toString());
         response.setErrorMessage(ExceptionMessage.msg("missing_request_content"));
