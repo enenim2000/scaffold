@@ -10,6 +10,7 @@ import com.enenim.scaffold.dto.response.BooleanResponse;
 import com.enenim.scaffold.dto.response.ModelResponse;
 import com.enenim.scaffold.dto.response.PageResponse;
 import com.enenim.scaffold.dto.response.Response;
+import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.exception.UnAuthorizedException;
@@ -21,6 +22,7 @@ import com.enenim.scaffold.service.dao.ConsumerService;
 import com.enenim.scaffold.service.dao.LoginService;
 import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.RequestUtil;
+import com.enenim.scaffold.util.message.CommonMessage;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -89,28 +91,42 @@ public class ConsumerController {
             if(!StringUtils.isEmpty(login.getId())){
                 mailSenderService.send(consumer);
             }
+            RequestUtil.setMessage(CommonMessage.msg("consumer_signup_success"));
             return new Response<>(new ModelResponse<>(consumer));
         }
         throw new ScaffoldException("signup_failed");
     }
 
     @Put("/{code}/verify")
-    public Response<ModelResponse<Consumer>> verifyCode(@PathVariable("code") String code, @Valid @RequestBody Request<SignUpVerifyRequest> request) throws Exception {
-        Object value = sharedExpireCacheService.get( SharedExpireCacheService.SINGUP + SharedExpireCacheService.SEPARATOR + code);
+    public Response<ModelResponse<Consumer>> verifyCode(@PathVariable("code") String code) throws Exception {
+        String cacheCode = SharedExpireCacheService.SINGUP + SharedExpireCacheService.SEPARATOR + code;
+        Object value = sharedExpireCacheService.get(cacheCode);
         if(!StringUtils.isEmpty(value)){
             Consumer consumer = JsonConverter.getObject(value, Consumer.class);
-            Login login = loginService.getLoginByUsername(consumer.getEmail());
-            login.setPassword(bCryptPasswordEncoder.encode(request.getBody().getPassword()));
-            login = loginService.saveLogin(login);
-            if(!StringUtils.isEmpty(login)){
-                consumer.setVerified(VerifyStatus.VERIFIED);
-                consumer.skipAuthorization(true);
-                consumer = consumerService.saveConsumer(consumer);
-                sharedExpireCacheService.delete(code);
-                return new Response<>(new ModelResponse<>(consumer));
-            }
+            consumer.setVerified(VerifyStatus.VERIFIED);
+            consumer.skipAuthorization(true);
+            consumer = consumerService.saveConsumer(consumer);
+            sharedExpireCacheService.delete(cacheCode);
+            RequestUtil.setMessage(CommonMessage.msg("consumer_code_verified"));
+            return new Response<>(new ModelResponse<>(consumer));
         }
         throw new UnAuthorizedException("invalid_expired_code");
+    }
+
+    @Put("/{id}/details")
+    public Response<ModelResponse<Consumer>> verifyCode(@PathVariable("id") Long id, @Valid @RequestBody Request<SignUpVerifyRequest> request) throws Exception {
+        Consumer consumer = consumerService.getConsumer(id);
+        Login login = loginService.getLoginByUsername(consumer.getEmail());
+        login.setPassword(bCryptPasswordEncoder.encode(request.getBody().getPassword()));
+        login = loginService.saveLogin(login);
+        if(!StringUtils.isEmpty(login)){
+            consumer.setDateOfBirth(request.getBody().getDateOfBirth());
+            consumer.setEnabled(EnabledStatus.ENABLED);
+            consumer.skipAuthorization(true);
+            consumer = consumerService.saveConsumer(consumer);
+            return new Response<>(new ModelResponse<>(consumer));
+        }
+        throw new ScaffoldException("consumer_detail_failed");
     }
 
     @Post("/{email}/code/re-send")

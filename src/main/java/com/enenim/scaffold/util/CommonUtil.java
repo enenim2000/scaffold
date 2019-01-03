@@ -26,7 +26,7 @@ public class CommonUtil {
             code.append(list.get(i));
         }
 
-        return code.toString();
+        return code.toString().substring(0, numberOfDigits);
     }
 
     public static <T> List<T> intersect(Collection<T> listA,Collection<T> listB){

@@ -180,9 +180,7 @@ public class RequestUtil {
     }
 
     public static void setMessage(String _message){
-        if(StringUtils.isEmpty(message)){
-            message = _message;
-        }
+        message = _message;
     }
 
     public static String getMessage(){

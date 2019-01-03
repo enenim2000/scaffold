@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,6 +30,7 @@ public class Consumer extends BaseModel {
     @Column(length = 30)
     private String lastName;
 
+    @NotNull
     @JsonProperty("email")
     @SerializedName("email")
     @Column(unique = true, length = 100)
@@ -39,9 +41,13 @@ public class Consumer extends BaseModel {
     @Column(length = 30)
     private String phoneNumber;
 
+    @JsonProperty("date_of_birth")
+    @Column(length = 10)
+    private String dateOfBirth;
+
     private VerifyStatus verified = VerifyStatus.NOT_VERIFIED;
 
-    private EnabledStatus enabled = EnabledStatus.ENABLED;
+    private EnabledStatus enabled = EnabledStatus.DISABLED;
 
     @JsonBackReference
     @OneToMany(mappedBy = "consumer", fetch = FetchType.LAZY)
