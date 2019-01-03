@@ -73,10 +73,11 @@ public class AuditAdvice {
                 }
                 message = EntityMessage.msg("toggle_authorization_message").replace(PLACE_HOLDER, EntityMessage.msg(entity.getClass().getSimpleName()));
             }else if("Update".equalsIgnoreCase(audit.getCrudAction()) || "Delete".equalsIgnoreCase(audit.getCrudAction())){
-                response = false;
                 if("Update".equalsIgnoreCase(audit.getCrudAction())){
+                    response = entity;
                     message = EntityMessage.msg("update_authorization_message").replace(PLACE_HOLDER, EntityMessage.msg(entity.getClass().getSimpleName()));
-                }else {
+                }else if("Delete".equalsIgnoreCase(audit.getCrudAction())) {
+                    response = false;
                     message = EntityMessage.msg("delete_authorization_message").replace(PLACE_HOLDER, EntityMessage.msg(entity.getClass().getSimpleName()));
                 }
             }else {
@@ -97,10 +98,11 @@ public class AuditAdvice {
                     }
                     message = EntityMessage.msg("toggle_message").replace(PLACE_HOLDER, EntityMessage.msg(entity.getClass().getSimpleName()));
                 }else if("Update".equalsIgnoreCase(audit.getCrudAction()) || "Delete".equalsIgnoreCase(audit.getCrudAction())){
-                    response = true;
                     if("Update".equalsIgnoreCase(audit.getCrudAction())){
+                        response = entityAfter;
                         message = EntityMessage.msg("update_message").replace(PLACE_HOLDER, EntityMessage.msg(entity.getClass().getSimpleName()));
-                    }else {
+                    }else if("Delete".equalsIgnoreCase(audit.getCrudAction())){
+                        response = true;
                         message = EntityMessage.msg("delete_message").replace(PLACE_HOLDER, EntityMessage.msg(entity.getClass().getSimpleName()));
                     }
                 }else {
