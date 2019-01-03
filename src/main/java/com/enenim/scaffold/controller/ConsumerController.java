@@ -13,7 +13,6 @@ import com.enenim.scaffold.dto.response.Response;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
-import com.enenim.scaffold.exception.UnAuthorizedException;
 import com.enenim.scaffold.model.dao.Consumer;
 import com.enenim.scaffold.model.dao.Login;
 import com.enenim.scaffold.service.MailSenderService;
@@ -110,7 +109,7 @@ public class ConsumerController {
             RequestUtil.setMessage(CommonMessage.msg("consumer_code_verified"));
             return new Response<>(new ModelResponse<>(consumer));
         }
-        throw new UnAuthorizedException("invalid_expired_code");
+        throw new ScaffoldException("invalid_expired_code");
     }
 
     @Put("/{id}/details")

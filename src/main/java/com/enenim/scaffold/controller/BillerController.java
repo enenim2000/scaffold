@@ -12,7 +12,6 @@ import com.enenim.scaffold.dto.response.PageResponse;
 import com.enenim.scaffold.dto.response.Response;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
-import com.enenim.scaffold.exception.UnAuthorizedException;
 import com.enenim.scaffold.model.dao.Biller;
 import com.enenim.scaffold.model.dao.Login;
 import com.enenim.scaffold.service.FileStorageService;
@@ -130,7 +129,7 @@ public class BillerController {
                 return new Response<>(new ModelResponse<>(biller));
             }
         }
-        throw new UnAuthorizedException("invalid_expired_code");
+        throw new ScaffoldException("invalid_expired_code");
     }
 
     @Post("/{email}/code/re-send")
