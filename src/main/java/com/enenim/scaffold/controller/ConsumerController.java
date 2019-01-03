@@ -6,10 +6,7 @@ import com.enenim.scaffold.constant.RouteConstant;
 import com.enenim.scaffold.dto.request.ConsumerRequest;
 import com.enenim.scaffold.dto.request.Request;
 import com.enenim.scaffold.dto.request.SignUpVerifyRequest;
-import com.enenim.scaffold.dto.response.BooleanResponse;
-import com.enenim.scaffold.dto.response.ModelResponse;
-import com.enenim.scaffold.dto.response.PageResponse;
-import com.enenim.scaffold.dto.response.Response;
+import com.enenim.scaffold.dto.response.*;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
@@ -145,7 +142,7 @@ public class ConsumerController {
     @Put("/{id}/toggle")
     @Role({RoleConstant.STAFF})
     @Permission(RouteConstant.USER_CONSUMER_TOGGLE)
-    public Response<BooleanResponse> toggle(@PathVariable Long id){
-        return new Response<>(new BooleanResponse(consumerService.toggle(id)));
+    public Response<StringResponse> toggle(@PathVariable Long id){
+        return new Response<>(new StringResponse(consumerService.toggle(id)));
     }
 }
