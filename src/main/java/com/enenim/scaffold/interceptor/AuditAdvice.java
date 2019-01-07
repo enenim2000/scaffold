@@ -62,6 +62,7 @@ public class AuditAdvice {
 
         if(entity instanceof IAuthorization && !skipAuthorization){
 
+            System.out.println("About to save authorization");
             authorizationOperation();
 
             if(toggle != null){
@@ -113,7 +114,8 @@ public class AuditAdvice {
             }
         }
 
-        if(entity instanceof IAudit){
+        if(entity instanceof IAudit && !skipAudit){
+            System.out.println("About to save audit");
             auditOperation(entity, entityAfter, audit);
         }
         

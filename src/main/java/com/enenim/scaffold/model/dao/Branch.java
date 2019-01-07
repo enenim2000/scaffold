@@ -1,6 +1,7 @@
 package com.enenim.scaffold.model.dao;
 
 import com.enenim.scaffold.enums.EnabledStatus;
+import com.enenim.scaffold.interfaces.IAuthorization;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "branches")
-public class Branch extends BaseModel {
+public class Branch extends BaseModel implements IAuthorization {
 
 
     public Branch() {
@@ -27,7 +28,7 @@ public class Branch extends BaseModel {
     }
 
     @NotNull
-    @Column(unique = true, length = 10)
+    @Column(unique = true, length = 50)
     private String sol;
 
     @NotNull
