@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Getter
@@ -18,19 +19,20 @@ import javax.validation.constraints.NotBlank;
 @ToString
 public class StaffRequest extends RequestBody<Staff>{
 
-	@NotBlank
+	@NotBlank(message = "@{staff.employee_id.required")
 	@JsonProperty("employee_id")
 	private String employeeId;
 
-	@NotBlank
+	@NotBlank(message = "@{staff.active_hour_id.required")
 	@JsonProperty("active_hour_id")
 	private Long activeHourId;
 
-	@NotBlank
+	@NotBlank(message = "@{staff.fullname.required")
 	@JsonProperty("fullname")
 	private String fullName;
 
-	@NotBlank
+	@NotBlank(message = "@{staff.email.required")
+	@Email(message = "@{staff.email.pattern}")
 	private String email;
 
 	@JsonProperty("holiday_login")
@@ -39,7 +41,7 @@ public class StaffRequest extends RequestBody<Staff>{
 	@JsonProperty("weekend_login")
 	private WeekendLogin weekendLogin;
 
-	@NotBlank
+	@NotBlank(message = "@{staff.group_id.required")
 	@JsonProperty("group_id")
 	private Long groupId;
 

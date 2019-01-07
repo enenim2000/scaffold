@@ -37,6 +37,7 @@ public class Branch extends BaseModel {
     @NotNull
     @Column(length = 200)
     private String address;
+
     private EnabledStatus enabled = EnabledStatus.ENABLED;
 
     @JsonBackReference
@@ -52,7 +53,7 @@ public class Branch extends BaseModel {
     @OneToMany(mappedBy = "branch", fetch = FetchType.LAZY)
     private Set<Staff> staff = new HashSet<>();
 
-    /*@JsonBackReference
+    @JsonBackReference
     @OneToMany(mappedBy = "branch", fetch = FetchType.LAZY)
-    private Set<Transaction> transactions = new HashSet<>();*/
+    private Set<Transaction> transactions = new HashSet<>();
 }
