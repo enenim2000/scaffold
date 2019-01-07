@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -42,7 +41,6 @@ public class Audit extends BaseModel {
     @Column(columnDefinition = DataTypeConstant.TEXT)
     private String dependency;
 
-    @NotNull
     private AuditStatus status = AuditStatus.ACTIVE;
 
     @Column(name = "_before", columnDefinition = DataTypeConstant.TEXT)
