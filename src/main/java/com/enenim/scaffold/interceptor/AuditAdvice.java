@@ -126,14 +126,15 @@ public class AuditAdvice {
     }
 
     private void auditOperation(Object entityBefore, Object entityAfter, Audit audit){
+        Object metaModel = StringUtils.isEmpty(entityAfter) ? entityBefore : entityAfter;
         audit.setIp(RequestUtil.getIpAddress());
         audit.setUserAgent(RequestUtil.getUserAgent());
         audit.setLogin(RequestUtil.getLogin());
         audit.setStatus(AuditStatus.ACTIVE);
         audit.setTaskRoute(RequestUtil.getTaskRoute());
-        audit.setEntityType(entityAfter.getClass().getSimpleName());
-        audit.setBefore((String) ReflectionUtil.getFieldValue(entityAfter.getClass(), BEFORE, entityBefore));
-        audit.setAfter(JsonConverter.getJsonRecursive(entityAfter));
+        audit.setEntityType(metaModel.getClass().getSimpleName());
+        audit.setBefore((String) ReflectionUtil.getFieldValue(entityBefore.getClass(), BEFORE, entityBefore));
+        audit.setAfter( StringUtils.isEmpty(entityAfter) ? null : JsonConverter.getJsonRecursive(entityAfter) );
         audit.setDependency(null);
         audit.setAuthorization(RequestUtil.getAuthorization());
         audit.setStatus(RequestUtil.getAuditStatus());

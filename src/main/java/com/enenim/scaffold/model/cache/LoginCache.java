@@ -65,7 +65,6 @@ public class LoginCache {
     private Date updatedAt;
 
     public boolean hasExpired(long idleTimeout) {
-        System.out.println("getCreated() = " + getTracker().getTimeOfLastActivity());
         if(getTracker().getTimeOfLastActivity() == null){
             return true;
         }

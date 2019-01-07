@@ -95,9 +95,6 @@ public class LoginCacheService {
             }
         }
 
-        System.out.println("data.getSessionId() = " + data.getTracker().getSessionId());
-        System.out.println("LoginCache id = " + id);
-
         records.put(data.getTracker().getSessionId(), data);
         hashOps.put(LOGIN, id, records);
     }
