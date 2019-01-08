@@ -129,6 +129,7 @@ public class AuditAdvice {
                 audit.setAfter(null);
             }
 
+            audit.setDependency(JsonConverter.getJsonRecursive(entity));
             auditOperation(entity, entityAfter, audit);
         }
         
@@ -143,14 +144,13 @@ public class AuditAdvice {
         audit.setIp(RequestUtil.getIpAddress());
         audit.setUserAgent(RequestUtil.getUserAgent());
         audit.setLogin(RequestUtil.getLogin());
-        audit.setStatus(AuditStatus.ACTIVE);
+        RequestUtil.setAuditStatus((AuditStatus.ACTIVE));
         audit.setTaskRoute(RequestUtil.getTaskRoute());
         audit.setEntityType(metaModel.getClass().getName());
         if(audit.getCrudAction().equalsIgnoreCase("Update")){
             audit.setBefore((String) ReflectionUtil.getFieldValue(entityBefore.getClass(), BEFORE, entityBefore));
             audit.setAfter( StringUtils.isEmpty(entityAfter) ? null : JsonConverter.getJsonRecursive(entityAfter) );
         }
-        audit.setDependency(null);
         audit.setAuthorization(RequestUtil.getAuthorization());
         audit.setStatus(RequestUtil.getAuditStatus());
 

@@ -25,11 +25,11 @@ public class Audit extends BaseModel {
 
     @Column(length = 200)
     @JsonProperty("user_action")
-    private String userAction; //Create, Update or Delete
+    private String userAction;
 
     @Column(length = 20)
     @JsonProperty("crud_action")
-    private String crudAction; // Created new Staff, Created new Group, Updated existing group
+    private String crudAction;
 
     @Column(length = 20)
     private String ip;
@@ -54,12 +54,4 @@ public class Audit extends BaseModel {
 
     @ManyToOne
     private Authorization authorization;
-
-    public void setBefore(String before){
-        this.before = before;
-    }
-
-    public void setAfter(String after){
-        this.after = after;
-    }
 }
