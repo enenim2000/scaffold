@@ -56,8 +56,6 @@ public class UserAccountController {
 
 	@Post("/authenticate")
 	public Response<StringResponse> accountAuth(@Valid @RequestBody Request<LoginRequest> request) {
-		RequestUtil.setCommonRequestProperties(request);
-		RequestUtil.setMessage(CommonMessage.msg("successful_logged_in"));
 		Login login = loginService.getLoginByUsername(request.getBody().getUsername());
 
 		if (!StringUtils.isEmpty(login) && bCryptPasswordEncoder.matches(request.getBody().getPassword(), login.getPassword())) {
@@ -76,6 +74,7 @@ public class UserAccountController {
 				LoginCache loginToken = buildLoginToken(login, date, tracker);
 				String token = tokenAuthenticationService.encodeToken(loginToken);
 				tokenAuthenticationService.saveToken(loginToken);
+				RequestUtil.setMessage(CommonMessage.msg("successful_logged_in"));
 				return new Response<>(new StringResponse(token));
 			}
 		}

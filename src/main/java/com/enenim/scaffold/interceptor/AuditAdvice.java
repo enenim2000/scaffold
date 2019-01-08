@@ -88,6 +88,7 @@ public class AuditAdvice {
         }else {
             try {
                 response = jp.proceed();
+                System.out.println("jp.proceed() = " + JsonConverter.getJsonRecursive(response));
                 RequestUtil.setAuthorization(null);
                 entityAfter = response;
                 if(toggle != null){
@@ -116,6 +117,18 @@ public class AuditAdvice {
 
         if(entity instanceof IAudit && !skipAudit){
             System.out.println("About to save audit");
+            System.out.println("entity = " + JsonConverter.getJsonRecursive(entity));
+            System.out.println("entityAfter = " +  JsonConverter.getJsonRecursive(entityAfter));
+            System.out.println("audit = " + JsonConverter.getJsonRecursive(audit));
+
+            if(audit.getCrudAction().equalsIgnoreCase("Create")){
+                audit.setBefore(null);
+                audit.setAfter(JsonConverter.getJsonRecursive(entity));
+            }else if(audit.getCrudAction().equalsIgnoreCase("Delete")){
+                audit.setBefore(JsonConverter.getJsonRecursive(entity));
+                audit.setAfter(null);
+            }
+
             auditOperation(entity, entityAfter, audit);
         }
         
@@ -133,8 +146,10 @@ public class AuditAdvice {
         audit.setStatus(AuditStatus.ACTIVE);
         audit.setTaskRoute(RequestUtil.getTaskRoute());
         audit.setEntityType(metaModel.getClass().getName());
-        audit.setBefore((String) ReflectionUtil.getFieldValue(entityBefore.getClass(), BEFORE, entityBefore));
-        audit.setAfter( StringUtils.isEmpty(entityAfter) ? null : JsonConverter.getJsonRecursive(entityAfter) );
+        if(audit.getCrudAction().equalsIgnoreCase("Update")){
+            audit.setBefore((String) ReflectionUtil.getFieldValue(entityBefore.getClass(), BEFORE, entityBefore));
+            audit.setAfter( StringUtils.isEmpty(entityAfter) ? null : JsonConverter.getJsonRecursive(entityAfter) );
+        }
         audit.setDependency(null);
         audit.setAuthorization(RequestUtil.getAuthorization());
         audit.setStatus(RequestUtil.getAuditStatus());

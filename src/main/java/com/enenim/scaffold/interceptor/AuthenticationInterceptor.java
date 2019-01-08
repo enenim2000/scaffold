@@ -175,7 +175,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     }
 
     @Data
-    private class InterceptorParamater{
+    private class InterceptorParamater {
         Object handler;
         ContentCachingRequestWrapper request;
         ContentCachingResponseWrapper response;
@@ -185,6 +185,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             this.response = new ContentCachingResponseWrapper(httpServletResponse);
             this.handler = handler;
             RequestUtil.setAuthorization(null);
+            RequestUtil.setCommonRequestProperties(null);
         }
     }
 }

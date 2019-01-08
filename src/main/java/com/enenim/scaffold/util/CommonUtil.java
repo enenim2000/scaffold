@@ -123,6 +123,9 @@ public class CommonUtil {
     }
 
     public static Map<String, Object> toMap(Object obj){
+        if(obj == null){
+            return new HashMap<>();
+        }
         ObjectMapper mapper = new ObjectMapper();
         return mapper.convertValue(obj, new TypeReference<Map<String, Object>>() {});
     }
