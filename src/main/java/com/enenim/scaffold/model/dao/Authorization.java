@@ -30,13 +30,11 @@ public class Authorization extends BaseModel {
     private Staff staff;
 
     @NotNull
-    @Column(length = 40)
     private String rid;
 
     @NotNull
     private AuthorizationStatus status = AuthorizationStatus.NOT_FORWARDED;
 
-    @Column
     private String comment = "";
 
     @OneToMany(mappedBy = "authorization", fetch = FetchType.LAZY)

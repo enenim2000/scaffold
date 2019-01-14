@@ -1,7 +1,7 @@
 package com.enenim.scaffold.model.dao;
 
 import com.enenim.scaffold.enums.EnabledStatus;
-import com.enenim.scaffold.interfaces.IAudit;
+import com.enenim.scaffold.interfaces.IAuthorization;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
@@ -16,7 +16,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "branches")
-public class Branch extends BaseModel implements IAudit {
+public class Branch extends BaseModel implements IAuthorization {
 
 
     public Branch() {

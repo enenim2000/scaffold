@@ -147,10 +147,12 @@ public class AuditAdvice {
         RequestUtil.setAuditStatus((AuditStatus.ACTIVE));
         audit.setTaskRoute(RequestUtil.getTaskRoute());
         audit.setEntityType(metaModel.getClass().getName());
+
         if(audit.getCrudAction().equalsIgnoreCase("Update")){
             audit.setBefore((String) ReflectionUtil.getFieldValue(entityBefore.getClass(), BEFORE, entityBefore));
             audit.setAfter( StringUtils.isEmpty(entityAfter) ? null : JsonConverter.getJsonRecursive(entityAfter) );
         }
+
         audit.setAuthorization(RequestUtil.getAuthorization());
         audit.setStatus(RequestUtil.getAuditStatus());
 
