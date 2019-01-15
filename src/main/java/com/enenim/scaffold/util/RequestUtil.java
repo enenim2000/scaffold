@@ -92,7 +92,7 @@ public class RequestUtil {
     }
 
     public static void setRequestBody(Object request){
-        requestBody = (String)request;
+        requestBody = JsonConverter.getJsonRecursive(request);
     }
 
     public static String getQ(){
@@ -237,10 +237,13 @@ public class RequestUtil {
             userAgent = RequestUtil.getRequest().getParameter(CommonConstant.USER_AGENT);
         }
 
+        RequestUtil.setRequestBody(requestMap.get("data"));
+
+        System.out.println("requestBody = " + JsonConverter.getJsonRecursive(getRequestBody()));
+
         RequestUtil.setUserAgent(userAgent);
         RequestUtil.setIpAdress(ipAddress);
-        RequestUtil.setRequestBody(requestBody);
-        RequestUtil.setRID(Security.encypt(RequestUtil.getRequest().getRequestURI() + requestBody + RequestUtil.getRequest().getMethod()));
+        RequestUtil.setRID(Security.encypt(getRequest().getRequestURI() + getRequest().getMethod() + getRequestBody()));
 
     }
 }

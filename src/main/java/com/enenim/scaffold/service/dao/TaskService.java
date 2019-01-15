@@ -1,12 +1,12 @@
 package com.enenim.scaffold.service.dao;
 
+import com.enenim.scaffold.annotation.Permission;
 import com.enenim.scaffold.model.dao.Task;
 import com.enenim.scaffold.repository.dao.TaskRepository;
 import com.enenim.scaffold.util.CommonUtil;
 import com.enenim.scaffold.util.PageRequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
@@ -49,8 +49,8 @@ public class TaskService {
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
             handlerMethod = (HandlerMethod) pair.getValue();
-            if(handlerMethod.hasMethodAnnotation(PreAuthorize.class)){
-                role = handlerMethod.getMethod().getDeclaredAnnotation(PreAuthorize.class).value();
+            if(handlerMethod.hasMethodAnnotation(Permission.class)){
+                role = handlerMethod.getMethod().getDeclaredAnnotation(Permission.class).value();
                 if(!routes.contains(role)){
                     routes.add(role);
                 }

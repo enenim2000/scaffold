@@ -9,6 +9,7 @@ import com.enenim.scaffold.dto.response.PageResponse;
 import com.enenim.scaffold.dto.response.Response;
 import com.enenim.scaffold.model.dao.Branch;
 import com.enenim.scaffold.service.dao.BranchService;
+import com.enenim.scaffold.util.RequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -47,6 +48,7 @@ public class BranchController {
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_BRANCH_CREATE)
     public Response<ModelResponse<Branch>> createBranch(@Valid @RequestBody Request<BranchRequest> request){
+        RequestUtil.setCommonRequestProperties(request);
         return new Response<>(new ModelResponse<>(branchService.saveBranch(request.getBody().buildModel())));
     }
 
@@ -54,6 +56,7 @@ public class BranchController {
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_BRANCH_UPDATE)
     public Response<ModelResponse<Branch>> updateBranch(@PathVariable Long id, @RequestBody Request<BranchRequest> request){
+        RequestUtil.setCommonRequestProperties(request);
         Branch branch = branchService.getBranch(id);
         return new Response<>(new ModelResponse<>(branchService.saveBranch(request.getBody().buildModel(branch))));
     }

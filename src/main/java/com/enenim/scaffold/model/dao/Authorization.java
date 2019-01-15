@@ -30,6 +30,7 @@ public class Authorization extends BaseModel {
     private Staff staff;
 
     @NotNull
+    @Column(unique = true)
     private String rid;
 
     @NotNull
