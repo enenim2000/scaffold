@@ -59,13 +59,18 @@ public class TaskService {
 
         List<Task> dBTasks = this.taskRepository.findAll();
         List<String> notDeletedTasksRoutes = new ArrayList<>();
+        List<Task> deleteTasks = new ArrayList<>();
         dBTasks.forEach((task) -> {
             if(!routes.contains(task.getRoute())){
-                this.deleteTask(task.getId());
+                deleteTasks.add(task);
             }else {
                 notDeletedTasksRoutes.add(task.getRoute());
             }
         });
+
+        if(!deleteTasks.isEmpty()){
+            this.taskRepository.deleteInBatch(deleteTasks);
+        }
 
         List<String> newRoutes = CommonUtil.difference(routes, notDeletedTasksRoutes);
         List<Task> newTasks = new ArrayList<>();
