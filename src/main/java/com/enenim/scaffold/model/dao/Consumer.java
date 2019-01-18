@@ -42,6 +42,7 @@ public class Consumer extends BaseModel {
     private String phoneNumber;
 
     @JsonProperty("date_of_birth")
+    @SerializedName("date_of_birth")
     @Column(length = 10)
     private String dateOfBirth;
 
