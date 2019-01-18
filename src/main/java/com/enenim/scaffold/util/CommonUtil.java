@@ -40,14 +40,13 @@ public class CommonUtil {
         return newList;
     }
 
-    public static <T> List<T> difference(Collection<T> listA,Collection<T> listB){
-        List<T> newList = new ArrayList<>();
+    public static <T> Collection<T> difference(Collection<T> listA,Collection<T> listB){
         for(T item : listB){
-            if(!listA.contains(item)){
-                newList.add(item);
+            if(listA.contains(item)){
+                listA.remove(item);
             }
         }
-        return newList;
+        return listA;
     }
 
     public static <K, V> List<K> difference(Map<K, V> mapA, Map<K, V> mapB){

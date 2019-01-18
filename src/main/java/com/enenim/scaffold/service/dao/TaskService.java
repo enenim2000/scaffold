@@ -4,6 +4,7 @@ import com.enenim.scaffold.annotation.Permission;
 import com.enenim.scaffold.model.dao.Task;
 import com.enenim.scaffold.repository.dao.TaskRepository;
 import com.enenim.scaffold.util.CommonUtil;
+import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.PageRequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -57,18 +58,29 @@ public class TaskService {
             }
         }
 
+        System.out.println("routes = " + JsonConverter.getJsonRecursive(routes));
+
         List<Task> dBTasks = this.taskRepository.findAll();
         List<String> notDeletedTasksRoutes = new ArrayList<>();
         dBTasks.forEach((task) -> {
             if(!routes.contains(task.getRoute())){
+                //Delete only existing routes that has not being used
                 this.deleteTask(task.getId());
             }else {
                 notDeletedTasksRoutes.add(task.getRoute());
             }
         });
 
-        List<String> newRoutes = CommonUtil.difference(routes, notDeletedTasksRoutes);
+        System.out.println("dBTasks = " + JsonConverter.getJsonRecursive(dBTasks));
+
+        System.out.println("notDeletedTasksRoutes = " + JsonConverter.getJsonRecursive(notDeletedTasksRoutes));
+
+        Collection<String> newRoutes = CommonUtil.difference(routes, notDeletedTasksRoutes);
+
+        System.out.println("newRoutes = " + JsonConverter.getJsonRecursive(newRoutes));
+
         List<Task> newTasks = new ArrayList<>();
+
         newRoutes.forEach((newRoute)->{
             Task task = new Task();
             String[] routeDetails = newRoute.split("\\.");
@@ -76,8 +88,12 @@ public class TaskService {
             task.setName(CommonUtil.capitaliseFirstLetter(routeDetails[1]) + " " + CommonUtil.capitaliseFirstLetter(routeDetails[2]));
             task.setDescription(CommonUtil.capitaliseFirstLetter(routeDetails[2]));
             task.setModule(CommonUtil.capitaliseFirstLetter(routeDetails[0]));
+            task.setOrder(1);
+            task.setParentTaskId(0L);
             newTasks.add(task);
         });
+
+        System.out.println("newTasks = " + JsonConverter.getJsonRecursive(newTasks));
 
         return this.taskRepository.saveAll(newTasks).size() > 0;
     }

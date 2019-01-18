@@ -32,7 +32,6 @@ public class Task extends BaseModel {
     @Column(length = 50)
     private String module;
 
-    @NotNull
     @JsonProperty("parent_task_id")
     private Long parentTaskId;
 
@@ -54,9 +53,8 @@ public class Task extends BaseModel {
     @NotNull
     private VisibilityStatus visibility = VisibilityStatus.YES;
 
-    @JsonProperty("order")
-    @Column(length = 11)
-    private Integer _order;
+    @Column(name = "_order", length = 11)
+    private Integer order;
 
     @Column(length = 20)
     private String icon;
