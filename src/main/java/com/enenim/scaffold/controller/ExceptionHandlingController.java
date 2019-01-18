@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -47,6 +48,15 @@ public class ExceptionHandlingController {
         response.setErrorMessage(ValidationMessage.msg("validation_failure"));
         response.setErrors(ErrorValidator.errors(ex));
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public ResponseEntity<ExceptionResponse> methodNotAllowed(HttpRequestMethodNotSupportedException ex) {
+        ExceptionResponse response = new ExceptionResponse();
+        response.setErrorCode(HttpStatus.METHOD_NOT_ALLOWED.toString());
+        response.setErrorMessage(ex.getMessage());
+        response.setErrors(null);
+        return new ResponseEntity<>(response, HttpStatus.METHOD_NOT_ALLOWED);
     }
 
     @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
