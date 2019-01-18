@@ -66,7 +66,8 @@ public class TaskService {
         dBTasks.forEach((task) -> {
             if(!routes.contains(task.getRoute())){
                 //Delete only existing routes that has not being used
-                this.deleteTask(task.getId());
+                //Commented bcos once route/task is created it should not be removed
+                //this.deleteTask(task.getId());
             }else {
                 notDeletedTasksRoutes.add(task.getRoute());
             }
@@ -90,8 +91,9 @@ public class TaskService {
             Task task = new Task();
             String[] routeDetails = newRoute.split("\\.");
             task.setRoute(newRoute);
-            task.setName(CommonUtil.capitaliseFirstLetter(routeDetails[1]) + " " + CommonUtil.capitaliseFirstLetter(routeDetails[2]));
-            task.setDescription(CommonUtil.capitaliseFirstLetter(routeDetails[2]));
+            String name = CommonUtil.capitaliseFirstLetter(routeDetails[1]) + " " + CommonUtil.capitaliseFirstLetter(routeDetails[2]);
+            task.setName(name);
+            task.setDescription(name);
             task.setModule(CommonUtil.capitaliseFirstLetter(routeDetails[0]));
             task.setOrder(1);
             task.setParentTaskId(0L);
