@@ -13,6 +13,8 @@ import com.enenim.scaffold.dto.response.PageResponse;
 import com.enenim.scaffold.dto.response.Response;
 import com.enenim.scaffold.model.dao.Task;
 import com.enenim.scaffold.service.dao.TaskService;
+import com.enenim.scaffold.util.RequestUtil;
+import com.enenim.scaffold.util.message.SpringMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -63,6 +65,7 @@ public class TaskController {
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_TASK_SYNC)
     public Response<BooleanResponse> syncTasks() {
+        RequestUtil.setMessage(SpringMessage.msg("task_sync_success"));
         return new Response<>(new BooleanResponse(taskService.syncTask(requestMappingHandlerMapping)));
     }
 }

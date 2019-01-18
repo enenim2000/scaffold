@@ -62,6 +62,7 @@ public class TaskService {
 
         List<Task> dBTasks = this.taskRepository.findAll();
         List<String> notDeletedTasksRoutes = new ArrayList<>();
+        List<Task> deleteTasks = new ArrayList<>();
         dBTasks.forEach((task) -> {
             if(!routes.contains(task.getRoute())){
                 //Delete only existing routes that has not being used
@@ -78,6 +79,10 @@ public class TaskService {
         Collection<String> newRoutes = CommonUtil.difference(routes, notDeletedTasksRoutes);
 
         System.out.println("newRoutes = " + JsonConverter.getJsonRecursive(newRoutes));
+
+        if(!deleteTasks.isEmpty()){
+            this.taskRepository.deleteInBatch(deleteTasks);
+        }
 
         List<Task> newTasks = new ArrayList<>();
 
