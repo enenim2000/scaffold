@@ -8,6 +8,8 @@ import com.enenim.scaffold.util.setting.SettingCacheCoreUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SettingService{
     private final SettingRepository settingRepository;
@@ -17,6 +19,10 @@ public class SettingService{
     public SettingService(SettingRepository settingRepository, SettingCacheCoreService settingCacheCoreService) {
         this.settingRepository = settingRepository;
         this.settingCacheCoreService = settingCacheCoreService;
+    }
+
+    public List<Setting> getSettings() {
+        return settingRepository.findAll();
     }
 
     public Setting getSetting(String key) {

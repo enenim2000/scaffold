@@ -101,4 +101,14 @@ public class SettingCacheCoreUtil {
         settingCache.setValue(setting.getValue());
         return settingCache;
     }
+
+    public static List<SettingCache> sync(List<Setting> settings){
+        List<SettingCache> settingCaches = new ArrayList<>();
+        for(Setting setting : settings){
+            SettingCache settingCache = getSettingMap().get(setting.getKey());
+            settingCache.setValue(setting.getValue());
+            settingCaches.add(settingCache);
+        }
+        return settingCaches;
+    }
 }

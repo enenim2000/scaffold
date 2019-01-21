@@ -130,7 +130,10 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         SettingCache settingCache = settingCacheCoreService.getCoreSetting("idle_timeout");
 
-        if(loginToken.hasExpired(Long.valueOf(settingCache.getValue())))throw new ScaffoldException("session_expired");
+        int minIdleTimeout = Integer.valueOf(settingCache.getValue());
+        long milIdleTimeout = minIdleTimeout * 60 * 1000;
+
+        if(loginToken.hasExpired(milIdleTimeout))throw new ScaffoldException("session_expired");
 
         Login login = loginService.getLogin(loginToken.getId());
 

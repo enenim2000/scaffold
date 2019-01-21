@@ -30,7 +30,7 @@ import static com.enenim.scaffold.constant.ModelFieldConstant.ID;
 
 @Service
 public class TokenAuthenticationService {
-    private static final long EXPIRATION_TIME = 1000 * 60 * 20; //20mins  <==>  //1000 * 60 * 60 * 24 * 7; // 7 days
+    private static final long EXPIRATION_TIME = 1000 * 60 * 60 * 24 * 7; // 7 days
 
     private static final String HEADER_STRING = "Authorization";
 
@@ -71,12 +71,18 @@ public class TokenAuthenticationService {
                     .setSigningKey(TOKEN_KEY)
                     .parseClaimsJws(token).getBody();
             Long id = Long.valueOf(String.valueOf(claims.get(ID)));
+            if(StringUtils.isEmpty(loginCacheService.get(String.valueOf(id)))){
+                throw new ScaffoldException("invalid_token");
+            }
             Map<String, Object> tracker = new ObjectMapper().convertValue(claims.get("tracker"), new TypeReference<Map<String, Object>>(){});
             String sessionId = (String) tracker.get("session_id");
-            if(StringUtils.isEmpty(loginCacheService.get(String.valueOf(id)))){
-                throw new ScaffoldException("session_expired");
-            }
             Object loginCache = loginCacheService.get(String.valueOf(id)).get(sessionId);
+            if(StringUtils.isEmpty(loginCache)){
+                throw new ScaffoldException("invalid_token");
+            }
+
+            System.out.println("loginCache = " + loginCache);
+
             return JsonConverter.getObject(loginCache, LoginCache.class);
         }catch (ExpiredJwtException e) {
             throw new UnAuthorizedException("expired_token");
@@ -93,6 +99,7 @@ public class TokenAuthenticationService {
 
     @Async
     public void saveToken(LoginCache token){
+        System.out.println("saveToken <<token>> = " + JsonConverter.getJsonRecursive(token));
         loginCacheService.save(token);
     }
 
