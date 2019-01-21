@@ -4,7 +4,6 @@ import com.enenim.scaffold.annotation.Permission;
 import com.enenim.scaffold.model.dao.Task;
 import com.enenim.scaffold.repository.dao.TaskRepository;
 import com.enenim.scaffold.util.CommonUtil;
-import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.PageRequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -58,8 +57,6 @@ public class TaskService {
             }
         }
 
-        System.out.println("routes = " + JsonConverter.getJsonRecursive(routes));
-
         List<Task> dBTasks = this.taskRepository.findAll();
         List<String> notDeletedTasksRoutes = new ArrayList<>();
         List<Task> deleteTasks = new ArrayList<>();
@@ -73,13 +70,7 @@ public class TaskService {
             }
         });
 
-        System.out.println("dBTasks = " + JsonConverter.getJsonRecursive(dBTasks));
-
-        System.out.println("notDeletedTasksRoutes = " + JsonConverter.getJsonRecursive(notDeletedTasksRoutes));
-
         Collection<String> newRoutes = CommonUtil.difference(routes, notDeletedTasksRoutes);
-
-        System.out.println("newRoutes = " + JsonConverter.getJsonRecursive(newRoutes));
 
         if(!deleteTasks.isEmpty()){
             this.taskRepository.deleteInBatch(deleteTasks);
@@ -99,8 +90,6 @@ public class TaskService {
             task.setParentTaskId(0L);
             newTasks.add(task);
         });
-
-        System.out.println("newTasks = " + JsonConverter.getJsonRecursive(newTasks));
 
         return this.taskRepository.saveAll(newTasks).size() > 0;
     }

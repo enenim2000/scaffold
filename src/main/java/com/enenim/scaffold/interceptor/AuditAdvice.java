@@ -7,6 +7,7 @@ import com.enenim.scaffold.interfaces.IAudit;
 import com.enenim.scaffold.interfaces.IAuthorization;
 import com.enenim.scaffold.model.dao.Audit;
 import com.enenim.scaffold.model.dao.Authorization;
+import com.enenim.scaffold.model.dao.Tracker;
 import com.enenim.scaffold.service.AuthorizationService;
 import com.enenim.scaffold.service.dao.AuditService;
 import com.enenim.scaffold.service.dao.TaskService;
@@ -62,7 +63,6 @@ public class AuditAdvice {
 
         if(entity instanceof IAuthorization && !skipAuthorization){
 
-            System.out.println("About to save authorization");
             authorizationOperation();
 
             if(toggle != null){
@@ -88,7 +88,6 @@ public class AuditAdvice {
         }else {
             try {
                 response = jp.proceed();
-                System.out.println("jp.proceed() = " + JsonConverter.getJsonRecursive(response));
                 RequestUtil.setAuthorization(null);
                 entityAfter = response;
                 if(toggle != null){
@@ -116,11 +115,6 @@ public class AuditAdvice {
         }
 
         if(entity instanceof IAudit && !skipAudit){
-            System.out.println("About to save audit");
-            System.out.println("entity = " + JsonConverter.getJsonRecursive(entity));
-            System.out.println("entityAfter = " +  JsonConverter.getJsonRecursive(entityAfter));
-            System.out.println("audit = " + JsonConverter.getJsonRecursive(audit));
-
             if(audit.getCrudAction().equalsIgnoreCase("Create")){
                 audit.setBefore(null);
                 audit.setAfter(JsonConverter.getJsonRecursive(entity));
@@ -132,8 +126,10 @@ public class AuditAdvice {
             audit.setDependency(JsonConverter.getJsonRecursive(entity));
             auditOperation(entity, entityAfter, audit);
         }
-        
-        RequestUtil.setMessage(message);
+
+        if( !(entity instanceof Tracker) ){
+            RequestUtil.setMessage(message);
+        }
         ReflectionUtil.setFieldValue(entity.getClass(), TOGGLE, null, entity);
 
         return response;
