@@ -2,6 +2,7 @@ package com.enenim.scaffold.service.cache;
 
 import com.enenim.scaffold.model.cache.SettingCache;
 import com.enenim.scaffold.repository.cache.SettingCacheRepository;
+import com.enenim.scaffold.util.JsonConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.HashOperations;
@@ -33,7 +34,7 @@ public class SettingCacheService implements SettingCacheRepository {
     }
 
     public SettingCache get(String key, String id){
-        return hashOps.get(key, id);
+        return JsonConverter.getObject(hashOps.get(key, id), SettingCache.class);
     }
 
     public List<SettingCache> get(String key) {
