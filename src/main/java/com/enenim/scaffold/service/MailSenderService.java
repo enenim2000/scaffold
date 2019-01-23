@@ -1,6 +1,7 @@
 package com.enenim.scaffold.service;
 
 import com.enenim.scaffold.interfaces.IMailService;
+import com.enenim.scaffold.model.dao.Biller;
 import com.enenim.scaffold.model.dao.Consumer;
 import com.enenim.scaffold.model.dao.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +12,14 @@ public class MailSenderService {
 
     private final MailExceptionService mailExceptionService;
     private final MailSignUpService mailSignUpService;
+    private final MailSignUpBillerService mailSignUpBillerService;
     private final MailTransactionService mailTransactionService;
 
     @Autowired
-    public MailSenderService(MailExceptionService mailExceptionService, MailSignUpService mailSignUpService, MailTransactionService mailTransactionService) {
+    public MailSenderService(MailExceptionService mailExceptionService, MailSignUpService mailSignUpService, MailSignUpBillerService mailSignUpBillerService, MailTransactionService mailTransactionService) {
         this.mailExceptionService = mailExceptionService;
         this.mailSignUpService = mailSignUpService;
+        this.mailSignUpBillerService = mailSignUpBillerService;
         this.mailTransactionService = mailTransactionService;
     }
 
@@ -29,6 +32,8 @@ public class MailSenderService {
             mailService = mailTransactionService;
         }else if(obj instanceof Consumer){
             mailService = mailSignUpService;
+        }else if(obj instanceof Biller){
+            mailService = mailSignUpBillerService;
         }else {
             return;
         }

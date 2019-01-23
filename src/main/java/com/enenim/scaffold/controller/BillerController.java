@@ -115,9 +115,10 @@ public class BillerController {
 
     @Put("/{code}/verify")
     public Response<ModelResponse<Biller>> verifyCode(@PathVariable("code") String code, @Valid @RequestBody BillerSignUpVerifyRequest request) throws Exception {
-        Object value = sharedExpireCacheService.get(code);
+        String cacheCode = SharedExpireCacheService.SINGUP + SharedExpireCacheService.SEPARATOR + code;
+        Object value = sharedExpireCacheService.get(cacheCode);
         if(!StringUtils.isEmpty(value)){
-            Biller biller = (Biller)value;
+            Biller biller = JsonConverter.getObject(value, Biller.class);
             Login login = loginService.getLoginByUsername(biller.getEmail());
             login.setPassword(bCryptPasswordEncoder.encode(request.getPassword()));
             login = loginService.saveLogin(login);
@@ -125,7 +126,7 @@ public class BillerController {
                 biller.setVerified(VerifyStatus.VERIFIED);
                 biller.skipAuthorization(true);
                 biller = billerService.saveBiller(biller);
-                sharedExpireCacheService.delete(code);
+                sharedExpireCacheService.delete(cacheCode);
                 return new Response<>(new ModelResponse<>(biller));
             }
         }
