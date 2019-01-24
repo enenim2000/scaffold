@@ -5,7 +5,6 @@ import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.constant.RouteConstant;
 import com.enenim.scaffold.dto.request.BillerRequest;
 import com.enenim.scaffold.dto.request.BillerSignUpVerifyRequest;
-import com.enenim.scaffold.dto.request.Request;
 import com.enenim.scaffold.dto.response.BooleanResponse;
 import com.enenim.scaffold.dto.response.ModelResponse;
 import com.enenim.scaffold.dto.response.PageResponse;
@@ -65,7 +64,7 @@ public class BillerController {
     }
 
     @Post
-    @Role({RoleConstant.STAFF, RoleConstant.BILLER})
+    @Role({RoleConstant.STAFF})
     @Permission(RouteConstant.USER_BILLER_CREATE)
     public Response<ModelResponse<Biller>> createBiller(@RequestParam("biller") String billerRequest, @RequestParam(value = "file", required = false) MultipartFile file){
         BillerRequest request = JsonConverter.getObject(billerRequest, BillerRequest.class);
@@ -73,32 +72,18 @@ public class BillerController {
         biller.setTestSecret(bCryptPasswordEncoder.encode(new Date().toString() + Math.random()));
         biller.setSecret(bCryptPasswordEncoder.encode(new Date().toString() + Math.random()));
         biller.setVerified(VerifyStatus.VERIFIED);
-
-        String slug = RandomStringUtils.randomAlphanumeric(30);
-        biller.setSlug(slug);
-
-        if(!StringUtils.isEmpty(file)){
-
-            long file_size = 10000;
-            if(file.getSize() > file_size){
-                String file_size_kb = (file_size/1000) + "";
-                throw new ScaffoldException("file_size_biller", file_size_kb,  HttpStatus.PAYLOAD_TOO_LARGE);
-            }
-
-            String fileName = fileStorageService.storeFile(file, "image-" + slug + ".jpg");
-            biller.setLogoPath("/assets/logos/" + fileName);
-        }
-
+        storeBillerImage(biller, file);
         return new Response<>(new ModelResponse<>(billerService.saveBiller(biller)));
     }
 
     @Post("/sign-up")
-    public Response<ModelResponse<Biller>> signUpConsumers(@Valid @RequestBody Request<BillerRequest> request){
-        billerService.validateDependencies(request.getBody());
-        Biller biller = request.getBody().buildModel();
+    public Response<ModelResponse<Biller>> signUpConsumers(@RequestParam("biller") String billerRequest, @RequestParam(value = "file", required = false) MultipartFile file){
+        BillerRequest request = JsonConverter.getObject(billerRequest, BillerRequest.class);
+        billerService.validateDependencies(request);
+        Biller biller = request.buildModel();
         biller.skipAuthorization(true);
+        storeBillerImage(biller, file);
         biller = billerService.saveBiller(biller);
-
         if(!StringUtils.isEmpty(biller)){
             Login login = new Login();
             login.setUsername(biller.getEmail());
@@ -152,5 +137,19 @@ public class BillerController {
     @Permission(RouteConstant.USER_BILLER_TOGGLE)
     public Response<BooleanResponse> toggle(@PathVariable Long id){
         return new Response<>(new BooleanResponse(billerService.toggle(id)));
+    }
+
+    private void storeBillerImage(Biller biller, MultipartFile file){
+        String slug = RandomStringUtils.randomAlphanumeric(30);
+        biller.setSlug(slug);
+        if(!StringUtils.isEmpty(file)){
+            long file_size = 10000;
+            if(file.getSize() > file_size){
+                String file_size_kb = (file_size/1000) + "";
+                throw new ScaffoldException("file_size_biller", file_size_kb,  HttpStatus.PAYLOAD_TOO_LARGE);
+            }
+            String fileName = fileStorageService.storeFile(file, "image-" + slug + ".jpg");
+            biller.setLogoPath("/assets/logos/" + fileName);
+        }
     }
 }
