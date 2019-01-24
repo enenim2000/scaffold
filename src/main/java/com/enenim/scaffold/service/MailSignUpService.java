@@ -1,7 +1,6 @@
 package com.enenim.scaffold.service;
 
 import com.enenim.scaffold.interfaces.IMailService;
-import com.enenim.scaffold.model.dao.Biller;
 import com.enenim.scaffold.model.dao.Consumer;
 import com.enenim.scaffold.service.cache.SharedExpireCacheService;
 import com.enenim.scaffold.shared.Mail;
@@ -39,18 +38,4 @@ public class MailSignUpService implements IMailService {
         mailService.sendMail(mail);
     }
 
-    @Async
-    @Override
-    public void send(Biller biller){
-        String code = CommonUtil.getCode();
-        Mail mail = new Mail();
-        mail.setTo(biller.getEmail());
-        mail.setSubject(SpringMessage.msg("app_name") + " Registration");
-        mail.setTemplate(TEMPLATE_SIGNUP_BILLER);
-        mail.getData().put("code", code);
-        mail.getData().put("biller", biller);
-        String key = SharedExpireCacheService.SINGUP + SharedExpireCacheService.SEPARATOR + code;
-        sharedExpireCacheService.put(key, biller);
-        mailService.sendMail(mail);
-    }
 }
