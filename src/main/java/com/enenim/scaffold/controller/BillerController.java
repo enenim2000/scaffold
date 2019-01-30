@@ -19,6 +19,7 @@ import com.enenim.scaffold.service.cache.SharedExpireCacheService;
 import com.enenim.scaffold.service.dao.BillerService;
 import com.enenim.scaffold.service.dao.LoginService;
 import com.enenim.scaffold.util.JsonConverter;
+import com.enenim.scaffold.util.message.SpringMessage;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -76,11 +77,17 @@ public class BillerController {
         return new Response<>(new ModelResponse<>(billerService.saveBiller(biller)));
     }
 
-    @Post("/sign-up")
+    @PostMapping(value = "/sign-up")
     public Response<ModelResponse<Biller>> signUpConsumers(@RequestParam("biller") String billerRequest, @RequestParam(value = "file", required = false) MultipartFile file){
+
+        System.out.println("billerRequest = " + billerRequest);
+        System.out.println("file name= " + file.getOriginalFilename());
+
         BillerRequest request = JsonConverter.getObject(billerRequest, BillerRequest.class);
         billerService.validateDependencies(request);
         Biller biller = request.buildModel();
+        String slug = RandomStringUtils.randomAlphanumeric(30);
+        biller.setSlug(slug);
         biller.skipAuthorization(true);
         storeBillerImage(biller, file);
         biller = billerService.saveBiller(biller);
@@ -140,15 +147,13 @@ public class BillerController {
     }
 
     private void storeBillerImage(Biller biller, MultipartFile file){
-        String slug = RandomStringUtils.randomAlphanumeric(30);
-        biller.setSlug(slug);
         if(!StringUtils.isEmpty(file)){
-            long file_size = 10000;
+            long file_size = Long.valueOf(SpringMessage.msg("biller_logo_upload_size"));
             if(file.getSize() > file_size){
                 String file_size_kb = (file_size/1000) + "";
                 throw new ScaffoldException("file_size_biller", file_size_kb,  HttpStatus.PAYLOAD_TOO_LARGE);
             }
-            String fileName = fileStorageService.storeFile(file, "image-" + slug + ".jpg");
+            String fileName = fileStorageService.storeFile(file, "image-" + biller.getSlug() + ".jpg");
             biller.setLogoPath("/assets/logos/" + fileName);
         }
     }

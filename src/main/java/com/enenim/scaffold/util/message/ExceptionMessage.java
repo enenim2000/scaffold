@@ -4,12 +4,13 @@ import com.enenim.scaffold.constant.CommonConstant;
 import com.enenim.scaffold.util.RequestUtil;
 
 public class ExceptionMessage {
+
     private static final String FILE_NAME = "exception";
 
     public static String msg(String key) {
-        System.out.println("key = " + key);
-        System.out.println("FILE_NAME = " + FILE_NAME);
-        System.out.println("RequestUtil.getLang() = " + RequestUtil.getLang());
+        if(RequestUtil.getLang() == null){
+            RequestUtil.setLang(SpringMessage.msg("lang"));
+        }
         return PropertyUtil.msg(key, RequestUtil.getLang(), FILE_NAME);
     }
 
