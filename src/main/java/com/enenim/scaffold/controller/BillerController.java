@@ -5,10 +5,7 @@ import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.constant.RouteConstant;
 import com.enenim.scaffold.dto.request.BillerRequest;
 import com.enenim.scaffold.dto.request.BillerSignUpVerifyRequest;
-import com.enenim.scaffold.dto.response.BooleanResponse;
-import com.enenim.scaffold.dto.response.ModelResponse;
-import com.enenim.scaffold.dto.response.PageResponse;
-import com.enenim.scaffold.dto.response.Response;
+import com.enenim.scaffold.dto.response.*;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.model.dao.Biller;
@@ -19,6 +16,7 @@ import com.enenim.scaffold.service.cache.SharedExpireCacheService;
 import com.enenim.scaffold.service.dao.BillerService;
 import com.enenim.scaffold.service.dao.LoginService;
 import com.enenim.scaffold.util.JsonConverter;
+import com.enenim.scaffold.util.ObjectMapperUtil;
 import com.enenim.scaffold.util.message.SpringMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -75,7 +73,7 @@ public class BillerController {
     }
 
     @PostMapping(value = "/sign-up")
-    public Response<ModelResponse<Biller>> signUpConsumers(@RequestParam("biller") String billerRequest, @RequestParam(value = "file", required = false) MultipartFile file){
+    public Response<ModelResponse<BillerResponse>> signUpConsumers(@RequestParam("biller") String billerRequest, @RequestParam(value = "file", required = false) MultipartFile file){
 
         System.out.println("billerRequest = " + billerRequest);
         System.out.println("file name= " + file.getOriginalFilename());
@@ -99,7 +97,7 @@ public class BillerController {
             if(!StringUtils.isEmpty(login.getId())){
                 mailSenderService.send(biller);
             }
-            return new Response<>(new ModelResponse<>(biller));
+            return new Response<>(new ModelResponse<>(ObjectMapperUtil.map(biller, BillerResponse.class)));
         }
         throw new ScaffoldException("biller_signup_failed");
     }
