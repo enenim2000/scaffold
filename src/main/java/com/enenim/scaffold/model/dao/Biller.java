@@ -160,12 +160,4 @@ public class Biller extends BaseModel {
         setSecret(bCryptPasswordEncoder.encode(new Date().toString() + Math.random()));
         setCode(RandomStringUtils.randomAlphanumeric(10));
     }
-
-    public String getSecret() {
-        return "#################";
-    }
-
-    public String getEncodedSecret() {
-        return this.secret;
-    }
 }
