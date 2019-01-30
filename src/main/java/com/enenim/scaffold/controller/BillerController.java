@@ -20,7 +20,6 @@ import com.enenim.scaffold.service.dao.BillerService;
 import com.enenim.scaffold.service.dao.LoginService;
 import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.message.SpringMessage;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -29,7 +28,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.util.Date;
 
 @RestController
 @RequestMapping("/user/billers")
@@ -70,8 +68,7 @@ public class BillerController {
     public Response<ModelResponse<Biller>> createBiller(@RequestParam("biller") String billerRequest, @RequestParam(value = "file", required = false) MultipartFile file){
         BillerRequest request = JsonConverter.getObject(billerRequest, BillerRequest.class);
         Biller biller = request.buildModel();
-        biller.setTestSecret(bCryptPasswordEncoder.encode(new Date().toString() + Math.random()));
-        biller.setSecret(bCryptPasswordEncoder.encode(new Date().toString() + Math.random()));
+        biller.setCommonProperties(bCryptPasswordEncoder);
         biller.setVerified(VerifyStatus.VERIFIED);
         storeBillerImage(biller, file);
         return new Response<>(new ModelResponse<>(billerService.saveBiller(biller)));
@@ -86,10 +83,12 @@ public class BillerController {
         BillerRequest request = JsonConverter.getObject(billerRequest, BillerRequest.class);
         billerService.validateDependencies(request);
         Biller biller = request.buildModel();
-        String slug = RandomStringUtils.randomAlphanumeric(30);
-        biller.setSlug(slug);
+        biller.setCommonProperties(bCryptPasswordEncoder);
         biller.skipAuthorization(true);
         storeBillerImage(biller, file);
+
+        System.out.println("biller = " + JsonConverter.getJsonRecursive(biller));
+
         biller = billerService.saveBiller(biller);
         if(!StringUtils.isEmpty(biller)){
             Login login = new Login();

@@ -6,11 +6,15 @@ import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -56,6 +60,7 @@ public class Biller extends BaseModel {
     @NotNull
     @Column(length = 20)
     @JsonProperty("phone_number")
+    @SerializedName("phone_number")
     private String phoneNumber;
 
     @NotNull
@@ -65,6 +70,7 @@ public class Biller extends BaseModel {
     @NotNull
     @Column(unique = true, length = 100)
     @JsonProperty("test_secret")
+    @SerializedName("test_secret")
     private String testSecret;
 
     @NotNull
@@ -74,6 +80,7 @@ public class Biller extends BaseModel {
     @NotNull
     @Column(unique = true, length = 100)
     @JsonProperty("trading_name")
+    @SerializedName("trading_name")
     private String tradingName;
 
     @NotNull
@@ -81,6 +88,7 @@ public class Biller extends BaseModel {
     private String slug;
 
     @JsonProperty("logo_path")
+    @SerializedName("logo_path")
     private String logoPath;
 
     @NotNull
@@ -94,6 +102,8 @@ public class Biller extends BaseModel {
 
     @OneToOne(mappedBy = "biller",cascade = CascadeType.ALL)
     @JsonBackReference
+    @JsonProperty("biller_account")
+    @SerializedName("biller_account")
     private BillerAccount billerAccount;
 
     @ManyToMany
@@ -110,6 +120,8 @@ public class Biller extends BaseModel {
             inverseJoinColumns = @JoinColumn(name = "payment_channel_id"),
             uniqueConstraints = @UniqueConstraint(columnNames = {"biller_id", "payment_channel_id"})
     )
+    @JsonProperty("payment_channels")
+    @SerializedName("payment_channels")
     private Set<PaymentChannel> paymentChannels = new HashSet<>();
 
     @ManyToMany
@@ -118,6 +130,8 @@ public class Biller extends BaseModel {
             inverseJoinColumns = @JoinColumn(name = "payment_method_id"),
             uniqueConstraints = @UniqueConstraint(columnNames = {"biller_id", "payment_method_id"})
     )
+    @JsonProperty("payment_methods")
+    @SerializedName("payment_methods")
     private Set<PaymentMethod> paymentMethods = new HashSet<>();
 
     @JsonBackReference
@@ -139,6 +153,13 @@ public class Biller extends BaseModel {
     @JsonBackReference
     @OneToMany(mappedBy = "biller", fetch = FetchType.LAZY)
     private Set<TransactionDemo> transactionDemos = new HashSet<>();
+
+    public void setCommonProperties(BCryptPasswordEncoder bCryptPasswordEncoder){
+        setSlug(RandomStringUtils.randomAlphanumeric(30));
+        setTestSecret(bCryptPasswordEncoder.encode(new Date().toString() + Math.random()));
+        setSecret(bCryptPasswordEncoder.encode(new Date().toString() + Math.random()));
+        setCode(RandomStringUtils.randomAlphanumeric(10));
+    }
 
     public String getSecret() {
         return "#################";
