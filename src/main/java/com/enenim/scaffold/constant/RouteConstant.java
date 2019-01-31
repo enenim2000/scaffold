@@ -22,6 +22,7 @@ public interface RouteConstant {
     String SHOW = "show";
     String RESET = "reset";
     String TOGGLE = "toggle";
+    String GOLIVE = "golive";
     String DESTROY = "destroy";
     String SYNC = "sync";
     String DOT = ".";
@@ -182,6 +183,7 @@ public interface RouteConstant {
     String USER_BILLER_CATEGORIES = USER + BILLER_SUBMODULE + "categories";
     String USER_BILLER_AGGREGATE = USER + BILLER_SUBMODULE + "aggregate";
     String USER_BILLER_TOGGLE = USER + BILLER_SUBMODULE + TOGGLE;
+    String USER_BILLER_GOLIVE = USER + BILLER_SUBMODULE + GOLIVE;
 
     //Security Question sub-modules
     String SECURITYQUESTION = DOT + "security-question" + DOT;

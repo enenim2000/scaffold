@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Getter
@@ -31,10 +30,6 @@ public class BillerRequest extends RequestBody<Biller>{
     @SerializedName("phone_number")
     @NotBlank(message = "@{biller.phone_number.required}")
     private String phoneNumber;
-
-    @NotBlank(message = "@{biller.email.required}")
-    @Email(message = "@{biller.email.pattern}")
-    private String email;
 
     @Override
     public Biller buildModel() {

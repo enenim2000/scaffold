@@ -5,14 +5,14 @@ import com.enenim.scaffold.constant.AssetBaseConstant;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.constant.RouteConstant;
 import com.enenim.scaffold.dto.request.BillerRequest;
+import com.enenim.scaffold.dto.request.BillerSignUpRequest;
 import com.enenim.scaffold.dto.request.BillerSignUpVerifyRequest;
-import com.enenim.scaffold.dto.request.ConsumerRequest;
 import com.enenim.scaffold.dto.request.Request;
 import com.enenim.scaffold.dto.response.*;
+import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.model.dao.Biller;
-import com.enenim.scaffold.model.dao.Consumer;
 import com.enenim.scaffold.model.dao.Login;
 import com.enenim.scaffold.service.FileStorageService;
 import com.enenim.scaffold.service.MailSenderService;
@@ -79,38 +79,65 @@ public class BillerController {
     }
 
     @Post("/sign-up")
-    public Response<ModelResponse<Consumer>> signUpBiller(@Valid @RequestBody Request<ConsumerRequest> request){
-        consumerService.validateDependencies(request.getBody());
-        Consumer consumer = request.getBody().buildModel();
-        consumer.skipAuthorization(true);
-        consumer = consumerService.saveConsumer(consumer);
-        if(!StringUtils.isEmpty(consumer)){
+    public Response<ModelResponse<Biller>> signUpBiller(@Valid @RequestBody Request<BillerSignUpRequest> request){
+        Biller biller = request.getBody().buildModel();
+        biller.skipAuthorization(true);
+        biller = billerService.saveBiller(biller);
+        if(!StringUtils.isEmpty(biller)){
             Login login = new Login();
-            login.setUsername(consumer.getEmail());
-            login.setUserType(RoleConstant.CONSUMER);
-            login.setUserId(consumer.getId());
+            login.setUsername(biller.getEmail());
+            login.setUserType(RoleConstant.BILLER);
+            login.setUserId(biller.getId());
             login = loginService.saveLogin(login);
             if(!StringUtils.isEmpty(login.getId())){
-                mailSenderService.send(consumer);
+                mailSenderService.send(biller);
             }
-            RequestUtil.setMessage(CommonMessage.msg("consumer_signup_success"));
-            return new Response<>(new ModelResponse<>(consumer));
+            RequestUtil.setMessage(CommonMessage.msg("biller_signup_success"));
+            return new Response<>(new ModelResponse<>(biller));
         }
         throw new ScaffoldException("signup_failed");
     }
 
+    @Put("/{code}/verify")
+    public Response<ModelResponse<Biller>> verifyCode(@PathVariable("code") String code) throws Exception {
+        String cacheCode = SharedExpireCacheService.SINGUP + SharedExpireCacheService.SEPARATOR + code;
+        Object value = sharedExpireCacheService.get(cacheCode);
+        if(!StringUtils.isEmpty(value)){
+            Biller biller = JsonConverter.getObject(value, Biller.class);
+            biller.setVerified(VerifyStatus.VERIFIED);
+            biller.skipAuthorization(true);
+            biller = billerService.saveBiller(biller);
+            sharedExpireCacheService.delete(cacheCode);
+            RequestUtil.setMessage(CommonMessage.msg("biller_code_verified"));
+            return new Response<>(new ModelResponse<>(biller));
+        }
+        throw new ScaffoldException("invalid_expired_code");
+    }
 
     @PutMapping(value = "/{id}/details")
-    public Response<ModelResponse<BillerResponse>> updateBillerDetails(@PathVariable("id") String id, @RequestParam("biller") String billerRequest, @RequestParam(value = "file", required = false) MultipartFile file){
+    @Permission(RoleConstant.BILLER)
+    public Response<ModelResponse<BillerResponse>> updateBillerDetails(@PathVariable("id") Long id, @RequestParam("biller") String billerRequest, @RequestParam(value = "file", required = false) MultipartFile file){
+
+        Biller biller = billerService.getBiller(id);
+
+        if(biller.getVerified() == VerifyStatus.NOT_VERIFIED){
+            throw new ScaffoldException("code_not_verified");
+        }
 
         System.out.println("billerRequest = " + billerRequest);
         System.out.println("file name= " + file.getOriginalFilename());
 
         BillerRequest request = JsonConverter.getObject(billerRequest, BillerRequest.class);
+
         billerService.validateDependencies(request);
-        Biller biller = request.buildModel();
+
+        biller.setAddress(request.getAddress());
+        biller.setName(request.getName());
+        biller.setPhoneNumber(request.getPhoneNumber());
+        biller.setTradingName(request.getTradingName());
         biller.setCommonProperties(bCryptPasswordEncoder);
         biller.skipAuthorization(true);
+
         storeBillerLogo(biller, file);
 
         System.out.println("biller = " + JsonConverter.getJsonRecursive(biller));
@@ -163,6 +190,26 @@ public class BillerController {
             }
         }
         return new Response<>(new BooleanResponse(false));
+    }
+
+    @Put("/{id}/go-alive")
+    @Role({RoleConstant.STAFF, RoleConstant.BILLER})
+    @Permission(RouteConstant.USER_BILLER_GOLIVE)
+    public Response<BooleanResponse> goLiveToggle(@PathVariable Long id){
+        Biller biller = billerService.getBiller(id);
+        if(StringUtils.isEmpty(biller.getAddress())){
+            throw new ScaffoldException("biiler_address_required");
+        }
+        if(StringUtils.isEmpty(biller.getLogoPath())){
+            throw new ScaffoldException("biller_logo_required");
+        }
+        biller.setEnabled(EnabledStatus.ENABLED);
+        biller = billerService.saveBiller(biller);
+        boolean allow = false;
+        if(biller.getEnabled() == EnabledStatus.ENABLED){
+            allow = true;
+        }
+        return new Response<>(new BooleanResponse(allow));
     }
 
     @Put("/{id}/toggle")

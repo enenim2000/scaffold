@@ -60,17 +60,14 @@ public class Biller extends BaseModel implements IAudit{
     @SerializedName("phone_number")
     private String phoneNumber;
 
-    @NotNull
     @Column(unique = true, length = 100)
     private String code;
 
-    @NotNull
     @Column(unique = true, length = 100)
     @JsonProperty("test_secret")
     @SerializedName("test_secret")
     private String testSecret;
 
-    @NotNull
     @Column(unique = true, length = 100)
     private String secret;
 
@@ -79,7 +76,6 @@ public class Biller extends BaseModel implements IAudit{
     @SerializedName("trading_name")
     private String tradingName;
 
-    @NotNull
     @Column(unique = true, length = 50)
     private String slug;
 
