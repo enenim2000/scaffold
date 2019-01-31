@@ -8,14 +8,17 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Embeddable;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
 @ToString
-@Embeddable
-public class BillerRequest extends RequestBody<Biller>{
+public class BillerRequest2 extends RequestBody<Biller>{
+
+    @NotBlank(message = "@{biller.email.required}")
+    @Email(message = "@{biller.email.pattern}")
+    private String email;
 
     @NotBlank(message = "@{biller.name.required}")
     private String name;

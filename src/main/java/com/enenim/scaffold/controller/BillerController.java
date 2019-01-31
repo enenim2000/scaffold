@@ -4,10 +4,7 @@ import com.enenim.scaffold.annotation.*;
 import com.enenim.scaffold.constant.AssetBaseConstant;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.constant.RouteConstant;
-import com.enenim.scaffold.dto.request.BillerRequest;
-import com.enenim.scaffold.dto.request.BillerSignUpRequest;
-import com.enenim.scaffold.dto.request.BillerSignUpVerifyRequest;
-import com.enenim.scaffold.dto.request.Request;
+import com.enenim.scaffold.dto.request.*;
 import com.enenim.scaffold.dto.response.*;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.VerifyStatus;
@@ -29,6 +26,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
@@ -70,7 +68,7 @@ public class BillerController {
     @Role({RoleConstant.STAFF})
     @Permission(RouteConstant.USER_BILLER_CREATE)
     public Response<ModelResponse<Biller>> createBiller(@RequestParam("biller") String billerRequest, @RequestParam(value = "file", required = false) MultipartFile file){
-        BillerRequest request = JsonConverter.getObject(billerRequest, BillerRequest.class);
+        BillerRequest2 request = JsonConverter.getObject(billerRequest, BillerRequest2.class);
         Biller biller = request.buildModel();
         biller.setCommonProperties(bCryptPasswordEncoder);
         biller.setVerified(VerifyStatus.VERIFIED);
@@ -158,7 +156,7 @@ public class BillerController {
         throw new ScaffoldException("biller_signup_failed");
     }
 
-    @Put("/{code}/verify")
+    /*@Put("/{code}/verify")
     public Response<ModelResponse<Biller>> verifyCode(@PathVariable("code") String code, @Valid @RequestBody BillerSignUpVerifyRequest request) throws Exception {
         String cacheCode = SharedExpireCacheService.SINGUP + SharedExpireCacheService.SEPARATOR + code;
         Object value = sharedExpireCacheService.get(cacheCode);
@@ -176,7 +174,7 @@ public class BillerController {
             }
         }
         throw new ScaffoldException("invalid_expired_code");
-    }
+    }*/
 
     @Post("/{email}/code/re-send")
     public Response<BooleanResponse> reSendCode(@PathVariable("email") String email){
