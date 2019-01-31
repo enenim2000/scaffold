@@ -27,10 +27,6 @@ public class ConsumerRequest extends RequestBody<Consumer>{
     @Email(message = "@{consumer.email.pattern}")
     private String email;
 
-    @JsonProperty("phone_number")
-    @NotBlank(message = "@{consumer.phone_number.required}")
-    private String phoneNumber;
-
     @Override
     public Consumer buildModel() {
         return ObjectMapperUtil.map(this, Consumer.class);

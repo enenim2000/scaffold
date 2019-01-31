@@ -1,5 +1,6 @@
 package com.enenim.scaffold.controller;
 
+import com.enenim.scaffold.constant.AssetBaseConstant;
 import com.enenim.scaffold.service.FileStorageService;
 import com.enenim.scaffold.util.UploadFileResponse;
 import org.slf4j.Logger;
@@ -55,6 +56,15 @@ public class AssetsController {
 
     @GetMapping("/downloadFile/{fileName:.+}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
+        return generateAssetResource(fileName, request);
+    }
+
+    @GetMapping(AssetBaseConstant.BILLER + "{fileName:.+}")
+    public ResponseEntity<Resource> getBillerLogo(@PathVariable String fileName, HttpServletRequest request) {
+        return generateAssetResource(fileName, request);
+    }
+
+    private ResponseEntity<Resource> generateAssetResource(@PathVariable String fileName, HttpServletRequest request){
         // Load file as Resource
         Resource resource = fileStorageService.loadFileAsResource(fileName);
 

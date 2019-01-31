@@ -113,10 +113,16 @@ public class ConsumerController {
     public Response<ModelResponse<Consumer>> verifyCode(@PathVariable("id") Long id, @Valid @RequestBody Request<SignUpVerifyRequest> request) throws Exception {
         Consumer consumer = consumerService.getConsumer(id);
         Login login = loginService.getLoginByUsername(consumer.getEmail());
-        login.setPassword(bCryptPasswordEncoder.encode(request.getBody().getPassword()));
+        if(StringUtils.isEmpty(login.getPassword())){
+            if(StringUtils.isEmpty(request.getBody().getPassword())){
+                throw new ScaffoldException("consumer_password_required");
+            }
+            login.setPassword(bCryptPasswordEncoder.encode(request.getBody().getPassword()));
+        }
         login = loginService.saveLogin(login);
         if(!StringUtils.isEmpty(login)){
             consumer.setDateOfBirth(request.getBody().getDateOfBirth());
+            consumer.setPhoneNumber(request.getBody().getPhoneNumber());
             consumer.setEnabled(EnabledStatus.ENABLED);
             consumer.skipAuthorization(true);
             consumer = consumerService.saveConsumer(consumer);

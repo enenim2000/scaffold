@@ -3,6 +3,7 @@ package com.enenim.scaffold.model.dao;
 import com.enenim.scaffold.enums.BillerType;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.VerifyStatus;
+import com.enenim.scaffold.interfaces.IAudit;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -18,12 +19,11 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-
 @Getter
 @Setter
 @Entity
 @Table(name = "billers")
-public class Biller extends BaseModel {
+public class Biller extends BaseModel implements IAudit{
 
     @Transient
     public static String searchables = "name,address,email,phoneNumber,logo,code,testSecret,secret,tradingName,slug,parentId";
@@ -45,11 +45,9 @@ public class Biller extends BaseModel {
         this.setId(id);
     }
 
-    @NotNull
     @Column(length = 100)
     private String name;
 
-    @NotNull
     @Column(length = 100)
     private String address;
 
@@ -57,7 +55,6 @@ public class Biller extends BaseModel {
     @Column(unique = true, length = 100)
     private String email;
 
-    @NotNull
     @Column(length = 20)
     @JsonProperty("phone_number")
     @SerializedName("phone_number")
@@ -77,7 +74,6 @@ public class Biller extends BaseModel {
     @Column(unique = true, length = 100)
     private String secret;
 
-    @NotNull
     @Column(unique = true, length = 100)
     @JsonProperty("trading_name")
     @SerializedName("trading_name")
@@ -98,7 +94,7 @@ public class Biller extends BaseModel {
     private VerifyStatus verified = VerifyStatus.NOT_VERIFIED;
 
     @NotNull
-    private EnabledStatus enabled = EnabledStatus.ENABLED;
+    private EnabledStatus enabled = EnabledStatus.DISABLED;
 
     @OneToOne(mappedBy = "biller",cascade = CascadeType.ALL)
     @JsonBackReference

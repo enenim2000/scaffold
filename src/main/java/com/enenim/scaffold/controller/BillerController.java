@@ -1,14 +1,18 @@
 package com.enenim.scaffold.controller;
 
 import com.enenim.scaffold.annotation.*;
+import com.enenim.scaffold.constant.AssetBaseConstant;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.constant.RouteConstant;
 import com.enenim.scaffold.dto.request.BillerRequest;
 import com.enenim.scaffold.dto.request.BillerSignUpVerifyRequest;
+import com.enenim.scaffold.dto.request.ConsumerRequest;
+import com.enenim.scaffold.dto.request.Request;
 import com.enenim.scaffold.dto.response.*;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.model.dao.Biller;
+import com.enenim.scaffold.model.dao.Consumer;
 import com.enenim.scaffold.model.dao.Login;
 import com.enenim.scaffold.service.FileStorageService;
 import com.enenim.scaffold.service.MailSenderService;
@@ -17,6 +21,8 @@ import com.enenim.scaffold.service.dao.BillerService;
 import com.enenim.scaffold.service.dao.LoginService;
 import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.ObjectMapperUtil;
+import com.enenim.scaffold.util.RequestUtil;
+import com.enenim.scaffold.util.message.CommonMessage;
 import com.enenim.scaffold.util.message.SpringMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -56,7 +62,7 @@ public class BillerController {
 
     @Get("/{id}")
     @Permission(RouteConstant.USER_BILLER_SHOW)
-    public Response<ModelResponse<Biller>> showConsumer(@PathVariable Long id) {
+    public Response<ModelResponse<Biller>> showBiller(@PathVariable Long id) {
         return new Response<>(new ModelResponse<>(billerService.getBiller(id)));
     }
 
@@ -68,12 +74,34 @@ public class BillerController {
         Biller biller = request.buildModel();
         biller.setCommonProperties(bCryptPasswordEncoder);
         biller.setVerified(VerifyStatus.VERIFIED);
-        storeBillerImage(biller, file);
+        storeBillerLogo(biller, file);
         return new Response<>(new ModelResponse<>(billerService.saveBiller(biller)));
     }
 
-    @PostMapping(value = "/sign-up")
-    public Response<ModelResponse<BillerResponse>> signUpConsumers(@RequestParam("biller") String billerRequest, @RequestParam(value = "file", required = false) MultipartFile file){
+    @Post("/sign-up")
+    public Response<ModelResponse<Consumer>> signUpBiller(@Valid @RequestBody Request<ConsumerRequest> request){
+        consumerService.validateDependencies(request.getBody());
+        Consumer consumer = request.getBody().buildModel();
+        consumer.skipAuthorization(true);
+        consumer = consumerService.saveConsumer(consumer);
+        if(!StringUtils.isEmpty(consumer)){
+            Login login = new Login();
+            login.setUsername(consumer.getEmail());
+            login.setUserType(RoleConstant.CONSUMER);
+            login.setUserId(consumer.getId());
+            login = loginService.saveLogin(login);
+            if(!StringUtils.isEmpty(login.getId())){
+                mailSenderService.send(consumer);
+            }
+            RequestUtil.setMessage(CommonMessage.msg("consumer_signup_success"));
+            return new Response<>(new ModelResponse<>(consumer));
+        }
+        throw new ScaffoldException("signup_failed");
+    }
+
+
+    @PutMapping(value = "/{id}/details")
+    public Response<ModelResponse<BillerResponse>> updateBillerDetails(@PathVariable("id") String id, @RequestParam("biller") String billerRequest, @RequestParam(value = "file", required = false) MultipartFile file){
 
         System.out.println("billerRequest = " + billerRequest);
         System.out.println("file name= " + file.getOriginalFilename());
@@ -83,11 +111,12 @@ public class BillerController {
         Biller biller = request.buildModel();
         biller.setCommonProperties(bCryptPasswordEncoder);
         biller.skipAuthorization(true);
-        storeBillerImage(biller, file);
+        storeBillerLogo(biller, file);
 
         System.out.println("biller = " + JsonConverter.getJsonRecursive(biller));
 
         biller = billerService.saveBiller(biller);
+
         if(!StringUtils.isEmpty(biller)){
             Login login = new Login();
             login.setUsername(biller.getEmail());
@@ -143,15 +172,15 @@ public class BillerController {
         return new Response<>(new BooleanResponse(billerService.toggle(id)));
     }
 
-    private void storeBillerImage(Biller biller, MultipartFile file){
+    private void storeBillerLogo(Biller biller, MultipartFile file){
         if(!StringUtils.isEmpty(file)){
             long file_size = Long.valueOf(SpringMessage.msg("biller_logo_upload_size"));
             if(file.getSize() > file_size){
                 String file_size_kb = (file_size/1000) + "";
                 throw new ScaffoldException("file_size_biller", file_size_kb,  HttpStatus.PAYLOAD_TOO_LARGE);
             }
-            String fileName = fileStorageService.storeFile(file, "image-" + biller.getSlug() + ".jpg");
-            biller.setLogoPath("/assets/logos/" + fileName);
+            String fileName = fileStorageService.storeFile(file, "biller-logo-" + biller.getSlug() + ".jpg");
+            biller.setLogoPath("/assets" + AssetBaseConstant.BILLER + fileName);
         }
     }
 }

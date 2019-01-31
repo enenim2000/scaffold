@@ -7,18 +7,20 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.validation.constraints.NotBlank;
-
 @Getter
 @Setter
 @ToString
 public class SignUpVerifyRequest extends RequestBody<Consumer>{
 
-    @NotBlank(message = "@{consumer.password.required}")
+    //@NotBlank(message = "@{consumer.password.required}")
     private String password;
 
     @JsonProperty("date_of_birth")
     private String dateOfBirth;
+
+    @JsonProperty("phone_number")
+    //@NotBlank(message = "@{consumer.phone_number.required}")
+    private String phoneNumber;
 
     @Override
     public Consumer buildModel() {
