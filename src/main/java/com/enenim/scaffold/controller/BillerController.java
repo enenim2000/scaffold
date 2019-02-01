@@ -112,6 +112,19 @@ public class BillerController {
         throw new ScaffoldException("invalid_expired_code");
     }
 
+    @Post("/{id}/new-password")
+    public Response<BooleanResponse> newPassword(@PathVariable("id") Long id){
+        Biller biller = billerService.getBiller(id);
+        if(!StringUtils.isEmpty(biller)){
+            if (biller.getVerified() == VerifyStatus.VERIFIED){
+                //Change password
+            }else if(biller.getVerified() == VerifyStatus.NOT_VERIFIED){
+                throw new ScaffoldException("verification_biller_status");
+            }
+        }
+        return new Response<>(new BooleanResponse(false));
+    }
+
     @PutMapping(value = "/{id}/details")
     @Permission(RoleConstant.BILLER)
     public Response<ModelResponse<BillerResponse>> updateBillerDetails(@PathVariable("id") Long id, @RequestParam("biller") String billerRequest, @RequestParam(value = "file", required = false) MultipartFile file){
@@ -157,7 +170,7 @@ public class BillerController {
     }
 
     /*@Put("/{code}/verify")
-    public Response<ModelResponse<Biller>> verifyCode(@PathVariable("code") String code, @Valid @RequestBody BillerSignUpVerifyRequest request) throws Exception {
+    public Response<ModelResponse<Biller>> verifyCode(@PathVariable("code") String code, @Valid @RequestBody BillerChangePasswordRequest request) throws Exception {
         String cacheCode = SharedExpireCacheService.SINGUP + SharedExpireCacheService.SEPARATOR + code;
         Object value = sharedExpireCacheService.get(cacheCode);
         if(!StringUtils.isEmpty(value)){
