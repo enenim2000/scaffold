@@ -1,11 +1,13 @@
 
 package com.enenim.scaffold.service.dao;
 
+import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.model.dao.Login;
 import com.enenim.scaffold.repository.dao.LoginRepository;
 import com.enenim.scaffold.util.PageRequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -31,6 +33,11 @@ public class LoginService {
 
     public Login saveLogin(Login login) {
         return loginRepository.save(login);
+    }
+
+    @Async
+    public void updateVerifyStatus(VerifyStatus verifyStatus, String username) {
+        loginRepository.updateVerifyStatus(verifyStatus, username);
     }
 
     public void deleteLogin(Long id) {

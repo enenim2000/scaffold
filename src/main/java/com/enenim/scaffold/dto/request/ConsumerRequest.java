@@ -27,6 +27,13 @@ public class ConsumerRequest extends RequestBody<Consumer>{
     @Email(message = "@{consumer.email.pattern}")
     private String email;
 
+    @NotBlank(message = "@{consumer.password.required}")
+    private String password;
+
+    @NotBlank(message = "@{consumer.confirm_password.required}")
+    @JsonProperty("confirm_password")
+    private String confirmPassword;
+
     @Override
     public Consumer buildModel() {
         return ObjectMapperUtil.map(this, Consumer.class);

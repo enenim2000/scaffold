@@ -9,6 +9,7 @@ import com.enenim.scaffold.dto.response.Response;
 import com.enenim.scaffold.dto.response.StringResponse;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.LoginStatus;
+import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.exception.UnAuthorizedException;
 import com.enenim.scaffold.model.cache.LoginCache;
@@ -63,7 +64,9 @@ public class UserAccountController {
 			Date date = new Date();
 			Tracker tracker = new Tracker(login, date);
 
-			if (login.getStatus() == LoginStatus.DISABLED) {
+			if (login.getVerifyStatus() == VerifyStatus.NOT_VERIFIED) {
+				throw new ScaffoldException("account_not_verified");
+			} else if (login.getStatus() == LoginStatus.DISABLED) {
 				throw new ScaffoldException("disabled_account");
 			} else if (login.getStatus() == LoginStatus.LOCKED) {
 				throw new ScaffoldException("blocked_account");

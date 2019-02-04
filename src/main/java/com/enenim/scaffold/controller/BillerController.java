@@ -78,14 +78,20 @@ public class BillerController {
 
     @Post("/sign-up")
     public Response<ModelResponse<Biller>> signUpBiller(@Valid @RequestBody Request<BillerSignUpRequest> request){
+        if(!request.getBody().getPassword().equals(request.getBody().getConfirmPassword())){
+            throw new ScaffoldException("password_mismatch");
+        }
+
         Biller biller = request.getBody().buildModel();
         biller.skipAuthorization(true);
         biller = billerService.saveBiller(biller);
+
         if(!StringUtils.isEmpty(biller)){
             Login login = new Login();
             login.setUsername(biller.getEmail());
             login.setUserType(RoleConstant.BILLER);
             login.setUserId(biller.getId());
+            login.setPassword(bCryptPasswordEncoder.encode(request.getBody().getPassword()));
             login = loginService.saveLogin(login);
             if(!StringUtils.isEmpty(login.getId())){
                 mailSenderService.send(biller);
@@ -105,6 +111,7 @@ public class BillerController {
             biller.setVerified(VerifyStatus.VERIFIED);
             biller.skipAuthorization(true);
             biller = billerService.saveBiller(biller);
+            loginService.updateVerifyStatus(VerifyStatus.VERIFIED, biller.getEmail());
             sharedExpireCacheService.delete(cacheCode);
             RequestUtil.setMessage(CommonMessage.msg("biller_code_verified"));
             return new Response<>(new ModelResponse<>(biller));
@@ -112,16 +119,25 @@ public class BillerController {
         throw new ScaffoldException("invalid_expired_code");
     }
 
-    @Post("/{id}/new-password")
-    public Response<BooleanResponse> newPassword(@PathVariable("id") Long id){
-        Biller biller = billerService.getBiller(id);
-        if(!StringUtils.isEmpty(biller)){
-            if (biller.getVerified() == VerifyStatus.VERIFIED){
-                //Change password
-            }else if(biller.getVerified() == VerifyStatus.NOT_VERIFIED){
-                throw new ScaffoldException("verification_biller_status");
-            }
+    @Post("/{email}/change-password")
+    public Response<BooleanResponse> changePassword(@PathVariable("email") String email, @Valid @RequestBody Request<BillerChangePasswordRequest> request){
+
+        if(!request.getBody().getPassword().equals(request.getBody().getConfirmPassword())){
+            throw new ScaffoldException("password_mismatch");
         }
+
+        Login login = loginService.getLoginByUsername(email);
+
+        if(!bCryptPasswordEncoder.matches(request.getBody().getOldPassword(), login.getPassword())){
+            throw new ScaffoldException("old_password_mismatch");
+        }
+
+        if(!StringUtils.isEmpty(login)){
+            login.setPassword(bCryptPasswordEncoder.encode(request.getBody().getPassword()));
+            loginService.saveLogin(login);
+            return new Response<>(new BooleanResponse(true));
+        }
+
         return new Response<>(new BooleanResponse(false));
     }
 
@@ -170,7 +186,7 @@ public class BillerController {
     }
 
     /*@Put("/{code}/verify")
-    public Response<ModelResponse<Biller>> verifyCode(@PathVariable("code") String code, @Valid @RequestBody BillerChangePasswordRequest request) throws Exception {
+    public Response<ModelResponse<Biller>> verifyCode(@PathVariable("code") String code, @Valid @RequestBody BillerNewPasswordRequest request) throws Exception {
         String cacheCode = SharedExpireCacheService.SINGUP + SharedExpireCacheService.SEPARATOR + code;
         Object value = sharedExpireCacheService.get(cacheCode);
         if(!StringUtils.isEmpty(value)){

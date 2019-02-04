@@ -14,6 +14,9 @@ import javax.validation.constraints.NotBlank;
 @ToString
 public class BillerChangePasswordRequest extends RequestBody<Biller>{
 
+    @NotBlank(message = "@{biller.old_password.required}")
+    private String oldPassword;
+
     @NotBlank(message = "@{biller.password.required}")
     private String password;
 

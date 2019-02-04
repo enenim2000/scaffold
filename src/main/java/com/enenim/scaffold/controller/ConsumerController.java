@@ -83,6 +83,7 @@ public class ConsumerController {
             login.setUsername(consumer.getEmail());
             login.setUserType(RoleConstant.CONSUMER);
             login.setUserId(consumer.getId());
+            login.setPassword(bCryptPasswordEncoder.encode(request.getBody().getPassword()));
             login = loginService.saveLogin(login);
             if(!StringUtils.isEmpty(login.getId())){
                 mailSenderService.send(consumer);
@@ -102,6 +103,7 @@ public class ConsumerController {
             consumer.setVerified(VerifyStatus.VERIFIED);
             consumer.skipAuthorization(true);
             consumer = consumerService.saveConsumer(consumer);
+            loginService.updateVerifyStatus(VerifyStatus.VERIFIED, consumer.getEmail());
             sharedExpireCacheService.delete(cacheCode);
             RequestUtil.setMessage(CommonMessage.msg("consumer_code_verified"));
             return new Response<>(new ModelResponse<>(consumer));

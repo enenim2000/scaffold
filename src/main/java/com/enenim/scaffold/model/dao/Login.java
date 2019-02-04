@@ -1,6 +1,7 @@
 package com.enenim.scaffold.model.dao;
 
 import com.enenim.scaffold.enums.LoginStatus;
+import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,6 +43,9 @@ public class Login extends BaseModel {
 
     @NotNull
     private LoginStatus status = LoginStatus.ENABLED;
+
+    @NotNull
+    private VerifyStatus verifyStatus = VerifyStatus.NOT_VERIFIED;
 
     @JsonBackReference
     @OneToOne(mappedBy = "login", fetch = FetchType.LAZY)

@@ -7,17 +7,12 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
 @ToString
-public class BillerSignUpRequest extends RequestBody<Biller>{
-
-    @NotBlank(message = "@{biller.email.required}")
-    @Email(message = "@{biller.email.pattern}")
-    private String email;
+public class BillerNewPasswordRequest extends RequestBody<Biller>{
 
     @NotBlank(message = "@{biller.password.required}")
     private String password;
