@@ -142,8 +142,8 @@ public class BillerController {
     }
 
     @PutMapping(value = "/{id}/details")
-    @Permission(RoleConstant.BILLER)
-    public Response<ModelResponse<BillerResponse>> updateBillerDetails(@PathVariable("id") Long id, @RequestParam("biller") String billerRequest, @RequestParam(value = "file", required = false) MultipartFile file){
+    @Role({RoleConstant.BILLER})
+    public Response<ModelResponse<BillerResponse>> updateBillerDetails(@RequestParam("biller") String billerRequest, @RequestParam(value = "file", required = false) MultipartFile file, @PathVariable("id") Long id){
 
         Biller biller = billerService.getBiller(id);
 

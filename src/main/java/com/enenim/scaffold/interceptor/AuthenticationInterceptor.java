@@ -146,6 +146,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         RequestUtil.setLoginToken(loginToken);
         RequestUtil.setLogin(login);
+        System.out.println("Token validation complete");
     }
 
     private void validateRole(InterceptorParamater interceptorParamater){
