@@ -99,6 +99,8 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             decrypt(interceptorParamater);
         }
 
+        System.out.println(" About to return true ");
+
         return true;
     }
 
@@ -146,7 +148,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         RequestUtil.setLoginToken(loginToken);
         RequestUtil.setLogin(login);
-        System.out.println("Token validation complete");
     }
 
     private void validateRole(InterceptorParamater interceptorParamater){
