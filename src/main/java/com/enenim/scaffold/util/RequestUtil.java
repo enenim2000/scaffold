@@ -239,8 +239,6 @@ public class RequestUtil {
 
         RequestUtil.setRequestBody(requestMap.get("data"));
 
-        System.out.println("requestBody = " + JsonConverter.getJsonRecursive(getRequestBody()));
-
         RequestUtil.setUserAgent(userAgent);
         RequestUtil.setIpAdress(ipAddress);
         RequestUtil.setRID(Security.encypt(getRequest().getRequestURI() + getRequest().getMethod() + getRequestBody()));

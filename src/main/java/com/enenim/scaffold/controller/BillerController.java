@@ -83,6 +83,7 @@ public class BillerController {
         }
 
         Biller biller = request.getBody().buildModel();
+        biller.setCommonProperties(bCryptPasswordEncoder);
         biller.skipAuthorization(true);
         biller = billerService.saveBiller(biller);
 
@@ -141,20 +142,16 @@ public class BillerController {
         return new Response<>(new BooleanResponse(false));
     }
 
+    //Header => Content-Type = multipart/form-data
     @PutMapping(value = "/{id}/details")
-    //@Role({RoleConstant.BILLER})
-    public Response<ModelResponse<BillerResponse>> updateBillerDetails(@PathVariable("id") Long id, @RequestParam(value = "biller", required = false) String biller, @RequestParam(value = "file", required = false) MultipartFile file){
-
-        System.out.println("biller = " + biller);
+    @Role({RoleConstant.BILLER})
+    public Response<ModelResponse<BillerResponse>> updateBillerDetails(@PathVariable("id") Long id, @RequestPart("biller") String biller, @RequestPart(value = "file", required = false) MultipartFile file){
 
         Biller billerModel = billerService.getBiller(id);
 
         if(billerModel.getVerified() == VerifyStatus.NOT_VERIFIED){
             throw new ScaffoldException("code_not_verified");
         }
-
-        System.out.println("billerRequest = " + biller);
-        System.out.println("file name= " + file.getOriginalFilename());
 
         BillerRequest request = JsonConverter.getObject(biller, BillerRequest.class);
 
@@ -164,48 +161,14 @@ public class BillerController {
         billerModel.setName(request.getName());
         billerModel.setPhoneNumber(request.getPhoneNumber());
         billerModel.setTradingName(request.getTradingName());
-        billerModel.setCommonProperties(bCryptPasswordEncoder);
         billerModel.skipAuthorization(true);
 
         storeBillerLogo(billerModel, file);
 
-        System.out.println("biller = " + JsonConverter.getJsonRecursive(billerModel));
-
         billerModel = billerService.saveBiller(billerModel);
 
-        if(!StringUtils.isEmpty(billerModel)){
-            Login login = new Login();
-            login.setUsername(billerModel.getEmail());
-            login.setUserType(RoleConstant.BILLER);
-            login.setUserId(billerModel.getId());
-            login = loginService.saveLogin(login);
-            if(!StringUtils.isEmpty(login.getId())){
-                mailSenderService.send(billerModel);
-            }
-            return new Response<>(new ModelResponse<>(ObjectMapperUtil.map(billerModel, BillerResponse.class)));
-        }
-        throw new ScaffoldException("biller_signup_failed");
+        return new Response<>(new ModelResponse<>(ObjectMapperUtil.map(billerModel, BillerResponse.class)));
     }
-
-    /*@Put("/{code}/verify")
-    public Response<ModelResponse<Biller>> verifyCode(@PathVariable("code") String code, @Valid @RequestBody BillerNewPasswordRequest request) throws Exception {
-        String cacheCode = SharedExpireCacheService.SINGUP + SharedExpireCacheService.SEPARATOR + code;
-        Object value = sharedExpireCacheService.get(cacheCode);
-        if(!StringUtils.isEmpty(value)){
-            Biller biller = JsonConverter.getObject(value, Biller.class);
-            Login login = loginService.getLoginByUsername(biller.getEmail());
-            login.setPassword(bCryptPasswordEncoder.encode(request.getPassword()));
-            login = loginService.saveLogin(login);
-            if(!StringUtils.isEmpty(login)){
-                biller.setVerified(VerifyStatus.VERIFIED);
-                biller.skipAuthorization(true);
-                biller = billerService.saveBiller(biller);
-                sharedExpireCacheService.delete(cacheCode);
-                return new Response<>(new ModelResponse<>(biller));
-            }
-        }
-        throw new ScaffoldException("invalid_expired_code");
-    }*/
 
     @Post("/{email}/code/re-send")
     public Response<BooleanResponse> reSendCode(@PathVariable("email") String email){
