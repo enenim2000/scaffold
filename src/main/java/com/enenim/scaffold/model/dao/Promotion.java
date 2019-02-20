@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @Entity
-@Table(name = "promotions", uniqueConstraints = @UniqueConstraint(columnNames = {"item_id", "name"}))
+@Table(name = "promotions", uniqueConstraints = @UniqueConstraint(columnNames = {"service_id", "name"}))
 public class Promotion extends BaseModel {
 
     @NotNull
@@ -49,5 +49,5 @@ public class Promotion extends BaseModel {
 
     @NotNull
     @ManyToOne
-    private Item item;
+    private Service service;
 }

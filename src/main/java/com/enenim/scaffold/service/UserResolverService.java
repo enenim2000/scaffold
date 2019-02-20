@@ -4,10 +4,10 @@ import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.exception.UnAuthorizedException;
 import com.enenim.scaffold.model.cache.LoginCache;
-import com.enenim.scaffold.model.dao.Biller;
+import com.enenim.scaffold.model.dao.Vendor;
 import com.enenim.scaffold.model.dao.Consumer;
 import com.enenim.scaffold.model.dao.Staff;
-import com.enenim.scaffold.service.dao.BillerService;
+import com.enenim.scaffold.service.dao.VendorService;
 import com.enenim.scaffold.service.dao.ConsumerService;
 import com.enenim.scaffold.service.dao.StaffService;
 import com.enenim.scaffold.util.JsonConverter;
@@ -19,19 +19,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserResolverService {
     private final StaffService staffService;
-    private final BillerService billerService;
+    private final VendorService vendorService;
     private final ConsumerService consumerService;
 
     @Autowired
-    public UserResolverService(StaffService staffService, BillerService billerService, ConsumerService consumerService) {
+    public UserResolverService(StaffService staffService, VendorService vendorService, ConsumerService consumerService) {
         this.staffService = staffService;
-        this.billerService = billerService;
+        this.vendorService = vendorService;
         this.consumerService = consumerService;
     }
 
     public Object getUser(String userType, Long userId){
         if(RoleConstant.STAFF.equalsIgnoreCase(userType))return staffService.getStaff(userId);
-        if(RoleConstant.BILLER.equalsIgnoreCase(userType))return billerService.getBiller(userId);
+        if(RoleConstant.BILLER.equalsIgnoreCase(userType))return vendorService.getVendor(userId);
         if(RoleConstant.CONSUMER.equalsIgnoreCase(userType))return consumerService.getConsumer(userId);
         throw new ScaffoldException("invalid_role", userType);
     }
@@ -53,7 +53,7 @@ public class UserResolverService {
             RequestUtil.setStaff(staff);
         }
         else if(RoleConstant.BILLER.equalsIgnoreCase(role)){
-            RequestUtil.setBiller(JsonConverter.getObject(user, Biller.class));
+            RequestUtil.setVendor(JsonConverter.getObject(user, Vendor.class));
         }
         else if(RoleConstant.CONSUMER.equalsIgnoreCase(role)){
             RequestUtil.setConsumer(JsonConverter.getObject(user, Consumer.class));

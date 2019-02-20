@@ -56,14 +56,6 @@ public class Consumer extends BaseModel {
 
     @JsonBackReference
     @OneToMany(mappedBy = "consumer", fetch = FetchType.LAZY)
-    private Set<DebitToken> debitTokens = new HashSet<>();
-
-    @JsonBackReference
-    @OneToMany(mappedBy = "consumer", fetch = FetchType.LAZY)
-    private Set<RecurringPayment> recurringPayments = new HashSet<>();
-
-    @JsonBackReference
-    @OneToMany(mappedBy = "consumer", fetch = FetchType.LAZY)
     private Set<Transaction> transactions = new HashSet<>();
 
     @JsonBackReference

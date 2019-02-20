@@ -1,6 +1,6 @@
 package com.enenim.scaffold.model.dao;
 
-import com.enenim.scaffold.enums.BillerType;
+import com.enenim.scaffold.enums.VendorType;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.interfaces.IAudit;
@@ -22,14 +22,14 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "billers")
-public class Biller extends BaseModel implements IAudit{
+@Table(name = "vendors")
+public class Vendor extends BaseModel implements IAudit{
 
     @Transient
     public static String searchables = "name,address,email,phoneNumber,logo,code,testSecret,secret,tradingName,slug,parentId";
 
     @Transient
-    public static String table = "billers";
+    public static String table = "vendors";
 
     @Transient
     public static String references = "";
@@ -37,10 +37,10 @@ public class Biller extends BaseModel implements IAudit{
     @Transient
     Login login;
 
-    public Biller() {
+    public Vendor() {
     }
 
-    public Biller(Long Id) {
+    public Vendor(Long Id) {
         super();
         this.setId(id);
     }
@@ -84,7 +84,7 @@ public class Biller extends BaseModel implements IAudit{
     private String logoPath;
 
     @NotNull
-    private BillerType type = BillerType.REGULAR;
+    private VendorType type = VendorType.REGULAR;
 
     @NotNull
     private VerifyStatus verified = VerifyStatus.NOT_VERIFIED;
@@ -92,58 +92,58 @@ public class Biller extends BaseModel implements IAudit{
     @NotNull
     private EnabledStatus enabled = EnabledStatus.DISABLED;
 
-    @OneToOne(mappedBy = "biller",cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "vendor",cascade = CascadeType.ALL)
     @JsonBackReference
-    @JsonProperty("biller_account")
-    @SerializedName("biller_account")
-    private BillerAccount billerAccount;
+    @JsonProperty("vendor_account")
+    @SerializedName("vendor_account")
+    private VendorAccount vendorAccount;
 
     @ManyToMany
-    @JoinTable(name = "biller_category",
-            joinColumns = @JoinColumn(name = "biller_id"),
+    @JoinTable(name = "vendor_category",
+            joinColumns = @JoinColumn(name = "vendor_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"),
-            uniqueConstraints = @UniqueConstraint(columnNames = {"biller_id", "category_id"})
+            uniqueConstraints = @UniqueConstraint(columnNames = {"vendor_id", "category_id"})
     )
     private Set<Category> categories = new HashSet<>();
 
     @ManyToMany
-    @JoinTable(name = "biller_payment_channel",
-            joinColumns = @JoinColumn(name = "biller_id"),
+    @JoinTable(name = "vendor_payment_channel",
+            joinColumns = @JoinColumn(name = "vendor_id"),
             inverseJoinColumns = @JoinColumn(name = "payment_channel_id"),
-            uniqueConstraints = @UniqueConstraint(columnNames = {"biller_id", "payment_channel_id"})
+            uniqueConstraints = @UniqueConstraint(columnNames = {"vendor_id", "payment_channel_id"})
     )
     @JsonProperty("payment_channels")
     @SerializedName("payment_channels")
     private Set<PaymentChannel> paymentChannels = new HashSet<>();
 
     @ManyToMany
-    @JoinTable(name = "biller_payment_method",
-            joinColumns = @JoinColumn(name = "biller_id"),
+    @JoinTable(name = "vendor_payment_method",
+            joinColumns = @JoinColumn(name = "vendor_id"),
             inverseJoinColumns = @JoinColumn(name = "payment_method_id"),
-            uniqueConstraints = @UniqueConstraint(columnNames = {"biller_id", "payment_method_id"})
+            uniqueConstraints = @UniqueConstraint(columnNames = {"vendor_id", "payment_method_id"})
     )
     @JsonProperty("payment_methods")
     @SerializedName("payment_methods")
     private Set<PaymentMethod> paymentMethods = new HashSet<>();
 
     @JsonBackReference
-    @OneToMany(mappedBy = "biller", fetch = FetchType.LAZY)
-    private Set<BillerSetting> billerSettings = new HashSet<>();
+    @OneToMany(mappedBy = "vendor", fetch = FetchType.LAZY)
+    private Set<VendorSetting> vendorSettings = new HashSet<>();
 
     @JsonBackReference
-    @OneToMany(mappedBy = "biller", fetch = FetchType.EAGER)
-    private Set<Item> items = new HashSet<>();
+    @OneToMany(mappedBy = "vendor", fetch = FetchType.EAGER)
+    private Set<Service> services = new HashSet<>();
 
     @JsonBackReference
-    @OneToMany(mappedBy = "biller", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "vendor", fetch = FetchType.LAZY)
     private Set<SharingFormula> sharingFormulas = new HashSet<>();
 
     @JsonBackReference
-    @OneToMany(mappedBy = "biller", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "vendor", fetch = FetchType.LAZY)
     private Set<Transaction> transactions = new HashSet<>();
 
     @JsonBackReference
-    @OneToMany(mappedBy = "biller", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "vendor", fetch = FetchType.LAZY)
     private Set<TransactionDemo> transactionDemos = new HashSet<>();
 
     public void setCommonProperties(BCryptPasswordEncoder bCryptPasswordEncoder){

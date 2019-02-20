@@ -1,7 +1,7 @@
 package com.enenim.scaffold.service;
 
 import com.enenim.scaffold.interfaces.IMailService;
-import com.enenim.scaffold.model.dao.Biller;
+import com.enenim.scaffold.model.dao.Vendor;
 import com.enenim.scaffold.service.cache.SharedExpireCacheService;
 import com.enenim.scaffold.shared.Mail;
 import com.enenim.scaffold.util.CommonUtil;
@@ -11,12 +11,12 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MailSignUpBillerService implements IMailService {
+public class MailSignUpVendorService implements IMailService {
     private final MailService mailService;
     private final SharedExpireCacheService sharedExpireCacheService;
 
     @Autowired
-    public MailSignUpBillerService(MailService mailService, SharedExpireCacheService sharedExpireCacheService) {
+    public MailSignUpVendorService(MailService mailService, SharedExpireCacheService sharedExpireCacheService) {
         this.mailService = mailService;
         this.sharedExpireCacheService = sharedExpireCacheService;
     }
@@ -24,16 +24,16 @@ public class MailSignUpBillerService implements IMailService {
     @Async
     @Override
     public void send(Object obj){
-        Biller biller = (Biller) obj;
+        Vendor vendor = (Vendor) obj;
         String code = CommonUtil.getCode();
         Mail mail = new Mail();
-        mail.setTo(biller.getEmail());
+        mail.setTo(vendor.getEmail());
         mail.setSubject(SpringMessage.msg("app_name") + " Registration");
         mail.setTemplate(TEMPLATE_SIGNUP_BILLER);
         mail.getData().put("code", code);
-        mail.getData().put("biller", biller);
+        mail.getData().put("vendor", vendor);
         String key = SharedExpireCacheService.SINGUP + SharedExpireCacheService.SEPARATOR + code;
-        sharedExpireCacheService.put(key, biller);
+        sharedExpireCacheService.put(key, vendor);
         mailService.sendMail(mail);
     }
 }

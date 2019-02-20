@@ -54,7 +54,7 @@ public class SettingCacheCoreUtil {
 
 
         add( new SettingCache(category(1), "max_grp_chx_freq", "Maximum Group Change Frequency Per Day",  "1", null,  "required|integer") );
-        add( new SettingCache(category(1), "item_broadcast", "Broadcast Boarded Billers Item Modifications",  "1", PAYLOAD_YES_ONE,  null) );
+        add( new SettingCache(category(1), "service_broadcast", "Broadcast Boarded Vendors Service Modifications",  "1", PAYLOAD_YES_ONE,  null) );
 
 
         add( new SettingCache(category(2), "max_trans_new", "Daily Amount Limit for New Consumers Users",  "50000", null,  "required|integer") );

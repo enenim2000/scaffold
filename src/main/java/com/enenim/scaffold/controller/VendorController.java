@@ -9,12 +9,12 @@ import com.enenim.scaffold.dto.response.*;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
-import com.enenim.scaffold.model.dao.Biller;
+import com.enenim.scaffold.model.dao.Vendor;
 import com.enenim.scaffold.model.dao.Login;
 import com.enenim.scaffold.service.FileStorageService;
 import com.enenim.scaffold.service.MailSenderService;
 import com.enenim.scaffold.service.cache.SharedExpireCacheService;
-import com.enenim.scaffold.service.dao.BillerService;
+import com.enenim.scaffold.service.dao.VendorService;
 import com.enenim.scaffold.service.dao.LoginService;
 import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.ObjectMapperUtil;
@@ -32,10 +32,10 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/user/billers")
-public class BillerController {
+@RequestMapping("/user/vendors")
+public class VendorController {
 
-    private final BillerService billerService;
+    private final VendorService vendorService;
     private final LoginService loginService;
     private final MailSenderService mailSenderService;
     private final SharedExpireCacheService sharedExpireCacheService;
@@ -43,8 +43,8 @@ public class BillerController {
     private final FileStorageService fileStorageService;
 
     @Autowired
-    public BillerController(BillerService billerService, LoginService loginService, MailSenderService mailSenderService, SharedExpireCacheService sharedExpireCacheService, BCryptPasswordEncoder bCryptPasswordEncoder, FileStorageService fileStorageService) {
-        this.billerService = billerService;
+    public VendorController(VendorService vendorService, LoginService loginService, MailSenderService mailSenderService, SharedExpireCacheService sharedExpireCacheService, BCryptPasswordEncoder bCryptPasswordEncoder, FileStorageService fileStorageService) {
+        this.vendorService = vendorService;
         this.loginService = loginService;
         this.mailSenderService = mailSenderService;
         this.sharedExpireCacheService = sharedExpireCacheService;
@@ -54,74 +54,74 @@ public class BillerController {
 
     @Get
     @Permission(RouteConstant.USER_BILLER_INDEX)
-    public Response<PageResponse<Biller>> getBillers() {
-        return new Response<>(new PageResponse<>(billerService.getBillers()));
+    public Response<PageResponse<Vendor>> getVendors() {
+        return new Response<>(new PageResponse<>(vendorService.getVendors()));
     }
 
     @Get("/{id}")
     @Permission(RouteConstant.USER_BILLER_SHOW)
-    public Response<ModelResponse<Biller>> showBiller(@PathVariable Long id) {
-        return new Response<>(new ModelResponse<>(billerService.getBiller(id)));
+    public Response<ModelResponse<Vendor>> showVendor(@PathVariable Long id) {
+        return new Response<>(new ModelResponse<>(vendorService.getVendor(id)));
     }
 
     @Post
     @Role({RoleConstant.STAFF})
     @Permission(RouteConstant.USER_BILLER_CREATE)
-    public Response<ModelResponse<Biller>> createBiller(@RequestParam("biller") String billerRequest, @RequestParam(value = "file", required = false) MultipartFile file){
-        BillerRequest2 request = JsonConverter.getObject(billerRequest, BillerRequest2.class);
-        Biller biller = request.buildModel();
-        biller.setCommonProperties(bCryptPasswordEncoder);
-        biller.setVerified(VerifyStatus.VERIFIED);
-        storeBillerLogo(biller, file);
-        return new Response<>(new ModelResponse<>(billerService.saveBiller(biller)));
+    public Response<ModelResponse<Vendor>> createVendor(@RequestParam("vendor") String vendorRequest, @RequestParam(value = "file", required = false) MultipartFile file){
+        VendorRequest2 request = JsonConverter.getObject(vendorRequest, VendorRequest2.class);
+        Vendor vendor = request.buildModel();
+        vendor.setCommonProperties(bCryptPasswordEncoder);
+        vendor.setVerified(VerifyStatus.VERIFIED);
+        storeVendorLogo(vendor, file);
+        return new Response<>(new ModelResponse<>(vendorService.saveVendor(vendor)));
     }
 
     @Post("/sign-up")
-    public Response<ModelResponse<Biller>> signUpBiller(@Valid @RequestBody Request<BillerSignUpRequest> request){
+    public Response<ModelResponse<Vendor>> signUpVendor(@Valid @RequestBody Request<VendorSignUpRequest> request){
         if(!request.getBody().getPassword().equals(request.getBody().getConfirmPassword())){
             throw new ScaffoldException("password_mismatch");
         }
 
-        Biller biller = request.getBody().buildModel();
-        biller.setCommonProperties(bCryptPasswordEncoder);
-        biller.skipAuthorization(true);
-        biller = billerService.saveBiller(biller);
+        Vendor vendor = request.getBody().buildModel();
+        vendor.setCommonProperties(bCryptPasswordEncoder);
+        vendor.skipAuthorization(true);
+        vendor = vendorService.saveVendor(vendor);
 
-        if(!StringUtils.isEmpty(biller)){
+        if(!StringUtils.isEmpty(vendor)){
             Login login = new Login();
-            login.setUsername(biller.getEmail());
+            login.setUsername(vendor.getEmail());
             login.setUserType(RoleConstant.BILLER);
-            login.setUserId(biller.getId());
+            login.setUserId(vendor.getId());
             login.setPassword(bCryptPasswordEncoder.encode(request.getBody().getPassword()));
             login = loginService.saveLogin(login);
             if(!StringUtils.isEmpty(login.getId())){
-                mailSenderService.send(biller);
+                mailSenderService.send(vendor);
             }
-            RequestUtil.setMessage(CommonMessage.msg("biller_signup_success"));
-            return new Response<>(new ModelResponse<>(biller));
+            RequestUtil.setMessage(CommonMessage.msg("vendor_signup_success"));
+            return new Response<>(new ModelResponse<>(vendor));
         }
         throw new ScaffoldException("signup_failed");
     }
 
     @Put("/{code}/verify")
-    public Response<ModelResponse<Biller>> verifyCode(@PathVariable("code") String code) throws Exception {
+    public Response<ModelResponse<Vendor>> verifyCode(@PathVariable("code") String code) throws Exception {
         String cacheCode = SharedExpireCacheService.SINGUP + SharedExpireCacheService.SEPARATOR + code;
         Object value = sharedExpireCacheService.get(cacheCode);
         if(!StringUtils.isEmpty(value)){
-            Biller biller = JsonConverter.getObject(value, Biller.class);
-            biller.setVerified(VerifyStatus.VERIFIED);
-            biller.skipAuthorization(true);
-            biller = billerService.saveBiller(biller);
-            loginService.updateVerifyStatus(VerifyStatus.VERIFIED, biller.getEmail());
+            Vendor vendor = JsonConverter.getObject(value, Vendor.class);
+            vendor.setVerified(VerifyStatus.VERIFIED);
+            vendor.skipAuthorization(true);
+            vendor = vendorService.saveVendor(vendor);
+            loginService.updateVerifyStatus(VerifyStatus.VERIFIED, vendor.getEmail());
             sharedExpireCacheService.delete(cacheCode);
-            RequestUtil.setMessage(CommonMessage.msg("biller_code_verified"));
-            return new Response<>(new ModelResponse<>(biller));
+            RequestUtil.setMessage(CommonMessage.msg("vendor_code_verified"));
+            return new Response<>(new ModelResponse<>(vendor));
         }
         throw new ScaffoldException("invalid_expired_code");
     }
 
     @Post("/{email}/change-password")
-    public Response<BooleanResponse> changePassword(@PathVariable("email") String email, @Valid @RequestBody Request<BillerChangePasswordRequest> request){
+    public Response<BooleanResponse> changePassword(@PathVariable("email") String email, @Valid @RequestBody Request<VendorChangePasswordRequest> request){
 
         if(!request.getBody().getPassword().equals(request.getBody().getConfirmPassword())){
             throw new ScaffoldException("password_mismatch");
@@ -145,40 +145,40 @@ public class BillerController {
     //Header => Content-Type = multipart/form-data
     @PutMapping(value = "/{id}/details")
     @Role({RoleConstant.BILLER})
-    public Response<ModelResponse<BillerResponse>> updateBillerDetails(@PathVariable("id") Long id, @RequestPart("biller") String biller, @RequestPart(value = "file", required = false) MultipartFile file){
+    public Response<ModelResponse<VendorResponse>> updateVendorDetails(@PathVariable("id") Long id, @RequestPart("vendor") String vendor, @RequestPart(value = "file", required = false) MultipartFile file){
 
-        Biller billerModel = billerService.getBiller(id);
+        Vendor vendorModel = vendorService.getVendor(id);
 
-        if(billerModel.getVerified() == VerifyStatus.NOT_VERIFIED){
+        if(vendorModel.getVerified() == VerifyStatus.NOT_VERIFIED){
             throw new ScaffoldException("code_not_verified");
         }
 
-        BillerRequest request = JsonConverter.getObject(biller, BillerRequest.class);
+        VendorRequest request = JsonConverter.getObject(vendor, VendorRequest.class);
 
-        billerService.validateDependencies(request);
+        vendorService.validateDependencies(request);
 
-        billerModel.setAddress(request.getAddress());
-        billerModel.setName(request.getName());
-        billerModel.setPhoneNumber(request.getPhoneNumber());
-        billerModel.setTradingName(request.getTradingName());
-        billerModel.skipAuthorization(true);
+        vendorModel.setAddress(request.getAddress());
+        vendorModel.setName(request.getName());
+        vendorModel.setPhoneNumber(request.getPhoneNumber());
+        vendorModel.setTradingName(request.getTradingName());
+        vendorModel.skipAuthorization(true);
 
-        storeBillerLogo(billerModel, file);
+        storeVendorLogo(vendorModel, file);
 
-        billerModel = billerService.saveBiller(billerModel);
+        vendorModel = vendorService.saveVendor(vendorModel);
 
-        return new Response<>(new ModelResponse<>(ObjectMapperUtil.map(billerModel, BillerResponse.class)));
+        return new Response<>(new ModelResponse<>(ObjectMapperUtil.map(vendorModel, VendorResponse.class)));
     }
 
     @Post("/{email}/code/re-send")
     public Response<BooleanResponse> reSendCode(@PathVariable("email") String email){
-        Biller biller = billerService.getBillerByEmail(email);
-        if(!StringUtils.isEmpty(biller)){
-            if (biller.getVerified() == VerifyStatus.NOT_VERIFIED){
-                mailSenderService.send(biller);
+        Vendor vendor = vendorService.getVendorByEmail(email);
+        if(!StringUtils.isEmpty(vendor)){
+            if (vendor.getVerified() == VerifyStatus.NOT_VERIFIED){
+                mailSenderService.send(vendor);
                 return new Response<>(new BooleanResponse(true));
-            }else if(biller.getVerified() == VerifyStatus.VERIFIED){
-                throw new ScaffoldException("verification_biller_status");
+            }else if(vendor.getVerified() == VerifyStatus.VERIFIED){
+                throw new ScaffoldException("verification_vendor_status");
             }
         }
         return new Response<>(new BooleanResponse(false));
@@ -188,17 +188,17 @@ public class BillerController {
     @Role({RoleConstant.STAFF, RoleConstant.BILLER})
     @Permission(RouteConstant.USER_BILLER_GOLIVE)
     public Response<BooleanResponse> goLiveToggle(@PathVariable Long id){
-        Biller biller = billerService.getBiller(id);
-        if(StringUtils.isEmpty(biller.getAddress())){
+        Vendor vendor = vendorService.getVendor(id);
+        if(StringUtils.isEmpty(vendor.getAddress())){
             throw new ScaffoldException("biiler_address_required");
         }
-        if(StringUtils.isEmpty(biller.getLogoPath())){
-            throw new ScaffoldException("biller_logo_required");
+        if(StringUtils.isEmpty(vendor.getLogoPath())){
+            throw new ScaffoldException("vendor_logo_required");
         }
-        biller.setEnabled(EnabledStatus.ENABLED);
-        biller = billerService.saveBiller(biller);
+        vendor.setEnabled(EnabledStatus.ENABLED);
+        vendor = vendorService.saveVendor(vendor);
         boolean allow = false;
-        if(biller.getEnabled() == EnabledStatus.ENABLED){
+        if(vendor.getEnabled() == EnabledStatus.ENABLED){
             allow = true;
         }
         return new Response<>(new BooleanResponse(allow));
@@ -208,18 +208,18 @@ public class BillerController {
     @Role({RoleConstant.STAFF})
     @Permission(RouteConstant.USER_BILLER_TOGGLE)
     public Response<BooleanResponse> toggle(@PathVariable Long id){
-        return new Response<>(new BooleanResponse(billerService.toggle(id)));
+        return new Response<>(new BooleanResponse(vendorService.toggle(id)));
     }
 
-    private void storeBillerLogo(Biller biller, MultipartFile file){
+    private void storeVendorLogo(Vendor vendor, MultipartFile file){
         if(!StringUtils.isEmpty(file)){
-            long file_size = Long.valueOf(SpringMessage.msg("biller_logo_upload_size"));
+            long file_size = Long.valueOf(SpringMessage.msg("vendor_logo_upload_size"));
             if(file.getSize() > file_size){
                 String file_size_kb = (file_size/1000) + "";
-                throw new ScaffoldException("file_size_biller", file_size_kb,  HttpStatus.PAYLOAD_TOO_LARGE);
+                throw new ScaffoldException("file_size_vendor", file_size_kb,  HttpStatus.PAYLOAD_TOO_LARGE);
             }
-            String fileName = fileStorageService.storeFile(file, "biller-logo-" + biller.getSlug() + ".jpg");
-            biller.setLogoPath("/assets" + AssetBaseConstant.BILLER + fileName);
+            String fileName = fileStorageService.storeFile(file, "vendor-logo-" + vendor.getSlug() + ".jpg");
+            vendor.setLogoPath("/assets" + AssetBaseConstant.BILLER + fileName);
         }
     }
 }

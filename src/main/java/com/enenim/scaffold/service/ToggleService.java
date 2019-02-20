@@ -5,7 +5,7 @@ import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.exception.UnAuthorizedException;
 import com.enenim.scaffold.model.dao.Authorization;
-import com.enenim.scaffold.model.dao.Biller;
+import com.enenim.scaffold.model.dao.Vendor;
 import com.enenim.scaffold.model.dao.Consumer;
 import com.enenim.scaffold.shared.Toggle;
 import com.enenim.scaffold.util.JsonConverter;
@@ -61,7 +61,7 @@ public class ToggleService<T> {
 
         if(!canToggle())throw new UnAuthorizedException("unauthorized");
 
-        if(entity instanceof Biller)billerToggleCheck();
+        if(entity instanceof Vendor)vendorToggleCheck();
         if(entity instanceof Consumer)consumerToggleCheck();
 
         if(status.equalsIgnoreCase(EnabledStatus.ENABLED.name())){
@@ -88,7 +88,7 @@ public class ToggleService<T> {
         return (String) entityManager.merge(entity);
     }
 
-    private void billerToggleCheck(){
+    private void vendorToggleCheck(){
 
     }
 

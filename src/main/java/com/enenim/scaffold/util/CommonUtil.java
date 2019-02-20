@@ -32,18 +32,18 @@ public class CommonUtil {
     public static <T> List<T> intersect(Collection<T> listA,Collection<T> listB){
 
         List<T> newList = new ArrayList<>();
-        for(T item : listA){
-            if(listB.contains(item)){
-                newList.add(item);
+        for(T service : listA){
+            if(listB.contains(service)){
+                newList.add(service);
             }
         }
         return newList;
     }
 
     public static <T> Collection<T> difference(Collection<T> listA,Collection<T> listB){
-        for(T item : listB){
-            if(listA.contains(item)){
-                listA.remove(item);
+        for(T service : listB){
+            if(listA.contains(service)){
+                listA.remove(service);
             }
         }
         return listA;
@@ -61,9 +61,9 @@ public class CommonUtil {
 
     public static <T> Collection<T> union(Collection<T> listA,Collection<T> listB){
 
-        for(T item : listA){
-            if(!listB.contains(item)){
-                listA.add(item);
+        for(T service : listA){
+            if(!listB.contains(service)){
+                listA.add(service);
             }
         }
         return listA;

@@ -1,7 +1,6 @@
 package com.enenim.scaffold.model.dao;
 
 import com.enenim.scaffold.enums.Initiator;
-import com.enenim.scaffold.enums.SentSurcharge;
 import com.enenim.scaffold.enums.TransactionStatus;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -24,9 +23,6 @@ public class Transaction extends BaseModel {
     @NotNull
     private Initiator initiator;
 
-    @ManyToOne
-    private RecurringPayment recurringPayment;
-
     @Column(length = 100)
     @JsonProperty("payment_channel_reference")
     private String paymentChannelReference;
@@ -37,27 +33,7 @@ public class Transaction extends BaseModel {
     private String transactionReference;
 
     @NotNull
-    @Column(length = 50)
-    @JsonProperty("customer_id")
-    private String customerId;
-
-    @NotNull
     private TransactionStatus status = TransactionStatus.PENDING;
-
-    @Column(length = 10)
-    @JsonProperty("reported_status_code")
-    private String reportedStatusCode;
-
-    @Column(length = 60)
-    @JsonProperty("reported_status_message")
-    private String reportedStatusMessage;
-
-    @ManyToOne
-    private Settlement settlement;
-
-    @NotNull
-    @Column(precision=20, scale=4)
-    private Double amount;
 
     @NotNull
     @Column(precision=20, scale=4)
@@ -65,23 +41,15 @@ public class Transaction extends BaseModel {
     private Double amountPaid;
 
     @NotNull
-    @JsonProperty("biller_discount")
-    private Double billerDiscount;
+    @JsonProperty("vendor_discount")
+    private Double vendorDiscount;
 
     @NotNull
     @Column(precision=20, scale=4)
     private Double surcharge;
 
     @NotNull
-    @JsonProperty("sent_surcharge")
-    private SentSurcharge sentSurcharge = SentSurcharge.SURCHARGE_NOT_SENT;
-
-    @NotNull
     private Double vat;
-
-    @NotNull
-    @Column(length = 11)
-    private Integer quantity;
 
     @JsonProperty("date_paid")
     private Date date_paid;
@@ -89,16 +57,12 @@ public class Transaction extends BaseModel {
     @JsonProperty("date_reversed")
     private Date dateReversed;
 
-    @JsonProperty("date_settled")
-    private Date dateSettled;
+    @JsonProperty("date_completed")
+    private Date dateCompleted;
 
     @NotNull
     @ManyToOne
-    private Biller biller;
-
-    @NotNull
-    @ManyToOne
-    private Item item;
+    private Service service;
 
     @ManyToOne
     private Consumer consumer;

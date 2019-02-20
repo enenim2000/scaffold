@@ -1,6 +1,5 @@
 package com.enenim.scaffold.model.dao;
 
-import com.enenim.scaffold.enums.BeneficiaryType;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -54,17 +53,14 @@ public class Beneficiary extends BaseModel {
     @NotNull
     private EnabledStatus enabled = EnabledStatus.ENABLED;
 
-    @NotNull
-    private BeneficiaryType type = BeneficiaryType.REGULAR;
-
     @JsonBackReference
     @ManyToMany
-    @JoinTable(name = "beneficiary_biller",
+    @JoinTable(name = "beneficiary_vendor",
             joinColumns = @JoinColumn(name = "beneficiary_id"),
-            inverseJoinColumns = @JoinColumn(name = "biller_id"),
-            uniqueConstraints = @UniqueConstraint(columnNames = {"beneficiary_id", "biller_id"})
+            inverseJoinColumns = @JoinColumn(name = "vendor_id"),
+            uniqueConstraints = @UniqueConstraint(columnNames = {"beneficiary_id", "vendor_id"})
     )
-    private Set<Biller> billers = new HashSet<>();
+    private Set<Vendor> vendors = new HashSet<>();
 
     @JsonBackReference
     @OneToMany(mappedBy = "beneficiary", fetch = FetchType.LAZY)

@@ -2,7 +2,7 @@ package com.enenim.scaffold.enums;
 
 import com.enenim.scaffold.interfaces.PersistableEnum;
 
-public enum BillerType implements PersistableEnum<Integer> {
+public enum VendorType implements PersistableEnum<Integer> {
     REGULAR(0),
     AGGREGATOR(1),
     AGGREGATE(2);
@@ -12,13 +12,13 @@ public enum BillerType implements PersistableEnum<Integer> {
         return value;
     }
 
-    BillerType(Integer value) {
+    VendorType(Integer value) {
         this.value = value;
     }
 
-    public static class Converter extends EnumValueTypeConverter<BillerType, Integer> {
+    public static class Converter extends EnumValueTypeConverter<VendorType, Integer> {
         public Converter() {
-            super(BillerType.class);
+            super(VendorType.class);
         }
     }
 }

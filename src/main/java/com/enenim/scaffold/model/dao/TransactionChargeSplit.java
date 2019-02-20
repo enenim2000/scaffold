@@ -27,9 +27,6 @@ public class TransactionChargeSplit extends BaseModel {
     @JsonProperty("benefactor_type")
     private String benefactorType;
 
-    @ManyToOne
-    private Settlement settlement;
-
     @Column(length = 20)
     private String reserved;
 

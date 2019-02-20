@@ -3,11 +3,12 @@ package com.enenim.scaffold.enums;
 import com.enenim.scaffold.interfaces.PersistableEnum;
 
 public enum TransactionStatus implements PersistableEnum<Integer> {
+
     PAID(0),
     PENDING(1),
     FAILED(2),
     REVERSED(3),
-    PARTIAL_PAYMENT(4);
+    PARTIAL(4);
 
     private Integer value;
 

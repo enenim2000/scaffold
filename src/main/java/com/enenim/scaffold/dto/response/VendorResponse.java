@@ -1,10 +1,10 @@
 package com.enenim.scaffold.dto.response;
 
-import com.enenim.scaffold.enums.BillerType;
+import com.enenim.scaffold.enums.VendorType;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.model.BaseModel;
-import com.enenim.scaffold.model.dao.BillerAccount;
+import com.enenim.scaffold.model.dao.VendorAccount;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @ToString
-public class BillerResponse extends BaseModel {
+public class VendorResponse extends BaseModel {
 
     private String name;
 
@@ -44,7 +44,7 @@ public class BillerResponse extends BaseModel {
     private String logoPath;
 
     @NotNull
-    private BillerType type = BillerType.REGULAR;
+    private VendorType type = VendorType.REGULAR;
 
     @NotNull
     private VerifyStatus verified = VerifyStatus.NOT_VERIFIED;
@@ -52,7 +52,7 @@ public class BillerResponse extends BaseModel {
     @NotNull
     private EnabledStatus enabled = EnabledStatus.ENABLED;
 
-    @JsonProperty("biller_account")
-    @SerializedName("biller_account")
-    private BillerAccount billerAccount;
+    @JsonProperty("vendor_account")
+    @SerializedName("vendor_account")
+    private VendorAccount vendorAccount;
 }

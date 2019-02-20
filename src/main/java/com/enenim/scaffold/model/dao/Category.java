@@ -52,14 +52,14 @@ public class Category extends BaseModel {
 
     @JsonBackReference
     @ManyToMany
-    @JoinTable(name = "category_item",
+    @JoinTable(name = "category_service",
             joinColumns = @JoinColumn(name = "category_id"),
-            inverseJoinColumns = @JoinColumn(name = "item_id"),
-            uniqueConstraints = @UniqueConstraint(columnNames = {"category_id", "item_id"})
+            inverseJoinColumns = @JoinColumn(name = "service_id"),
+            uniqueConstraints = @UniqueConstraint(columnNames = {"category_id", "service_id"})
     )
-    private Set<Item> items = new HashSet<>();
+    private Set<Service> services = new HashSet<>();
 
     @JsonBackReference
     @ManyToMany(mappedBy = "categories")
-    private Set<Biller> billers = new HashSet<>();
+    private Set<Vendor> vendors = new HashSet<>();
 }

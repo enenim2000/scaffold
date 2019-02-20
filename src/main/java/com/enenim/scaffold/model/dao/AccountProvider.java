@@ -1,6 +1,5 @@
 package com.enenim.scaffold.model.dao;
 
-import com.enenim.scaffold.enums.BaseType;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -34,9 +33,6 @@ public class AccountProvider extends BaseModel {
     private String code;
 
     @NotNull
-    private BaseType base = BaseType.OTHERS;
-
-    @NotNull
     private EnabledStatus enabled = EnabledStatus.ENABLED;
 
     public AccountProvider(){}
@@ -52,8 +48,8 @@ public class AccountProvider extends BaseModel {
 
     @JsonBackReference
     @OneToMany(mappedBy = "accountProvider", fetch = FetchType.LAZY)
-    @JsonProperty("biller_accounts")
-    private Set<BillerAccount> billerAccounts = new HashSet<>();
+    @JsonProperty("vendor_accounts")
+    private Set<VendorAccount> vendorAccounts = new HashSet<>();
 
     @JsonBackReference
     @OneToMany(mappedBy = "accountProvider", fetch = FetchType.LAZY)

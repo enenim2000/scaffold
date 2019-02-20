@@ -1,5 +1,5 @@
 package com.enenim.scaffold.util.setting;
 
-public class SettingCacheBillerUtil {
+public class SettingCacheVendorUtil {
 
 }

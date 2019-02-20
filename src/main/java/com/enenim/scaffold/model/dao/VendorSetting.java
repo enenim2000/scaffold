@@ -14,8 +14,8 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @Entity
-@Table(name = "biller_settings")
-public class BillerSetting extends BaseModel {
+@Table(name = "vendor_settings")
+public class VendorSetting extends BaseModel {
     @JsonProperty("key")
     @NotNull
     @Column(length = 40)
@@ -27,5 +27,5 @@ public class BillerSetting extends BaseModel {
 
     @NotNull
     @ManyToOne
-    private Biller biller;
+    private Vendor vendor;
 }

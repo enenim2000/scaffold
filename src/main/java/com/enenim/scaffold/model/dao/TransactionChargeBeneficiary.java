@@ -1,7 +1,6 @@
 package com.enenim.scaffold.model.dao;
 
 import com.enenim.scaffold.enums.EnabledStatus;
-import com.enenim.scaffold.enums.TransactionChargeBeneficiariesType;
 import com.enenim.scaffold.model.BaseModel;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,9 +26,6 @@ public class TransactionChargeBeneficiary extends BaseModel {
 
     @NotNull
     private Double share;
-
-    @NotNull
-    private TransactionChargeBeneficiariesType type = TransactionChargeBeneficiariesType.DEFAULT;
 
     @NotNull
     private EnabledStatus enabled = EnabledStatus.ENABLED;

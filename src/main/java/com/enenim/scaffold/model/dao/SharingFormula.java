@@ -14,7 +14,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "sharing_formulas", uniqueConstraints = @UniqueConstraint(columnNames ={"biller_id", "name"}))
+@Table(name = "sharing_formulas", uniqueConstraints = @UniqueConstraint(columnNames ={"vendor_id", "name"}))
 public class SharingFormula extends BaseModel {
     public SharingFormula() {
     }
@@ -25,7 +25,7 @@ public class SharingFormula extends BaseModel {
     }
 
     @ManyToOne
-    private Biller biller = null;
+    private Vendor vendor = null;
 
     @NotNull
     @ManyToOne

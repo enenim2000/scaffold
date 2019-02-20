@@ -1,6 +1,6 @@
 package com.enenim.scaffold.dto.request;
 
-import com.enenim.scaffold.model.dao.Biller;
+import com.enenim.scaffold.model.dao.Vendor;
 import com.enenim.scaffold.util.ObjectMapperUtil;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
@@ -15,31 +15,31 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @ToString
 @Embeddable
-public class BillerRequest extends RequestBody<Biller>{
+public class VendorRequest extends RequestBody<Vendor>{
 
-    @NotBlank(message = "@{biller.name.required}")
+    @NotBlank(message = "@{vendor.name.required}")
     private String name;
 
-    @NotBlank(message = "@{biller.trading_name.required}")
+    @NotBlank(message = "@{vendor.trading_name.required}")
     @JsonProperty("trading_name")
     @SerializedName("trading_name")
     private String tradingName;
 
-    @NotBlank(message = "@{biller.address.required}")
+    @NotBlank(message = "@{vendor.address.required}")
     private String address;
 
     @JsonProperty("phone_number")
     @SerializedName("phone_number")
-    @NotBlank(message = "@{biller.phone_number.required}")
+    @NotBlank(message = "@{vendor.phone_number.required}")
     private String phoneNumber;
 
     @Override
-    public Biller buildModel() {
-        return ObjectMapperUtil.map(this, Biller.class);
+    public Vendor buildModel() {
+        return ObjectMapperUtil.map(this, Vendor.class);
     }
 
     @Override
-    public Biller buildModel(Biller biller) {
-        return ObjectMapperUtil.map(this, biller);
+    public Vendor buildModel(Vendor vendor) {
+        return ObjectMapperUtil.map(this, vendor);
     }
 }

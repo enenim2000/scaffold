@@ -1,7 +1,6 @@
 package com.enenim.scaffold.model.dao;
 
 import com.enenim.scaffold.enums.Initiator;
-import com.enenim.scaffold.enums.SentSurcharge;
 import com.enenim.scaffold.enums.SettledStatus;
 import com.enenim.scaffold.enums.TransactionDemoStatus;
 import com.enenim.scaffold.model.BaseModel;
@@ -50,15 +49,11 @@ public class TransactionDemo extends BaseModel {
     private Double amountPaid;
 
     @NotNull
-    @JsonProperty("biller_discount")
-    private Double billerDiscount;
+    @JsonProperty("vendor_discount")
+    private Double vendorDiscount;
 
     @NotNull
     private Double surcharge;
-
-    @NotNull
-    @JsonProperty("sent_surcharge")
-    private SentSurcharge sentSurcharge = SentSurcharge.SURCHARGE_NOT_SENT;
 
     @NotNull
     @Column(length = 11)
@@ -75,11 +70,11 @@ public class TransactionDemo extends BaseModel {
 
     @NotNull
     @ManyToOne
-    private Biller biller;
+    private Vendor vendor;
 
     @NotNull
     @ManyToOne
-    private Item item;
+    private Service service;
 
     @ManyToOne
     private Consumer consumer;

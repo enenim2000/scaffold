@@ -1,6 +1,6 @@
 package com.enenim.scaffold.dto.request;
 
-import com.enenim.scaffold.model.dao.Biller;
+import com.enenim.scaffold.model.dao.Vendor;
 import com.enenim.scaffold.util.ObjectMapperUtil;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -12,22 +12,22 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @Setter
 @ToString
-public class BillerNewPasswordRequest extends RequestBody<Biller>{
+public class VendorNewPasswordRequest extends RequestBody<Vendor>{
 
-    @NotBlank(message = "@{biller.password.required}")
+    @NotBlank(message = "@{vendor.password.required}")
     private String password;
 
-    @NotBlank(message = "@{biller.confirm_password.required}")
+    @NotBlank(message = "@{vendor.confirm_password.required}")
     @JsonProperty("confirm_password")
     private String confirmPassword;
 
     @Override
-    public Biller buildModel() {
-        return ObjectMapperUtil.map(this, Biller.class);
+    public Vendor buildModel() {
+        return ObjectMapperUtil.map(this, Vendor.class);
     }
 
     @Override
-    public Biller buildModel(Biller biller) {
-        return ObjectMapperUtil.map(this, biller);
+    public Vendor buildModel(Vendor vendor) {
+        return ObjectMapperUtil.map(this, vendor);
     }
 }

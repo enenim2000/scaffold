@@ -20,7 +20,7 @@ public class RequestUtil {
     private static String lang;
     private static Login login;
     private static Staff staff;
-    private static Biller biller;
+    private static Vendor vendor;
     private static String apiKey;
     private static PaymentChannel channel;
     private static String message;
@@ -59,8 +59,8 @@ public class RequestUtil {
         return staff;
     }
 
-    public static Biller getBiller(){
-        return biller;
+    public static Vendor getVendor(){
+        return vendor;
     }
 
     public static Consumer getConsumer(){
@@ -147,8 +147,8 @@ public class RequestUtil {
         staff = _staff;
     }
 
-    public static void setBiller(Biller _biller){
-        biller = _biller;
+    public static void setVendor(Vendor _vendor){
+        vendor = _vendor;
     }
 
     public static void setConsumer(Consumer _consumer){

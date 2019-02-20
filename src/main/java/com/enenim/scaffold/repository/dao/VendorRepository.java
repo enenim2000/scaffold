@@ -1,6 +1,6 @@
 package com.enenim.scaffold.repository.dao;
 
-import com.enenim.scaffold.model.dao.Biller;
+import com.enenim.scaffold.model.dao.Vendor;
 import com.enenim.scaffold.repository.BaseRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -10,8 +10,8 @@ import java.util.Optional;
 
 @Repository
 @Transactional
-public interface BillerRepository extends BaseRepository<Biller, Long> {
+public interface VendorRepository extends BaseRepository<Vendor, Long> {
 
-    @Query("select b from Biller b where b.email = ?1")
-    Optional<Biller> findByEmail(String email);
+    @Query("select b from Vendor b where b.email = ?1")
+    Optional<Vendor> findByEmail(String email);
 }

@@ -3,7 +3,6 @@ package com.enenim.scaffold.model.dao;
 import com.enenim.scaffold.enums.ChargeSourceType;
 import com.enenim.scaffold.enums.DebitFlag;
 import com.enenim.scaffold.enums.EnabledStatus;
-import com.enenim.scaffold.enums.TransactionChargeType;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -41,8 +40,6 @@ public class TransactionCharge extends BaseModel {
     @ManyToOne
     @JoinColumn(name="profile_id")
     private Profile profile = new Profile();
-
-    private TransactionChargeType type = TransactionChargeType.EMPTY;
 
     @NotNull
     @JsonProperty("charge_source")

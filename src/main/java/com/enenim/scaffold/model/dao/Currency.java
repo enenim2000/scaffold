@@ -42,14 +42,6 @@ public class Currency extends BaseModel {
 
     @JsonBackReference
     @OneToMany(mappedBy = "currency", fetch = FetchType.LAZY)
-    private Set<RecurringPayment> recurringPayments = new HashSet<>();
-
-    @JsonBackReference
-    @OneToMany(mappedBy = "currency", fetch = FetchType.LAZY)
-    private Set<Settlement> settlements = new HashSet<>();
-
-    @JsonBackReference
-    @OneToMany(mappedBy = "currency", fetch = FetchType.LAZY)
     private Set<Transaction> transactions = new HashSet<>();
 
     @JsonBackReference

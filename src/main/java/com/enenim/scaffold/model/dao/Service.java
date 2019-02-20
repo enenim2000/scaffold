@@ -2,9 +2,6 @@ package com.enenim.scaffold.model.dao;
 
 import com.enenim.scaffold.enums.AmountType;
 import com.enenim.scaffold.enums.EnabledStatus;
-import com.enenim.scaffold.enums.PayAgain;
-import com.enenim.scaffold.enums.PayAgainType;
-import com.enenim.scaffold.interfaces.DataTypeConstant;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -19,11 +16,11 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "items", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"biller_id", "code"}),
-        @UniqueConstraint(columnNames = {"biller_id", "name"})
+@Table(name = "services", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"vendor_id", "code"}),
+        @UniqueConstraint(columnNames = {"vendor_id", "name"})
 })
-public class Item extends BaseModel {
+public class Service extends BaseModel {
 
     @NotNull
     @Column(length = 50)
@@ -38,57 +35,48 @@ public class Item extends BaseModel {
     private AmountType amountType = AmountType.VARIABLE_AMOUNT;
 
     @NotNull
-    @JsonProperty("customer_id_label")
-    private String customerIdLabel = "";
-
-    @NotNull
-    @JsonProperty("pay_again")
-    private PayAgain payAgain = PayAgain.NO;
-
-    @JsonProperty("pay_again_type")
-    private PayAgainType payAgainType = PayAgainType.EMPTY;
-
+    @Column(precision=20, scale=4)
     private Double amount = 0.00;
 
     @NotNull
-    @Column(length = 100)
+    @Column(precision=20, scale=4)
+    private Double surcharge = 0.00;
+
+    @NotNull
+    @Column(precision=20, scale=4)
+    private Double discount = 0.00;
+
+    @NotNull
     private String description;
 
     @NotNull
     @Column(unique = true, length = 200)
     private String slug = "";
 
-    @Column(columnDefinition = DataTypeConstant.TEXT)
-    private String surcharge = "";
-
     @NotNull
     private EnabledStatus enabled = EnabledStatus.ENABLED;
 
     @NotNull
     @ManyToOne
-    private Biller biller =  new Biller();
-
-    @NotNull
-    @ManyToOne
-    private SharingFormula sharingFormula = new SharingFormula();
+    private Vendor vendor;
 
     @NotNull
     @ManyToOne
     private Currency currency = new Currency();
 
     @JsonBackReference
-    @ManyToMany(mappedBy = "items")
+    @ManyToMany(mappedBy = "services")
     private Set<Category> categories = new HashSet<>();
 
     @JsonBackReference
-    @OneToMany(mappedBy = "item", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
     private Set<Promotion> promotions = new HashSet<>();
 
     @JsonBackReference
-    @OneToMany(mappedBy = "item", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
     private Set<Transaction> transactions = new HashSet<>();
 
     @JsonBackReference
-    @OneToMany(mappedBy = "item", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
     private Set<TransactionDemo> transactionDemos = new HashSet<>();
 }

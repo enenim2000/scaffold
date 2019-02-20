@@ -65,7 +65,7 @@ public abstract class BaseModel extends ResponseBody implements Serializable {
     public static boolean skipAuthorization = false;
 
     /**
-     * This property is added getTo accept response message at runtime, e.g Attempt getTo create item is pending authorization, Item created successfully
+     * This property is added getTo accept response message at runtime, e.g Attempt getTo create service is pending authorization, Service created successfully
      */
     @Transient
     public static String message = "";
