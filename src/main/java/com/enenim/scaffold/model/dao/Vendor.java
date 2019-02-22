@@ -134,18 +134,6 @@ public class Vendor extends BaseModel implements IAudit{
     @OneToMany(mappedBy = "vendor", fetch = FetchType.EAGER)
     private Set<Service> services = new HashSet<>();
 
-    @JsonBackReference
-    @OneToMany(mappedBy = "vendor", fetch = FetchType.LAZY)
-    private Set<SharingFormula> sharingFormulas = new HashSet<>();
-
-    @JsonBackReference
-    @OneToMany(mappedBy = "vendor", fetch = FetchType.LAZY)
-    private Set<Transaction> transactions = new HashSet<>();
-
-    @JsonBackReference
-    @OneToMany(mappedBy = "vendor", fetch = FetchType.LAZY)
-    private Set<TransactionDemo> transactionDemos = new HashSet<>();
-
     public void setCommonProperties(BCryptPasswordEncoder bCryptPasswordEncoder){
         setSlug(RandomStringUtils.randomAlphanumeric(30));
         setTestSecret(bCryptPasswordEncoder.encode(new Date().toString() + Math.random()));

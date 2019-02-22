@@ -64,6 +64,10 @@ public class Transaction extends BaseModel {
     @ManyToOne
     private Service service;
 
+    @JsonBackReference
+    @ManyToMany(mappedBy = "transactions")
+    private Set<Service> services = new HashSet<>();
+
     @ManyToOne
     private Consumer consumer;
 
@@ -84,20 +88,4 @@ public class Transaction extends BaseModel {
     @NotNull
     @ManyToOne
     private PaymentMethod paymentMethod;
-
-    @JsonBackReference
-    @OneToOne(mappedBy = "transaction")
-    private ReversalRequest reversalRequest;
-
-    @JsonBackReference
-    @OneToMany(mappedBy = "transaction", fetch = FetchType.LAZY)
-    private Set<TransactionChargeSplit> transactionChargeSplits = new HashSet<>();
-
-    @JsonBackReference
-    @OneToMany(mappedBy = "transaction", fetch = FetchType.LAZY)
-    private Set<TransactionDispute> transactionDisputes = new HashSet<>();
-
-    @JsonBackReference
-    @OneToOne(mappedBy = "transaction", fetch = FetchType.LAZY)
-    private TransactionExtra transactionExtras;
 }

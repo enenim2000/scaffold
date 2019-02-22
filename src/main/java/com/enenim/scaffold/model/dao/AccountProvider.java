@@ -55,12 +55,4 @@ public class AccountProvider extends BaseModel {
     @OneToMany(mappedBy = "accountProvider", fetch = FetchType.LAZY)
     @JsonProperty("consumer_accounts")
     private Set<ConsumerAccount> consumerAccounts = new HashSet<>();
-
-    @JsonBackReference
-    @OneToMany(mappedBy = "accountProvider", fetch = FetchType.LAZY)
-    private Set<Beneficiary> beneficiaries = new HashSet<>();
-
-    @JsonBackReference
-    @OneToMany(mappedBy = "accountProvider", fetch = FetchType.LAZY)
-    private Set<TransactionChargeSplit> transactionChargeSplits = new HashSet<>();
 }

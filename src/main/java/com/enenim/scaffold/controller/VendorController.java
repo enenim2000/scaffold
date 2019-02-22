@@ -32,7 +32,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/user/vendors")
+@RequestMapping("/vendors")
 public class VendorController {
 
     private final VendorService vendorService;

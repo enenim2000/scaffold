@@ -65,18 +65,15 @@ public class Service extends BaseModel {
     private Currency currency = new Currency();
 
     @JsonBackReference
-    @ManyToMany(mappedBy = "services")
-    private Set<Category> categories = new HashSet<>();
-
-    @JsonBackReference
-    @OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
-    private Set<Promotion> promotions = new HashSet<>();
-
-    @JsonBackReference
-    @OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
+    @ManyToMany
+    @JoinTable(name = "transaction_services",
+            joinColumns = @JoinColumn(name = "service_id"),
+            inverseJoinColumns = @JoinColumn(name = "transaction_id"),
+            uniqueConstraints = @UniqueConstraint(columnNames = {"service_id", "transaction_id"})
+    )
     private Set<Transaction> transactions = new HashSet<>();
 
     @JsonBackReference
-    @OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
-    private Set<TransactionDemo> transactionDemos = new HashSet<>();
+    @ManyToMany(mappedBy = "services")
+    private Set<Category> categories = new HashSet<>();
 }

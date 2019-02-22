@@ -18,14 +18,6 @@ import java.util.Set;
 @Table(name = "payment_channels")
 public class PaymentChannel extends BaseModel {
 
-    public PaymentChannel() {
-    }
-
-    public PaymentChannel(Long id) {
-        super();
-        this.setId(id);
-    }
-
     @NotNull
     @Column(unique = true)
     private String name;
@@ -53,12 +45,4 @@ public class PaymentChannel extends BaseModel {
     @JsonBackReference
     @OneToMany(mappedBy = "paymentChannel", fetch = FetchType.LAZY)
     private Set<Transaction> transactions = new HashSet<>();
-
-    @JsonBackReference
-    @OneToMany(mappedBy = "paymentChannel", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private Set<TransactionCharge> transactionCharges = new HashSet<>();
-
-    @JsonBackReference
-    @OneToMany(mappedBy = "paymentChannel", fetch = FetchType.LAZY)
-    private Set<TransactionDemo> transactionDemos = new HashSet<>();
 }
