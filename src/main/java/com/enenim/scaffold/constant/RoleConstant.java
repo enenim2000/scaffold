@@ -2,6 +2,6 @@ package com.enenim.scaffold.constant;
 
 public interface RoleConstant {
     String STAFF = "Staff";
-    String BILLER = "Vendor";
+    String VENDOR = "Vendor";
     String CONSUMER = "Consumer";
 }

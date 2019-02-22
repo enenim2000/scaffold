@@ -29,7 +29,7 @@ public class MailSignUpVendorService implements IMailService {
         Mail mail = new Mail();
         mail.setTo(vendor.getEmail());
         mail.setSubject(SpringMessage.msg("app_name") + " Registration");
-        mail.setTemplate(TEMPLATE_SIGNUP_BILLER);
+        mail.setTemplate(TEMPLATE_SIGNUP_VENDOR);
         mail.getData().put("code", code);
         mail.getData().put("vendor", vendor);
         String key = SharedExpireCacheService.SINGUP + SharedExpireCacheService.SEPARATOR + code;

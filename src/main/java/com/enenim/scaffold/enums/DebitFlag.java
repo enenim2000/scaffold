@@ -5,7 +5,7 @@ import com.enenim.scaffold.interfaces.PersistableEnum;
 public enum DebitFlag implements PersistableEnum<Integer> {
     EMPTY(0),
     SURCHARGE(1),
-    BILLER_DISCOUNT(2);
+    VENDOR_DISCOUNT(2);
 
 
     Integer value;

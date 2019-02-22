@@ -31,7 +31,7 @@ public class UserResolverService {
 
     public Object getUser(String userType, Long userId){
         if(RoleConstant.STAFF.equalsIgnoreCase(userType))return staffService.getStaff(userId);
-        if(RoleConstant.BILLER.equalsIgnoreCase(userType))return vendorService.getVendor(userId);
+        if(RoleConstant.VENDOR.equalsIgnoreCase(userType))return vendorService.getVendor(userId);
         if(RoleConstant.CONSUMER.equalsIgnoreCase(userType))return consumerService.getConsumer(userId);
         throw new ScaffoldException("invalid_role", userType);
     }
@@ -52,7 +52,7 @@ public class UserResolverService {
             Staff staff = JsonConverter.getObject(user, Staff.class);
             RequestUtil.setStaff(staff);
         }
-        else if(RoleConstant.BILLER.equalsIgnoreCase(role)){
+        else if(RoleConstant.VENDOR.equalsIgnoreCase(role)){
             RequestUtil.setVendor(JsonConverter.getObject(user, Vendor.class));
         }
         else if(RoleConstant.CONSUMER.equalsIgnoreCase(role)){

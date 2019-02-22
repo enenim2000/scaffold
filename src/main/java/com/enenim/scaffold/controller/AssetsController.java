@@ -59,7 +59,7 @@ public class AssetsController {
         return generateAssetResource(fileName, request);
     }
 
-    @GetMapping(AssetBaseConstant.BILLER + "{fileName:.+}")
+    @GetMapping(AssetBaseConstant.VENDOR + "{fileName:.+}")
     public ResponseEntity<Resource> getVendorLogo(@PathVariable String fileName, HttpServletRequest request) {
         return generateAssetResource(fileName, request);
     }

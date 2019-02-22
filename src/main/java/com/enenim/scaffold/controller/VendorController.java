@@ -53,20 +53,20 @@ public class VendorController {
     }
 
     @Get
-    @Permission(RouteConstant.USER_BILLER_INDEX)
+    @Permission(RouteConstant.USER_VENDOR_INDEX)
     public Response<PageResponse<Vendor>> getVendors() {
         return new Response<>(new PageResponse<>(vendorService.getVendors()));
     }
 
     @Get("/{id}")
-    @Permission(RouteConstant.USER_BILLER_SHOW)
+    @Permission(RouteConstant.USER_VENDOR_SHOW)
     public Response<ModelResponse<Vendor>> showVendor(@PathVariable Long id) {
         return new Response<>(new ModelResponse<>(vendorService.getVendor(id)));
     }
 
     @Post
     @Role({RoleConstant.STAFF})
-    @Permission(RouteConstant.USER_BILLER_CREATE)
+    @Permission(RouteConstant.USER_VENDOR_CREATE)
     public Response<ModelResponse<Vendor>> createVendor(@RequestParam("vendor") String vendorRequest, @RequestParam(value = "file", required = false) MultipartFile file){
         VendorRequest2 request = JsonConverter.getObject(vendorRequest, VendorRequest2.class);
         Vendor vendor = request.buildModel();
@@ -90,7 +90,7 @@ public class VendorController {
         if(!StringUtils.isEmpty(vendor)){
             Login login = new Login();
             login.setUsername(vendor.getEmail());
-            login.setUserType(RoleConstant.BILLER);
+            login.setUserType(RoleConstant.VENDOR);
             login.setUserId(vendor.getId());
             login.setPassword(bCryptPasswordEncoder.encode(request.getBody().getPassword()));
             login = loginService.saveLogin(login);
@@ -144,7 +144,7 @@ public class VendorController {
 
     //Header => Content-Type = multipart/form-data
     @PutMapping(value = "/{id}/details")
-    @Role({RoleConstant.BILLER})
+    @Role({RoleConstant.VENDOR})
     public Response<ModelResponse<VendorResponse>> updateVendorDetails(@PathVariable("id") Long id, @RequestPart("vendor") String vendor, @RequestPart(value = "file", required = false) MultipartFile file){
 
         Vendor vendorModel = vendorService.getVendor(id);
@@ -185,8 +185,8 @@ public class VendorController {
     }
 
     @Put("/{id}/go-alive")
-    @Role({RoleConstant.STAFF, RoleConstant.BILLER})
-    @Permission(RouteConstant.USER_BILLER_GOLIVE)
+    @Role({RoleConstant.STAFF, RoleConstant.VENDOR})
+    @Permission(RouteConstant.USER_VENDOR_GOLIVE)
     public Response<BooleanResponse> goLiveToggle(@PathVariable Long id){
         Vendor vendor = vendorService.getVendor(id);
         if(StringUtils.isEmpty(vendor.getAddress())){
@@ -206,7 +206,7 @@ public class VendorController {
 
     @Put("/{id}/toggle")
     @Role({RoleConstant.STAFF})
-    @Permission(RouteConstant.USER_BILLER_TOGGLE)
+    @Permission(RouteConstant.USER_VENDOR_TOGGLE)
     public Response<BooleanResponse> toggle(@PathVariable Long id){
         return new Response<>(new BooleanResponse(vendorService.toggle(id)));
     }
@@ -219,7 +219,7 @@ public class VendorController {
                 throw new ScaffoldException("file_size_vendor", file_size_kb,  HttpStatus.PAYLOAD_TOO_LARGE);
             }
             String fileName = fileStorageService.storeFile(file, "vendor-logo-" + vendor.getSlug() + ".jpg");
-            vendor.setLogoPath("/assets" + AssetBaseConstant.BILLER + fileName);
+            vendor.setLogoPath("/assets" + AssetBaseConstant.VENDOR + fileName);
         }
     }
 }
