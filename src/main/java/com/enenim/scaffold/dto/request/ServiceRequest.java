@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.Date;
-
 @Getter
 @Setter
 @ToString
@@ -16,9 +14,10 @@ public class ServiceRequest {
     @JsonProperty("service_id")
     private Long serviceId;
 
-    @JsonProperty("event_date")
-    private Date eventDate;
+    /**
+     * This field stores the edited payload form presented to the user/consumer
+     */
+    @JsonProperty("consumer_form")
+    private String consumerForm;
 
-    @JsonProperty("event_location")
-    private Date eventLocation;
 }

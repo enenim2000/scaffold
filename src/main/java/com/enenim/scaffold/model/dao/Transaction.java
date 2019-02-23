@@ -60,13 +60,13 @@ public class Transaction extends BaseModel {
     @JsonProperty("date_completed")
     private Date dateCompleted;
 
-    @NotNull
+    /*@NotNull
     @ManyToOne
-    private Service service;
+    private Service service;*/
 
     @JsonBackReference
     @ManyToMany(mappedBy = "transactions")
-    private Set<Service> services = new HashSet<>();
+    private Set<ServiceForm> serviceForms = new HashSet<>();
 
     @ManyToOne
     private Consumer consumer;

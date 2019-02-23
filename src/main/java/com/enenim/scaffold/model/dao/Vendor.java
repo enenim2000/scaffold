@@ -79,6 +79,12 @@ public class Vendor extends BaseModel implements IAudit{
     @Column(unique = true, length = 50)
     private String slug;
 
+    /**
+     * This column stores the category key
+     */
+    @JsonProperty("category")
+    private String category;
+
     @JsonProperty("logo_path")
     @SerializedName("logo_path")
     private String logoPath;
@@ -97,14 +103,14 @@ public class Vendor extends BaseModel implements IAudit{
     @JsonProperty("vendor_account")
     @SerializedName("vendor_account")
     private VendorAccount vendorAccount;
-
+/*
     @ManyToMany
     @JoinTable(name = "vendor_category",
             joinColumns = @JoinColumn(name = "vendor_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"),
             uniqueConstraints = @UniqueConstraint(columnNames = {"vendor_id", "category_id"})
     )
-    private Set<Category> categories = new HashSet<>();
+    private Set<Category> categories = new HashSet<>();*/
 
     @ManyToMany
     @JoinTable(name = "vendor_payment_channel",

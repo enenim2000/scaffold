@@ -3,22 +3,20 @@ package com.enenim.scaffold.model.dao;
 import com.enenim.scaffold.enums.AmountType;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.model.BaseModel;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.HashSet;
-import java.util.Set;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "services", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"vendor_id", "code"}),
-        @UniqueConstraint(columnNames = {"vendor_id", "name"})
+        @UniqueConstraint(columnNames = {"vendor_id", "name"}),
+        @UniqueConstraint(columnNames = {"vendor_id", "category"})
 })
 public class Service extends BaseModel {
 
@@ -54,6 +52,16 @@ public class Service extends BaseModel {
     private String slug = "";
 
     @NotNull
+    private String category;
+
+    /**
+     * Copy the payload from the service category and save it in this field,
+     * So that we can edit/customize each vendor's service payload
+     */
+    @Lob
+    private String payload;
+
+    @NotNull
     private EnabledStatus enabled = EnabledStatus.ENABLED;
 
     @NotNull
@@ -64,16 +72,8 @@ public class Service extends BaseModel {
     @ManyToOne
     private Currency currency = new Currency();
 
-    @JsonBackReference
-    @ManyToMany
-    @JoinTable(name = "transaction_services",
-            joinColumns = @JoinColumn(name = "service_id"),
-            inverseJoinColumns = @JoinColumn(name = "transaction_id"),
-            uniqueConstraints = @UniqueConstraint(columnNames = {"service_id", "transaction_id"})
-    )
-    private Set<Transaction> transactions = new HashSet<>();
-
+/*
     @JsonBackReference
     @ManyToMany(mappedBy = "services")
-    private Set<Category> categories = new HashSet<>();
+    private Set<Category> categories = new HashSet<>();*/
 }

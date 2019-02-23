@@ -222,7 +222,7 @@ public interface RouteConstant {
     String ADMINISTRATION_PUBLICHOLIDAY_SHOW = ADMINISTRATION + PUBLICHOLIDAY + SHOW;
 
     //Vendor sub-modules
-    String VENDOR_SUBMODULE = DOT + "vendor" + DOT;
+    /*String VENDOR_SUBMODULE = DOT + "vendor" + DOT;
     String USER_VENDOR_INDEX = USER + VENDOR_SUBMODULE + INDEX;
     String USER_VENDOR_CREATE= USER + VENDOR_SUBMODULE + CREATE;
     String USER_VENDOR_SHOW = USER + VENDOR_SUBMODULE + SHOW;
@@ -235,7 +235,7 @@ public interface RouteConstant {
     String USER_VENDOR_SIGNUPACCOUNTVERIFY = USER + VENDOR_SUBMODULE + "signUpAccountVerify";
     String USER_VENDOR_CATEGORIES = USER + VENDOR_SUBMODULE + "categories";
     String USER_VENDOR_AGGREGATE = USER + VENDOR_SUBMODULE + "aggregate";
-    String USER_VENDOR_TOGGLE = USER + VENDOR_SUBMODULE + TOGGLE;
+    String USER_VENDOR_TOGGLE = USER + VENDOR_SUBMODULE + TOGGLE;*/
 
     //Consumer sub-modules
     String CONSUMER_SUBMODULE= DOT + "consumer" + DOT;
