@@ -41,11 +41,6 @@ public class AccountProvider extends BaseModel {
         this.id = id;
     }
 
-    @NotNull
-    @ManyToOne
-    @JsonProperty("account_provider_type")
-    private AccountProviderType accountProviderType;
-
     @JsonBackReference
     @OneToMany(mappedBy = "accountProvider", fetch = FetchType.LAZY)
     @JsonProperty("vendor_accounts")

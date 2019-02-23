@@ -1,0 +1,17 @@
+
+create crud operation for:
+-AccountProvider
+-Currency
+-PaymentChannel
+-PaymentMethod
+
+
+Map<Vendorcategorykey, List<Vendor>>
+Map<Servicecategorykey, List<Service>>
+Map<VendorId, List<Service>>
+
+
+
+Map<Vendorcategorykey, Map<VendorId,Vendor>>
+Map<Servicecategorykey, Map<ServiceId, Service>>
+Map<VendorId, Map<ServiceId, ""Service>>
