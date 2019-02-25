@@ -44,7 +44,7 @@ public class JsonConverter {
         }
     }
 
-    private static Gson getGson(){
+    public static Gson getGson(){
         SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
         dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
         GsonBuilder gsonBuilder = new GsonBuilder().setDateFormat(dateFormat.toPattern());
