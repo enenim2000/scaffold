@@ -23,7 +23,7 @@ public class ServiceForm extends BaseModel {
     /**
      * This field stores the edited payload form presented to the user/consumer
      */
-    private String form;
+    private String payload;
 
     @JsonBackReference
     @ManyToMany
