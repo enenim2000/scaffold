@@ -1,14 +1,12 @@
 package com.enenim.scaffold.model.dao;
 
 import com.enenim.scaffold.model.BaseModel;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.HashSet;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -25,12 +23,17 @@ public class ServiceForm extends BaseModel {
      */
     private String payload;
 
-    @JsonBackReference
+   /* @JsonBackReference
     @ManyToMany
     @JoinTable(name = "transaction_service_form",
             joinColumns = @JoinColumn(name = "service_form_id"),
             inverseJoinColumns = @JoinColumn(name = "transaction_id"),
             uniqueConstraints = @UniqueConstraint(columnNames = {"service_form_id", "transaction_id"})
     )
-    private Set<Transaction> transactions = new HashSet<>();
+    private Set<Transaction> transactions = new HashSet<>();*/
+
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "transaction_id")
+    private Transaction transaction;
 }

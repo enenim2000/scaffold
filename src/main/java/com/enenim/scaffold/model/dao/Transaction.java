@@ -11,7 +11,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
-import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -64,9 +63,13 @@ public class Transaction extends BaseModel {
     @ManyToOne
     private Service service;*/
 
-    @JsonBackReference
+    /*@JsonBackReference
     @ManyToMany(mappedBy = "transactions")
-    private Set<ServiceForm> serviceForms = new HashSet<>();
+    private Set<ServiceForm> serviceForms = new HashSet<>();*/
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "transaction", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    private Set<ServiceForm> serviceForms;
 
     @ManyToOne
     private Consumer consumer;

@@ -70,6 +70,7 @@ public class TransactionController {
             serviceForm.setPayload(serviceRequest.getConsumerForm());
             serviceForm.setService(service);
             serviceForms.add(serviceForm);
+            serviceForm.setTransaction(transaction);
         }
         transaction.setServiceForms(serviceForms);
 
