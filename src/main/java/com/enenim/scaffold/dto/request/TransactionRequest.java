@@ -1,5 +1,6 @@
 package com.enenim.scaffold.dto.request;
 
+import com.enenim.scaffold.model.dao.Branch;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class TransactionRequest {
+public class TransactionRequest extends RequestBody<Branch> {
 
     /**
      * This field will be use for populating ServiceForm table
@@ -34,4 +35,13 @@ public class TransactionRequest {
     @JsonProperty("consumer_id")
     private Long consumerId;
 
+    @Override
+    Branch buildModel() {
+        return null;
+    }
+
+    @Override
+    Branch buildModel(Branch model) {
+        return null;
+    }
 }
