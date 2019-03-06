@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class SettingConfigUtil {
 
     private static final HashMap<String, String> CONTACT_INFO_CONFIG = new HashMap<String, String>(){{
-        put("application_name", "");
+        put("application_name", "{\"type\":\"text\",\"label\": \"Application name\", \"placeholder\": \"Enter application name\", \"value\":\"\", \"maxlength\":\"\", \"minlength\":\"\", \"options\":null}");
         put("contact_address", "");
         put("contact_email", "");
     }};
@@ -15,7 +15,7 @@ public class SettingConfigUtil {
     }};
 
     private static final HashMap<String, String> SECURITY_CENTER_CONFIG = new HashMap<String, String>(){{
-        put("min_pwd_length", "");
+        put("min_pwd_length", "{\"type\":\"text\",\"label\": \"Minimum password length\", \"placeholder\": \"Enter minimum password length\", \"value\":\"eight\", \"maxlength\":\"\", \"minlength\":\"\", \"options\": [ { \"key\": \"eight\", \"value\": \"8\" }, { \"key\": \"ten\", \"value\": \"10\" }, { \"key\": \"fifteen\", \"value\": \"15\" } ]}");
         put("authorize_direct_forwarding", "");
         put("session_timeout", "");
     }};
