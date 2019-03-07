@@ -1,6 +1,8 @@
 package com.enenim.scaffold.util;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class SettingConfigUtil {
 
@@ -29,12 +31,22 @@ public class SettingConfigUtil {
         put("min_settlement_duration", "");
     }};
 
+    private static String[] CATEGORY_KEYS = {"contact_info_config", "action_center_config", "security_center_config", "language_support_config", "settlement_preference_config"};
+
+    private static final HashMap<String, SettingCategory> CATEGORY_DESCRIPTION = new HashMap<String, SettingCategory>(){{
+        put(CATEGORY_KEYS[0], new SettingCategory(CATEGORY_KEYS[0], "Contact Information"));
+        put(CATEGORY_KEYS[1], new SettingCategory(CATEGORY_KEYS[1] ,"Action Center"));
+        put(CATEGORY_KEYS[2], new SettingCategory(CATEGORY_KEYS[2] ,"Security Center"));
+        put(CATEGORY_KEYS[3], new SettingCategory(CATEGORY_KEYS[3] ,"Language Support"));
+        put(CATEGORY_KEYS[4], new SettingCategory(CATEGORY_KEYS[4] ,"Settlement Preference"));
+    }};
+
     private static final HashMap<String, HashMap<String, String>> SETTING_CONFIG = new HashMap<String, HashMap<String, String>>(){{
-        put("contact_info_config", CONTACT_INFO_CONFIG);
-        put("action_center_config", ACTION_CENTER_CONFIG);
-        put("security_center_config", SECURITY_CENTER_CONFIG);
-        put("language_support_config", LANGUAGE_SUPPORT_CONFIG);
-        put("settlement_preference_config", SETTLEMENT_PREFERENCE_CONFIG);
+        put(CATEGORY_KEYS[0], CONTACT_INFO_CONFIG);
+        put(CATEGORY_KEYS[1], ACTION_CENTER_CONFIG);
+        put(CATEGORY_KEYS[2], SECURITY_CENTER_CONFIG);
+        put(CATEGORY_KEYS[3], LANGUAGE_SUPPORT_CONFIG);
+        put(CATEGORY_KEYS[4], SETTLEMENT_PREFERENCE_CONFIG);
     }};
 
     public HashMap<String, HashMap<String, String>> getSettingCategoryMap(){
@@ -47,5 +59,27 @@ public class SettingConfigUtil {
 
     public String getSetting(String categoryKey, String settingKey){
         return SETTING_CONFIG.get(categoryKey).get(settingKey);
+    }
+
+    public List<SettingCategory> buildSettings(){
+
+        List<SettingCategory> settingCategories = new ArrayList<>();
+
+        for(HashMap.Entry<String, HashMap<String, String>> categoryEntry : SETTING_CONFIG.entrySet()){
+
+            SettingCategory category = CATEGORY_DESCRIPTION.get(categoryEntry.getKey());
+
+            List<SystemSetting> systemSettings = new ArrayList<>();
+
+            for(HashMap.Entry<String, String> settingEntry : categoryEntry.getValue().entrySet()){
+                systemSettings.add(JsonConverter.getObject(settingEntry.getValue(), SystemSetting.class));
+            }
+
+            category.setSettings(systemSettings);
+
+            settingCategories.add(category);
+        }
+
+        return settingCategories;
     }
 }
