@@ -1,6 +1,7 @@
 package com.enenim.scaffold;
 
 import com.enenim.scaffold.service.dao.SettingService;
+import com.enenim.scaffold.util.AESUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -29,5 +30,7 @@ public class ApplicationStartup implements ApplicationRunner {
         System.out.println("\n About to sync database settings with configuration settings \n");
         //SettingConfigUtil.loadSettings();
         System.out.println("\n Finished syncing database settings with configuration settings \n");
+
+        AESUtil.testEncryption();
     }
 }
