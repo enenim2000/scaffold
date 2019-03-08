@@ -18,7 +18,7 @@ public class Notification extends BaseModel {
     @OneToOne
     private Login login;
 
-    @JsonProperty("key")
+    @JsonProperty("settingKey")
     @NotNull
     @Column(unique = true)
     private String _key;

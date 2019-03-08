@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "consumer_settings")
 public class ConsumerSetting extends BaseModel {
 
-    @JsonProperty("key")
+    @JsonProperty("settingKey")
     @Column(length = 40)
     private String _key;
 

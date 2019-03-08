@@ -1,6 +1,7 @@
 package com.enenim.scaffold.dto.request;
 
 import com.enenim.scaffold.model.dao.Setting;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -13,7 +14,12 @@ import javax.validation.constraints.NotBlank;
 public class SettingRequest extends RequestBody<Setting> {
 
     @NotBlank
-    private String key;
+    @JsonProperty("category_key")
+    private String categoryKey;
+
+    @NotBlank
+    @JsonProperty("setting_key")
+    private String settingKey;
 
     @NotBlank
     private String value;

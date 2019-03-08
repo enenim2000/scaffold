@@ -1,11 +1,19 @@
 package com.enenim.scaffold.util;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 import lombok.Data;
-
-import java.util.Map;
 
 @Data
 public class SystemSetting {
-    private String key;
-    Map<String, Object> detail;
+
+    @JsonProperty("category_key")
+    @SerializedName("category_key")
+    private String categoryKey;
+
+    @JsonProperty("setting_key")
+    @SerializedName("setting_key")
+    private String settingKey;
+
+    private SystemSettingDetail detail;
 }
