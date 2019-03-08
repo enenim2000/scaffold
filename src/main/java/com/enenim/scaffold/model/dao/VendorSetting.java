@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "vendor_settings")
 public class VendorSetting extends BaseModel {
-    @JsonProperty("key")
+    @JsonProperty("settingKey")
     @NotNull
     @Column(length = 40)
     private String _key;

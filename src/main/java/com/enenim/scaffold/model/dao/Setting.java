@@ -1,6 +1,7 @@
 package com.enenim.scaffold.model.dao;
 
 import com.enenim.scaffold.model.BaseModel;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,10 +17,18 @@ import javax.validation.constraints.NotNull;
 public class Setting extends BaseModel{
 
     @NotNull
-    @Column(length = 50, name = "_key")
+    @Column(length = 50, name = "_category")
+    @JsonProperty("category_key")
+    private String categoryKey;
+
+    @NotNull
+    @Column(length = 50, name = "_key", unique = true)
+    @JsonProperty("setting_key")
     private String key;
 
     @NotNull
     @Column(name = "_value")
+    @JsonProperty("setting_value")
     private String value;
+
 }

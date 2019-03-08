@@ -53,7 +53,7 @@ public class SharedExpireCacheService{
     @Async
     public void put(String key, Object value) {
 
-        System.out.println("key = " + key);
+        System.out.println("settingKey = " + key);
         System.out.println("value = " + JsonConverter.getJsonRecursive(value));
         String cachePrefix = getPrefix(key);
         System.out.println("cachePrefix = " + cachePrefix);

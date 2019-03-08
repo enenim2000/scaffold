@@ -23,15 +23,6 @@ public class ServiceForm extends BaseModel {
      */
     private String payload;
 
-   /* @JsonBackReference
-    @ManyToMany
-    @JoinTable(name = "transaction_service_form",
-            joinColumns = @JoinColumn(name = "service_form_id"),
-            inverseJoinColumns = @JoinColumn(name = "transaction_id"),
-            uniqueConstraints = @UniqueConstraint(columnNames = {"service_form_id", "transaction_id"})
-    )
-    private Set<Transaction> transactions = new HashSet<>();*/
-
     @JsonManagedReference
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "transaction_id")

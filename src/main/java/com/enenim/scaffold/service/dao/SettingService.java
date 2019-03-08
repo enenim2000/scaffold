@@ -1,10 +1,8 @@
 package com.enenim.scaffold.service.dao;
 
-import com.enenim.scaffold.model.cache.SettingCache;
 import com.enenim.scaffold.model.dao.Setting;
 import com.enenim.scaffold.repository.dao.SettingRepository;
-import com.enenim.scaffold.util.setting.SettingCacheCoreService;
-import com.enenim.scaffold.util.setting.SettingCacheCoreUtil;
+import com.enenim.scaffold.util.SettingConfigUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,12 +11,10 @@ import java.util.List;
 @Service
 public class SettingService{
     private final SettingRepository settingRepository;
-    private final SettingCacheCoreService settingCacheCoreService;
 
     @Autowired
-    public SettingService(SettingRepository settingRepository, SettingCacheCoreService settingCacheCoreService) {
+    public SettingService(SettingRepository settingRepository) {
         this.settingRepository = settingRepository;
-        this.settingCacheCoreService = settingCacheCoreService;
     }
 
     public List<Setting> getSettings() {
@@ -29,11 +25,13 @@ public class SettingService{
         return settingRepository.findSettingByKey(key);
     }
 
+    public Setting getSetting(Long id) {
+        return settingRepository.findOrFail(id);
+    }
+
     public Setting saveSetting(Setting setting) {
-        setting = settingRepository.updateSettingByKey(setting.getKey(), setting.getValue());
-        SettingCache settingCache = SettingCacheCoreUtil.getSettingMap().get(setting.getKey());
-        settingCache.setValue(setting.getValue());
-        settingCacheCoreService.saveCoreSetting(settingCache);
+        setting = settingRepository.save(setting);
+        SettingConfigUtil.updateSetting( settingRepository.save(setting) );
         return setting;
     }
 }
