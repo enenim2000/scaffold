@@ -33,12 +33,12 @@ public class SettingConfigUtil {
 
     private static String[] CATEGORY_KEYS = {"contact_info_config", "action_center_config", "security_center_config", "language_support_config", "settlement_preference_config"};
 
-    private static final HashMap<String, SettingCategory> CATEGORY_DESCRIPTION = new HashMap<String, SettingCategory>(){{
-        put(CATEGORY_KEYS[0], new SettingCategory(CATEGORY_KEYS[0], "Contact Information"));
-        put(CATEGORY_KEYS[1], new SettingCategory(CATEGORY_KEYS[1] ,"Action Center"));
-        put(CATEGORY_KEYS[2], new SettingCategory(CATEGORY_KEYS[2] ,"Security Center"));
-        put(CATEGORY_KEYS[3], new SettingCategory(CATEGORY_KEYS[3] ,"Language Support"));
-        put(CATEGORY_KEYS[4], new SettingCategory(CATEGORY_KEYS[4] ,"Settlement Preference"));
+    private static final HashMap<String, SettingListCategory> CATEGORY_DESCRIPTION = new HashMap<String, SettingListCategory>(){{
+        put(CATEGORY_KEYS[0], new SettingListCategory(CATEGORY_KEYS[0], "Contact Information"));
+        put(CATEGORY_KEYS[1], new SettingListCategory(CATEGORY_KEYS[1] ,"Action Center"));
+        put(CATEGORY_KEYS[2], new SettingListCategory(CATEGORY_KEYS[2] ,"Security Center"));
+        put(CATEGORY_KEYS[3], new SettingListCategory(CATEGORY_KEYS[3] ,"Language Support"));
+        put(CATEGORY_KEYS[4], new SettingListCategory(CATEGORY_KEYS[4] ,"Settlement Preference"));
     }};
 
     private static final HashMap<String, HashMap<String, String>> SETTING_CONFIG = new HashMap<String, HashMap<String, String>>(){{
@@ -61,13 +61,13 @@ public class SettingConfigUtil {
         return SETTING_CONFIG.get(categoryKey).get(settingKey);
     }
 
-    public List<SettingCategory> buildSettings(){
+    public static List<SettingListCategory> getSettingAsList(){
 
-        List<SettingCategory> settingCategories = new ArrayList<>();
+        List<SettingListCategory> settingCategories = new ArrayList<>();
 
         for(HashMap.Entry<String, HashMap<String, String>> categoryEntry : SETTING_CONFIG.entrySet()){
 
-            SettingCategory category = CATEGORY_DESCRIPTION.get(categoryEntry.getKey());
+            SettingListCategory category = CATEGORY_DESCRIPTION.get(categoryEntry.getKey());
 
             List<SystemSetting> systemSettings = new ArrayList<>();
 
@@ -81,5 +81,32 @@ public class SettingConfigUtil {
         }
 
         return settingCategories;
+    }
+
+    public static HashMap<String, SettingMapCategory> getSettingAsMap(){
+
+        HashMap<String, SettingMapCategory> settingCategories = new HashMap<>();
+
+        for(HashMap.Entry<String, HashMap<String, String>> categoryEntry : SETTING_CONFIG.entrySet()){
+
+            SettingListCategory listCategory = CATEGORY_DESCRIPTION.get(categoryEntry.getKey());
+            SettingMapCategory category = new SettingMapCategory(listCategory.getKey(), listCategory.getDescription());
+
+            HashMap<String, SystemSetting> systemSettings = new HashMap<>();
+
+            for(HashMap.Entry<String, String> settingEntry : categoryEntry.getValue().entrySet()){
+                systemSettings.put(settingEntry.getKey(), JsonConverter.getObject(settingEntry.getValue(), SystemSetting.class));
+            }
+
+            category.setSettings(systemSettings);
+
+            settingCategories.put(category.getKey(), category);
+        }
+
+        return settingCategories;
+    }
+
+    public static SystemSetting getSystemSetting(String categoryKey, String settingKey){
+        return getSettingAsMap().get(categoryKey).settings.get(settingKey);
     }
 }

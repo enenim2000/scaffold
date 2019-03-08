@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class SettingCategory {
+public class SettingListCategory {
     private String key;
     private String description;
     List<SystemSetting> settings = new ArrayList<>();
 
-    public SettingCategory(){}
+    public SettingListCategory(){}
 
-    public SettingCategory(String key, String description){
+    public SettingListCategory(String key, String description){
 
     }
 }
