@@ -53,7 +53,7 @@ public class SettingConfigUtil {
         put(CATEGORY_KEYS[4], SETTLEMENT_PREFERENCE_CONFIG);
     }};
 
-    private static List<SettingListCategory> getSettingAsList(){
+    public static List<SettingListCategory> getSettingAsList(){
 
         List<SettingListCategory> settingCategories = new ArrayList<>();
 

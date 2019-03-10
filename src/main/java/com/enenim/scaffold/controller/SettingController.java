@@ -15,6 +15,8 @@ import com.enenim.scaffold.model.cache.SettingCache;
 import com.enenim.scaffold.model.dao.Setting;
 import com.enenim.scaffold.service.dao.SettingService;
 import com.enenim.scaffold.util.RequestUtil;
+import com.enenim.scaffold.util.SettingListCategory;
+import com.enenim.scaffold.util.SystemSetting;
 import com.enenim.scaffold.util.message.CommonMessage;
 import com.enenim.scaffold.util.setting.SettingCacheCoreService;
 import com.enenim.scaffold.util.setting.SettingCacheCoreUtil;
@@ -26,9 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Map;
 
-import static com.enenim.scaffold.constant.RouteConstant.ADMINISTRATION_SETTING_SHOW;
-import static com.enenim.scaffold.constant.RouteConstant.ADMINISTRATION_SETTING_SYNC;
-import static com.enenim.scaffold.constant.RouteConstant.ADMINISTRATION_SETTING_UPDATE;
+import static com.enenim.scaffold.constant.RouteConstant.*;
 
 @RestController
 @RequestMapping("/administration/settings")
@@ -42,15 +42,15 @@ public class SettingController {
     }
 
     @Get
-    public Response<CollectionResponse<SettingCache>> getSettings() {
-        return new Response<>(new CollectionResponse<>(SettingCacheCoreUtil.sync(settingService.getSettings())));
+    public Response<CollectionResponse<SettingListCategory>> getSettings() {
+        return new Response<>(new CollectionResponse<>(settingCacheCoreService.getSystemSettings()));
     }
 
     @Get("/{key}")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_SETTING_SHOW)
-    public Response<ModelResponse<SettingCache>> getSetting(@PathVariable String key) {
-        return new Response<>(new ModelResponse<>(settingCacheCoreService.getCoreSetting(key)));
+    public Response<ModelResponse<SystemSetting>> getSetting(@PathVariable String key) {
+        return new Response<>(new ModelResponse<>(settingCacheCoreService.getSystemSetting(key)));
     }
 
     @Put
