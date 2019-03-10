@@ -13,7 +13,7 @@ public interface SettingRepository extends BaseRepository<Setting, Long>{
 
     /*@Modifying
     @Query("update Setting s set s.value = ?2 where s.settingKey = ?1")
-    Setting updateSetting(String settingKey, String value);*/
+    Setting updateSystemSetting(String settingKey, String value);*/
 
     @Query("select s from Setting s where s.key = ?1")
     Setting findSettingByKey(String key);

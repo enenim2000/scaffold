@@ -31,7 +31,7 @@ public class SettingService{
 
     public Setting saveSetting(Setting setting) {
         setting = settingRepository.save(setting);
-        SettingConfigUtil.updateSetting( settingRepository.save(setting) );
+        SettingConfigUtil.updateSystemSetting( settingRepository.save(setting) );
         return setting;
     }
 }

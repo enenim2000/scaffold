@@ -1,2 +1,1017 @@
-2019-03-02 05:02:12 WARN [HikariPool-1 housekeeper] c.z.h.p.HikariPool
-                [HikariPool.java:758] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2d3h16m5s552ms52µs28ns).
+2019-03-08 23:33:00 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:50] Starting ScaffoldApplication on DESKTOP-PPDBD7C with PID 11860 (C:\Users\Admin\IdeaProjects\scaffold\target\classes started by Admin in C:\Users\Admin\IdeaProjects\scaffold)
+2019-03-08 23:33:00 DEBUG [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:53] Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+2019-03-08 23:33:00 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [SpringApplication.java:684] The following profiles are active: dev
+2019-03-08 23:33:00 INFO [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext
+                [AbstractApplicationContext.java:590] Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@58359bbc: startup date [Fri Mar 08 23:33:00 WAT 2019]; root of context hierarchy
+2019-03-08 23:33:02 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate
+                [RepositoryConfigurationDelegate.java:172] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate
+                [RepositoryConfigurationDelegate.java:172] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AccountProviderRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ActiveHourRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AuditRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AuthorizationRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.BranchRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.CategoryRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerAccountRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerSettingRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.CurrencyRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.DisputeMessageRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.GroupRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LogEventRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LoginRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LogWebServiceRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PasswordResetRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PaymentChannelRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PublicHolidayRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ServiceFormRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.SettingRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.StaffRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TaskRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TrackerRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TransactionRepository.
+2019-03-08 23:33:03 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.VendorRepository.
+2019-03-08 23:33:04 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker
+                [PostProcessorRegistrationDelegate.java:326] Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$8f7389dc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-08 23:33:04 INFO [restartedMain] o.s.w.s.a.s.AnnotationActionEndpointMapping
+                [AbstractAddressingEndpointMapping.java:236] Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2019-03-08 23:33:04 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker
+                [PostProcessorRegistrationDelegate.java:326] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$eadbc4dd] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-08 23:33:04 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer
+                [TomcatWebServer.java:91] Tomcat initialized with port(s): 8080 (http)
+2019-03-08 23:33:04 INFO [restartedMain] o.a.c.h.Http11NioProtocol
+                [DirectJDKLog.java:180] Initializing ProtocolHandler ["http-nio-8080"]
+2019-03-08 23:33:04 INFO [restartedMain] o.a.c.c.StandardService
+                [DirectJDKLog.java:180] Starting service [Tomcat]
+2019-03-08 23:33:04 INFO [restartedMain] o.a.c.c.StandardEngine
+                [DirectJDKLog.java:180] Starting Servlet Engine: Apache Tomcat/8.5.34
+2019-03-08 23:33:04 INFO [localhost-startStop-1] o.a.c.c.AprLifecycleListener
+                [DirectJDKLog.java:180] The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_144\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk1.8.0_144\bin;C:\apache-maven-3.5.0-bin\bin;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\nodejs\;%M2_HOME%\bin;C:\Users\Admin\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Microsoft VS Code\bin;C:\Users\Admin\AppData\Roaming\Composer\vendor\bin;C:\Users\Admin\AppData\Roaming\npm;.]
+2019-03-08 23:33:05 INFO [localhost-startStop-1] o.a.c.c.C.[.[.[/]
+                [DirectJDKLog.java:180] Initializing Spring embedded WebApplicationContext
+2019-03-08 23:33:05 INFO [localhost-startStop-1] o.s.w.c.ContextLoader
+                [ServletWebServerApplicationContext.java:285] Root WebApplicationContext: initialization completed in 4355 ms
+2019-03-08 23:33:05 ERROR [localhost-startStop-1] o.s.b.w.e.t.TomcatStarter
+                [TomcatStarter.java:62] Error starting Tomcat context. Exception: org.springframework.beans.factory.BeanCreationException. Message: Error creating bean with name 'servletEndpointRegistrar' defined in class path resource [org/springframework/boot/actuate/autoconfigure/endpoint/web/ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.endpoint.web.ServletEndpointRegistrar]: Factory method 'servletEndpointRegistrar' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'healthEndpoint' defined in class path resource [org/springframework/boot/actuate/autoconfigure/health/HealthEndpointConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.health.HealthEndpoint]: Factory method 'healthEndpoint' threw exception; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.actuate.autoconfigure.redis.RedisHealthIndicatorConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisSettingConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+2019-03-08 23:33:05 INFO [restartedMain] o.a.c.c.StandardService
+                [DirectJDKLog.java:180] Stopping service [Tomcat]
+2019-03-08 23:33:05 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext
+                [AbstractApplicationContext.java:558] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+2019-03-08 23:33:05 INFO [restartedMain] o.s.b.a.l.ConditionEvaluationReportLoggingListener
+                [ConditionEvaluationReportLoggingListener.java:101] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-03-08 23:33:05 ERROR [restartedMain] o.s.b.SpringApplication
+                [SpringApplication.java:863] Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:155)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:544)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:780)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1277)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1265)
+	at com.enenim.scaffold.ScaffoldApplication.main(ScaffoldApplication.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:126)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:86)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:413)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:174)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:179)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:152)
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'servletEndpointRegistrar' defined in class path resource [org/springframework/boot/actuate/autoconfigure/endpoint/web/ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.endpoint.web.ServletEndpointRegistrar]: Factory method 'servletEndpointRegistrar' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'healthEndpoint' defined in class path resource [org/springframework/boot/actuate/autoconfigure/health/HealthEndpointConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.health.HealthEndpoint]: Factory method 'healthEndpoint' threw exception; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.actuate.autoconfigure.redis.RedisHealthIndicatorConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisSettingConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:590)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1247)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:226)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:214)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addServletContextInitializerBeans(ServletContextInitializerBeans.java:91)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:80)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:250)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:237)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:54)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5245)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1420)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1410)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.endpoint.web.ServletEndpointRegistrar]: Factory method 'servletEndpointRegistrar' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'healthEndpoint' defined in class path resource [org/springframework/boot/actuate/autoconfigure/health/HealthEndpointConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.health.HealthEndpoint]: Factory method 'healthEndpoint' threw exception; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.actuate.autoconfigure.redis.RedisHealthIndicatorConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisSettingConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:582)
+	... 23 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'healthEndpoint' defined in class path resource [org/springframework/boot/actuate/autoconfigure/health/HealthEndpointConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.health.HealthEndpoint]: Factory method 'healthEndpoint' threw exception; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.actuate.autoconfigure.redis.RedisHealthIndicatorConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisSettingConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:590)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1247)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1089)
+	at org.springframework.boot.actuate.endpoint.annotation.EndpointDiscoverer.createEndpointBean(EndpointDiscoverer.java:143)
+	at org.springframework.boot.actuate.endpoint.annotation.EndpointDiscoverer.createEndpointBeans(EndpointDiscoverer.java:132)
+	at org.springframework.boot.actuate.endpoint.annotation.EndpointDiscoverer.discoverEndpoints(EndpointDiscoverer.java:122)
+	at org.springframework.boot.actuate.endpoint.annotation.EndpointDiscoverer.getEndpoints(EndpointDiscoverer.java:116)
+	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration.servletEndpointRegistrar(ServletEndpointManagementContextConfiguration.java:75)
+	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$a1101cb8.CGLIB$servletEndpointRegistrar$0(<generated>)
+	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$a1101cb8$$FastClassBySpringCGLIB$$cccf6bba.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:365)
+	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$a1101cb8.servletEndpointRegistrar(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 24 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.health.HealthEndpoint]: Factory method 'healthEndpoint' threw exception; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.actuate.autoconfigure.redis.RedisHealthIndicatorConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisSettingConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:582)
+	... 48 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.actuate.autoconfigure.redis.RedisHealthIndicatorConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisSettingConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:732)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:197)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1267)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1124)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1247)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:514)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:502)
+	at org.springframework.context.support.AbstractApplicationContext.getBeansOfType(AbstractApplicationContext.java:1198)
+	at org.springframework.boot.actuate.autoconfigure.health.HealthIndicatorBeansComposite.get(HealthIndicatorBeansComposite.java:46)
+	at org.springframework.boot.actuate.autoconfigure.health.HealthEndpointConfiguration.healthEndpoint(HealthEndpointConfiguration.java:38)
+	at org.springframework.boot.actuate.autoconfigure.health.HealthEndpointConfiguration$$EnhancerBySpringCGLIB$$77c7ac0.CGLIB$healthEndpoint$0(<generated>)
+	at org.springframework.boot.actuate.autoconfigure.health.HealthEndpointConfiguration$$EnhancerBySpringCGLIB$$77c7ac0$$FastClassBySpringCGLIB$$d4ad761f.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:365)
+	at org.springframework.boot.actuate.autoconfigure.health.HealthEndpointConfiguration$$EnhancerBySpringCGLIB$$77c7ac0.healthEndpoint(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 49 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisSettingConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:378)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:572)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1247)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1322)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1288)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeans(DefaultListableBeanFactory.java:1215)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1093)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:818)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:724)
+	... 82 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:172)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:124)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:237)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:211)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:175)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:839)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1083)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:583)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:372)
+	... 106 common frames omitted
+2019-03-08 23:36:21 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:50] Starting ScaffoldApplication on DESKTOP-PPDBD7C with PID 7956 (C:\Users\Admin\IdeaProjects\scaffold\target\classes started by Admin in C:\Users\Admin\IdeaProjects\scaffold)
+2019-03-08 23:36:21 DEBUG [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:53] Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+2019-03-08 23:36:21 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [SpringApplication.java:684] The following profiles are active: dev
+2019-03-08 23:36:21 INFO [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext
+                [AbstractApplicationContext.java:590] Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@69ca8ae: startup date [Fri Mar 08 23:36:21 WAT 2019]; root of context hierarchy
+2019-03-08 23:36:22 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate
+                [RepositoryConfigurationDelegate.java:172] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate
+                [RepositoryConfigurationDelegate.java:172] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AccountProviderRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ActiveHourRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AuditRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AuthorizationRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.BranchRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.CategoryRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerAccountRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerSettingRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.CurrencyRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.DisputeMessageRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.GroupRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LogEventRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LoginRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LogWebServiceRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PasswordResetRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PaymentChannelRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PublicHolidayRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ServiceFormRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.SettingRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.StaffRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TaskRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TrackerRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TransactionRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.VendorRepository.
+2019-03-08 23:36:23 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker
+                [PostProcessorRegistrationDelegate.java:326] Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$686462cc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-08 23:36:23 INFO [restartedMain] o.s.w.s.a.s.AnnotationActionEndpointMapping
+                [AbstractAddressingEndpointMapping.java:236] Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2019-03-08 23:36:23 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker
+                [PostProcessorRegistrationDelegate.java:326] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c3cc9dcd] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-08 23:36:24 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer
+                [TomcatWebServer.java:91] Tomcat initialized with port(s): 8080 (http)
+2019-03-08 23:36:24 INFO [restartedMain] o.a.c.h.Http11NioProtocol
+                [DirectJDKLog.java:180] Initializing ProtocolHandler ["http-nio-8080"]
+2019-03-08 23:36:24 INFO [restartedMain] o.a.c.c.StandardService
+                [DirectJDKLog.java:180] Starting service [Tomcat]
+2019-03-08 23:36:24 INFO [restartedMain] o.a.c.c.StandardEngine
+                [DirectJDKLog.java:180] Starting Servlet Engine: Apache Tomcat/8.5.34
+2019-03-08 23:36:24 INFO [localhost-startStop-1] o.a.c.c.AprLifecycleListener
+                [DirectJDKLog.java:180] The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_144\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk1.8.0_144\bin;C:\apache-maven-3.5.0-bin\bin;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\nodejs\;%M2_HOME%\bin;C:\Users\Admin\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Microsoft VS Code\bin;C:\Users\Admin\AppData\Roaming\Composer\vendor\bin;C:\Users\Admin\AppData\Roaming\npm;.]
+2019-03-08 23:36:24 INFO [localhost-startStop-1] o.a.c.c.C.[.[.[/]
+                [DirectJDKLog.java:180] Initializing Spring embedded WebApplicationContext
+2019-03-08 23:36:24 INFO [localhost-startStop-1] o.s.w.c.ContextLoader
+                [ServletWebServerApplicationContext.java:285] Root WebApplicationContext: initialization completed in 3567 ms
+2019-03-08 23:36:25 ERROR [localhost-startStop-1] o.s.b.w.e.t.TomcatStarter
+                [TomcatStarter.java:62] Error starting Tomcat context. Exception: org.springframework.beans.factory.BeanCreationException. Message: Error creating bean with name 'servletEndpointRegistrar' defined in class path resource [org/springframework/boot/actuate/autoconfigure/endpoint/web/ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.endpoint.web.ServletEndpointRegistrar]: Factory method 'servletEndpointRegistrar' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'healthEndpoint' defined in class path resource [org/springframework/boot/actuate/autoconfigure/health/HealthEndpointConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.health.HealthEndpoint]: Factory method 'healthEndpoint' threw exception; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.actuate.autoconfigure.redis.RedisHealthIndicatorConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisSettingConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+2019-03-08 23:36:25 INFO [restartedMain] o.a.c.c.StandardService
+                [DirectJDKLog.java:180] Stopping service [Tomcat]
+2019-03-08 23:36:25 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext
+                [AbstractApplicationContext.java:558] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+2019-03-08 23:36:25 INFO [restartedMain] o.s.b.a.l.ConditionEvaluationReportLoggingListener
+                [ConditionEvaluationReportLoggingListener.java:101] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-03-08 23:36:25 ERROR [restartedMain] o.s.b.SpringApplication
+                [SpringApplication.java:863] Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:155)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:544)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:780)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1277)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1265)
+	at com.enenim.scaffold.ScaffoldApplication.main(ScaffoldApplication.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:126)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:86)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:413)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:174)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:179)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:152)
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'servletEndpointRegistrar' defined in class path resource [org/springframework/boot/actuate/autoconfigure/endpoint/web/ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.endpoint.web.ServletEndpointRegistrar]: Factory method 'servletEndpointRegistrar' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'healthEndpoint' defined in class path resource [org/springframework/boot/actuate/autoconfigure/health/HealthEndpointConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.health.HealthEndpoint]: Factory method 'healthEndpoint' threw exception; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.actuate.autoconfigure.redis.RedisHealthIndicatorConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisSettingConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:590)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1247)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:226)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:214)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addServletContextInitializerBeans(ServletContextInitializerBeans.java:91)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:80)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:250)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:237)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:54)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5245)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1420)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1410)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.endpoint.web.ServletEndpointRegistrar]: Factory method 'servletEndpointRegistrar' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'healthEndpoint' defined in class path resource [org/springframework/boot/actuate/autoconfigure/health/HealthEndpointConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.health.HealthEndpoint]: Factory method 'healthEndpoint' threw exception; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.actuate.autoconfigure.redis.RedisHealthIndicatorConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisSettingConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:582)
+	... 23 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'healthEndpoint' defined in class path resource [org/springframework/boot/actuate/autoconfigure/health/HealthEndpointConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.health.HealthEndpoint]: Factory method 'healthEndpoint' threw exception; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.actuate.autoconfigure.redis.RedisHealthIndicatorConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisSettingConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:590)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1247)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1089)
+	at org.springframework.boot.actuate.endpoint.annotation.EndpointDiscoverer.createEndpointBean(EndpointDiscoverer.java:143)
+	at org.springframework.boot.actuate.endpoint.annotation.EndpointDiscoverer.createEndpointBeans(EndpointDiscoverer.java:132)
+	at org.springframework.boot.actuate.endpoint.annotation.EndpointDiscoverer.discoverEndpoints(EndpointDiscoverer.java:122)
+	at org.springframework.boot.actuate.endpoint.annotation.EndpointDiscoverer.getEndpoints(EndpointDiscoverer.java:116)
+	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration.servletEndpointRegistrar(ServletEndpointManagementContextConfiguration.java:75)
+	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$7a00f5a8.CGLIB$servletEndpointRegistrar$0(<generated>)
+	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$7a00f5a8$$FastClassBySpringCGLIB$$ab6bbd93.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:365)
+	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$7a00f5a8.servletEndpointRegistrar(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 24 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.health.HealthEndpoint]: Factory method 'healthEndpoint' threw exception; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.actuate.autoconfigure.redis.RedisHealthIndicatorConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisSettingConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:582)
+	... 48 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.actuate.autoconfigure.redis.RedisHealthIndicatorConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisSettingConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:732)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:197)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1267)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1124)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1247)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:514)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:502)
+	at org.springframework.context.support.AbstractApplicationContext.getBeansOfType(AbstractApplicationContext.java:1198)
+	at org.springframework.boot.actuate.autoconfigure.health.HealthIndicatorBeansComposite.get(HealthIndicatorBeansComposite.java:46)
+	at org.springframework.boot.actuate.autoconfigure.health.HealthEndpointConfiguration.healthEndpoint(HealthEndpointConfiguration.java:38)
+	at org.springframework.boot.actuate.autoconfigure.health.HealthEndpointConfiguration$$EnhancerBySpringCGLIB$$e06d53b0.CGLIB$healthEndpoint$0(<generated>)
+	at org.springframework.boot.actuate.autoconfigure.health.HealthEndpointConfiguration$$EnhancerBySpringCGLIB$$e06d53b0$$FastClassBySpringCGLIB$$aec71e80.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:365)
+	at org.springframework.boot.actuate.autoconfigure.health.HealthEndpointConfiguration$$EnhancerBySpringCGLIB$$e06d53b0.healthEndpoint(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 49 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisSettingConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:378)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:572)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1247)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1322)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1288)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeans(DefaultListableBeanFactory.java:1215)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1093)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:818)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:724)
+	... 82 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:172)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:124)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:237)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:211)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:175)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:839)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1083)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:583)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:372)
+	... 106 common frames omitted
+2019-03-08 23:37:43 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:50] Starting ScaffoldApplication on DESKTOP-PPDBD7C with PID 11152 (C:\Users\Admin\IdeaProjects\scaffold\target\classes started by Admin in C:\Users\Admin\IdeaProjects\scaffold)
+2019-03-08 23:37:43 DEBUG [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:53] Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+2019-03-08 23:37:43 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [SpringApplication.java:684] The following profiles are active: dev
+2019-03-08 23:37:43 INFO [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext
+                [AbstractApplicationContext.java:590] Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@34fe7732: startup date [Fri Mar 08 23:37:43 WAT 2019]; root of context hierarchy
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate
+                [RepositoryConfigurationDelegate.java:172] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate
+                [RepositoryConfigurationDelegate.java:172] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AccountProviderRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ActiveHourRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AuditRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AuthorizationRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.BranchRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.CategoryRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerAccountRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerSettingRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.CurrencyRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.DisputeMessageRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.GroupRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LogEventRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LoginRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LogWebServiceRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PasswordResetRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PaymentChannelRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PublicHolidayRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ServiceFormRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.SettingRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.StaffRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TaskRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TrackerRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TransactionRepository.
+2019-03-08 23:37:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.VendorRepository.
+2019-03-08 23:37:46 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker
+                [PostProcessorRegistrationDelegate.java:326] Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$604137df] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-08 23:37:46 INFO [restartedMain] o.s.w.s.a.s.AnnotationActionEndpointMapping
+                [AbstractAddressingEndpointMapping.java:236] Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2019-03-08 23:37:46 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker
+                [PostProcessorRegistrationDelegate.java:326] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$bba972e0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-08 23:37:47 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer
+                [TomcatWebServer.java:91] Tomcat initialized with port(s): 8080 (http)
+2019-03-08 23:37:47 INFO [restartedMain] o.a.c.h.Http11NioProtocol
+                [DirectJDKLog.java:180] Initializing ProtocolHandler ["http-nio-8080"]
+2019-03-08 23:37:47 INFO [restartedMain] o.a.c.c.StandardService
+                [DirectJDKLog.java:180] Starting service [Tomcat]
+2019-03-08 23:37:47 INFO [restartedMain] o.a.c.c.StandardEngine
+                [DirectJDKLog.java:180] Starting Servlet Engine: Apache Tomcat/8.5.34
+2019-03-08 23:37:47 INFO [localhost-startStop-1] o.a.c.c.AprLifecycleListener
+                [DirectJDKLog.java:180] The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_144\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk1.8.0_144\bin;C:\apache-maven-3.5.0-bin\bin;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\nodejs\;%M2_HOME%\bin;C:\Users\Admin\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Microsoft VS Code\bin;C:\Users\Admin\AppData\Roaming\Composer\vendor\bin;C:\Users\Admin\AppData\Roaming\npm;.]
+2019-03-08 23:37:47 INFO [localhost-startStop-1] o.a.c.c.C.[.[.[/]
+                [DirectJDKLog.java:180] Initializing Spring embedded WebApplicationContext
+2019-03-08 23:37:47 INFO [localhost-startStop-1] o.s.w.c.ContextLoader
+                [ServletWebServerApplicationContext.java:285] Root WebApplicationContext: initialization completed in 3945 ms
+2019-03-08 23:37:47 ERROR [localhost-startStop-1] o.s.b.w.e.t.TomcatStarter
+                [TomcatStarter.java:62] Error starting Tomcat context. Exception: org.springframework.beans.factory.BeanCreationException. Message: Error creating bean with name 'servletEndpointRegistrar' defined in class path resource [org/springframework/boot/actuate/autoconfigure/endpoint/web/ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.endpoint.web.ServletEndpointRegistrar]: Factory method 'servletEndpointRegistrar' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'healthEndpoint' defined in class path resource [org/springframework/boot/actuate/autoconfigure/health/HealthEndpointConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.health.HealthEndpoint]: Factory method 'healthEndpoint' threw exception; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.actuate.autoconfigure.redis.RedisHealthIndicatorConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisSettingConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+2019-03-08 23:37:47 INFO [restartedMain] o.a.c.c.StandardService
+                [DirectJDKLog.java:180] Stopping service [Tomcat]
+2019-03-08 23:37:47 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext
+                [AbstractApplicationContext.java:558] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+2019-03-08 23:37:47 INFO [restartedMain] o.s.b.a.l.ConditionEvaluationReportLoggingListener
+                [ConditionEvaluationReportLoggingListener.java:101] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-03-08 23:37:47 ERROR [restartedMain] o.s.b.SpringApplication
+                [SpringApplication.java:863] Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:155)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:544)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:780)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1277)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1265)
+	at com.enenim.scaffold.ScaffoldApplication.main(ScaffoldApplication.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:126)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:86)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:413)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:174)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:179)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:152)
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'servletEndpointRegistrar' defined in class path resource [org/springframework/boot/actuate/autoconfigure/endpoint/web/ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.endpoint.web.ServletEndpointRegistrar]: Factory method 'servletEndpointRegistrar' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'healthEndpoint' defined in class path resource [org/springframework/boot/actuate/autoconfigure/health/HealthEndpointConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.health.HealthEndpoint]: Factory method 'healthEndpoint' threw exception; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.actuate.autoconfigure.redis.RedisHealthIndicatorConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisSettingConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:590)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1247)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:226)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:214)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addServletContextInitializerBeans(ServletContextInitializerBeans.java:91)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:80)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:250)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:237)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:54)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5245)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1420)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1410)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.endpoint.web.ServletEndpointRegistrar]: Factory method 'servletEndpointRegistrar' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'healthEndpoint' defined in class path resource [org/springframework/boot/actuate/autoconfigure/health/HealthEndpointConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.health.HealthEndpoint]: Factory method 'healthEndpoint' threw exception; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.actuate.autoconfigure.redis.RedisHealthIndicatorConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisSettingConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:582)
+	... 23 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'healthEndpoint' defined in class path resource [org/springframework/boot/actuate/autoconfigure/health/HealthEndpointConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.health.HealthEndpoint]: Factory method 'healthEndpoint' threw exception; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.actuate.autoconfigure.redis.RedisHealthIndicatorConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisSettingConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:590)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1247)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1089)
+	at org.springframework.boot.actuate.endpoint.annotation.EndpointDiscoverer.createEndpointBean(EndpointDiscoverer.java:143)
+	at org.springframework.boot.actuate.endpoint.annotation.EndpointDiscoverer.createEndpointBeans(EndpointDiscoverer.java:132)
+	at org.springframework.boot.actuate.endpoint.annotation.EndpointDiscoverer.discoverEndpoints(EndpointDiscoverer.java:122)
+	at org.springframework.boot.actuate.endpoint.annotation.EndpointDiscoverer.getEndpoints(EndpointDiscoverer.java:116)
+	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration.servletEndpointRegistrar(ServletEndpointManagementContextConfiguration.java:75)
+	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$71ddcabb.CGLIB$servletEndpointRegistrar$0(<generated>)
+	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$71ddcabb$$FastClassBySpringCGLIB$$1bd8b03b.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:365)
+	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$71ddcabb.servletEndpointRegistrar(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 24 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.health.HealthEndpoint]: Factory method 'healthEndpoint' threw exception; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.actuate.autoconfigure.redis.RedisHealthIndicatorConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisSettingConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:582)
+	... 48 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.actuate.autoconfigure.redis.RedisHealthIndicatorConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisSettingConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:732)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:197)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1267)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1124)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1247)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:514)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:502)
+	at org.springframework.context.support.AbstractApplicationContext.getBeansOfType(AbstractApplicationContext.java:1198)
+	at org.springframework.boot.actuate.autoconfigure.health.HealthIndicatorBeansComposite.get(HealthIndicatorBeansComposite.java:46)
+	at org.springframework.boot.actuate.autoconfigure.health.HealthEndpointConfiguration.healthEndpoint(HealthEndpointConfiguration.java:38)
+	at org.springframework.boot.actuate.autoconfigure.health.HealthEndpointConfiguration$$EnhancerBySpringCGLIB$$d84a28c3.CGLIB$healthEndpoint$0(<generated>)
+	at org.springframework.boot.actuate.autoconfigure.health.HealthEndpointConfiguration$$EnhancerBySpringCGLIB$$d84a28c3$$FastClassBySpringCGLIB$$ea8289b2.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:365)
+	at org.springframework.boot.actuate.autoconfigure.health.HealthEndpointConfiguration$$EnhancerBySpringCGLIB$$d84a28c3.healthEndpoint(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 49 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'redisSettingConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:378)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:572)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1247)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1322)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1288)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeans(DefaultListableBeanFactory.java:1215)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1093)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:818)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:724)
+	... 82 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'redis.setting.host' in value "${redis.setting.host}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:172)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:124)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:237)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:211)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:175)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:839)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1083)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:583)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:372)
+	... 106 common frames omitted
+2019-03-08 23:39:43 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:50] Starting ScaffoldApplication on DESKTOP-PPDBD7C with PID 8292 (C:\Users\Admin\IdeaProjects\scaffold\target\classes started by Admin in C:\Users\Admin\IdeaProjects\scaffold)
+2019-03-08 23:39:43 DEBUG [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:53] Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+2019-03-08 23:39:43 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [SpringApplication.java:684] The following profiles are active: dev
+2019-03-08 23:39:43 INFO [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext
+                [AbstractApplicationContext.java:590] Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@36d8dcde: startup date [Fri Mar 08 23:39:43 WAT 2019]; root of context hierarchy
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate
+                [RepositoryConfigurationDelegate.java:172] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate
+                [RepositoryConfigurationDelegate.java:172] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AccountProviderRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ActiveHourRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AuditRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AuthorizationRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.BranchRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.CategoryRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerAccountRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerSettingRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.CurrencyRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.DisputeMessageRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.GroupRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LogEventRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LoginRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LogWebServiceRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PasswordResetRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PaymentChannelRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PublicHolidayRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ServiceFormRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.SettingRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.StaffRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TaskRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TrackerRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TransactionRepository.
+2019-03-08 23:39:45 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.VendorRepository.
+2019-03-08 23:39:46 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker
+                [PostProcessorRegistrationDelegate.java:326] Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$886da383] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-08 23:39:46 INFO [restartedMain] o.s.w.s.a.s.AnnotationActionEndpointMapping
+                [AbstractAddressingEndpointMapping.java:236] Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2019-03-08 23:39:46 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker
+                [PostProcessorRegistrationDelegate.java:326] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e3d5de84] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-08 23:39:47 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer
+                [TomcatWebServer.java:91] Tomcat initialized with port(s): 8080 (http)
+2019-03-08 23:39:47 INFO [restartedMain] o.a.c.h.Http11NioProtocol
+                [DirectJDKLog.java:180] Initializing ProtocolHandler ["http-nio-8080"]
+2019-03-08 23:39:47 INFO [restartedMain] o.a.c.c.StandardService
+                [DirectJDKLog.java:180] Starting service [Tomcat]
+2019-03-08 23:39:47 INFO [restartedMain] o.a.c.c.StandardEngine
+                [DirectJDKLog.java:180] Starting Servlet Engine: Apache Tomcat/8.5.34
+2019-03-08 23:39:47 INFO [localhost-startStop-1] o.a.c.c.AprLifecycleListener
+                [DirectJDKLog.java:180] The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_144\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk1.8.0_144\bin;C:\apache-maven-3.5.0-bin\bin;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\nodejs\;%M2_HOME%\bin;C:\Users\Admin\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Microsoft VS Code\bin;C:\Users\Admin\AppData\Roaming\Composer\vendor\bin;C:\Users\Admin\AppData\Roaming\npm;.]
+2019-03-08 23:39:47 INFO [localhost-startStop-1] o.a.c.c.C.[.[.[/]
+                [DirectJDKLog.java:180] Initializing Spring embedded WebApplicationContext
+2019-03-08 23:39:47 INFO [localhost-startStop-1] o.s.w.c.ContextLoader
+                [ServletWebServerApplicationContext.java:285] Root WebApplicationContext: initialization completed in 3493 ms
+2019-03-08 23:39:48 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-03-08 23:39:48 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-03-08 23:39:48 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'sessionRepositoryFilter' to: [/*]
+2019-03-08 23:39:48 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-03-08 23:39:48 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-03-08 23:39:48 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'requestContextFilter' to: [/*]
+2019-03-08 23:39:48 INFO [localhost-startStop-1] o.s.b.w.s.DelegatingFilterProxyRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-03-08 23:39:48 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'httpTraceFilter' to: [/*]
+2019-03-08 23:39:48 INFO [localhost-startStop-1] o.s.b.w.s.ServletRegistrationBean
+                [ServletRegistrationBean.java:187] Servlet dispatcherServlet mapped to [/]
+2019-03-08 23:39:48 INFO [localhost-startStop-1] o.s.b.w.s.ServletRegistrationBean
+                [ServletRegistrationBean.java:187] Servlet messageDispatcherServlet mapped to [/services/*]
+2019-03-08 23:39:48 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean
+                [LocalContainerEntityManagerFactoryBean.java:361] Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-03-08 23:39:48 INFO [restartedMain] o.h.j.i.u.LogHelper
+                [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-03-08 23:39:48 INFO [restartedMain] o.h.Version
+                [Version.java:45] HHH000412: Hibernate Core {5.2.17.Final}
+2019-03-08 23:39:48 INFO [restartedMain] o.h.c.Environment
+                [Environment.java:213] HHH000206: hibernate.properties not found
+2019-03-08 23:39:48 INFO [restartedMain] o.h.a.c.Version
+                [JavaReflectionManager.java:66] HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-03-08 23:39:48 INFO [restartedMain] c.z.h.HikariDataSource
+                [HikariDataSource.java:110] HikariPool-1 - Starting...
+2019-03-08 23:39:49 INFO [restartedMain] c.z.h.HikariDataSource
+                [HikariDataSource.java:123] HikariPool-1 - Start completed.
+2019-03-08 23:39:49 INFO [restartedMain] o.h.d.Dialect
+                [Dialect.java:157] HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2019-03-08 23:39:50 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean
+                [AbstractEntityManagerFactoryBean.java:415] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-03-08 23:39:51 INFO [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator
+                [QueryTranslatorFactoryInitiator.java:47] HHH000397: Using ASTQueryTranslatorFactory
+2019-03-08 23:39:51 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext
+                [AbstractApplicationContext.java:558] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mvcConfig' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\config\MvcConfig.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authenticationInterceptor' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\interceptor\AuthenticationInterceptor.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'tokenAuthenticationService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\service\TokenAuthenticationService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'loginCacheService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\service\cache\LoginCacheService.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'settingCacheCoreService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\util\setting\SettingCacheCoreService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'settingCacheService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\service\cache\SettingCacheService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.data.redis.core.RedisTemplate<java.lang.String, com.enenim.scaffold.model.cache.SettingCache>' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2019-03-08 23:39:51 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean
+                [AbstractEntityManagerFactoryBean.java:597] Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-03-08 23:39:51 INFO [restartedMain] c.z.h.HikariDataSource
+                [HikariDataSource.java:381] HikariPool-1 - Shutdown initiated...
+2019-03-08 23:39:51 INFO [restartedMain] c.z.h.HikariDataSource
+                [HikariDataSource.java:383] HikariPool-1 - Shutdown completed.
+2019-03-08 23:39:51 INFO [restartedMain] o.a.c.c.StandardService
+                [DirectJDKLog.java:180] Stopping service [Tomcat]
+2019-03-08 23:39:51 INFO [restartedMain] o.s.b.a.l.ConditionEvaluationReportLoggingListener
+                [ConditionEvaluationReportLoggingListener.java:101] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-03-08 23:39:51 ERROR [restartedMain] o.s.b.SpringApplication
+                [SpringApplication.java:863] Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mvcConfig' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\config\MvcConfig.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authenticationInterceptor' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\interceptor\AuthenticationInterceptor.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'tokenAuthenticationService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\service\TokenAuthenticationService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'loginCacheService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\service\cache\LoginCacheService.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'settingCacheCoreService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\util\setting\SettingCacheCoreService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'settingCacheService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\service\cache\SettingCacheService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.data.redis.core.RedisTemplate<java.lang.String, com.enenim.scaffold.model.cache.SettingCache>' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:732)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:197)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1267)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1124)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:759)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:780)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1277)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1265)
+	at com.enenim.scaffold.ScaffoldApplication.main(ScaffoldApplication.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authenticationInterceptor' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\interceptor\AuthenticationInterceptor.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'tokenAuthenticationService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\service\TokenAuthenticationService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'loginCacheService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\service\cache\LoginCacheService.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'settingCacheCoreService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\util\setting\SettingCacheCoreService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'settingCacheService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\service\cache\SettingCacheService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.data.redis.core.RedisTemplate<java.lang.String, com.enenim.scaffold.model.cache.SettingCache>' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:732)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:197)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1267)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1124)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1135)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:818)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:724)
+	... 24 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'tokenAuthenticationService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\service\TokenAuthenticationService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'loginCacheService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\service\cache\LoginCacheService.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'settingCacheCoreService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\util\setting\SettingCacheCoreService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'settingCacheService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\service\cache\SettingCacheService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.data.redis.core.RedisTemplate<java.lang.String, com.enenim.scaffold.model.cache.SettingCache>' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:732)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:197)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1267)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1124)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1135)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:818)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:724)
+	... 38 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'loginCacheService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\service\cache\LoginCacheService.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'settingCacheCoreService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\util\setting\SettingCacheCoreService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'settingCacheService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\service\cache\SettingCacheService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.data.redis.core.RedisTemplate<java.lang.String, com.enenim.scaffold.model.cache.SettingCache>' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:732)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:197)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1267)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1124)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1135)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:818)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:724)
+	... 52 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'settingCacheCoreService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\util\setting\SettingCacheCoreService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'settingCacheService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\service\cache\SettingCacheService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.data.redis.core.RedisTemplate<java.lang.String, com.enenim.scaffold.model.cache.SettingCache>' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:732)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:197)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1267)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1124)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1135)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:818)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:724)
+	... 66 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'settingCacheService' defined in file [C:\Users\Admin\IdeaProjects\scaffold\target\classes\com\enenim\scaffold\service\cache\SettingCacheService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.data.redis.core.RedisTemplate<java.lang.String, com.enenim.scaffold.model.cache.SettingCache>' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:732)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:197)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1267)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1124)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1135)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:818)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:724)
+	... 80 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.data.redis.core.RedisTemplate<java.lang.String, com.enenim.scaffold.model.cache.SettingCache>' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1506)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1101)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:818)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:724)
+	... 94 common frames omitted

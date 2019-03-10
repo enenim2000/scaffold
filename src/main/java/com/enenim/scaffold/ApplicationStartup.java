@@ -24,11 +24,11 @@ public class ApplicationStartup implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("\n Password: " + bCryptPasswordEncoder.encode("Password@123"));
         System.out.println("\n About to load database settings into memory \n");
-        //SettingConfigUtil.updateSettings( settingService.getSettings() );
+        //SettingConfigUtil.loadDatabaseSettings( settingService.getSystemSettings() );
         System.out.println("\n Loaded database settings into memory \n");
 
         System.out.println("\n About to sync database settings with configuration settings \n");
-        //SettingConfigUtil.loadSettings();
+        //SettingConfigUtil.loadSystemSettings();
         System.out.println("\n Finished syncing database settings with configuration settings \n");
 
         AESUtil.testEncryption();
