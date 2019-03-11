@@ -18,7 +18,7 @@ public class SettingService{
     }
 
     public List<Setting> getSettings() {
-        //return SettingConfigUtil.
+        return settingRepository.findAll();
     }
 
     public Setting getSetting(String key) {

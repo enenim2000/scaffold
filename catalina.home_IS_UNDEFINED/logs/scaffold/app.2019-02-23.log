@@ -111,7 +111,7 @@
 2019-02-23 03:20:53 INFO [restartedMain] o.h.d.Dialect
                 [Dialect.java:157] HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 2019-02-23 03:20:53 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext
-                [AbstractApplicationContext.java:558] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.MappingException: Foreign key (FK8nq201w5tou1kfyvk7sy8108j:transaction_service_form [service_form_id])) must have same number of columns as the referenced primary key (transaction_service_form [service_form_id,transaction_id])
+                [AbstractApplicationContext.java:558] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.MappingException: Foreign settingKey (FK8nq201w5tou1kfyvk7sy8108j:transaction_service_form [service_form_id])) must have same number of columns as the referenced primary settingKey (transaction_service_form [service_form_id,transaction_id])
 2019-02-23 03:20:53 INFO [restartedMain] c.z.h.HikariDataSource
                 [HikariDataSource.java:381] HikariPool-1 - Shutdown initiated...
 2019-02-23 03:20:53 INFO [restartedMain] c.z.h.HikariDataSource
@@ -124,7 +124,7 @@
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
 2019-02-23 03:20:53 ERROR [restartedMain] o.s.b.SpringApplication
                 [SpringApplication.java:863] Application run failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.MappingException: Foreign key (FK8nq201w5tou1kfyvk7sy8108j:transaction_service_form [service_form_id])) must have same number of columns as the referenced primary key (transaction_service_form [service_form_id,transaction_id])
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.MappingException: Foreign settingKey (FK8nq201w5tou1kfyvk7sy8108j:transaction_service_form [service_form_id])) must have same number of columns as the referenced primary settingKey (transaction_service_form [service_form_id,transaction_id])
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1699)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:573)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
@@ -147,7 +147,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
-Caused by: org.hibernate.MappingException: Foreign key (FK8nq201w5tou1kfyvk7sy8108j:transaction_service_form [service_form_id])) must have same number of columns as the referenced primary key (transaction_service_form [service_form_id,transaction_id])
+Caused by: org.hibernate.MappingException: Foreign settingKey (FK8nq201w5tou1kfyvk7sy8108j:transaction_service_form [service_form_id])) must have same number of columns as the referenced primary settingKey (transaction_service_form [service_form_id,transaction_id])
 	at org.hibernate.mapping.ForeignKey.alignColumns(ForeignKey.java:148)
 	at org.hibernate.mapping.ForeignKey.alignColumns(ForeignKey.java:130)
 	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.secondPassCompileForeignKeys(InFlightMetadataCollectorImpl.java:1877)
@@ -277,7 +277,7 @@ Caused by: org.hibernate.MappingException: Foreign key (FK8nq201w5tou1kfyvk7sy81
 2019-02-23 03:23:50 INFO [restartedMain] o.h.d.Dialect
                 [Dialect.java:157] HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 2019-02-23 03:23:50 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext
-                [AbstractApplicationContext.java:558] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.MappingException: Foreign key (FK8nq201w5tou1kfyvk7sy8108j:transaction_service_form [service_form_id])) must have same number of columns as the referenced primary key (transaction_service_form [service_form_id,transaction_id])
+                [AbstractApplicationContext.java:558] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.MappingException: Foreign settingKey (FK8nq201w5tou1kfyvk7sy8108j:transaction_service_form [service_form_id])) must have same number of columns as the referenced primary settingKey (transaction_service_form [service_form_id,transaction_id])
 2019-02-23 03:23:50 INFO [restartedMain] c.z.h.HikariDataSource
                 [HikariDataSource.java:381] HikariPool-1 - Shutdown initiated...
 2019-02-23 03:23:50 INFO [restartedMain] c.z.h.HikariDataSource
@@ -290,7 +290,7 @@ Caused by: org.hibernate.MappingException: Foreign key (FK8nq201w5tou1kfyvk7sy81
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
 2019-02-23 03:23:50 ERROR [restartedMain] o.s.b.SpringApplication
                 [SpringApplication.java:863] Application run failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.MappingException: Foreign key (FK8nq201w5tou1kfyvk7sy8108j:transaction_service_form [service_form_id])) must have same number of columns as the referenced primary key (transaction_service_form [service_form_id,transaction_id])
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.MappingException: Foreign settingKey (FK8nq201w5tou1kfyvk7sy8108j:transaction_service_form [service_form_id])) must have same number of columns as the referenced primary settingKey (transaction_service_form [service_form_id,transaction_id])
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1699)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:573)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
@@ -313,7 +313,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
-Caused by: org.hibernate.MappingException: Foreign key (FK8nq201w5tou1kfyvk7sy8108j:transaction_service_form [service_form_id])) must have same number of columns as the referenced primary key (transaction_service_form [service_form_id,transaction_id])
+Caused by: org.hibernate.MappingException: Foreign settingKey (FK8nq201w5tou1kfyvk7sy8108j:transaction_service_form [service_form_id])) must have same number of columns as the referenced primary settingKey (transaction_service_form [service_form_id,transaction_id])
 	at org.hibernate.mapping.ForeignKey.alignColumns(ForeignKey.java:148)
 	at org.hibernate.mapping.ForeignKey.alignColumns(ForeignKey.java:130)
 	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.secondPassCompileForeignKeys(InFlightMetadataCollectorImpl.java:1877)
@@ -525,7 +525,7 @@ Caused by: org.hibernate.MappingException: Foreign key (FK8nq201w5tou1kfyvk7sy81
 2019-02-23 03:25:33 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
                 [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.model.cache.SettingCache>> com.enenim.scaffold.controller.SettingController.getSettings()
 2019-02-23 03:25:33 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
-                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings/{key}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.cache.SettingCache>> com.enenim.scaffold.controller.SettingController.getSetting(java.lang.String)
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings/{settingKey}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.cache.SettingCache>> com.enenim.scaffold.controller.SettingController.getSetting(java.lang.String)
 2019-02-23 03:25:33 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
                 [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.cache.SettingCache>> com.enenim.scaffold.controller.SettingController.saveSetting(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.SettingRequest>)
 2019-02-23 03:25:33 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
@@ -834,7 +834,7 @@ Using generated security password: c7f48fcd-c4e7-4fcf-8249-adade2122155
 2019-02-23 16:14:10 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
                 [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/authorizations],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Group>> com.enenim.scaffold.controller.GroupController.updatePermissionAuthorizations(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.PermissionRequest>)
 2019-02-23 16:14:10 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
-                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings/{key}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.cache.SettingCache>> com.enenim.scaffold.controller.SettingController.getSetting(java.lang.String)
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings/{settingKey}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.cache.SettingCache>> com.enenim.scaffold.controller.SettingController.getSetting(java.lang.String)
 2019-02-23 16:14:10 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
                 [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.cache.SettingCache>> com.enenim.scaffold.controller.SettingController.saveSetting(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.SettingRequest>)
 2019-02-23 16:14:10 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping

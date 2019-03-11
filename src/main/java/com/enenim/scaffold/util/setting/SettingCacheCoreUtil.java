@@ -97,7 +97,7 @@ public class SettingCacheCoreUtil {
     }
 
     public static SettingCache sync(Setting setting){
-        SettingCache settingCache = getSettingMap().get(setting.getKey());
+        SettingCache settingCache = getSettingMap().get(setting.getSettingKey());
         settingCache.setValue(setting.getValue());
         return settingCache;
     }
@@ -105,7 +105,7 @@ public class SettingCacheCoreUtil {
     public static List<SettingCache> sync(List<Setting> settings){
         List<SettingCache> settingCaches = new ArrayList<>();
         for(Setting setting : settings){
-            SettingCache settingCache = getSettingMap().get(setting.getKey());
+            SettingCache settingCache = getSettingMap().get(setting.getSettingKey());
             settingCache.setValue(setting.getValue());
             settingCaches.add(settingCache);
         }

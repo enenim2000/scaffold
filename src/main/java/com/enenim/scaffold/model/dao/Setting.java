@@ -24,11 +24,10 @@ public class Setting extends BaseModel{
     @NotNull
     @Column(length = 50, name = "_key", unique = true)
     @JsonProperty("setting_key")
-    private String key;
+    private String settingKey;
 
     @NotNull
     @Column(name = "_value")
-    @JsonProperty("setting_value")
     private String value;
 
 }
