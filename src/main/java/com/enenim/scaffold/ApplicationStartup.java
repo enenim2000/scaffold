@@ -22,11 +22,11 @@ public class ApplicationStartup implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("\n About to load database settings into memory \n");
-        //SettingConfigUtil.loadDatabaseSettings( settingService.getSettings() );
+        SettingConfigUtil.loadDatabaseSettings( settingService.getSettings() );
         System.out.println("\n Loaded database settings into memory \n");
 
         System.out.println("\n About to sync database settings with configuration settings \n");
-        //SettingConfigUtil.loadSystemSettings();
+        SettingConfigUtil.loadSystemSettings();
         System.out.println("\n Finished syncing database settings with configuration settings \n");
 
         System.out.println("settings = " + JsonConverter.getJsonRecursive(SettingConfigUtil.getSystemSettings()));
