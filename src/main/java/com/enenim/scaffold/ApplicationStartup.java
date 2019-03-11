@@ -2,6 +2,7 @@ package com.enenim.scaffold;
 
 import com.enenim.scaffold.service.dao.SettingService;
 import com.enenim.scaffold.util.AESUtil;
+import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.SettingConfigUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -32,6 +33,9 @@ public class ApplicationStartup implements ApplicationRunner {
         SettingConfigUtil.loadSystemSettings();
         System.out.println("\n Finished syncing database settings with configuration settings \n");
 
+        System.out.println("settings = " + JsonConverter.getJsonRecursive(SettingConfigUtil.getSystemSettings()));
+
         AESUtil.testEncryption();
+
     }
 }

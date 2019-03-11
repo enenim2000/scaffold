@@ -9,7 +9,6 @@ import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.exception.UnAuthorizedException;
 import com.enenim.scaffold.model.cache.LoginCache;
-import com.enenim.scaffold.model.cache.SettingCache;
 import com.enenim.scaffold.model.dao.Login;
 import com.enenim.scaffold.model.dao.PaymentChannel;
 import com.enenim.scaffold.model.dao.Staff;
@@ -21,6 +20,7 @@ import com.enenim.scaffold.service.dao.PaymentChannelService;
 import com.enenim.scaffold.service.dao.TaskService;
 import com.enenim.scaffold.shared.Channel;
 import com.enenim.scaffold.util.RequestUtil;
+import com.enenim.scaffold.util.SystemSetting;
 import com.enenim.scaffold.util.message.SpringMessage;
 import com.enenim.scaffold.util.setting.SettingCacheCoreService;
 import lombok.Data;
@@ -130,9 +130,9 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         if(StringUtils.isEmpty(loginToken)) throw new UnAuthorizedException("invalid_token");
 
-        SettingCache settingCache = settingCacheCoreService.getCoreSetting("idle_timeout");
+        SystemSetting systemSetting = settingCacheCoreService.getSystemSetting("idle_timeout");
 
-        int minIdleTimeout = Integer.valueOf(settingCache.getValue());
+        int minIdleTimeout = Integer.valueOf(systemSetting.getDetail().getValue());
         long milIdleTimeout = minIdleTimeout * 60 * 1000;
 
         if(loginToken.hasExpired(milIdleTimeout))throw new ScaffoldException("session_expired");

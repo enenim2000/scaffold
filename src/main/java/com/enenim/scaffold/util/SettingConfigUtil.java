@@ -24,6 +24,7 @@ public class SettingConfigUtil {
     private static final HashMap<String, String> SECURITY_CENTER_CONFIG = new HashMap<String, String>(){{
         put("min_pwd_length", "{\"type\":\"text\",\"label\": \"Minimum password length\", \"placeholder\": \"Enter minimum password length\", \"value\":\"eight\", \"maxlength\":\"\", \"minlength\":\"\", \"options\": [ { \"settingKey\": \"eight\", \"value\": \"8\" }, { \"settingKey\": \"ten\", \"value\": \"10\" }, { \"settingKey\": \"fifteen\", \"value\": \"15\" } ]}");
         put("enable_multiple_login", "{\"type\":\"select\",\"label\": \"Allow multiple login sessions\", \"placeholder\": \"Choose an option\", \"value\":\"yes\", \"maxlength\":\"\", \"minlength\":\"\", \"options\":[{ \"settingKey\": \"yes\", \"value\": \"Yes\" }, { \"settingKey\": \"no\", \"value\": \"No\" } ]}");
+        put("idle_timeout", "{\"type\":\"number\",\"label\": \"Idle Timeout (minutes)\", \"placeholder\": \"Enter idle timeout\", \"value\":\"30\", \"maxlength\":\"\", \"minlength\":\"\", \"options\":null}");
     }};
 
     private static final HashMap<String, String> LANGUAGE_SUPPORT_CONFIG = new HashMap<String, String>(){{
