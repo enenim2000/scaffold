@@ -15,3 +15,76 @@ Map<VendorId, List<Service>>
 Map<Vendorcategorykey, Map<VendorId,Vendor>>
 Map<Servicecategorykey, Map<ServiceId, Service>>
 Map<VendorId, Map<ServiceId, ""Service>>
+
+
+<<<Support>>>
+Ticket{consumer_id, reference, subject, last_comment, last_comment_user_type, last_comment_user_id,
+history,status
+}
+
+As each user comment on the transaction, add {user_id,user_type,service_id,comment, date} to history json list []
+
+*Note => history=>[{user_id,user_type,comment, date}] i.e a json list
+*Note => status [open, closed]
+
+Raise dispute/ticket
+TicketRequest{reference, consumer_id, subject, comment}
+Comment on above ticket TicketCommentRequest{service_id, user_id,user_type,comment, date} *Service id is nullable*
+
+/consumers/{id}/tickets
+getTicketsByConsumerId(){}
+
+/vendors/{id}/tickets
+getTicketsByVendorId(){}
+
+transactions/{reference}/tickets
+getTicketsByReference(){}
+
+
+
+<<<Notification>>>
+This should be part of consumer settings
+
+
+<<<Feedback>>>
+Feedback{reference, consumer_id, subject, [Review{service_id, rating, comment}]}
+
+FeedbackRequest{
+    reference,
+    subject,
+    consumer_id
+    reviews:[
+        {
+         service_id,
+         rating,
+         comment
+         }
+    ]
+}
+
+The last column store a list of json object
+
+getFeedbackByConsumer
+getFeedbackByVendor
+getFeedbackReference
+
+
+
+<<<ConsumerProfile>>>
+ConsumerProfile{phone_number,bvn, firstname, lastname,gender,youtube_url,facebook_url, twitter_url, instagram_url,logo_url,status,[secret_questions]}
+consumers/{id}/profiles
+
+get consumer by id;
+typecast the json string of ConsumerProfile into object
+use the info in ConsumerProfile to update consumer,
+update the consumer photo
+Hence no need for ConsumerProfileController just leverage the ConsumerController
+
+Use FormParam due to logo, hence ConsumerProfile will come as a json string
+*Note status(enabled, disabled, or block, deactivated)
+
+
+
+
+
+
