@@ -22,18 +22,18 @@ public class SettingConfigUtil {
     }};
 
     private static final HashMap<String, String> SECURITY_CENTER_CONFIG = new HashMap<String, String>(){{
-        put("min_pwd_length", "{\"type\":\"text\",\"label\": \"Minimum password length\", \"placeholder\": \"Enter minimum password length\", \"value\":\"eight\", \"maxlength\":\"\", \"minlength\":\"\", \"options\": [ { \"settingKey\": \"eight\", \"value\": \"8\" }, { \"settingKey\": \"ten\", \"value\": \"10\" }, { \"settingKey\": \"fifteen\", \"value\": \"15\" } ]}");
-        put("enable_multiple_login", "{\"type\":\"select\",\"label\": \"Allow multiple login sessions\", \"placeholder\": \"Choose an option\", \"value\":\"yes\", \"maxlength\":\"\", \"minlength\":\"\", \"options\":[{ \"settingKey\": \"yes\", \"value\": \"Yes\" }, { \"settingKey\": \"no\", \"value\": \"No\" } ]}");
+        put("min_pwd_length", "{\"type\":\"text\",\"label\": \"Minimum password length\", \"placeholder\": \"Enter minimum password length\", \"value\":\"eight\", \"maxlength\":\"\", \"minlength\":\"\", \"options\": [ { \"key\": \"eight\", \"value\": \"8\" }, { \"key\": \"ten\", \"value\": \"10\" }, { \"key\": \"fifteen\", \"value\": \"15\" } ]}");
+        put("enable_multiple_login", "{\"type\":\"select\",\"label\": \"Allow multiple login sessions\", \"placeholder\": \"Choose an option\", \"value\":\"yes\", \"maxlength\":\"\", \"minlength\":\"\", \"options\":[{ \"key\": \"yes\", \"value\": \"Yes\" }, { \"key\": \"no\", \"value\": \"No\" } ]}");
         put("idle_timeout", "{\"type\":\"number\",\"label\": \"Idle Timeout (minutes)\", \"placeholder\": \"Enter idle timeout\", \"value\":\"30\", \"maxlength\":\"\", \"minlength\":\"\", \"options\":null}");
     }};
 
     private static final HashMap<String, String> LANGUAGE_SUPPORT_CONFIG = new HashMap<String, String>(){{
-        put("default_system_lang","{\"type\":\"select\",\"label\": \"Default language\", \"placeholder\": \"Choose default language\", \"value\":\"en\", \"maxlength\":\"\", \"minlength\":\"\", \"options\":[{ \"settingKey\": \"en\", \"value\": \"English\" }, { \"settingKey\": \"fr\", \"value\": \"French\" }, { \"settingKey\": \"es\", \"value\": \"Spanish\" } ]}");
-        put("enable_lang_preference","{\"type\":\"select\",\"label\": \"Enable language preference\", \"placeholder\": \"Language preference\", \"value\":\"yes\", \"maxlength\":\"\", \"minlength\":\"\", \"options\":[{ \"settingKey\": \"yes\", \"value\": \"Yes\" }, { \"settingKey\": \"no\", \"value\": \"No\" } ]}");
+        put("default_system_lang","{\"type\":\"select\",\"label\": \"Default language\", \"placeholder\": \"Choose default language\", \"value\":\"en\", \"maxlength\":\"\", \"minlength\":\"\", \"options\":[{ \"key\": \"en\", \"value\": \"English\" }, { \"key\": \"fr\", \"value\": \"French\" }, { \"key\": \"es\", \"value\": \"Spanish\" } ]}");
+        put("enable_lang_preference","{\"type\":\"select\",\"label\": \"Enable language preference\", \"placeholder\": \"Language preference\", \"value\":\"yes\", \"maxlength\":\"\", \"minlength\":\"\", \"options\":[{ \"key\": \"yes\", \"value\": \"Yes\" }, { \"key\": \"no\", \"value\": \"No\" } ]}");
     }};
 
     private static final HashMap<String, String> SETTLEMENT_PREFERENCE_CONFIG = new HashMap<String, String>(){{
-        put("min_settlement_duration", "{\"type\":\"select\",\"label\": \"Minimum Duration in hour(s) before settlement\", \"placeholder\": \"Select preferred settlement duration\", \"value\":\"yes\", \"maxlength\":\"2\", \"minlength\":\"1\", \"options\":[{ \"settingKey\": \"1\", \"value\": \"1 hour\" }, { \"settingKey\": \"24\", \"value\": \"24 hours\" }, { \"settingKey\": \"48\", \"value\": \"48 hours\" } ]}");
+        put("min_settlement_duration", "{\"type\":\"select\",\"label\": \"Minimum Duration in hour(s) before settlement\", \"placeholder\": \"Select preferred settlement duration\", \"value\":\"yes\", \"maxlength\":\"2\", \"minlength\":\"1\", \"options\":[{ \"key\": \"1\", \"value\": \"1 hour\" }, { \"key\": \"24\", \"value\": \"24 hours\" }, { \"key\": \"48\", \"value\": \"48 hours\" } ]}");
     }};
 
     private static String[] CATEGORY_KEYS = {"contact_info_config", "action_center_config", "security_center_config", "language_support_config", "settlement_preference_config"};
@@ -95,6 +95,7 @@ public class SettingConfigUtil {
                 SystemSetting systemSetting = new SystemSetting();
                 systemSetting.setSettingKey(settingEntry.getKey());
                 systemSetting.setCategoryKey(categoryEntry.getKey());
+                System.out.println(" settingEntry.getValue() = " + settingEntry.getValue());
                 systemSetting.setDetail(JsonConverter.getObject(settingEntry.getValue(), SystemSettingDetail.class));
                 systemSettings.put(settingEntry.getKey(), systemSetting);
             }
@@ -127,6 +128,7 @@ public class SettingConfigUtil {
 
     public static void loadSystemSettings(){
         HashMap<String, SettingMapCategory> settingMapCategories = getSettingAsMap();
+        System.out.println("settingMapCategories = " + JsonConverter.getJsonRecursive( settingMapCategories ));
         for(HashMap.Entry<String, SettingMapCategory> categoryEntry : settingMapCategories.entrySet()){
             for(HashMap.Entry<String, SystemSetting> settingEntry : categoryEntry.getValue().getSettings().entrySet()){
                 if(DATABASE_SETTINGS.containsKey(settingEntry.getKey())){
@@ -134,6 +136,9 @@ public class SettingConfigUtil {
                     settingEntry.getValue().getDetail().setValue( setting.getValue() );
                 }
                 MEMORY_SETTINGS_BY_KEY.put(settingEntry.getKey(), settingEntry.getValue());
+                if(StringUtils.isEmpty(MEMORY_SETTINGS_BY_CATEGORY.get(categoryEntry.getKey()))){
+                    MEMORY_SETTINGS_BY_CATEGORY.put(categoryEntry.getKey(), settingMapCategories.get(categoryEntry.getKey()));
+                }
                 MEMORY_SETTINGS_BY_CATEGORY.get(categoryEntry.getKey()).getSettings().put(settingEntry.getKey(), settingEntry.getValue());
             }
         }
@@ -148,8 +153,8 @@ public class SettingConfigUtil {
     }
 
     /**
-     * This method returns all settings arranged per setting settingKey
-     * @return settings by settingKey
+     * This method returns all settings arranged per setting key
+     * @return settings by key
      */
     public static HashMap<String, SystemSetting> getSystemSettings() {
         return MEMORY_SETTINGS_BY_KEY;

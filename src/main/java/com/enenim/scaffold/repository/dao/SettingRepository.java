@@ -15,7 +15,7 @@ public interface SettingRepository extends BaseRepository<Setting, Long>{
     @Query("update Setting s set s.value = ?2 where s.settingKey = ?1")
     Setting updateSystemSetting(String settingKey, String value);*/
 
-    @Query("select s from Setting s where s.key = ?1")
+    @Query("select s from Setting s where s.settingKey = ?1")
     Setting findSettingByKey(String key);
 
 }

@@ -7,24 +7,20 @@ import com.enenim.scaffold.util.SettingConfigUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ApplicationStartup implements ApplicationRunner {
 
     private final SettingService settingService;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public ApplicationStartup(SettingService settingService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public ApplicationStartup(SettingService settingService) {
         this.settingService = settingService;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        //System.out.println("\n Password: " + bCryptPasswordEncoder.encode("Password@123"));
         System.out.println("\n About to load database settings into memory \n");
         SettingConfigUtil.loadDatabaseSettings( settingService.getSettings() );
         System.out.println("\n Loaded database settings into memory \n");

@@ -14,6 +14,7 @@ public class SettingListCategory {
     public SettingListCategory(){}
 
     public SettingListCategory(String key, String description){
-
+        this.key = key;
+        this.description = description;
     }
 }

@@ -13,6 +13,7 @@ public class SettingMapCategory {
     public SettingMapCategory(){}
 
     public SettingMapCategory(String key, String description){
-
+        this.key = key;
+        this.description = description;
     }
 }
