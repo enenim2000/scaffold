@@ -1,6 +1,7 @@
 package com.enenim.scaffold.model.dao;
 
 import com.enenim.scaffold.enums.EnabledStatus;
+import com.enenim.scaffold.enums.Gender;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -45,6 +46,22 @@ public class Consumer extends BaseModel {
     @SerializedName("date_of_birth")
     @Column(length = 10)
     private String dateOfBirth;
+
+    private String bvn;
+
+    private Gender gender;
+
+    @JsonProperty("youtube_url")
+    private String youtubeUrl;
+
+    @JsonProperty("facebook_url")
+    private String facebookUrl;
+
+    @JsonProperty("twitter_url")
+    private String twitterUrl;
+
+    @JsonProperty("logo_url")
+    private String logoUrl;
 
     private VerifyStatus verified = VerifyStatus.NOT_VERIFIED;
 
