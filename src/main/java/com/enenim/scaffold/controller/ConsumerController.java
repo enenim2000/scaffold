@@ -1,8 +1,10 @@
 package com.enenim.scaffold.controller;
 
 import com.enenim.scaffold.annotation.*;
+import com.enenim.scaffold.constant.AssetBaseConstant;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.constant.RouteConstant;
+import com.enenim.scaffold.dto.request.ConsumerProfileRequest;
 import com.enenim.scaffold.dto.request.ConsumerRequest;
 import com.enenim.scaffold.dto.request.Request;
 import com.enenim.scaffold.dto.request.SignUpVerifyRequest;
@@ -12,19 +14,21 @@ import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.model.dao.Consumer;
 import com.enenim.scaffold.model.dao.Login;
+import com.enenim.scaffold.service.FileStorageService;
 import com.enenim.scaffold.service.MailSenderService;
 import com.enenim.scaffold.service.cache.SharedExpireCacheService;
 import com.enenim.scaffold.service.dao.ConsumerService;
 import com.enenim.scaffold.service.dao.LoginService;
 import com.enenim.scaffold.util.JsonConverter;
+import com.enenim.scaffold.util.ObjectMapperUtil;
 import com.enenim.scaffold.util.RequestUtil;
 import com.enenim.scaffold.util.message.CommonMessage;
+import com.enenim.scaffold.util.message.SpringMessage;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 
@@ -35,13 +39,15 @@ public class ConsumerController {
     private final ConsumerService consumerService;
     private final LoginService loginService;
     private final MailSenderService mailSenderService;
+    private final FileStorageService fileStorageService;
     private final SharedExpireCacheService sharedExpireCacheService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public ConsumerController(ConsumerService consumerService, LoginService loginService, MailSenderService mailSenderService, SharedExpireCacheService sharedExpireCacheService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public ConsumerController(ConsumerService consumerService, LoginService loginService, MailSenderService mailSenderService, FileStorageService fileStorageService, SharedExpireCacheService sharedExpireCacheService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.consumerService = consumerService;
         this.loginService = loginService;
         this.mailSenderService = mailSenderService;
+        this.fileStorageService = fileStorageService;
         this.sharedExpireCacheService = sharedExpireCacheService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
@@ -101,6 +107,7 @@ public class ConsumerController {
         if(!StringUtils.isEmpty(value)){
             Consumer consumer = JsonConverter.getObject(value, Consumer.class);
             consumer.setVerified(VerifyStatus.VERIFIED);
+            consumer.setEnabled(EnabledStatus.ENABLED);
             consumer.skipAuthorization(true);
             consumer = consumerService.saveConsumer(consumer);
             loginService.updateVerifyStatus(VerifyStatus.VERIFIED, consumer.getEmail());
@@ -153,5 +160,32 @@ public class ConsumerController {
     @Permission(RouteConstant.USER_CONSUMER_TOGGLE)
     public Response<StringResponse> toggle(@PathVariable Long id){
         return new Response<>(new StringResponse(consumerService.toggle(id)));
+    }
+
+    @Put("/{id}/profile")
+    @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
+    @Permission(RouteConstant.USER_CONSUMER_PROFILE)
+    public Response<ModelResponse<ConsumerProfileResponse>> consumerProfile(@PathVariable("id") Long id, @RequestPart("profile") String profile, @RequestPart(value = "file", required = false) MultipartFile file){
+        if(RequestUtil.getLogin().getUserType().equalsIgnoreCase(RoleConstant.CONSUMER)){
+            id = RequestUtil.getLogin().getUserId();
+        }
+        Consumer consumer = consumerService.getConsumer(id);
+        ConsumerProfileRequest cpr = JsonConverter.getObject(profile, ConsumerProfileRequest.class);
+        consumer = ObjectMapperUtil.map(cpr, consumer);
+        storeConsumerLogo(consumer, file);
+        consumer = consumerService.saveConsumer(consumer);
+        return new Response<>(new ModelResponse<>(JsonConverter.getObject(consumer, ConsumerProfileResponse.class)));
+    }
+
+    private void storeConsumerLogo(Consumer consumer, MultipartFile file){
+        if(!StringUtils.isEmpty(file)){
+            long file_size = Long.valueOf(SpringMessage.msg("consumer_logo_upload_size"));
+            if(file.getSize() > file_size){
+                String file_size_kb = (file_size/1000) + "";
+                throw new ScaffoldException("file_size_limit", file_size_kb,  HttpStatus.PAYLOAD_TOO_LARGE);
+            }
+            String fileName = fileStorageService.storeFile(file, "consumer-logo-" + consumer.getId() + ".jpg");
+            consumer.setLogoUrl("/assets" + AssetBaseConstant.CONSUMER + fileName);
+        }
     }
 }

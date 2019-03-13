@@ -216,7 +216,7 @@ public class VendorController {
             long file_size = Long.valueOf(SpringMessage.msg("vendor_logo_upload_size"));
             if(file.getSize() > file_size){
                 String file_size_kb = (file_size/1000) + "";
-                throw new ScaffoldException("file_size_vendor", file_size_kb,  HttpStatus.PAYLOAD_TOO_LARGE);
+                throw new ScaffoldException("file_size_limit", file_size_kb,  HttpStatus.PAYLOAD_TOO_LARGE);
             }
             String fileName = fileStorageService.storeFile(file, "vendor-logo-" + vendor.getSlug() + ".jpg");
             vendor.setLogoPath("/assets" + AssetBaseConstant.VENDOR + fileName);
