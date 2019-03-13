@@ -62,6 +62,14 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
+        System.out.println("request.getRequestURI() = " + request.getRequestURI());
+        System.out.println("request.getRequestURI() = " + request.getPathInfo());
+        if(request.getRequestURI().contains("swagger")){
+            return true;
+        }
+
+        System.out.println("request.getRequestURI() = " + request.getRequestURI());
+
         /*
          * Added for swagger to work smoothly
          */
