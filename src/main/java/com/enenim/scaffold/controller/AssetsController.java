@@ -64,6 +64,11 @@ public class AssetsController {
         return generateAssetResource(fileName, request);
     }
 
+    @GetMapping(AssetBaseConstant.CONSUMER + "{fileName:.+}")
+    public ResponseEntity<Resource> getConsumerLogo(@PathVariable String fileName, HttpServletRequest request) {
+        return generateAssetResource(fileName, request);
+    }
+
     private ResponseEntity<Resource> generateAssetResource(@PathVariable String fileName, HttpServletRequest request){
         // Load file as Resource
         Resource resource = fileStorageService.loadFileAsResource(fileName);
