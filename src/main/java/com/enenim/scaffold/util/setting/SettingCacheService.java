@@ -2,9 +2,6 @@ package com.enenim.scaffold.util.setting;
 
 import com.enenim.scaffold.model.dao.Setting;
 import com.enenim.scaffold.service.dao.SettingService;
-import com.enenim.scaffold.util.SettingConfigUtil;
-import com.enenim.scaffold.util.SettingListCategory;
-import com.enenim.scaffold.util.SystemSetting;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,10 +10,10 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class SettingCacheCoreService {
+public class SettingCacheService {
     private SettingService settingService;
 
-    public SettingCacheCoreService(SettingService settingService) {
+    public SettingCacheService(SettingService settingService) {
         this.settingService = settingService;
     }
 

@@ -11,7 +11,7 @@ import com.enenim.scaffold.service.dao.TrackerService;
 import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.RequestUtil;
 import com.enenim.scaffold.util.message.SpringMessage;
-import com.enenim.scaffold.util.setting.SettingCacheCoreService;
+import com.enenim.scaffold.util.setting.SettingCacheService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
@@ -36,15 +36,15 @@ public class TokenAuthenticationService {
 
     private final LoginCacheService loginCacheService;
     private final TrackerService trackerService;
-    private final SettingCacheCoreService settingCacheCoreService;
+    private final SettingCacheService settingCacheService;
 
     private static String TOKEN_KEY = SpringMessage.msg("jwt");
 
     @Autowired
-    public TokenAuthenticationService(LoginCacheService loginCacheService, TrackerService trackerService, SettingCacheCoreService settingCacheCoreService) {
+    public TokenAuthenticationService(LoginCacheService loginCacheService, TrackerService trackerService, SettingCacheService settingCacheService) {
         this.loginCacheService = loginCacheService;
         this.trackerService = trackerService;
-        this.settingCacheCoreService = settingCacheCoreService;
+        this.settingCacheService = settingCacheService;
     }
 
     public String encodeToken(LoginCache loginToken){
@@ -120,7 +120,7 @@ public class TokenAuthenticationService {
         LoginCache loginToken = RequestUtil.getLoginToken();
         String loginId = String.valueOf(loginToken.getId());
         String sessionId = loginToken.getTracker().getSessionId();
-        if(settingCacheCoreService.multipleSessionIsEnabled()) {
+        if(settingCacheService.multipleSessionIsEnabled()) {
             loginToken = loginCacheService.get(sessionId).get(sessionId);
             if(!StringUtils.isEmpty(loginToken)){
                 loginCacheService.delete(loginToken.getId(), loginToken.getTracker().getSessionId());

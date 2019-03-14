@@ -1,4 +1,4 @@
-package com.enenim.scaffold.util;
+package com.enenim.scaffold.util.setting;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;

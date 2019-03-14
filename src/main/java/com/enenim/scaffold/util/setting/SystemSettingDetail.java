@@ -1,4 +1,4 @@
-package com.enenim.scaffold.util;
+package com.enenim.scaffold.util.setting;
 
 import com.enenim.scaffold.shared.KeyValue;
 import lombok.Data;

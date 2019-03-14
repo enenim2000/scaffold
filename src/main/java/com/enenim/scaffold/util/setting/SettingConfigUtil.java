@@ -1,6 +1,7 @@
-package com.enenim.scaffold.util;
+package com.enenim.scaffold.util.setting;
 
 import com.enenim.scaffold.model.dao.Setting;
+import com.enenim.scaffold.util.JsonConverter;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;

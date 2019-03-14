@@ -3,7 +3,7 @@ package com.enenim.scaffold;
 import com.enenim.scaffold.service.dao.SettingService;
 import com.enenim.scaffold.util.AESUtil;
 import com.enenim.scaffold.util.JsonConverter;
-import com.enenim.scaffold.util.SettingConfigUtil;
+import com.enenim.scaffold.util.setting.SettingConfigUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;

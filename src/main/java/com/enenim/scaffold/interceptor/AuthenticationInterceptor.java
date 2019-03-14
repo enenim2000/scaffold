@@ -20,9 +20,9 @@ import com.enenim.scaffold.service.dao.PaymentChannelService;
 import com.enenim.scaffold.service.dao.TaskService;
 import com.enenim.scaffold.shared.Channel;
 import com.enenim.scaffold.util.RequestUtil;
-import com.enenim.scaffold.util.SystemSetting;
+import com.enenim.scaffold.util.setting.SystemSetting;
 import com.enenim.scaffold.util.message.SpringMessage;
-import com.enenim.scaffold.util.setting.SettingCacheCoreService;
+import com.enenim.scaffold.util.setting.SettingCacheService;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -42,16 +42,16 @@ import java.util.Optional;
 public class AuthenticationInterceptor implements HandlerInterceptor {
 
     private final TokenAuthenticationService tokenAuthenticationService;
-    private final SettingCacheCoreService settingCacheCoreService;
+    private final SettingCacheService settingCacheService;
     private final UserResolverService userResolverService;
     private final ApiKeyService apiKeyService;
     private final PaymentChannelService paymentChannelService;
     private final TaskService taskService;
     private final LoginService loginService;
 
-    public AuthenticationInterceptor(TokenAuthenticationService tokenAuthenticationService, SettingCacheCoreService settingCacheCoreService, UserResolverService userResolverService, ApiKeyService apiKeyService, PaymentChannelService paymentChannelService, TaskService taskService, LoginService loginService) {
+    public AuthenticationInterceptor(TokenAuthenticationService tokenAuthenticationService, SettingCacheService settingCacheService, UserResolverService userResolverService, ApiKeyService apiKeyService, PaymentChannelService paymentChannelService, TaskService taskService, LoginService loginService) {
         this.tokenAuthenticationService = tokenAuthenticationService;
-        this.settingCacheCoreService = settingCacheCoreService;
+        this.settingCacheService = settingCacheService;
         this.userResolverService = userResolverService;
         this.apiKeyService = apiKeyService;
         this.paymentChannelService = paymentChannelService;
@@ -138,7 +138,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         if(StringUtils.isEmpty(loginToken)) throw new UnAuthorizedException("invalid_token");
 
-        SystemSetting systemSetting = settingCacheCoreService.getSystemSetting("idle_timeout");
+        SystemSetting systemSetting = settingCacheService.getSystemSetting("idle_timeout");
 
         int minIdleTimeout = Integer.valueOf(systemSetting.getDetail().getValue());
         long milIdleTimeout = minIdleTimeout * 60 * 1000;

@@ -13,10 +13,10 @@ import com.enenim.scaffold.dto.response.ModelResponse;
 import com.enenim.scaffold.dto.response.Response;
 import com.enenim.scaffold.model.dao.Setting;
 import com.enenim.scaffold.service.dao.SettingService;
-import com.enenim.scaffold.util.SettingConfigUtil;
-import com.enenim.scaffold.util.SettingListCategory;
-import com.enenim.scaffold.util.SystemSetting;
-import com.enenim.scaffold.util.setting.SettingCacheCoreService;
+import com.enenim.scaffold.util.setting.SettingConfigUtil;
+import com.enenim.scaffold.util.setting.SettingListCategory;
+import com.enenim.scaffold.util.setting.SystemSetting;
+import com.enenim.scaffold.util.setting.SettingCacheService;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,24 +28,24 @@ import static com.enenim.scaffold.constant.RouteConstant.*;
 @RestController
 @RequestMapping("/administration/settings")
 public class SettingController {
-    private final SettingCacheCoreService settingCacheCoreService;
+    private final SettingCacheService settingCacheService;
     private final SettingService settingService;
 
-    public SettingController(SettingCacheCoreService settingCacheCoreService, SettingService settingService) {
-        this.settingCacheCoreService = settingCacheCoreService;
+    public SettingController(SettingCacheService settingCacheService, SettingService settingService) {
+        this.settingCacheService = settingCacheService;
         this.settingService = settingService;
     }
 
     @Get
     public Response<CollectionResponse<SettingListCategory>> getSettings() {
-        return new Response<>(new CollectionResponse<>(settingCacheCoreService.getSystemSettings()));
+        return new Response<>(new CollectionResponse<>(settingCacheService.getSystemSettings()));
     }
 
     @Get("/{key}")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_SETTING_SHOW)
     public Response<ModelResponse<SystemSetting>> getSetting(@PathVariable String key) {
-        return new Response<>(new ModelResponse<>(settingCacheCoreService.getSystemSetting(key)));
+        return new Response<>(new ModelResponse<>(settingCacheService.getSystemSetting(key)));
     }
 
     @Put
@@ -53,14 +53,14 @@ public class SettingController {
     @Permission(ADMINISTRATION_SETTING_UPDATE)
     public Response<ModelResponse<SystemSetting>> saveSetting(@RequestBody Request<SettingRequest> request){
         Setting setting = settingService.saveSetting(request.getBody().buildModel());
-        return new Response<>(new ModelResponse<>(settingCacheCoreService.getSystemSetting(setting.getSettingKey())));
+        return new Response<>(new ModelResponse<>(settingCacheService.getSystemSetting(setting.getSettingKey())));
     }
 
     @Put("/{key}/add")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_SETTING_ADD)
     public Response<ModelResponse<SystemSetting>> addSettings(@PathVariable("key") String key) {
-        SystemSetting systemSetting = settingCacheCoreService.getSystemSetting(key);
+        SystemSetting systemSetting = settingCacheService.getSystemSetting(key);
         Setting setting = settingService.getSetting(key);
         if(StringUtils.isEmpty(setting)){
             setting = new Setting();
@@ -69,7 +69,7 @@ public class SettingController {
         setting.setSettingKey(systemSetting.getSettingKey());
         setting.setValue(systemSetting.getDetail().getValue());
         setting = settingService.saveSetting(setting);
-        return new Response<>(new ModelResponse<>(settingCacheCoreService.updateSystemSetting(setting)));
+        return new Response<>(new ModelResponse<>(settingCacheService.updateSystemSetting(setting)));
     }
 
     @Put("/{key}/reset")
@@ -87,13 +87,13 @@ public class SettingController {
             setting.setValue(systemSetting.getDetail().getValue());
         }
         setting = settingService.saveSetting(setting);
-        return new Response<>(new ModelResponse<>(settingCacheCoreService.updateSystemSetting(setting)));
+        return new Response<>(new ModelResponse<>(settingCacheService.updateSystemSetting(setting)));
     }
 
     @Put("/sync")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_SETTING_SYNC)
     public Response<BooleanResponse> syncSettings() {
-        return new Response<>(new BooleanResponse(settingCacheCoreService.syncSettings()));
+        return new Response<>(new BooleanResponse(settingCacheService.syncSettings()));
     }
 }

@@ -8,8 +8,8 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class AESUtil {
 
-    private static final String key = "aesEncryptionKey";
-    private static final String initVector = "encryptionIntVec";
+    private static final String key = "gtwqytywgfe4frre";
+    private static final String initVector = "rte53djd836ghdfg";
 
     public static String encrypt(String plainText) {
         try {

@@ -1,7 +1,7 @@
 package com.enenim.scaffold.service.cache;
 
 import com.enenim.scaffold.model.cache.LoginCache;
-import com.enenim.scaffold.util.setting.SettingCacheCoreService;
+import com.enenim.scaffold.util.setting.SettingCacheService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.HashOperations;
@@ -24,12 +24,12 @@ public class LoginCacheService {
 
     private HashOperations<String, String, Map<String, LoginCache>> hashOps;
 
-    private final SettingCacheCoreService settingCacheCoreService;
+    private final SettingCacheService settingCacheService;
 
     @Autowired
-    private LoginCacheService(RedisTemplate<String, Map<String, LoginCache>> redisTemplate, SettingCacheCoreService settingCacheCoreService) {
+    private LoginCacheService(RedisTemplate<String, Map<String, LoginCache>> redisTemplate, SettingCacheService settingCacheService) {
         this.redisTemplate = redisTemplate;
-        this.settingCacheCoreService = settingCacheCoreService;
+        this.settingCacheService = settingCacheService;
     }
 
     @PostConstruct
@@ -70,7 +70,7 @@ public class LoginCacheService {
     }
 
     public void save(Map<String, LoginCache> data) {
-        if(settingCacheCoreService.multipleSessionIsEnabled())throw new UnsupportedOperationException("Not allowed when multiple login session is enabled");
+        if(settingCacheService.multipleSessionIsEnabled())throw new UnsupportedOperationException("Not allowed when multiple login session is enabled");
         save(data.entrySet().iterator().next().getValue());
     }
 
@@ -80,7 +80,7 @@ public class LoginCacheService {
      * when multiple login is enabled
      */
     public void delete(String id) {
-        if(settingCacheCoreService.multipleSessionIsEnabled()) throw new UnsupportedOperationException("Not allowed when multiple login is enabled");
+        if(settingCacheService.multipleSessionIsEnabled()) throw new UnsupportedOperationException("Not allowed when multiple login is enabled");
         delete(Long.valueOf(id), null);
     }
 
@@ -88,7 +88,7 @@ public class LoginCacheService {
         String id = String.valueOf(data.getId());
         Map<String, LoginCache> records = new HashMap<>();
 
-        if(settingCacheCoreService.multipleSessionIsEnabled()){
+        if(settingCacheService.multipleSessionIsEnabled()){
             records = this.get(id);
             if(StringUtils.isEmpty(records)){
                 records = new HashMap<>();

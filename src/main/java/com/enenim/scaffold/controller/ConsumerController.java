@@ -110,6 +110,7 @@ public class ConsumerController {
             consumer.setEnabled(EnabledStatus.ENABLED);
             consumer.skipAuthorization(true);
             consumer = consumerService.saveConsumer(consumer);
+            //Save consumer settings to Consumer settings table
             loginService.updateVerifyStatus(VerifyStatus.VERIFIED, consumer.getEmail());
             sharedExpireCacheService.delete(cacheCode);
             RequestUtil.setMessage(CommonMessage.msg("consumer_code_verified"));
