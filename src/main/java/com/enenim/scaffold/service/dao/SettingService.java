@@ -2,7 +2,6 @@ package com.enenim.scaffold.service.dao;
 
 import com.enenim.scaffold.model.dao.Setting;
 import com.enenim.scaffold.repository.dao.SettingRepository;
-import com.enenim.scaffold.util.SettingConfigUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,8 +29,10 @@ public class SettingService{
     }
 
     public Setting saveSetting(Setting setting) {
-        setting = settingRepository.save(setting);
-        SettingConfigUtil.updateSystemSetting( settingRepository.save(setting) );
-        return setting;
+        return settingRepository.save(setting);
+    }
+
+    public List<Setting> saveSettings(List<Setting> settings) {
+        return settingRepository.saveAll(settings);
     }
 }

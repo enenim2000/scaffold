@@ -7,6 +7,7 @@ import com.enenim.scaffold.annotation.Role;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.dto.request.Request;
 import com.enenim.scaffold.dto.request.SettingRequest;
+import com.enenim.scaffold.dto.response.BooleanResponse;
 import com.enenim.scaffold.dto.response.CollectionResponse;
 import com.enenim.scaffold.dto.response.ModelResponse;
 import com.enenim.scaffold.dto.response.Response;
@@ -16,6 +17,7 @@ import com.enenim.scaffold.util.SettingConfigUtil;
 import com.enenim.scaffold.util.SettingListCategory;
 import com.enenim.scaffold.util.SystemSetting;
 import com.enenim.scaffold.util.setting.SettingCacheCoreService;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,15 +58,18 @@ public class SettingController {
 
     @Put("/{key}/add")
     @Role({RoleConstant.STAFF})
-    @Permission(ADMINISTRATION_SETTING_CREATE)
+    @Permission(ADMINISTRATION_SETTING_ADD)
     public Response<ModelResponse<SystemSetting>> addSettings(@PathVariable("key") String key) {
-        SystemSetting systemSetting = SettingConfigUtil.getSystemSetting(key);
-        Setting setting = new Setting();
+        SystemSetting systemSetting = settingCacheCoreService.getSystemSetting(key);
+        Setting setting = settingService.getSetting(key);
+        if(StringUtils.isEmpty(setting)){
+            setting = new Setting();
+        }
         setting.setCategoryKey(systemSetting.getCategoryKey());
         setting.setSettingKey(systemSetting.getSettingKey());
         setting.setValue(systemSetting.getDetail().getValue());
         setting = settingService.saveSetting(setting);
-        return new Response<>(new ModelResponse<>(settingCacheCoreService.getSystemSetting(setting.getSettingKey())));
+        return new Response<>(new ModelResponse<>(settingCacheCoreService.updateSystemSetting(setting)));
     }
 
     @Put("/{key}/reset")
@@ -73,8 +78,22 @@ public class SettingController {
     public Response<ModelResponse<SystemSetting>> resetSettings(@PathVariable("key") String key) {
         SystemSetting systemSetting = SettingConfigUtil.getSystemSetting(key);
         Setting setting = settingService.getSetting(key);
-        setting.setValue(systemSetting.getDetail().getValue());
+        if(StringUtils.isEmpty(setting)){
+            setting = new Setting();
+            setting.setCategoryKey(systemSetting.getCategoryKey());
+            setting.setSettingKey(systemSetting.getSettingKey());
+            setting.setValue(systemSetting.getDetail().getValue());
+        }else {
+            setting.setValue(systemSetting.getDetail().getValue());
+        }
         setting = settingService.saveSetting(setting);
-        return new Response<>(new ModelResponse<>(settingCacheCoreService.getSystemSetting(setting.getSettingKey())));
+        return new Response<>(new ModelResponse<>(settingCacheCoreService.updateSystemSetting(setting)));
+    }
+
+    @Put("/sync")
+    @Role({RoleConstant.STAFF})
+    @Permission(ADMINISTRATION_SETTING_SYNC)
+    public Response<BooleanResponse> syncSettings() {
+        return new Response<>(new BooleanResponse(settingCacheCoreService.syncSettings()));
     }
 }

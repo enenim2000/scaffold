@@ -116,14 +116,16 @@ public class SettingConfigUtil {
         }
     }
 
-    public static void updateSystemSetting(Setting setting){
+    public static SystemSetting updateSystemSetting(Setting setting){
         if(!StringUtils.isEmpty(setting)){
             SystemSetting systemSetting = MEMORY_SETTINGS_BY_KEY.get(setting.getSettingKey());
             systemSetting.getDetail().setValue(setting.getValue());
             DATABASE_SETTINGS.put(setting.getSettingKey(), setting);
             MEMORY_SETTINGS_BY_KEY.put(setting.getSettingKey(), systemSetting);
             MEMORY_SETTINGS_BY_CATEGORY.get(setting.getCategoryKey()).getSettings().put(setting.getSettingKey(), systemSetting);
+            return systemSetting;
         }
+        return null;
     }
 
     public static void loadSystemSettings(){
@@ -170,5 +172,20 @@ public class SettingConfigUtil {
 
     public static SystemSetting getSystemSetting(String key){
         return MEMORY_SETTINGS_BY_KEY.get(key);
+    }
+
+    public static List<Setting> getSettings(){
+        HashMap<String, SettingMapCategory> settingMapCategories = getSettingAsMap();
+        List<Setting> settings = new ArrayList<>();
+        for(HashMap.Entry<String, SettingMapCategory> categoryEntry : settingMapCategories.entrySet()){
+            for(HashMap.Entry<String, SystemSetting> settingEntry : categoryEntry.getValue().getSettings().entrySet()){
+                Setting setting = new Setting();
+                setting.setValue(settingEntry.getValue().getDetail().getValue());
+                setting.setCategoryKey(settingEntry.getValue().getCategoryKey());
+                setting.setSettingKey(settingEntry.getValue().getSettingKey());
+                settings.add(setting);
+            }
+        }
+        return settings;
     }
 }
