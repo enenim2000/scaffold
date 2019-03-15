@@ -34,6 +34,14 @@ public class SettingCacheService {
         return SettingConfigUtil.updateSystemSetting(setting);
     }
 
+    public SettingMapCategory getSettingsByCategory(String categoryKey){
+        return SettingConfigUtil.getSettingsByCategory(categoryKey);
+    }
+
+    public HashMap<String, SettingMapCategory> getCategorizedSettings(){
+        return SettingConfigUtil.getCategorizedSettings();
+    }
+
     public boolean syncSettings(){
         List<Setting> dbSettings = settingService.getSettings();
 
@@ -55,6 +63,7 @@ public class SettingCacheService {
 
         if(!newSettings.isEmpty()){
             newSettings = settingService.saveSettings(newSettings);
+            SettingConfigUtil.updateSystemSettings(newSettings);
         }
 
         return newSettings.size() > 0;

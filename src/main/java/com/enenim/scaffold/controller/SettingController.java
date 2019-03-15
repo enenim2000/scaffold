@@ -13,15 +13,14 @@ import com.enenim.scaffold.dto.response.ModelResponse;
 import com.enenim.scaffold.dto.response.Response;
 import com.enenim.scaffold.model.dao.Setting;
 import com.enenim.scaffold.service.dao.SettingService;
-import com.enenim.scaffold.util.setting.SettingConfigUtil;
-import com.enenim.scaffold.util.setting.SettingListCategory;
-import com.enenim.scaffold.util.setting.SystemSetting;
-import com.enenim.scaffold.util.setting.SettingCacheService;
+import com.enenim.scaffold.util.setting.*;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
 
 import static com.enenim.scaffold.constant.RouteConstant.*;
 
@@ -95,5 +94,19 @@ public class SettingController {
     @Permission(ADMINISTRATION_SETTING_SYNC)
     public Response<BooleanResponse> syncSettings() {
         return new Response<>(new BooleanResponse(settingCacheService.syncSettings()));
+    }
+
+    @Put("/categories/{key}")
+    @Role({RoleConstant.STAFF})
+    @Permission(ADMINISTRATION_SETTING_CATEGORY)
+    public Response<ModelResponse<SettingMapCategory>> getSettingsByCategory(@PathVariable("key") String key) {
+        return new Response<>(new ModelResponse<>(settingCacheService.getSettingsByCategory(key)));
+    }
+
+    @Put("/categorized")
+    @Role({RoleConstant.STAFF})
+    @Permission(ADMINISTRATION_SETTING_CATEGORIES)
+    public Response<ModelResponse<HashMap<String, SettingMapCategory>>> getCategorizedSettings() {
+        return new Response<>(new ModelResponse<>(settingCacheService.getCategorizedSettings()));
     }
 }

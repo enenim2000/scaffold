@@ -55,7 +55,7 @@ public class SettingConfigUtil {
         put(CATEGORY_KEYS[4], SETTLEMENT_PREFERENCE_CONFIG);
     }};
 
-    public static List<SettingListCategory> getSettingAsList(){
+    static List<SettingListCategory> getSettingAsList(){
 
         List<SettingListCategory> settingCategories = new ArrayList<>();
 
@@ -117,7 +117,7 @@ public class SettingConfigUtil {
         }
     }
 
-    public static SystemSetting updateSystemSetting(Setting setting){
+    static SystemSetting updateSystemSetting(Setting setting){
         if(!StringUtils.isEmpty(setting)){
             SystemSetting systemSetting = MEMORY_SETTINGS_BY_KEY.get(setting.getSettingKey());
             systemSetting.getDetail().setValue(setting.getValue());
@@ -127,6 +127,16 @@ public class SettingConfigUtil {
             return systemSetting;
         }
         return null;
+    }
+
+    static void updateSystemSettings(List<Setting> settings){
+        for(Setting setting : settings){
+            SystemSetting systemSetting = MEMORY_SETTINGS_BY_KEY.get(setting.getSettingKey());
+            systemSetting.getDetail().setValue(setting.getValue());
+            DATABASE_SETTINGS.put(setting.getSettingKey(), setting);
+            MEMORY_SETTINGS_BY_KEY.put(setting.getSettingKey(), systemSetting);
+            MEMORY_SETTINGS_BY_CATEGORY.get(setting.getCategoryKey()).getSettings().put(setting.getSettingKey(), systemSetting);
+        }
     }
 
     public static void loadSystemSettings(){
@@ -151,7 +161,7 @@ public class SettingConfigUtil {
      * This method returns all settings within a given category
      * @return category settings
      */
-    public SettingMapCategory getSettingsByCategory(String key){
+    static SettingMapCategory getSettingsByCategory(String key){
         return MEMORY_SETTINGS_BY_CATEGORY.get(key);
     }
 
@@ -167,7 +177,7 @@ public class SettingConfigUtil {
      * This method returns all settings arranged per category
      * @return categorized settings
      */
-    public static HashMap<String, SettingMapCategory> getCategorizedSettings() {
+    static HashMap<String, SettingMapCategory> getCategorizedSettings() {
         return MEMORY_SETTINGS_BY_CATEGORY;
     }
 
