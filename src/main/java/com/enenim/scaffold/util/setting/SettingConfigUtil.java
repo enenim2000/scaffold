@@ -37,7 +37,12 @@ public class SettingConfigUtil {
         put("min_settlement_duration", "{\"type\":\"select\",\"label\": \"Minimum Duration in hour(s) before settlement\", \"placeholder\": \"Select preferred settlement duration\", \"value\":\"yes\", \"maxlength\":\"2\", \"minlength\":\"1\", \"options\":[{ \"key\": \"1\", \"value\": \"1 hour\" }, { \"key\": \"24\", \"value\": \"24 hours\" }, { \"key\": \"48\", \"value\": \"48 hours\" } ]}");
     }};
 
-    private static String[] CATEGORY_KEYS = {"contact_info_config", "action_center_config", "security_center_config", "language_support_config", "settlement_preference_config"};
+    private static final HashMap<String, String> PLATFORM_ADVERT_CONFIG = new HashMap<String, String>(){{
+        put("dormant_customer_notification_pref", "{\"type\":\"select\",\"label\": \"Dormant User Notification Preference\", \"placeholder\": \"Notification Preference\", \"value\":\"enable\", \"maxlength\":\"\", \"minlength\":\"\", \"options\":[{ \"key\": \"enable\", \"value\": \"Enable\" }, { \"key\": \"disable\", \"value\": \"Disable\" } ]}");
+        put("dormant_customer_notification_freq", "{\"type\":\"select\",\"label\": \"Dormant User Notification Frequency\", \"placeholder\": \"Notification Frequency\", \"value\":\"30\", \"maxlength\":\"\", \"minlength\":\"\", \"options\":[{ \"key\": \"14\", \"value\": \"2 Weeks\" }, { \"key\": \"30\", \"value\": \"4 Weeks\" }, { \"key\": \"120\", \"value\": \"4 Months\" } ]}");
+    }};
+
+    private static String[] CATEGORY_KEYS = {"contact_info_config", "action_center_config", "security_center_config", "language_support_config", "settlement_preference_config", "platform_advert_config"};
 
     private static final HashMap<String, SettingListCategory> CATEGORY_DESCRIPTION = new HashMap<String, SettingListCategory>(){{
         put(CATEGORY_KEYS[0], new SettingListCategory(CATEGORY_KEYS[0], "Contact Information"));
@@ -45,6 +50,7 @@ public class SettingConfigUtil {
         put(CATEGORY_KEYS[2], new SettingListCategory(CATEGORY_KEYS[2] ,"Security Center"));
         put(CATEGORY_KEYS[3], new SettingListCategory(CATEGORY_KEYS[3] ,"Language Support"));
         put(CATEGORY_KEYS[4], new SettingListCategory(CATEGORY_KEYS[4] ,"Settlement Preference"));
+        put(CATEGORY_KEYS[5], new SettingListCategory(CATEGORY_KEYS[5] ,"Platform Email Marketing & Advertisement"));
     }};
 
     private static final HashMap<String, HashMap<String, String>> SETTING_CONFIG = new HashMap<String, HashMap<String, String>>(){{
@@ -53,6 +59,7 @@ public class SettingConfigUtil {
         put(CATEGORY_KEYS[2], SECURITY_CENTER_CONFIG);
         put(CATEGORY_KEYS[3], LANGUAGE_SUPPORT_CONFIG);
         put(CATEGORY_KEYS[4], SETTLEMENT_PREFERENCE_CONFIG);
+        put(CATEGORY_KEYS[5], PLATFORM_ADVERT_CONFIG);
     }};
 
     static List<SettingListCategory> getSettingAsList(){
