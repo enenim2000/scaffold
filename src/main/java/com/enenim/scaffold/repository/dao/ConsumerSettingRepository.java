@@ -13,4 +13,7 @@ import java.util.List;
 public interface ConsumerSettingRepository extends BaseRepository<ConsumerSetting, Long> {
     @Query("select cs from ConsumerSetting cs where cs.consumer.id = ?1")
     List<ConsumerSetting> findByConsumerId(Long consumerId);
+
+    @Query("select cs from ConsumerSetting cs where cs.consumer.id = ?1 and cs.settingKey = ?2")
+    ConsumerSetting findByConsumerIdAndKey(Long consumerId, String settingKey);
 }

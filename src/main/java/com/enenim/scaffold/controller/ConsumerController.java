@@ -13,19 +13,19 @@ import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.model.dao.Consumer;
-import com.enenim.scaffold.model.dao.ConsumerSetting;
 import com.enenim.scaffold.model.dao.Login;
 import com.enenim.scaffold.service.FileStorageService;
 import com.enenim.scaffold.service.MailSenderService;
 import com.enenim.scaffold.service.cache.SharedExpireCacheService;
 import com.enenim.scaffold.service.dao.ConsumerService;
+import com.enenim.scaffold.service.dao.ConsumerSettingService;
 import com.enenim.scaffold.service.dao.LoginService;
 import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.ObjectMapperUtil;
 import com.enenim.scaffold.util.RequestUtil;
 import com.enenim.scaffold.util.message.CommonMessage;
 import com.enenim.scaffold.util.message.SpringMessage;
-import com.enenim.scaffold.util.setting.ConsumerSettingCacheService;
+import com.enenim.scaffold.util.setting.ConsumerSystemSetting;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.StringUtils;
@@ -33,6 +33,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+
+import static com.enenim.scaffold.constant.RouteConstant.ADMINISTRATION_SETTING_SHOW;
 
 @RestController
 @RequestMapping("/user/consumers")
@@ -46,13 +48,14 @@ public class ConsumerController {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConsumerSettingService consumerSettingService;
 
-    public ConsumerController(ConsumerService consumerService, LoginService loginService, MailSenderService mailSenderService, FileStorageService fileStorageService, SharedExpireCacheService sharedExpireCacheService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public ConsumerController(ConsumerService consumerService, LoginService loginService, MailSenderService mailSenderService, FileStorageService fileStorageService, SharedExpireCacheService sharedExpireCacheService, BCryptPasswordEncoder bCryptPasswordEncoder, ConsumerSettingService consumerSettingService) {
         this.consumerService = consumerService;
         this.loginService = loginService;
         this.mailSenderService = mailSenderService;
         this.fileStorageService = fileStorageService;
         this.sharedExpireCacheService = sharedExpireCacheService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.consumerSettingService = consumerSettingService;
     }
 
     @Get
@@ -78,7 +81,12 @@ public class ConsumerController {
     public Response<ModelResponse<Consumer>> storeAnonymousConsumers(@Valid @RequestBody Request<ConsumerRequest> request){
         Consumer consumer = request.getBody().buildModel();
         consumer.setVerified(VerifyStatus.VERIFIED);
-        return new Response<>(new ModelResponse<>(consumerService.saveConsumer(consumer)));
+        consumer = consumerService.saveConsumer(consumer);
+
+        //Save consumer settings to Consumer settings table
+        consumerSettingService.saveConsumerSettings( consumerSettingService.getConsumerSettings(consumer) );
+
+        return new Response<>(new ModelResponse<>(consumer));
     }
 
     @Post("/sign-up")
@@ -113,10 +121,14 @@ public class ConsumerController {
             consumer.setEnabled(EnabledStatus.ENABLED);
             consumer.skipAuthorization(true);
             consumer = consumerService.saveConsumer(consumer);
+
             //Save consumer settings to Consumer settings table
+            consumerSettingService.saveConsumerSettings( consumerSettingService.getConsumerSettings(consumer) );
+
             loginService.updateVerifyStatus(VerifyStatus.VERIFIED, consumer.getEmail());
             sharedExpireCacheService.delete(cacheCode);
             RequestUtil.setMessage(CommonMessage.msg("consumer_code_verified"));
+
             return new Response<>(new ModelResponse<>(consumer));
         }
         throw new ScaffoldException("invalid_expired_code");
@@ -179,6 +191,20 @@ public class ConsumerController {
         storeConsumerLogo(consumer, file);
         consumer = consumerService.saveConsumer(consumer);
         return new Response<>(new ModelResponse<>(JsonConverter.getObject(consumer, ConsumerProfileResponse.class)));
+    }
+
+    @Get("/{id}/settings/{key}")
+    @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
+    @Permission(ADMINISTRATION_SETTING_SHOW)
+    public Response<ModelResponse<ConsumerSystemSetting>> getSetting(@PathVariable Long id, @PathVariable String key) {
+        return new Response<>(new ModelResponse<>(consumerSettingService.getConsumerSystemSetting(id, key)));
+    }
+
+    @Get("/{id}/settings")
+    @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
+    @Permission(ADMINISTRATION_SETTING_SHOW)
+    public Response<CollectionResponse<ConsumerSystemSetting>> getSettings(@PathVariable Long id) {
+        return new Response<>(new CollectionResponse<>(consumerSettingService.getConsumerSystemSettings(id)));
     }
 
     private void storeConsumerLogo(Consumer consumer, MultipartFile file){

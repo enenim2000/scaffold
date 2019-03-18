@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 @Data
-public class ConsumerSetting {
+public class ConsumerSystemSetting {
 
     @JsonProperty("category_key")
     @SerializedName("category_key")

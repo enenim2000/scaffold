@@ -38,7 +38,7 @@ public class ConsumerSettingConfigUtil {
         put(CATEGORY_KEYS[2], NOTIFICATION_CONFIG);
     }};
     
-    private static HashMap<String, ConsumerSettingMapCategory> getSettingAsMap(){
+    public static HashMap<String, ConsumerSettingMapCategory> getSettingAsMap(){
 
         HashMap<String, ConsumerSettingMapCategory> settingCategories = new HashMap<>();
 
@@ -47,10 +47,10 @@ public class ConsumerSettingConfigUtil {
             ConsumerSettingListCategory listCategory = CATEGORY_DESCRIPTION.get(categoryEntry.getKey());
             ConsumerSettingMapCategory category = new ConsumerSettingMapCategory(listCategory.getKey(), listCategory.getDescription());
 
-            HashMap<String, ConsumerSetting> consumerSystemSettings = new HashMap<>();
+            HashMap<String, ConsumerSystemSetting> consumerSystemSettings = new HashMap<>();
 
             for(HashMap.Entry<String, String> settingEntry : categoryEntry.getValue().entrySet()){
-                ConsumerSetting consumerSystemSetting = new ConsumerSetting();
+                ConsumerSystemSetting consumerSystemSetting = new ConsumerSystemSetting();
                 consumerSystemSetting.setSettingKey(settingEntry.getKey());
                 consumerSystemSetting.setCategoryKey(categoryEntry.getKey());
                 consumerSystemSetting.setDetail(JsonConverter.getObject(settingEntry.getValue(), ConsumerSettingDetail.class));

@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class ConsumerSettingMapCategory {
     private String key;
     private String description;
-    private HashMap<String, ConsumerSetting> settings = new HashMap<>();
+    private HashMap<String, ConsumerSystemSetting> settings = new HashMap<>();
 
     public ConsumerSettingMapCategory(){}
 
