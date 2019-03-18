@@ -2,6 +2,7 @@ package com.enenim.scaffold.util.setting;
 
 import com.enenim.scaffold.shared.KeyValue;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 import java.util.List;
@@ -17,5 +18,6 @@ public class ConsumerSettingDetail {
     private List<KeyValue> options;
 
     @JsonProperty("user_types")
+    @SerializedName("user_types")
     private List<KeyValue> userTypes;
 }

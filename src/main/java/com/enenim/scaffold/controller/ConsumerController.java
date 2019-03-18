@@ -13,6 +13,7 @@ import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.model.dao.Consumer;
+import com.enenim.scaffold.model.dao.ConsumerSetting;
 import com.enenim.scaffold.model.dao.Login;
 import com.enenim.scaffold.service.FileStorageService;
 import com.enenim.scaffold.service.MailSenderService;
@@ -24,6 +25,7 @@ import com.enenim.scaffold.util.ObjectMapperUtil;
 import com.enenim.scaffold.util.RequestUtil;
 import com.enenim.scaffold.util.message.CommonMessage;
 import com.enenim.scaffold.util.message.SpringMessage;
+import com.enenim.scaffold.util.setting.ConsumerSettingCacheService;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.StringUtils;
@@ -42,6 +44,7 @@ public class ConsumerController {
     private final FileStorageService fileStorageService;
     private final SharedExpireCacheService sharedExpireCacheService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final ConsumerSettingService consumerSettingService;
 
     public ConsumerController(ConsumerService consumerService, LoginService loginService, MailSenderService mailSenderService, FileStorageService fileStorageService, SharedExpireCacheService sharedExpireCacheService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.consumerService = consumerService;
