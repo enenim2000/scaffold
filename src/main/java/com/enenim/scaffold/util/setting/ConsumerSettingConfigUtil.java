@@ -42,7 +42,7 @@ public class ConsumerSettingConfigUtil {
         put(CATEGORY_KEYS[2], NOTIFICATION_CONFIG);
     }};
     
-    public static HashMap<String, ConsumerSettingMapCategory> getSettingAsMap(){
+    public static HashMap<String, ConsumerSettingMapCategory> loadConsumerSystemSettings(){
 
         HashMap<String, ConsumerSettingMapCategory> settingCategories = new HashMap<>();
 
@@ -59,11 +59,11 @@ public class ConsumerSettingConfigUtil {
                 consumerSystemSetting.setCategoryKey(categoryEntry.getKey());
                 consumerSystemSetting.setDetail(JsonConverter.getObject(settingEntry.getValue(), ConsumerSettingDetail.class));
                 consumerSystemSettings.put(settingEntry.getKey(), consumerSystemSetting);
-                MEMORY_SETTINGS_BY_KEY.put(settingEntry.getKey(), settingEntry.getValue());
+                MEMORY_SETTINGS_BY_KEY.put(settingEntry.getKey(), consumerSystemSetting);
                 if(StringUtils.isEmpty(MEMORY_SETTINGS_BY_CATEGORY.get(categoryEntry.getKey()))){
-                    MEMORY_SETTINGS_BY_CATEGORY.put(categoryEntry.getKey(), settingMapCategories.get(categoryEntry.getKey()));
+                    MEMORY_SETTINGS_BY_CATEGORY.put(categoryEntry.getKey(), settingCategories.get(categoryEntry.getKey()));
                 }
-                MEMORY_SETTINGS_BY_CATEGORY.get(categoryEntry.getKey()).getSettings().put(settingEntry.getKey(), settingEntry.getValue());
+                MEMORY_SETTINGS_BY_CATEGORY.get(categoryEntry.getKey()).getSettings().put(settingEntry.getKey(), consumerSystemSetting);
 
             }
             category.setSettings(consumerSystemSettings);
@@ -72,5 +72,9 @@ public class ConsumerSettingConfigUtil {
         }
 
         return settingCategories;
+    }
+
+    public static HashMap<String,ConsumerSettingMapCategory> getMemoryConsumerSettings(){
+        return MEMORY_SETTINGS_BY_CATEGORY;
     }
 }

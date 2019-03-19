@@ -1,8 +1,8 @@
 package com.enenim.scaffold;
 
 import com.enenim.scaffold.service.dao.SettingService;
-import com.enenim.scaffold.util.AESUtil;
 import com.enenim.scaffold.util.JsonConverter;
+import com.enenim.scaffold.util.setting.ConsumerSettingConfigUtil;
 import com.enenim.scaffold.util.setting.SettingConfigUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -31,7 +31,9 @@ public class ApplicationStartup implements ApplicationRunner {
 
         System.out.println("settings = " + JsonConverter.getJsonRecursive(SettingConfigUtil.getSystemSettings()));
 
-        AESUtil.testEncryption();
+        System.out.println("\n About to load consumer system config into memory \n");
+        ConsumerSettingConfigUtil.loadConsumerSystemSettings();
+        System.out.println("\n Finished loading consumer system config into memory \n");
 
     }
 }
