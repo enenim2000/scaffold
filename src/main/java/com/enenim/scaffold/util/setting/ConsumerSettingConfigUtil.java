@@ -2,6 +2,7 @@ package com.enenim.scaffold.util.setting;
 
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.util.JsonConverter;
+import org.springframework.util.StringUtils;
 
 import java.util.HashMap;
 
@@ -10,6 +11,9 @@ public class ConsumerSettingConfigUtil {
     private static final String CONSUMER_ONLY = "[ " + RoleConstant.CONSUMER + "]";
     private static final String STAFF_CONSUMER_ONLY = "[ " + RoleConstant.STAFF + "," + RoleConstant.CONSUMER + "]";
     private static final String STAFF_ONLY = "[ " + RoleConstant.STAFF + "]";
+
+    private static HashMap<String, ConsumerSystemSetting> MEMORY_SETTINGS_BY_KEY = new HashMap<>();
+    private static HashMap<String, ConsumerSettingMapCategory> MEMORY_SETTINGS_BY_CATEGORY = new HashMap<>();
 
     private static final HashMap<String, String> TRANSACTION_CONFIG = new HashMap<String, String>(){{
         put("transaction_amount", "{\"type\":\"number\",\"label\": \"Daily Transaction Amount Limit\", \"placeholder\": \"Enter daily transaction amount limit\", \"value\":\"250000\", \"maxlength\":\"1\", \"minlength\":\"10000000\", \"options\":null, \"user_types\":" + STAFF_CONSUMER_ONLY + "}");
@@ -55,8 +59,13 @@ public class ConsumerSettingConfigUtil {
                 consumerSystemSetting.setCategoryKey(categoryEntry.getKey());
                 consumerSystemSetting.setDetail(JsonConverter.getObject(settingEntry.getValue(), ConsumerSettingDetail.class));
                 consumerSystemSettings.put(settingEntry.getKey(), consumerSystemSetting);
-            }
+                MEMORY_SETTINGS_BY_KEY.put(settingEntry.getKey(), settingEntry.getValue());
+                if(StringUtils.isEmpty(MEMORY_SETTINGS_BY_CATEGORY.get(categoryEntry.getKey()))){
+                    MEMORY_SETTINGS_BY_CATEGORY.put(categoryEntry.getKey(), settingMapCategories.get(categoryEntry.getKey()));
+                }
+                MEMORY_SETTINGS_BY_CATEGORY.get(categoryEntry.getKey()).getSettings().put(settingEntry.getKey(), settingEntry.getValue());
 
+            }
             category.setSettings(consumerSystemSettings);
 
             settingCategories.put(category.getKey(), category);
