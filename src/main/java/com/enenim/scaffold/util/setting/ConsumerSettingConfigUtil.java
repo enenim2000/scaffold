@@ -2,6 +2,7 @@ package com.enenim.scaffold.util.setting;
 
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.util.JsonConverter;
+import com.enenim.scaffold.util.RequestUtil;
 import org.springframework.util.StringUtils;
 
 import java.util.HashMap;
@@ -42,7 +43,7 @@ public class ConsumerSettingConfigUtil {
         put(CATEGORY_KEYS[2], NOTIFICATION_CONFIG);
     }};
     
-    public static HashMap<String, ConsumerSettingMapCategory> loadConsumerSystemSettings(){
+    public static HashMap<String, ConsumerSettingMapCategory> getConsumerSettingAsMap(){
 
         HashMap<String, ConsumerSettingMapCategory> settingCategories = new HashMap<>();
 
@@ -57,24 +58,47 @@ public class ConsumerSettingConfigUtil {
                 ConsumerSystemSetting consumerSystemSetting = new ConsumerSystemSetting();
                 consumerSystemSetting.setSettingKey(settingEntry.getKey());
                 consumerSystemSetting.setCategoryKey(categoryEntry.getKey());
-                consumerSystemSetting.setDetail(JsonConverter.getObject(settingEntry.getValue(), ConsumerSettingDetail.class));
+                consumerSystemSetting.setDetail(JsonConverter.getObject(settingEntry.getValue(), ConsumerSystemSettingDetail.class));
                 consumerSystemSettings.put(settingEntry.getKey(), consumerSystemSetting);
-                MEMORY_SETTINGS_BY_KEY.put(settingEntry.getKey(), consumerSystemSetting);
-                if(StringUtils.isEmpty(MEMORY_SETTINGS_BY_CATEGORY.get(categoryEntry.getKey()))){
-                    MEMORY_SETTINGS_BY_CATEGORY.put(categoryEntry.getKey(), settingCategories.get(categoryEntry.getKey()));
-                }
-                MEMORY_SETTINGS_BY_CATEGORY.get(categoryEntry.getKey()).getSettings().put(settingEntry.getKey(), consumerSystemSetting);
-
             }
-            category.setSettings(consumerSystemSettings);
 
+            category.setSettings(consumerSystemSettings);
             settingCategories.put(category.getKey(), category);
         }
 
         return settingCategories;
     }
 
-    public static HashMap<String,ConsumerSettingMapCategory> getMemoryConsumerSettings(){
-        return MEMORY_SETTINGS_BY_CATEGORY;
+    public static void loadConsumerSystemSettings(){
+        HashMap<String, ConsumerSettingMapCategory> settingMapCategories = getConsumerSettingAsMap();
+        for(HashMap.Entry<String, ConsumerSettingMapCategory> categoryEntry : settingMapCategories.entrySet()){
+            for(HashMap.Entry<String, ConsumerSystemSetting> settingEntry : categoryEntry.getValue().getSettings().entrySet()){
+                MEMORY_SETTINGS_BY_KEY.put(settingEntry.getKey(), settingEntry.getValue());
+                if(StringUtils.isEmpty(MEMORY_SETTINGS_BY_CATEGORY.get(categoryEntry.getKey()))){
+                    MEMORY_SETTINGS_BY_CATEGORY.put(categoryEntry.getKey(), settingMapCategories.get(categoryEntry.getKey()));
+                }
+                MEMORY_SETTINGS_BY_CATEGORY.get(categoryEntry.getKey()).getSettings().put(settingEntry.getKey(), settingEntry.getValue());
+            }
+        }
+    }
+
+    private static HashMap<String, ConsumerSettingMapCategory> getFilteredConsumerSettings(){
+        HashMap<String, ConsumerSettingMapCategory> filteredConsumerSettings = new HashMap<>();
+        for(HashMap.Entry<String, ConsumerSettingMapCategory> categoryEntry : MEMORY_SETTINGS_BY_CATEGORY.entrySet()){
+            for(HashMap.Entry<String, ConsumerSystemSetting> settingEntry : categoryEntry.getValue().getSettings().entrySet()){
+
+                if(settingEntry.getValue().getDetail().getUserTypes().contains(RequestUtil.getLogin().getUserType())){
+                    if(StringUtils.isEmpty(filteredConsumerSettings.get(categoryEntry.getKey()))){
+                        filteredConsumerSettings.put(categoryEntry.getKey(), MEMORY_SETTINGS_BY_CATEGORY.get(categoryEntry.getKey()));
+                    }
+                    filteredConsumerSettings.get(categoryEntry.getKey()).getSettings().put(settingEntry.getKey(), settingEntry.getValue());
+                }
+            }
+        }
+        return filteredConsumerSettings;
+    }
+
+    public static HashMap<String, ConsumerSettingMapCategory> getMemoryConsumerSettings() {
+        return getFilteredConsumerSettings();
     }
 }

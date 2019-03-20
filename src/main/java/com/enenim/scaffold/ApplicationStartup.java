@@ -21,6 +21,7 @@ public class ApplicationStartup implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+
         System.out.println("\n About to load database settings into memory \n");
         SettingConfigUtil.loadDatabaseSettings( settingService.getSettings() );
         System.out.println("\n Loaded database settings into memory \n");

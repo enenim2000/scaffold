@@ -15,5 +15,5 @@ public class ConsumerSystemSetting {
     @SerializedName("setting_key")
     private String settingKey;
 
-    private ConsumerSettingDetail detail;
+    private ConsumerSystemSettingDetail detail;
 }

@@ -8,7 +8,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class ConsumerSettingDetail {
+public class ConsumerSystemSettingDetail {
     private String value;
     private String type;
     private String label;
@@ -19,5 +19,5 @@ public class ConsumerSettingDetail {
 
     @JsonProperty("user_types")
     @SerializedName("user_types")
-    private List<KeyValue> userTypes;
+    private List<String> userTypes;
 }
