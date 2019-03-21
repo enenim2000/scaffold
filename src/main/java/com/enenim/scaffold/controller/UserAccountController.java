@@ -2,6 +2,7 @@ package com.enenim.scaffold.controller;
 
 import com.enenim.scaffold.annotation.Get;
 import com.enenim.scaffold.annotation.Post;
+import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.dto.request.LoginRequest;
 import com.enenim.scaffold.dto.request.Request;
 import com.enenim.scaffold.dto.response.BooleanResponse;
@@ -17,6 +18,8 @@ import com.enenim.scaffold.model.dao.Login;
 import com.enenim.scaffold.model.dao.Tracker;
 import com.enenim.scaffold.service.TokenAuthenticationService;
 import com.enenim.scaffold.service.UserResolverService;
+import com.enenim.scaffold.service.cache.ConsumerSettingCacheService;
+import com.enenim.scaffold.service.dao.ConsumerSettingService;
 import com.enenim.scaffold.service.dao.LoginService;
 import com.enenim.scaffold.service.dao.TrackerService;
 import com.enenim.scaffold.util.RequestUtil;
@@ -45,14 +48,18 @@ public class UserAccountController {
 	private final TokenAuthenticationService tokenAuthenticationService;
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 	private final UserResolverService userResolverService;
+	private final ConsumerSettingCacheService consumerSettingCacheService;
+	private final ConsumerSettingService consumerSettingService;
 
 	@Autowired
-	public UserAccountController(LoginService loginService, TrackerService trackerService, TokenAuthenticationService tokenAuthenticationService, BCryptPasswordEncoder bCryptPasswordEncoder, UserResolverService userResolverService) {
+	public UserAccountController(LoginService loginService, TrackerService trackerService, TokenAuthenticationService tokenAuthenticationService, BCryptPasswordEncoder bCryptPasswordEncoder, UserResolverService userResolverService, ConsumerSettingCacheService consumerSettingCacheService, ConsumerSettingService consumerSettingService) {
 		this.loginService = loginService;
 		this.trackerService = trackerService;
 		this.tokenAuthenticationService = tokenAuthenticationService;
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 		this.userResolverService = userResolverService;
+		this.consumerSettingCacheService = consumerSettingCacheService;
+		this.consumerSettingService = consumerSettingService;
 	}
 
 	@Post("/authenticate")
@@ -77,6 +84,11 @@ public class UserAccountController {
 				LoginCache loginToken = buildLoginToken(login, date, tracker);
 				String token = tokenAuthenticationService.encodeToken(loginToken);
 				tokenAuthenticationService.saveToken(loginToken);
+
+				if(loginToken.getUserType().equalsIgnoreCase(RoleConstant.CONSUMER)){
+					consumerSettingCacheService.saveConsumerSetting(loginToken.getUserId(), consumerSettingService.getConsumerSystemSettingsMap(loginToken.getUserId()));
+				}
+
 				RequestUtil.setMessage(CommonMessage.msg("successful_logged_in"));
 				return new Response<>(new StringResponse(token));
 			}

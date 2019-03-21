@@ -26,15 +26,6 @@ import java.util.Set;
 public class Vendor extends BaseModel implements IAudit{
 
     @Transient
-    public static String searchables = "name,address,email,phoneNumber,logo,code,testSecret,secret,tradingName,slug,parentId";
-
-    @Transient
-    public static String table = "vendors";
-
-    @Transient
-    public static String references = "";
-
-    @Transient
     Login login;
 
     public Vendor() {

@@ -36,6 +36,14 @@ public class UserResolverService {
         throw new ScaffoldException("invalid_role", userType);
     }
 
+    public Long resolveUserId(Long userId){
+        if(RoleConstant.STAFF.equalsIgnoreCase(RequestUtil.getLoginToken().getUserType())) {
+            return userId;
+        } else{
+            return RequestUtil.getLoginToken().getUserId();
+        }
+    }
+
     public String isValidRole(String[] roles){
         LoginCache login = RequestUtil.getLoginToken();
         for(String role : roles){

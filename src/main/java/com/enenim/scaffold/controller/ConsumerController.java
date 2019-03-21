@@ -4,22 +4,21 @@ import com.enenim.scaffold.annotation.*;
 import com.enenim.scaffold.constant.AssetBaseConstant;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.constant.RouteConstant;
-import com.enenim.scaffold.dto.request.ConsumerProfileRequest;
-import com.enenim.scaffold.dto.request.ConsumerRequest;
-import com.enenim.scaffold.dto.request.Request;
-import com.enenim.scaffold.dto.request.SignUpVerifyRequest;
+import com.enenim.scaffold.dto.request.*;
 import com.enenim.scaffold.dto.response.*;
 import com.enenim.scaffold.enums.EnabledStatus;
+import com.enenim.scaffold.enums.TicketStatus;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.model.dao.Consumer;
 import com.enenim.scaffold.model.dao.Login;
+import com.enenim.scaffold.model.dao.Ticket;
+import com.enenim.scaffold.model.dao.Transaction;
 import com.enenim.scaffold.service.FileStorageService;
 import com.enenim.scaffold.service.MailSenderService;
+import com.enenim.scaffold.service.UserResolverService;
 import com.enenim.scaffold.service.cache.SharedExpireCacheService;
-import com.enenim.scaffold.service.dao.ConsumerService;
-import com.enenim.scaffold.service.dao.ConsumerSettingService;
-import com.enenim.scaffold.service.dao.LoginService;
+import com.enenim.scaffold.service.dao.*;
 import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.ObjectMapperUtil;
 import com.enenim.scaffold.util.RequestUtil;
@@ -30,11 +29,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 import static com.enenim.scaffold.constant.RouteConstant.ADMINISTRATION_SETTING_SHOW;
+import static com.enenim.scaffold.constant.RouteConstant.ADMINISTRATION_TICKET_SHOW;
 
 @RestController
 @RequestMapping("/user/consumers")
@@ -47,8 +49,11 @@ public class ConsumerController {
     private final SharedExpireCacheService sharedExpireCacheService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConsumerSettingService consumerSettingService;
+    private final UserResolverService userResolverService;
+    private final TransactionService transactionService;
+    private final TicketService ticketService;
 
-    public ConsumerController(ConsumerService consumerService, LoginService loginService, MailSenderService mailSenderService, FileStorageService fileStorageService, SharedExpireCacheService sharedExpireCacheService, BCryptPasswordEncoder bCryptPasswordEncoder, ConsumerSettingService consumerSettingService) {
+    public ConsumerController(ConsumerService consumerService, LoginService loginService, MailSenderService mailSenderService, FileStorageService fileStorageService, SharedExpireCacheService sharedExpireCacheService, BCryptPasswordEncoder bCryptPasswordEncoder, ConsumerSettingService consumerSettingService, UserResolverService userResolverService, TransactionService transactionService, TicketService ticketService) {
         this.consumerService = consumerService;
         this.loginService = loginService;
         this.mailSenderService = mailSenderService;
@@ -56,6 +61,9 @@ public class ConsumerController {
         this.sharedExpireCacheService = sharedExpireCacheService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.consumerSettingService = consumerSettingService;
+        this.userResolverService = userResolverService;
+        this.transactionService = transactionService;
+        this.ticketService = ticketService;
     }
 
     @Get
@@ -69,9 +77,7 @@ public class ConsumerController {
     @Role({RoleConstant.CONSUMER, RoleConstant.STAFF})
     @Permission(RouteConstant.USER_CONSUMER_SHOW)
     public Response<ModelResponse<Consumer>> showConsumer(@PathVariable Long id) {
-        if(RequestUtil.getLogin().getUserType().equalsIgnoreCase(RoleConstant.CONSUMER)){
-            id = RequestUtil.getLogin().getId();
-        }
+        id = userResolverService.resolveUserId(id);
         return new Response<>(new ModelResponse<>(consumerService.getConsumer(id)));
     }
 
@@ -136,6 +142,7 @@ public class ConsumerController {
 
     @Put("/{id}/details")
     public Response<ModelResponse<Consumer>> verifyCode(@PathVariable("id") Long id, @Valid @RequestBody Request<SignUpVerifyRequest> request) throws Exception {
+        id = userResolverService.resolveUserId(id);
         Consumer consumer = consumerService.getConsumer(id);
         Login login = loginService.getLoginByUsername(consumer.getEmail());
         if(StringUtils.isEmpty(login.getPassword())){
@@ -182,9 +189,7 @@ public class ConsumerController {
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
     @Permission(RouteConstant.USER_CONSUMER_PROFILE)
     public Response<ModelResponse<ConsumerProfileResponse>> consumerProfile(@PathVariable("id") Long id, @RequestPart("profile") String profile, @RequestPart(value = "file", required = false) MultipartFile file){
-        if(RequestUtil.getLogin().getUserType().equalsIgnoreCase(RoleConstant.CONSUMER)){
-            id = RequestUtil.getLogin().getUserId();
-        }
+        id = userResolverService.resolveUserId(id);
         Consumer consumer = consumerService.getConsumer(id);
         ConsumerProfileRequest cpr = JsonConverter.getObject(profile, ConsumerProfileRequest.class);
         consumer = ObjectMapperUtil.map(cpr, consumer);
@@ -206,6 +211,22 @@ public class ConsumerController {
     public Response<CollectionResponse<ConsumerSystemSetting>> getSettings(@PathVariable Long id) {
         return new Response<>(new CollectionResponse<>(consumerSettingService.getConsumerSystemSettings(id)));
     }
+
+    @Get("/{id}/transactions/{status}")
+    @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
+    @Permission(ADMINISTRATION_SETTING_SHOW)
+    public Response<PageResponse<Transaction>> getConsumerTransactions(@PathVariable Long id, @PathVariable("status") Optional<TicketStatus> status, @RequestBody TransactionFilterRequest filter) {
+        return new Response<>(new PageResponse<>(transactionService.getConsumerTransactions(filter, userResolverService.resolveUserId(id))));
+    }
+
+    @Get("/{id}/tickets/{status}")
+    @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
+    @Permission(ADMINISTRATION_TICKET_SHOW)
+    public Response<PageResponse<Ticket>> getConsumerTickets(@PathVariable Long id, @PathVariable("status") Optional<TicketStatus> status) {
+
+        return new Response<>(new PageResponse<>(ticketService.getTicket(userResolverService.resolveUserId(id))));
+    }
+
 
     private void storeConsumerLogo(Consumer consumer, MultipartFile file){
         if(!StringUtils.isEmpty(file)){

@@ -7,9 +7,9 @@ import com.enenim.scaffold.model.dao.*;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import org.springframework.web.util.ContentCachingRequestWrapper;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.Map;
 
 import static com.enenim.scaffold.constant.CommonConstant.*;
@@ -21,7 +21,6 @@ public class RequestUtil {
     private static Login login;
     private static Staff staff;
     private static Vendor vendor;
-    private static String apiKey;
     private static PaymentChannel channel;
     private static String message;
     private static String taskRoute;
@@ -35,8 +34,7 @@ public class RequestUtil {
     private static Authorization authorization;
 
     public static HttpServletRequest getRequest(){
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        return new ContentCachingRequestWrapper(request);
+        return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
     }
 
     /**
@@ -213,6 +211,14 @@ public class RequestUtil {
 
     public static String getUserAction(){
         return userAction;
+    }
+
+    public static void setConsumerSettings(HashMap<String, ConsumerSetting> consumerSettings){
+        getRequest().setAttribute("consumer_settings", consumerSettings);
+    }
+
+    public static HashMap<String, ConsumerSetting> getConsumerSettings(){
+        return (HashMap<String, ConsumerSetting>)getRequest().getAttribute("consumer_settings");
     }
 
     public static String getLang(){

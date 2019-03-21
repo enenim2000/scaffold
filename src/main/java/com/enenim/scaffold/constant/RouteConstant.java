@@ -115,6 +115,8 @@ public interface RouteConstant {
     String ADMINISTRATION_SETTING_CATEGORIES = ADMINISTRATION + SETTING + "categories";
     String ADMINISTRATION_SETTING_SHOW = ADMINISTRATION + SETTING + SHOW;
 
+    String ADMINISTRATION_TICKET_SHOW = ADMINISTRATION + "ticket" + SHOW;
+
     //Audit modules
     String AUDIT_MODULE = "audit" + DOT;
     String AUDIT_INDEX = AUDIT_MODULE + INDEX;

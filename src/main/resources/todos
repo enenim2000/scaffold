@@ -66,7 +66,7 @@ The last column store a list of json object
 
 getFeedbackByConsumer
 getFeedbackByVendor
-getFeedbackReference
+getFeedbackByReference
 
 
 

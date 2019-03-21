@@ -83,6 +83,24 @@ public class ConsumerSettingService{
         return consumerSystemSettings;
     }
 
+    public HashMap<String, ConsumerSystemSetting> getConsumerSystemSettingsMap(Long consumerId){
+        List<ConsumerSetting> consumerSettings = getConsumerSettings(consumerId);
+
+        HashMap<String, ConsumerSettingMapCategory> categoryMap = ConsumerSettingConfigUtil.getMemoryConsumerSettings();
+
+        HashMap<String, ConsumerSystemSetting> consumerSystemSettings =  new HashMap<>();
+
+        for(ConsumerSetting consumerSetting : consumerSettings){
+            ConsumerSystemSetting consumerSystemSetting = categoryMap.get(consumerSetting.getCategoryKey()).getSettings().get(consumerSetting.getSettingKey());
+            if(!StringUtils.isEmpty(consumerSystemSetting)){
+                consumerSystemSetting.getDetail().setValue( consumerSetting.getValue() );
+            }
+            consumerSystemSettings.put(consumerSetting.getSettingKey(), consumerSystemSetting);
+        }
+
+        return consumerSystemSettings;
+    }
+
     public ConsumerSystemSetting getConsumerSystemSetting(Long consumerId, String settingKey){
         ConsumerSetting consumerSetting = consumerSettingRepository.findByConsumerIdAndKey(consumerId, settingKey);
         ConsumerSystemSetting  consumerSystemSetting = ConsumerSettingConfigUtil.getMemoryConsumerSettings().get(consumerSetting.getCategoryKey()).getSettings().get(consumerSetting.getSettingKey());
