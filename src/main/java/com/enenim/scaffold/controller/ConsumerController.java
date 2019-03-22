@@ -223,8 +223,11 @@ public class ConsumerController {
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
     @Permission(ADMINISTRATION_TICKET_SHOW)
     public Response<PageResponse<Ticket>> getConsumerTickets(@PathVariable Long id, @PathVariable("status") Optional<TicketStatus> status) {
-
-        return new Response<>(new PageResponse<>(ticketService.getTicket(userResolverService.resolveUserId(id))));
+        if(status.isPresent()){
+            return new Response<>(new PageResponse<>(ticketService.getTickets(userResolverService.resolveUserId(id), status.get())));
+        }else {
+            return new Response<>(new PageResponse<>(ticketService.getTickets(userResolverService.resolveUserId(id))));
+        }
     }
 
 
