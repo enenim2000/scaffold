@@ -10,10 +10,7 @@ import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.TicketStatus;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
-import com.enenim.scaffold.model.dao.Consumer;
-import com.enenim.scaffold.model.dao.Login;
-import com.enenim.scaffold.model.dao.Ticket;
-import com.enenim.scaffold.model.dao.Transaction;
+import com.enenim.scaffold.model.dao.*;
 import com.enenim.scaffold.service.FileStorageService;
 import com.enenim.scaffold.service.MailSenderService;
 import com.enenim.scaffold.service.UserResolverService;
@@ -35,6 +32,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.util.Optional;
 
+import static com.enenim.scaffold.constant.RouteConstant.ADMINISTRATION_FEEDBACK_SHOW;
 import static com.enenim.scaffold.constant.RouteConstant.ADMINISTRATION_SETTING_SHOW;
 import static com.enenim.scaffold.constant.RouteConstant.ADMINISTRATION_TICKET_SHOW;
 
@@ -223,10 +221,28 @@ public class ConsumerController {
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
     @Permission(ADMINISTRATION_TICKET_SHOW)
     public Response<PageResponse<Ticket>> getConsumerTickets(@PathVariable Long id, @PathVariable("status") Optional<TicketStatus> status) {
-
-        return new Response<>(new PageResponse<>(ticketService.getTicket(userResolverService.resolveUserId(id))));
+        id = userResolverService.resolveUserId(id);
+        if(status.isPresent()){
+            return new Response<>(new PageResponse<>(ticketService.getTickets(id, status.get())));
+        }else {
+            return new Response<>(new PageResponse<>(ticketService.getTickets(id)));
+        }
     }
 
+    @Get("/{id}/tickets/{ticket-id}")
+    @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
+    @Permission(ADMINISTRATION_TICKET_SHOW)
+    public Response<ModelResponse<TicketResponse>> getConsumerTicket(@PathVariable Long id, @PathVariable("ticket-id") Long ticketId) {
+        return new Response<>(new ModelResponse<>(
+                ObjectMapperUtil.map(ticketService.getConsumerTicket(userResolverService.resolveUserId(id), ticketId), TicketResponse.class)));
+    }
+
+    @Get("/{id}/feedback")
+    @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
+    @Permission(ADMINISTRATION_FEEDBACK_SHOW)
+    public Response<PageResponse<Feedback>> getConsumerFeedbacks(@PathVariable Long id) {
+        return null; //new Response<>(new PageResponse<>(feedbackService.getFeedback(userResolverService.resolveUserId(id))));
+    }
 
     private void storeConsumerLogo(Consumer consumer, MultipartFile file){
         if(!StringUtils.isEmpty(file)){

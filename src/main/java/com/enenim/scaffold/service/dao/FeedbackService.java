@@ -24,6 +24,10 @@ public class FeedbackService {
         return feedbackRepository.findOrFail(id);
     }
 
+    public Page<Feedback> getConsumerFeedback(Long consumerId){
+        return feedbackRepository.findOrFail(consumerId);
+    }
+
     public Feedback saveFeedback(Feedback feedback){
         return feedbackRepository.save(feedback);
     }
