@@ -24,6 +24,10 @@ public class TicketService {
         return ticketRepository.findOrFail(id);
     }
 
+    public Ticket getTickets(Long id){
+        return ticketRepository.findOrFail(id);
+    }
+
     public Ticket saveTicket(Ticket ticket){
         return ticketRepository.save(ticket);
     }
