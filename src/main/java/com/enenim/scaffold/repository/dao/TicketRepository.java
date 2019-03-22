@@ -19,4 +19,7 @@ public interface TicketRepository extends BaseRepository<Ticket, Long> {
 
     @Query("select t from Ticket t where t.consumer.id = ?1 and t.status = ?2")
     Page<Ticket> findTicketByConsumerAndStatus(Long id, TicketStatus status, Pageable pageable);
+
+    @Query("select t from Ticket t where t.id = ?2 and t.consumer.id = ?1")
+    Ticket findTicketByIdAndConsumerId(Long id, Long ticketId);
 }
