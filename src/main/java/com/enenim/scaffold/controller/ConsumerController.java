@@ -18,6 +18,7 @@ import com.enenim.scaffold.service.cache.SharedExpireCacheService;
 import com.enenim.scaffold.service.dao.*;
 import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.ObjectMapperUtil;
+import com.enenim.scaffold.util.PasswordEncoder;
 import com.enenim.scaffold.util.RequestUtil;
 import com.enenim.scaffold.util.message.CommonMessage;
 import com.enenim.scaffold.util.message.SpringMessage;
@@ -31,9 +32,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.util.Optional;
 
-import static com.enenim.scaffold.constant.RouteConstant.ADMINISTRATION_FEEDBACK_SHOW;
-import static com.enenim.scaffold.constant.RouteConstant.ADMINISTRATION_SETTING_SHOW;
-import static com.enenim.scaffold.constant.RouteConstant.ADMINISTRATION_TICKET_SHOW;
+import static com.enenim.scaffold.constant.RouteConstant.*;
 
 @RestController
 @RequestMapping("/user/consumers")

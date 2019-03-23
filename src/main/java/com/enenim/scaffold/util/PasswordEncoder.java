@@ -1,17 +1,18 @@
 package com.enenim.scaffold.util;
 
-import lombok.Data;
+import com.enenim.scaffold.interfaces.IPasswordEncoder;
 
-@Data
-public class PasswordEncoder {
+public class PasswordEncoder implements IPasswordEncoder {
 
-    private PasswordEncoder bCryptPasswordEncoder = new PasswordEncoder();
+    private Jargon2PasswordEncoder passwordEncoder = new Jargon2PasswordEncoder();
 
+    @Override
     public String encode(String rawPassword){
-        return bCryptPasswordEncoder.encode(rawPassword);
+        return passwordEncoder.encode(rawPassword);
     }
 
+    @Override
     public boolean matches(String rawPassword, String encodedPassword){
-        return bCryptPasswordEncoder.matches(rawPassword, encodedPassword);
+        return passwordEncoder.matches(rawPassword, encodedPassword);
     }
 }
