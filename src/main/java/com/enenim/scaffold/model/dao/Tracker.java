@@ -12,7 +12,6 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,7 +33,7 @@ public class Tracker extends BaseModel {
         setIpAddress(RequestUtil.getIpAddress());
         setUserAgent(RequestUtil.getUserAgent());
         setLoggedIn(LoggedIn.USER_LOGGED_IN);
-        setSessionId(new BCryptPasswordEncoder().encode(date.toString()) + Math.random());
+        setSessionId(new PasswordEncoder().encode(date.toString()) + Math.random());
         setFailedAttempts(0);
         setTimeOfLastActivity(date);
         setLogin(login);

@@ -1,7 +1,7 @@
 package com.enenim.scaffold.model.dao;
 
-import com.enenim.scaffold.enums.VendorType;
 import com.enenim.scaffold.enums.EnabledStatus;
+import com.enenim.scaffold.enums.VendorType;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.interfaces.IAudit;
 import com.enenim.scaffold.model.BaseModel;
@@ -11,7 +11,7 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import com.enenim.scaffold.util.PasswordEncoder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -131,7 +131,7 @@ public class Vendor extends BaseModel implements IAudit{
     @OneToMany(mappedBy = "vendor", fetch = FetchType.EAGER)
     private Set<Service> services = new HashSet<>();
 
-    public void setCommonProperties(BCryptPasswordEncoder bCryptPasswordEncoder){
+    public void setCommonProperties(PasswordEncoder bCryptPasswordEncoder){
         setSlug(RandomStringUtils.randomAlphanumeric(30));
         setTestSecret(bCryptPasswordEncoder.encode(new Date().toString() + Math.random()));
         setSecret(bCryptPasswordEncoder.encode(new Date().toString() + Math.random()));

@@ -23,7 +23,6 @@ import com.enenim.scaffold.util.message.CommonMessage;
 import com.enenim.scaffold.util.message.SpringMessage;
 import com.enenim.scaffold.util.setting.ConsumerSystemSetting;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -45,13 +44,13 @@ public class ConsumerController {
     private final MailSenderService mailSenderService;
     private final FileStorageService fileStorageService;
     private final SharedExpireCacheService sharedExpireCacheService;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final PasswordEncoder bCryptPasswordEncoder;
     private final ConsumerSettingService consumerSettingService;
     private final UserResolverService userResolverService;
     private final TransactionService transactionService;
     private final TicketService ticketService;
 
-    public ConsumerController(ConsumerService consumerService, LoginService loginService, MailSenderService mailSenderService, FileStorageService fileStorageService, SharedExpireCacheService sharedExpireCacheService, BCryptPasswordEncoder bCryptPasswordEncoder, ConsumerSettingService consumerSettingService, UserResolverService userResolverService, TransactionService transactionService, TicketService ticketService) {
+    public ConsumerController(ConsumerService consumerService, LoginService loginService, MailSenderService mailSenderService, FileStorageService fileStorageService, SharedExpireCacheService sharedExpireCacheService, PasswordEncoder bCryptPasswordEncoder, ConsumerSettingService consumerSettingService, UserResolverService userResolverService, TransactionService transactionService, TicketService ticketService) {
         this.consumerService = consumerService;
         this.loginService = loginService;
         this.mailSenderService = mailSenderService;

@@ -22,11 +22,11 @@ import com.enenim.scaffold.service.cache.ConsumerSettingCacheService;
 import com.enenim.scaffold.service.dao.ConsumerSettingService;
 import com.enenim.scaffold.service.dao.LoginService;
 import com.enenim.scaffold.service.dao.TrackerService;
+import com.enenim.scaffold.util.PasswordEncoder;
 import com.enenim.scaffold.util.RequestUtil;
 import com.enenim.scaffold.util.message.CommonMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,13 +46,13 @@ public class UserAccountController {
 	private final LoginService loginService;
     private final TrackerService trackerService;
 	private final TokenAuthenticationService tokenAuthenticationService;
-	private final BCryptPasswordEncoder bCryptPasswordEncoder;
+	private final PasswordEncoder bCryptPasswordEncoder;
 	private final UserResolverService userResolverService;
 	private final ConsumerSettingCacheService consumerSettingCacheService;
 	private final ConsumerSettingService consumerSettingService;
 
 	@Autowired
-	public UserAccountController(LoginService loginService, TrackerService trackerService, TokenAuthenticationService tokenAuthenticationService, BCryptPasswordEncoder bCryptPasswordEncoder, UserResolverService userResolverService, ConsumerSettingCacheService consumerSettingCacheService, ConsumerSettingService consumerSettingService) {
+	public UserAccountController(LoginService loginService, TrackerService trackerService, TokenAuthenticationService tokenAuthenticationService, PasswordEncoder bCryptPasswordEncoder, UserResolverService userResolverService, ConsumerSettingCacheService consumerSettingCacheService, ConsumerSettingService consumerSettingService) {
 		this.loginService = loginService;
 		this.trackerService = trackerService;
 		this.tokenAuthenticationService = tokenAuthenticationService;

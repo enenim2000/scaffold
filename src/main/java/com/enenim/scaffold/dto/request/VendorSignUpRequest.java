@@ -1,5 +1,6 @@
 package com.enenim.scaffold.dto.request;
 
+import com.enenim.scaffold.annotation.ValidPassword;
 import com.enenim.scaffold.model.dao.Vendor;
 import com.enenim.scaffold.util.ObjectMapperUtil;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -20,9 +21,11 @@ public class VendorSignUpRequest extends RequestBody<Vendor>{
     private String email;
 
     @NotBlank(message = "@{vendor.password.required}")
+    @ValidPassword(message = "@{password.strength.required}")
     private String password;
 
     @NotBlank(message = "@{vendor.confirm_password.required}")
+    @ValidPassword(message = "@{password.strength.required}")
     @JsonProperty("confirm_password")
     private String confirmPassword;
 

@@ -23,7 +23,6 @@ import com.enenim.scaffold.util.message.CommonMessage;
 import com.enenim.scaffold.util.message.SpringMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,11 +38,11 @@ public class VendorController {
     private final LoginService loginService;
     private final MailSenderService mailSenderService;
     private final SharedExpireCacheService sharedExpireCacheService;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final PasswordEncoder bCryptPasswordEncoder;
     private final FileStorageService fileStorageService;
 
     @Autowired
-    public VendorController(VendorService vendorService, LoginService loginService, MailSenderService mailSenderService, SharedExpireCacheService sharedExpireCacheService, BCryptPasswordEncoder bCryptPasswordEncoder, FileStorageService fileStorageService) {
+    public VendorController(VendorService vendorService, LoginService loginService, MailSenderService mailSenderService, SharedExpireCacheService sharedExpireCacheService, PasswordEncoder bCryptPasswordEncoder, FileStorageService fileStorageService) {
         this.vendorService = vendorService;
         this.loginService = loginService;
         this.mailSenderService = mailSenderService;
