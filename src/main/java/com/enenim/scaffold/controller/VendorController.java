@@ -38,16 +38,16 @@ public class VendorController {
     private final LoginService loginService;
     private final MailSenderService mailSenderService;
     private final SharedExpireCacheService sharedExpireCacheService;
-    private final PasswordEncoder bCryptPasswordEncoder;
+    private final PasswordEncoder passwordEncoder;
     private final FileStorageService fileStorageService;
 
     @Autowired
-    public VendorController(VendorService vendorService, LoginService loginService, MailSenderService mailSenderService, SharedExpireCacheService sharedExpireCacheService, PasswordEncoder bCryptPasswordEncoder, FileStorageService fileStorageService) {
+    public VendorController(VendorService vendorService, LoginService loginService, MailSenderService mailSenderService, SharedExpireCacheService sharedExpireCacheService, PasswordEncoder passwordEncoder, FileStorageService fileStorageService) {
         this.vendorService = vendorService;
         this.loginService = loginService;
         this.mailSenderService = mailSenderService;
         this.sharedExpireCacheService = sharedExpireCacheService;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.passwordEncoder = passwordEncoder;
         this.fileStorageService = fileStorageService;
     }
 
@@ -69,7 +69,7 @@ public class VendorController {
     public Response<ModelResponse<Vendor>> createVendor(@RequestParam("vendor") String vendorRequest, @RequestParam(value = "file", required = false) MultipartFile file){
         VendorRequest2 request = JsonConverter.getObject(vendorRequest, VendorRequest2.class);
         Vendor vendor = request.buildModel();
-        vendor.setCommonProperties(bCryptPasswordEncoder);
+        vendor.setCommonProperties(passwordEncoder);
         vendor.setVerified(VerifyStatus.VERIFIED);
         storeVendorLogo(vendor, file);
         return new Response<>(new ModelResponse<>(vendorService.saveVendor(vendor)));
@@ -82,7 +82,7 @@ public class VendorController {
         }
 
         Vendor vendor = request.getBody().buildModel();
-        vendor.setCommonProperties(bCryptPasswordEncoder);
+        vendor.setCommonProperties(passwordEncoder);
         vendor.skipAuthorization(true);
         vendor = vendorService.saveVendor(vendor);
 
@@ -91,7 +91,7 @@ public class VendorController {
             login.setUsername(vendor.getEmail());
             login.setUserType(RoleConstant.VENDOR);
             login.setUserId(vendor.getId());
-            login.setPassword(bCryptPasswordEncoder.encode(request.getBody().getPassword()));
+            login.setPassword(passwordEncoder.encode(request.getBody().getPassword()));
             login = loginService.saveLogin(login);
             if(!StringUtils.isEmpty(login.getId())){
                 mailSenderService.send(vendor);
@@ -128,12 +128,12 @@ public class VendorController {
 
         Login login = loginService.getLoginByUsername(email);
 
-        if(!bCryptPasswordEncoder.matches(request.getBody().getOldPassword(), login.getPassword())){
+        if(!passwordEncoder.matches(request.getBody().getOldPassword(), login.getPassword())){
             throw new ScaffoldException("old_password_mismatch");
         }
 
         if(!StringUtils.isEmpty(login)){
-            login.setPassword(bCryptPasswordEncoder.encode(request.getBody().getPassword()));
+            login.setPassword(passwordEncoder.encode(request.getBody().getPassword()));
             loginService.saveLogin(login);
             return new Response<>(new BooleanResponse(true));
         }

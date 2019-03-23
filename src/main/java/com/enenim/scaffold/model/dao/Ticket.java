@@ -39,7 +39,7 @@ public class Ticket extends BaseModel {
 
     @NotNull
     @JsonProperty("last_comment_user_id")
-    private String lastCommentUserId;
+    private Long lastCommentUserId;
 
     @Lob
     private String history;

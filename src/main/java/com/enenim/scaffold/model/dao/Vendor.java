@@ -94,14 +94,6 @@ public class Vendor extends BaseModel implements IAudit{
     @JsonProperty("vendor_account")
     @SerializedName("vendor_account")
     private VendorAccount vendorAccount;
-/*
-    @ManyToMany
-    @JoinTable(name = "vendor_category",
-            joinColumns = @JoinColumn(name = "vendor_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id"),
-            uniqueConstraints = @UniqueConstraint(columnNames = {"vendor_id", "category_id"})
-    )
-    private Set<Category> categories = new HashSet<>();*/
 
     @ManyToMany
     @JoinTable(name = "vendor_payment_channel",
@@ -131,10 +123,10 @@ public class Vendor extends BaseModel implements IAudit{
     @OneToMany(mappedBy = "vendor", fetch = FetchType.EAGER)
     private Set<Service> services = new HashSet<>();
 
-    public void setCommonProperties(PasswordEncoder bCryptPasswordEncoder){
+    public void setCommonProperties(PasswordEncoder passwordEncoder){
         setSlug(RandomStringUtils.randomAlphanumeric(30));
-        setTestSecret(bCryptPasswordEncoder.encode(new Date().toString() + Math.random()));
-        setSecret(bCryptPasswordEncoder.encode(new Date().toString() + Math.random()));
+        setTestSecret(passwordEncoder.encode(new Date().toString() + Math.random()));
+        setSecret(passwordEncoder.encode(new Date().toString() + Math.random()));
         setCode(RandomStringUtils.randomAlphanumeric(10));
     }
 }

@@ -43,19 +43,19 @@ public class ConsumerController {
     private final MailSenderService mailSenderService;
     private final FileStorageService fileStorageService;
     private final SharedExpireCacheService sharedExpireCacheService;
-    private final PasswordEncoder bCryptPasswordEncoder;
+    private final PasswordEncoder passwordEncoder;
     private final ConsumerSettingService consumerSettingService;
     private final UserResolverService userResolverService;
     private final TransactionService transactionService;
     private final TicketService ticketService;
 
-    public ConsumerController(ConsumerService consumerService, LoginService loginService, MailSenderService mailSenderService, FileStorageService fileStorageService, SharedExpireCacheService sharedExpireCacheService, PasswordEncoder bCryptPasswordEncoder, ConsumerSettingService consumerSettingService, UserResolverService userResolverService, TransactionService transactionService, TicketService ticketService) {
+    public ConsumerController(ConsumerService consumerService, LoginService loginService, MailSenderService mailSenderService, FileStorageService fileStorageService, SharedExpireCacheService sharedExpireCacheService, PasswordEncoder passwordEncoder, ConsumerSettingService consumerSettingService, UserResolverService userResolverService, TransactionService transactionService, TicketService ticketService) {
         this.consumerService = consumerService;
         this.loginService = loginService;
         this.mailSenderService = mailSenderService;
         this.fileStorageService = fileStorageService;
         this.sharedExpireCacheService = sharedExpireCacheService;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.passwordEncoder = passwordEncoder;
         this.consumerSettingService = consumerSettingService;
         this.userResolverService = userResolverService;
         this.transactionService = transactionService;
@@ -102,7 +102,7 @@ public class ConsumerController {
             login.setUsername(consumer.getEmail());
             login.setUserType(RoleConstant.CONSUMER);
             login.setUserId(consumer.getId());
-            login.setPassword(bCryptPasswordEncoder.encode(request.getBody().getPassword()));
+            login.setPassword(passwordEncoder.encode(request.getBody().getPassword()));
             login = loginService.saveLogin(login);
             if(!StringUtils.isEmpty(login.getId())){
                 mailSenderService.send(consumer);
@@ -145,7 +145,7 @@ public class ConsumerController {
             if(StringUtils.isEmpty(request.getBody().getPassword())){
                 throw new ScaffoldException("consumer_password_required");
             }
-            login.setPassword(bCryptPasswordEncoder.encode(request.getBody().getPassword()));
+            login.setPassword(passwordEncoder.encode(request.getBody().getPassword()));
         }
         login = loginService.saveLogin(login);
         if(!StringUtils.isEmpty(login)){
@@ -208,17 +208,17 @@ public class ConsumerController {
         return new Response<>(new CollectionResponse<>(consumerSettingService.getConsumerSystemSettings(id)));
     }
 
-    @Get("/{id}/transactions/{status}")
+    @Get({"/{id}/transactions", "/{id}/transactions/{status}"})
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
     @Permission(ADMINISTRATION_SETTING_SHOW)
     public Response<PageResponse<Transaction>> getConsumerTransactions(@PathVariable Long id, @PathVariable("status") Optional<TicketStatus> status, @RequestBody TransactionFilterRequest filter) {
         return new Response<>(new PageResponse<>(transactionService.getConsumerTransactions(filter, userResolverService.resolveUserId(id))));
     }
 
-    @Get("/{id}/tickets/{status}")
+    @Get({"/{id}/tickets", "/{id}/tickets/{status}"})
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
     @Permission(ADMINISTRATION_TICKET_SHOW)
-    public Response<PageResponse<Ticket>> getConsumerTickets(@PathVariable Long id, @PathVariable("status") Optional<TicketStatus> status) {
+    public Response<PageResponse<TicketResponse>> getConsumerTickets(@PathVariable Long id, @PathVariable("status") Optional<TicketStatus> status) {
         id = userResolverService.resolveUserId(id);
         if(status.isPresent()){
             return new Response<>(new PageResponse<>(ticketService.getTickets(id, status.get())));

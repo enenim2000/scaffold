@@ -46,17 +46,17 @@ public class UserAccountController {
 	private final LoginService loginService;
     private final TrackerService trackerService;
 	private final TokenAuthenticationService tokenAuthenticationService;
-	private final PasswordEncoder bCryptPasswordEncoder;
+	private final PasswordEncoder passwordEncoder;
 	private final UserResolverService userResolverService;
 	private final ConsumerSettingCacheService consumerSettingCacheService;
 	private final ConsumerSettingService consumerSettingService;
 
 	@Autowired
-	public UserAccountController(LoginService loginService, TrackerService trackerService, TokenAuthenticationService tokenAuthenticationService, PasswordEncoder bCryptPasswordEncoder, UserResolverService userResolverService, ConsumerSettingCacheService consumerSettingCacheService, ConsumerSettingService consumerSettingService) {
+	public UserAccountController(LoginService loginService, TrackerService trackerService, TokenAuthenticationService tokenAuthenticationService, PasswordEncoder passwordEncoder, UserResolverService userResolverService, ConsumerSettingCacheService consumerSettingCacheService, ConsumerSettingService consumerSettingService) {
 		this.loginService = loginService;
 		this.trackerService = trackerService;
 		this.tokenAuthenticationService = tokenAuthenticationService;
-		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+		this.passwordEncoder = passwordEncoder;
 		this.userResolverService = userResolverService;
 		this.consumerSettingCacheService = consumerSettingCacheService;
 		this.consumerSettingService = consumerSettingService;
@@ -66,7 +66,7 @@ public class UserAccountController {
 	public Response<StringResponse> accountAuth(@Valid @RequestBody Request<LoginRequest> request) {
 		Login login = loginService.getLoginByUsername(request.getBody().getUsername());
 
-		if (!StringUtils.isEmpty(login) && bCryptPasswordEncoder.matches(request.getBody().getPassword(), login.getPassword())) {
+		if (!StringUtils.isEmpty(login) && passwordEncoder.matches(request.getBody().getPassword(), login.getPassword())) {
 
 			Date date = new Date();
 			Tracker tracker = new Tracker(login, date);

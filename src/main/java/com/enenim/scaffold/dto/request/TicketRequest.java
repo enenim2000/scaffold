@@ -19,14 +19,18 @@ public class TicketRequest extends RequestBody<Ticket>{
 	private String transactionReference;
 
 	@JsonProperty("consumer_id")
-	@NotBlank(message = "@{ticket.consumer_id.required")
-	private String consumerId;
+	@NotBlank(message = "@{consumer_id.required")
+	private Long consumerId;
 
 	@NotBlank(message = "@{ticket.subject.required")
 	private String subject;
 
 	@NotBlank(message = "@{ticket.comment.required")
 	private String comment;
+
+	@JsonProperty("service_id")
+	@NotBlank(message = "@{service_id.required")
+	private Long serviceId;
 
 	@Override
 	public Ticket buildModel() {

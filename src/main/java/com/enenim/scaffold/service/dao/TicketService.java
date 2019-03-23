@@ -1,5 +1,6 @@
 package com.enenim.scaffold.service.dao;
 
+import com.enenim.scaffold.dto.response.TicketResponse;
 import com.enenim.scaffold.enums.TicketStatus;
 import com.enenim.scaffold.model.dao.Ticket;
 import com.enenim.scaffold.repository.dao.TicketRepository;
@@ -21,15 +22,15 @@ public class TicketService {
         return ticketRepository.findAll(PageRequestUtil.getPageRequest());
     }
 
-    public Page<Ticket> getTickets(Long consumerId){
+    public Page<TicketResponse> getTickets(Long consumerId){
         return ticketRepository.findTicketByConsumerId(consumerId, PageRequestUtil.getPageRequest());
     }
 
-    public Page<Ticket> getTickets(Long consumerId, TicketStatus status){
+    public Page<TicketResponse> getTickets(Long consumerId, TicketStatus status){
         return ticketRepository.findTicketByConsumerAndStatus(consumerId, status, PageRequestUtil.getPageRequest());
     }
 
-    public Ticket getConsumerTicket(Long consumerId, Long ticketId){
+    public TicketResponse getConsumerTicket(Long consumerId, Long ticketId){
         return ticketRepository.findTicketByIdAndConsumerId(consumerId, ticketId);
     }
 

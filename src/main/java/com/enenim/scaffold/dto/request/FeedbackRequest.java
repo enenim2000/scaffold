@@ -21,7 +21,7 @@ public class FeedbackRequest extends RequestBody<Feedback>{
 	private String transactionReference;
 
 	@JsonProperty("consumer_id")
-	@NotBlank(message = "@{feedback.consumer_id.required")
+	@NotBlank(message = "@{consumer_id.required")
 	private String consumerId;
 
 	@NotBlank(message = "@{feedback.subject.required")
