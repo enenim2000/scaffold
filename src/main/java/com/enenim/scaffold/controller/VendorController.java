@@ -9,15 +9,16 @@ import com.enenim.scaffold.dto.response.*;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
-import com.enenim.scaffold.model.dao.Vendor;
 import com.enenim.scaffold.model.dao.Login;
+import com.enenim.scaffold.model.dao.Vendor;
 import com.enenim.scaffold.service.FileStorageService;
 import com.enenim.scaffold.service.MailSenderService;
 import com.enenim.scaffold.service.cache.SharedExpireCacheService;
-import com.enenim.scaffold.service.dao.VendorService;
 import com.enenim.scaffold.service.dao.LoginService;
+import com.enenim.scaffold.service.dao.VendorUserService;
 import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.ObjectMapperUtil;
+import com.enenim.scaffold.util.PasswordEncoder;
 import com.enenim.scaffold.util.RequestUtil;
 import com.enenim.scaffold.util.message.CommonMessage;
 import com.enenim.scaffold.util.message.SpringMessage;
@@ -34,7 +35,7 @@ import javax.validation.Valid;
 @RequestMapping("/vendors")
 public class VendorController {
 
-    private final VendorService vendorService;
+    private final VendorUserService vendorService;
     private final LoginService loginService;
     private final MailSenderService mailSenderService;
     private final SharedExpireCacheService sharedExpireCacheService;
@@ -42,7 +43,7 @@ public class VendorController {
     private final FileStorageService fileStorageService;
 
     @Autowired
-    public VendorController(VendorService vendorService, LoginService loginService, MailSenderService mailSenderService, SharedExpireCacheService sharedExpireCacheService, PasswordEncoder passwordEncoder, FileStorageService fileStorageService) {
+    public VendorController(VendorUserService vendorService, LoginService loginService, MailSenderService mailSenderService, SharedExpireCacheService sharedExpireCacheService, PasswordEncoder passwordEncoder, FileStorageService fileStorageService) {
         this.vendorService = vendorService;
         this.loginService = loginService;
         this.mailSenderService = mailSenderService;

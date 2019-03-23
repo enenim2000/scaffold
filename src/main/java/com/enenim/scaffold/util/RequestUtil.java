@@ -23,6 +23,7 @@ public class RequestUtil {
     private static Vendor vendor;
     private static PaymentChannel channel;
     private static String message;
+    private static String fullname;
     private static String taskRoute;
     private static Consumer consumer;
     private static String ipAddress;
@@ -147,6 +148,14 @@ public class RequestUtil {
 
     public static void setVendor(Vendor _vendor){
         vendor = _vendor;
+    }
+
+    public static void setFullname(String _fullname){
+        fullname = _fullname;
+    }
+
+    public static String getFullname(){
+        return fullname;
     }
 
     public static void setConsumer(Consumer _consumer){

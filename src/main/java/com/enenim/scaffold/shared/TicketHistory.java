@@ -18,8 +18,14 @@ public class TicketHistory {
     @JsonProperty("user_type")
     private String userType;
 
+    @JsonProperty("fullname")
+    private String fullname;
+
     @JsonProperty("service_id")
     private Long serviceId;
+
+    @JsonProperty("service_name")
+    private String serviceName;
 
     private String comment;
 

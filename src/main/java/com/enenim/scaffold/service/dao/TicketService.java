@@ -38,6 +38,10 @@ public class TicketService {
         return ticketRepository.findOrFail(id);
     }
 
+    public Ticket getTicket(Long consumerId, String transactionReference){
+        return ticketRepository.findTicketByConsumerIdAndReference(consumerId, transactionReference).orElse(null);
+    }
+
     public Ticket saveTicket(Ticket ticket){
         return ticketRepository.save(ticket);
     }

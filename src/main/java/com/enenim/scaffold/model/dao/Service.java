@@ -71,9 +71,4 @@ public class Service extends BaseModel {
     @NotNull
     @ManyToOne
     private Currency currency = new Currency();
-
-/*
-    @JsonBackReference
-    @ManyToMany(mappedBy = "services")
-    private Set<Category> categories = new HashSet<>();*/
 }
