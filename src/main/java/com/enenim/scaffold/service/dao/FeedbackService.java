@@ -16,7 +16,7 @@ public class FeedbackService {
         this.feedbackRepository = feedbackRepository;
     }
 
-    public Page<Feedback> getFeedbacks(){
+    public Page<Feedback> getFeedback(){
         return feedbackRepository.findAll(PageRequestUtil.getPageRequest());
     }
 
@@ -24,8 +24,12 @@ public class FeedbackService {
         return feedbackRepository.findOrFail(id);
     }
 
-    public Page<Feedback> getConsumerFeedback(Long consumerId){
-        return feedbackRepository.findOrFail(consumerId);
+    public Page<Feedback> getConsumerFeedbacks(Long consumerId){
+        return feedbackRepository.getConsumerFeedbacks(consumerId, PageRequestUtil.getPageRequest());
+    }
+
+    public Feedback getConsumerFeedback(Long consumerId, String transactionReference){
+        return feedbackRepository.getConsumerFeedback(consumerId, transactionReference).orElse(null);
     }
 
     public Feedback saveFeedback(Feedback feedback){

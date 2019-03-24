@@ -1,15 +1,12 @@
-package com.enenim.scaffold.shared;
+package com.enenim.scaffold.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class FeedbackReview {
+public class FeedbackReviewRequest {
     @JsonProperty("service_id")
     private Long serviceId;
-
-    @JsonProperty("service_name")
-    private String serviceName;
 
     @JsonProperty("rating")
     private String rating;

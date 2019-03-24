@@ -3,6 +3,7 @@ package com.enenim.scaffold.model.dao;
 import com.enenim.scaffold.enums.LoggedIn;
 import com.enenim.scaffold.model.BaseModel;
 import com.enenim.scaffold.util.JsonDateSerializer;
+import com.enenim.scaffold.util.PasswordEncoder;
 import com.enenim.scaffold.util.RequestUtil;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;

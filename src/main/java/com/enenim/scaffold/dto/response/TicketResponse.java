@@ -1,5 +1,6 @@
 package com.enenim.scaffold.dto.response;
 
+import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.enums.TicketStatus;
 import com.enenim.scaffold.model.BaseModel;
 import com.enenim.scaffold.model.dao.Ticket;
@@ -17,9 +18,9 @@ import java.util.List;
 public class TicketResponse extends BaseModel {
 
     public TicketResponse(Ticket ticket){
-        setLastComment(ticket.getLastComment());
-        setLastCommentUserId(ticket.getLastCommentUserId());
-        setLastCommentUserType(ticket.getLastCommentUserType());
+        setLastComment(ticket.getComment());
+        setLastCommentUserId(ticket.getConsumer().getId());
+        setLastCommentUserType(RoleConstant.CONSUMER);
         setSubject(ticket.getSubject());
         setTransactionReference(ticket.getTransactionReference());
         setStatus(ticket.getStatus());

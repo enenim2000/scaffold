@@ -7,6 +7,7 @@ import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.dto.request.Request;
 import com.enenim.scaffold.dto.request.ServiceRequest;
 import com.enenim.scaffold.dto.request.TransactionRequest;
+import com.enenim.scaffold.dto.response.CollectionResponse;
 import com.enenim.scaffold.dto.response.ModelResponse;
 import com.enenim.scaffold.dto.response.PageResponse;
 import com.enenim.scaffold.dto.response.Response;
@@ -15,7 +16,9 @@ import com.enenim.scaffold.model.dao.Service;
 import com.enenim.scaffold.model.dao.ServiceForm;
 import com.enenim.scaffold.model.dao.Transaction;
 import com.enenim.scaffold.service.dao.ConsumerService;
+import com.enenim.scaffold.service.dao.ServiceFormService;
 import com.enenim.scaffold.service.dao.TransactionService;
+import com.enenim.scaffold.util.RequestUtil;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,10 +34,12 @@ public class TransactionController {
 
     private final ConsumerService consumerService;
     private final TransactionService transactionService;
+    private final ServiceFormService serviceFormService;
 
-    public TransactionController(ConsumerService consumerService, TransactionService transactionService) {
+    public TransactionController(ConsumerService consumerService, TransactionService transactionService, ServiceFormService serviceFormService) {
         this.consumerService = consumerService;
         this.transactionService = transactionService;
+        this.serviceFormService = serviceFormService;
     }
 
     @Get
@@ -52,17 +57,19 @@ public class TransactionController {
     @Post
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
     public Response<ModelResponse<Transaction>> createTransaction(@Valid @RequestBody Request<TransactionRequest> request){
+
         Transaction transaction = new Transaction();
         TransactionRequest transactionRequest = request.getBody();
-        transaction.setBranch(null);
+        transaction.setBranch(RequestUtil.getLoginToken().getUserType().equalsIgnoreCase(RoleConstant.STAFF) ? RequestUtil.getStaff().getBranch() : null);
         transaction.setCurrency(null);
-        transaction.setPaymentChannel(null);
+        transaction.setPaymentChannel(RequestUtil.getChannel());
         transaction.setPaymentMethod(null);
-        transaction.setStaff(null);
+        transaction.setStaff(RequestUtil.getLoginToken().getUserType().equalsIgnoreCase(RoleConstant.STAFF) ? RequestUtil.getStaff() : null);
         transaction.setInitiator(Initiator.USER);
         transaction.setConsumer(consumerService.getConsumer(transactionRequest.getConsumerId()));
 
         Set<ServiceForm> serviceForms = new HashSet<>();
+
         for(ServiceRequest serviceRequest : transactionRequest.getServices()){
             ServiceForm serviceForm = new ServiceForm();
             Service service = new Service();
@@ -72,9 +79,16 @@ public class TransactionController {
             serviceForms.add(serviceForm);
             serviceForm.setTransaction(transaction);
         }
+
         transaction.setServiceForms(serviceForms);
 
         return new Response<>(new ModelResponse<>(transactionService.saveTransaction(transaction)));
+    }
+
+    @Get("/{reference}/services")
+    @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
+    public Response<CollectionResponse<Service>> getTransactionServices(@PathVariable String reference){
+        return new Response<>(new CollectionResponse<>(serviceFormService.getServiceByReference(reference)));
     }
 
 }

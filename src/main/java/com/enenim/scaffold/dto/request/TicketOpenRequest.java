@@ -14,7 +14,7 @@ import javax.validation.constraints.NotBlank;
 @ToString
 public class TicketOpenRequest extends RequestBody<Ticket>{
 
-	@NotBlank(message = "@{ticket.transaction_reference.required")
+	@NotBlank(message = "@{transaction_reference.required")
 	@JsonProperty("transaction_reference")
 	private String transactionReference;
 

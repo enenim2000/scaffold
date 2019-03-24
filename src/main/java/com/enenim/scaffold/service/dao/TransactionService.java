@@ -9,14 +9,15 @@ import com.enenim.scaffold.util.PageRequestUtil;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Service
+;
+
+@org.springframework.stereotype.Service
 public class TransactionService {
     private final TransactionRepository transactionRepository;
 
@@ -37,10 +38,6 @@ public class TransactionService {
         return transactionRepository.save(transaction);
     }
 
-    public void deleteTransaction(Long id){
-        transactionRepository.deleteById(id);
-    }
-
     public Page<Transaction> getConsumerTransactions(TransactionFilterRequest filter, Long consumerId){
         TransactionFilter transactionFilter = new TransactionFilter(filter);
         if(StringUtils.isEmpty(transactionFilter.getSearchTerm())){
@@ -57,7 +54,7 @@ public class TransactionService {
         private List<TransactionStatus> statuses;
         private String searchTerm;
 
-        public TransactionFilter(TransactionFilterRequest filter){
+        TransactionFilter(TransactionFilterRequest filter){
 
             if(StringUtils.isEmpty(filter.getStatus())){
                 setStatuses(new ArrayList<TransactionStatus>(){{add(TransactionStatus.FAILED); add(TransactionStatus.PAID); add(TransactionStatus.PENDING); add(TransactionStatus.REVERSED);}});

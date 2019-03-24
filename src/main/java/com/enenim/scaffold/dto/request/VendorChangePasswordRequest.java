@@ -17,10 +17,10 @@ public class VendorChangePasswordRequest extends RequestBody<Vendor>{
     @NotBlank(message = "@{vendor.old_password.required}")
     private String oldPassword;
 
-    @NotBlank(message = "@{vendor.password.required}")
+    @NotBlank(message = "@{password.required}")
     private String password;
 
-    @NotBlank(message = "@{vendor.confirm_password.required}")
+    @NotBlank(message = "@{confirm_password.required}")
     @JsonProperty("confirm_password")
     private String confirmPassword;
 

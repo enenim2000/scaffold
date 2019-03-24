@@ -14,10 +14,10 @@ import javax.validation.constraints.NotBlank;
 @ToString
 public class VendorNewPasswordRequest extends RequestBody<Vendor>{
 
-    @NotBlank(message = "@{vendor.password.required}")
+    @NotBlank(message = "@{password.required}")
     private String password;
 
-    @NotBlank(message = "@{vendor.confirm_password.required}")
+    @NotBlank(message = "@{confirm_password.required}")
     @JsonProperty("confirm_password")
     private String confirmPassword;
 

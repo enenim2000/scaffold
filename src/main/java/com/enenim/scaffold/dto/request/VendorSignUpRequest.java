@@ -20,11 +20,11 @@ public class VendorSignUpRequest extends RequestBody<Vendor>{
     @Email(message = "@{vendor.email.pattern}")
     private String email;
 
-    @NotBlank(message = "@{vendor.password.required}")
+    @NotBlank(message = "@{password.required}")
     @ValidPassword(message = "@{password.strength.required}")
     private String password;
 
-    @NotBlank(message = "@{vendor.confirm_password.required}")
+    @NotBlank(message = "@{confirm_password.required}")
     @ValidPassword(message = "@{password.strength.required}")
     @JsonProperty("confirm_password")
     private String confirmPassword;
