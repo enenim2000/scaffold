@@ -12,10 +12,10 @@ public class Jargon2PasswordEncoder implements IPasswordEncoder{
         Hasher hasher = jargon2Hasher()
                 .type(Type.ARGON2d) // Data-dependent hashing
                 .memoryCost(65536)  // 64MB memory cost
-                .timeCost(3)        // 3 passes through memory
-                .parallelism(4)     // use 4 lanes and 4 threads
-                .saltLength(16)     // 16 random bytes salt
-                .hashLength(16);    // 16 bytes output hash
+                .timeCost(6)         // 6 passes through memory
+                .parallelism(8)     // use 8 lanes and 4 threads
+                .saltLength(32)     // 32 random bytes salt
+                .hashLength(32);    // 32 bytes output hash
 
         // Set the password and calculate the encoded hash
         return hasher.password(rawPassword.getBytes()).encodedHash();

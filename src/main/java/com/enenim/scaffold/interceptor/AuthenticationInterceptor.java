@@ -62,18 +62,14 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        System.out.println("request.getRequestURI() = " + request.getRequestURI());
-        System.out.println("request.getRequestURI() = " + request.getPathInfo());
-        if(request.getRequestURI().contains("swagger")){
-            return true;
-        }
+        boolean isSwagger = request.getRequestURI().contains("/v2/api-docs")
+                || request.getRequestURI().contains("/configuration/ui")
+                || request.getRequestURI().contains("/swagger-resources")
+                || request.getRequestURI().contains("/configuration/security")
+                || request.getRequestURI().contains("/swagger-ui.html")
+                || request.getRequestURI().contains("/webjars/");
 
-        System.out.println("request.getRequestURI() = " + request.getRequestURI());
-
-        /*
-         * Added for swagger to work smoothly
-         */
-        if(!(handler instanceof HandlerMethod)){
+        if(isSwagger && (request.getRemoteAddr().equals("0:0:0:0:0:0:0:1") || request.getRemoteAddr().equals("127.0.0.1"))){
             return true;
         }
 
@@ -106,8 +102,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         if(handlerMethod.getMethod().isAnnotationPresent(DataDecrypt.class)){
             decrypt(interceptorParamater);
         }
-
-        System.out.println(" About to return true ");
 
         return true;
     }
