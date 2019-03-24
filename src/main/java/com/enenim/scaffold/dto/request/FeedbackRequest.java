@@ -1,5 +1,6 @@
 package com.enenim.scaffold.dto.request;
 
+import com.enenim.scaffold.dto.request.part.FeedbackReviewRequest;
 import com.enenim.scaffold.model.dao.Feedback;
 import com.enenim.scaffold.util.ObjectMapperUtil;
 import com.fasterxml.jackson.annotation.JsonProperty;

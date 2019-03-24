@@ -1,4 +1,4 @@
-package com.enenim.scaffold.dto.request;
+package com.enenim.scaffold.dto.request.part;
 
 import com.enenim.scaffold.enums.TransactionStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;

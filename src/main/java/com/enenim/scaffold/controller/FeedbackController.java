@@ -6,8 +6,9 @@ import com.enenim.scaffold.annotation.Post;
 import com.enenim.scaffold.annotation.Role;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.dto.request.FeedbackRequest;
-import com.enenim.scaffold.dto.request.FeedbackReviewRequest;
 import com.enenim.scaffold.dto.request.Request;
+import com.enenim.scaffold.dto.request.part.FeedbackReviewRequest;
+import com.enenim.scaffold.dto.response.FeedbackResponse;
 import com.enenim.scaffold.dto.response.ModelResponse;
 import com.enenim.scaffold.dto.response.PageResponse;
 import com.enenim.scaffold.dto.response.Response;
@@ -47,15 +48,15 @@ public class FeedbackController {
     @Get
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_FEEDBACK_INDEX)
-    public Response<PageResponse<Feedback>> getFeedback(){
-        return new Response<>(new PageResponse<>(feedbackService.getFeedback()));
+    public Response<PageResponse<FeedbackResponse>> getFeedback(){
+        return new Response<>(new PageResponse<>(feedbackService.getFeedbackResponses()));
     }
 
     @Get("/{id}")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_FEEDBACK_SHOW)
-    public Response<ModelResponse<Feedback>> getTicket(@PathVariable Long id){
-        return new Response<>(new ModelResponse<>(feedbackService.getFeedback(id)));
+    public Response<ModelResponse<FeedbackResponse>> getFeedback(@PathVariable Long id){
+        return new Response<>(new ModelResponse<>(feedbackService.getFeedback(id).getFeedbackResponse()));
     }
 
     @Post

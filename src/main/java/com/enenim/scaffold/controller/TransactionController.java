@@ -5,7 +5,7 @@ import com.enenim.scaffold.annotation.Post;
 import com.enenim.scaffold.annotation.Role;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.dto.request.Request;
-import com.enenim.scaffold.dto.request.ServiceRequest;
+import com.enenim.scaffold.dto.request.part.ServiceRequest;
 import com.enenim.scaffold.dto.request.TransactionRequest;
 import com.enenim.scaffold.dto.response.CollectionResponse;
 import com.enenim.scaffold.dto.response.ModelResponse;

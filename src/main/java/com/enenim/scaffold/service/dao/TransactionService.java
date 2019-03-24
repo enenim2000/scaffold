@@ -1,6 +1,6 @@
 package com.enenim.scaffold.service.dao;
 
-import com.enenim.scaffold.dto.request.TransactionFilterRequest;
+import com.enenim.scaffold.dto.request.part.TransactionFilterRequest;
 import com.enenim.scaffold.enums.TransactionStatus;
 import com.enenim.scaffold.model.dao.Transaction;
 import com.enenim.scaffold.repository.dao.TransactionRepository;

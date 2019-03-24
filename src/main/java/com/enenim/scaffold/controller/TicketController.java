@@ -3,7 +3,7 @@ package com.enenim.scaffold.controller;
 import com.enenim.scaffold.annotation.*;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.dto.request.Request;
-import com.enenim.scaffold.dto.request.TicketCommentRequest;
+import com.enenim.scaffold.dto.request.part.TicketCommentRequest;
 import com.enenim.scaffold.dto.request.TicketOpenRequest;
 import com.enenim.scaffold.dto.response.CollectionResponse;
 import com.enenim.scaffold.dto.response.ModelResponse;

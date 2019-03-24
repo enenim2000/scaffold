@@ -1,4 +1,4 @@
-package com.enenim.scaffold.dto.request;
+package com.enenim.scaffold.dto.request.part;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

@@ -1,5 +1,6 @@
 package com.enenim.scaffold.service.dao;
 
+import com.enenim.scaffold.dto.response.FeedbackResponse;
 import com.enenim.scaffold.model.dao.Feedback;
 import com.enenim.scaffold.repository.dao.FeedbackRepository;
 import com.enenim.scaffold.util.PageRequestUtil;
@@ -16,20 +17,20 @@ public class FeedbackService {
         this.feedbackRepository = feedbackRepository;
     }
 
-    public Page<Feedback> getFeedback(){
-        return feedbackRepository.findAll(PageRequestUtil.getPageRequest());
+    public Page<FeedbackResponse> getFeedbackResponses(){
+        return feedbackRepository.getFeedbacks(PageRequestUtil.getPageRequest());
     }
 
     public Feedback getFeedback(Long id){
         return feedbackRepository.findOrFail(id);
     }
 
-    public Page<Feedback> getConsumerFeedbacks(Long consumerId){
+    public Page<FeedbackResponse> getConsumerFeedbackResponses(Long consumerId){
         return feedbackRepository.getConsumerFeedbacks(consumerId, PageRequestUtil.getPageRequest());
     }
 
-    public Feedback getConsumerFeedback(Long consumerId, String transactionReference){
-        return feedbackRepository.getConsumerFeedback(consumerId, transactionReference).orElse(null);
+    public FeedbackResponse getConsumerFeedback(Long consumerId, Long feedbackId){
+        return feedbackRepository.getConsumerFeedback(consumerId, feedbackId).orElse(null);
     }
 
     public Feedback saveFeedback(Feedback feedback){

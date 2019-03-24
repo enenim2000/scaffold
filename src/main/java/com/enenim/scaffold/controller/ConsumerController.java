@@ -5,6 +5,7 @@ import com.enenim.scaffold.constant.AssetBaseConstant;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.constant.RouteConstant;
 import com.enenim.scaffold.dto.request.*;
+import com.enenim.scaffold.dto.request.part.TransactionFilterRequest;
 import com.enenim.scaffold.dto.response.*;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.TicketStatus;
@@ -48,8 +49,9 @@ public class ConsumerController {
     private final UserResolverService userResolverService;
     private final TransactionService transactionService;
     private final TicketService ticketService;
+    private final FeedbackService feedbackService;
 
-    public ConsumerController(ConsumerService consumerService, LoginService loginService, MailSenderService mailSenderService, FileStorageService fileStorageService, SharedExpireCacheService sharedExpireCacheService, PasswordEncoder passwordEncoder, ConsumerSettingService consumerSettingService, UserResolverService userResolverService, TransactionService transactionService, TicketService ticketService) {
+    public ConsumerController(ConsumerService consumerService, LoginService loginService, MailSenderService mailSenderService, FileStorageService fileStorageService, SharedExpireCacheService sharedExpireCacheService, PasswordEncoder passwordEncoder, ConsumerSettingService consumerSettingService, UserResolverService userResolverService, TransactionService transactionService, TicketService ticketService, FeedbackService feedbackService) {
         this.consumerService = consumerService;
         this.loginService = loginService;
         this.mailSenderService = mailSenderService;
@@ -60,6 +62,7 @@ public class ConsumerController {
         this.userResolverService = userResolverService;
         this.transactionService = transactionService;
         this.ticketService = ticketService;
+        this.feedbackService = feedbackService;
     }
 
     @Get
@@ -237,9 +240,16 @@ public class ConsumerController {
 
     @Get("/{id}/feedback")
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
-    @Permission(ADMINISTRATION_FEEDBACK_SHOW)
-    public Response<PageResponse<Feedback>> getConsumerFeedbacks(@PathVariable Long id) {
-        return null; //new Response<>(new PageResponse<>(feedbackService.getFeedback(userResolverService.resolveUserId(id))));
+    @Permission(ADMINISTRATION_CONSUMER_FEEDBACK)
+    public Response<PageResponse<FeedbackResponse>> getConsumerFeedback(@PathVariable Long id) {
+        return new Response<>(new PageResponse<>(feedbackService.getConsumerFeedbackResponses(userResolverService.resolveUserId(id))));
+    }
+
+    @Get("/{id}/feedback/{feedback-id}")
+    @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
+    @Permission(ADMINISTRATION_CONSUMER_FEEDBACK_SHOW)
+    public Response<ModelResponse<FeedbackResponse>> getConsumerFeedback(@PathVariable Long id, @PathVariable("feedback-id") Long feedbackId) {
+        return new Response<>(new ModelResponse<>(feedbackService.getConsumerFeedback(userResolverService.resolveUserId(id), feedbackId)));
     }
 
     private void storeConsumerLogo(Consumer consumer, MultipartFile file){
