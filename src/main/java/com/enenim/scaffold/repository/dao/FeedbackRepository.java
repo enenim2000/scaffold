@@ -15,15 +15,13 @@ import java.util.Optional;
 @Transactional
 public interface FeedbackRepository extends BaseRepository<Feedback, Long> {
 
-    @Query("select new FeedbackResponse(f) from Feedback f")
+    @Query("select new com.enenim.scaffold.dto.response.FeedbackResponse(f) from Feedback f")
     Page<FeedbackResponse> getFeedbacks(Pageable pageable);
 
-    @Query("select new FeedbackResponse(f) from Feedback f where f.consumer.id = ?1")
+    @Query("select new com.enenim.scaffold.dto.response.FeedbackResponse(f) from Feedback f where f.consumer.id = ?1")
     Page<FeedbackResponse> getConsumerFeedbacks(Long consumerId, Pageable pageable);
 
-    @Query("select new FeedbackResponse(f) from Feedback f where f.consumer.id = ?1 and f.id = ?2")
+    @Query("select new com.enenim.scaffold.dto.response.FeedbackResponse(f) from Feedback f where f.consumer.id = ?1 and f.id = ?2")
     Optional<FeedbackResponse> getConsumerFeedback(Long consumerId, Long feedbackId);
 
-    @Query("select f from Feedback f where f.consumer.id = ?1 and f.transactionReference = ?2")
-    Optional<Feedback> getConsumerFeedback(Long consumerId, String transactionReference);
 }
