@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.gson.annotations.SerializedName;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -81,5 +82,6 @@ public class Tracker extends BaseModel {
     @NonNull
     @ManyToOne
     @JsonManagedReference
+    @ApiModelProperty(required = true, hidden = true)
     private Login login;
 }

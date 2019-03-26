@@ -4,6 +4,7 @@ import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -37,10 +38,12 @@ public class ActiveHour extends BaseModel {
 
     @JsonBackReference
     @OneToMany(mappedBy = "activeHour", fetch = FetchType.LAZY)
+    @ApiModelProperty(required = true, hidden = true)
     private Set<Staff> staff = new HashSet<>();
 
     @JsonBackReference
     @OneToMany(mappedBy = "activeHour", fetch = FetchType.LAZY)
+    @ApiModelProperty(required = true, hidden = true)
     private Set<Group> groups = new HashSet<>();
 
     public ActiveHour(){}

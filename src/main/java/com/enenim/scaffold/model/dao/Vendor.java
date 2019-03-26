@@ -9,6 +9,7 @@ import com.enenim.scaffold.util.AESUtil;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -93,6 +94,7 @@ public class Vendor extends BaseModel implements IAudit{
     @JsonBackReference
     @JsonProperty("vendor_account")
     @SerializedName("vendor_account")
+    @ApiModelProperty(required = true, hidden = true)
     private VendorAccount vendorAccount;
 
     @ManyToMany
@@ -103,7 +105,19 @@ public class Vendor extends BaseModel implements IAudit{
     )
     @JsonProperty("payment_channels")
     @SerializedName("payment_channels")
+    @ApiModelProperty(required = true, hidden = true)
     private Set<PaymentChannel> paymentChannels = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "vendor_category",
+            joinColumns = @JoinColumn(name = "vendor_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"),
+            uniqueConstraints = @UniqueConstraint(columnNames = {"vendor_id", "category_id"})
+    )
+    @JsonProperty("categories")
+    @SerializedName("categories")
+    @ApiModelProperty(required = true, hidden = true)
+    private Set<Category> categories = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "vendor_payment_method",
@@ -113,14 +127,17 @@ public class Vendor extends BaseModel implements IAudit{
     )
     @JsonProperty("payment_methods")
     @SerializedName("payment_methods")
+    @ApiModelProperty(required = true, hidden = true)
     private Set<PaymentMethod> paymentMethods = new HashSet<>();
 
     @JsonBackReference
     @OneToMany(mappedBy = "vendor", fetch = FetchType.LAZY)
+    @ApiModelProperty(required = true, hidden = true)
     private Set<VendorSetting> vendorSettings = new HashSet<>();
 
     @JsonBackReference
     @OneToMany(mappedBy = "vendor", fetch = FetchType.EAGER)
+    @ApiModelProperty(required = true, hidden = true)
     private Set<Service> services = new HashSet<>();
 
     public void setCommonProperties(){

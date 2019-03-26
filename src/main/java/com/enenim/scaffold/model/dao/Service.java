@@ -3,12 +3,16 @@ package com.enenim.scaffold.model.dao;
 import com.enenim.scaffold.enums.AmountType;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.model.BaseModel;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -71,4 +75,9 @@ public class Service extends BaseModel {
     @NotNull
     @ManyToOne
     private Currency currency = new Currency();
+
+    @JsonBackReference
+    @ManyToMany(mappedBy = "services")
+    @ApiModelProperty(required = true, hidden = true)
+    private Set<Category> categories = new HashSet<>();
 }

@@ -7,6 +7,7 @@ import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -64,6 +65,7 @@ public class Staff extends BaseModel{
 
     @JsonBackReference
     @OneToMany(mappedBy = "staff", fetch = FetchType.LAZY)
+    @ApiModelProperty(required = true, hidden = true)
     private Set<Transaction> transactions = new HashSet<>();
 
     public Staff() {

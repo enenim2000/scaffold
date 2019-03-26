@@ -2,6 +2,7 @@ package com.enenim.scaffold.model.dao;
 
 import com.enenim.scaffold.enums.AuthorizationStatus;
 import com.enenim.scaffold.model.BaseModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,9 +25,11 @@ public class Authorization extends BaseModel {
     }
 
     @OneToOne
+    @ApiModelProperty(required = true, hidden = true)
     private Task task;
 
     @OneToOne
+    @ApiModelProperty(required = true, hidden = true)
     private Staff staff;
 
     @NotNull
@@ -39,5 +42,6 @@ public class Authorization extends BaseModel {
     private String comment = "";
 
     @OneToMany(mappedBy = "authorization", fetch = FetchType.LAZY)
+    @ApiModelProperty(required = true, hidden = true)
     private Set<Audit> audits = new HashSet<>();
 }

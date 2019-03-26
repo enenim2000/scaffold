@@ -3,14 +3,16 @@ package com.enenim.scaffold.model.dao;
 import com.enenim.scaffold.enums.CategoryGroup;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.model.BaseModel;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -49,16 +51,18 @@ public class Category extends BaseModel {
     @NotNull
     private EnabledStatus enabled = EnabledStatus.ENABLED;
 
-    /*@JsonBackReference
+    @JsonBackReference
     @ManyToMany
     @JoinTable(name = "category_service",
             joinColumns = @JoinColumn(name = "category_id"),
             inverseJoinColumns = @JoinColumn(name = "service_id"),
             uniqueConstraints = @UniqueConstraint(columnNames = {"category_id", "service_id"})
     )
-    private Set<Service> services = new HashSet<>();*/
+    @ApiModelProperty(required = true, hidden = true)
+    private Set<Service> services = new HashSet<>();
 
-    /*@JsonBackReference
+    @JsonBackReference
     @ManyToMany(mappedBy = "categories")
-    private Set<Vendor> vendors = new HashSet<>();*/
+    @ApiModelProperty(required = true, hidden = true)
+    private Set<Vendor> vendors = new HashSet<>();
 }

@@ -6,6 +6,7 @@ import com.enenim.scaffold.enums.VisibilityStatus;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -64,12 +65,12 @@ public class Task extends BaseModel {
 
     @JsonBackReference
     @ManyToMany(mappedBy = "tasks")
+    @ApiModelProperty(required = true, hidden = true)
     private Set<Group> groups = new HashSet<>();
 
     @JsonBackReference
-    @ManyToMany( cascade = {
-            CascadeType.PERSIST
-            },mappedBy = "authorizerTasks")
+    @ManyToMany( cascade = {CascadeType.PERSIST},mappedBy = "authorizerTasks")
+    @ApiModelProperty(required = true, hidden = true)
     private Set<Group> authorizerGroups = new HashSet<>();
 }
 

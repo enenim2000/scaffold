@@ -3,7 +3,9 @@ package com.enenim.scaffold.model.dao;
 import com.enenim.scaffold.enums.TransactionDisputeStatus;
 import com.enenim.scaffold.interfaces.DataTypeConstant;
 import com.enenim.scaffold.model.BaseModel;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -44,5 +46,7 @@ public class TransactionDispute extends BaseModel {
 
     @NotNull
     @ManyToOne
+    @JsonBackReference
+    @ApiModelProperty(required = true, hidden = true)
     private Consumer consumer;
 }

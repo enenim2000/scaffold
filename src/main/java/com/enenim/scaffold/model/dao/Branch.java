@@ -4,6 +4,7 @@ import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.interfaces.IAuthorization;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -48,13 +49,16 @@ public class Branch extends BaseModel implements IAuthorization {
             inverseJoinColumns = @JoinColumn(name = "public_holiday_id"),
             uniqueConstraints = @UniqueConstraint(columnNames = {"branch_id", "public_holiday_id"})
     )
+    @ApiModelProperty(required = true, hidden = true)
     private Set<PublicHoliday> publicHolidays = new HashSet<>();
 
     @JsonBackReference
     @OneToMany(mappedBy = "branch", fetch = FetchType.LAZY)
+    @ApiModelProperty(required = true, hidden = true)
     private Set<Staff> staff = new HashSet<>();
 
     @JsonBackReference
     @OneToMany(mappedBy = "branch", fetch = FetchType.LAZY)
+    @ApiModelProperty(required = true, hidden = true)
     private Set<Transaction> transactions = new HashSet<>();
 }

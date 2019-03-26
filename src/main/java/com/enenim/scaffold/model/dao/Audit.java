@@ -4,6 +4,7 @@ import com.enenim.scaffold.enums.AuditStatus;
 import com.enenim.scaffold.interfaces.DataTypeConstant;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +18,7 @@ public class Audit extends BaseModel {
 
     @Column(length = 100)
     @JsonProperty("entity_type")
-    private String entityType; //When new entity are created on the fly how to ensure they used the same authorization id
+    private String entityType;
 
     @Column(length = 80)
     @JsonProperty("task_route")
@@ -50,8 +51,10 @@ public class Audit extends BaseModel {
     private String after;
 
     @OneToOne
+    @ApiModelProperty(required = true, hidden = true)
     private Login login;
 
     @ManyToOne
+    @ApiModelProperty(required = true, hidden = true)
     private Authorization authorization;
 }

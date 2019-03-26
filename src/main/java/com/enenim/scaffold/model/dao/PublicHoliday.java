@@ -3,6 +3,7 @@ package com.enenim.scaffold.model.dao;
 import com.enenim.scaffold.interfaces.DataTypeConstant;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,5 +32,6 @@ public class PublicHoliday extends BaseModel {
 
     @JsonBackReference
     @ManyToMany(mappedBy = "publicHolidays")
+    @ApiModelProperty(required = true, hidden = true)
     private Set<Branch> branches = new HashSet<>();
 }

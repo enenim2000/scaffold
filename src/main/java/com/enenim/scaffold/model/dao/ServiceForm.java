@@ -2,6 +2,7 @@ package com.enenim.scaffold.model.dao;
 
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,5 +27,6 @@ public class ServiceForm extends BaseModel {
     @JsonManagedReference
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "transaction_id")
+    @ApiModelProperty(required = true, hidden = true)
     private Transaction transaction;
 }

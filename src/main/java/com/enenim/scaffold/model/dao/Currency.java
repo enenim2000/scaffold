@@ -4,6 +4,7 @@ import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,5 +39,6 @@ public class Currency extends BaseModel {
 
     @JsonBackReference
     @OneToMany(mappedBy = "currency", fetch = FetchType.LAZY)
+    @ApiModelProperty(required = true, hidden = true)
     private Set<Transaction> transactions = new HashSet<>();
 }

@@ -6,6 +6,7 @@ import com.enenim.scaffold.enums.WeekendLogin;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -55,6 +56,7 @@ public class Group extends BaseModel {
 
     @JsonBackReference
     @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
+    @ApiModelProperty(required = true, hidden = true)
     private Set<Staff> staff = new HashSet<>();
 
     @JsonBackReference
@@ -64,16 +66,17 @@ public class Group extends BaseModel {
             inverseJoinColumns = @JoinColumn(name = "task_id"),
             uniqueConstraints = @UniqueConstraint(columnNames = {"group_id", "task_id"})
     )
+    @ApiModelProperty(required = true, hidden = true)
     private Set<Task> tasks = new HashSet<>();
 
     @JsonBackReference
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-
     @JoinTable(name = "permission_authorizer",
             joinColumns = @JoinColumn(name = "group_id"),
             inverseJoinColumns = @JoinColumn(name = "task_id"),
             uniqueConstraints = @UniqueConstraint(columnNames = {"group_id", "task_id"})
     )
+    @ApiModelProperty(required = true, hidden = true)
     private Set<Task> authorizerTasks = new HashSet<>();
 
     public void addTask(Task task) {

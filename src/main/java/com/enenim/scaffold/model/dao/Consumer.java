@@ -7,6 +7,7 @@ import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -69,13 +70,16 @@ public class Consumer extends BaseModel {
 
     @JsonBackReference
     @OneToMany(mappedBy = "consumer", fetch = FetchType.LAZY)
+    @ApiModelProperty(required = true, hidden = true)
     private Set<ConsumerSetting> consumerSettings = new HashSet<>();
 
     @JsonBackReference
     @OneToMany(mappedBy = "consumer", fetch = FetchType.LAZY)
+    @ApiModelProperty(required = true, hidden = true)
     private Set<Transaction> transactions = new HashSet<>();
 
     @JsonBackReference
     @OneToMany(mappedBy = "consumer", fetch = FetchType.LAZY)
+    @ApiModelProperty(required = true, hidden = true)
     private Set<TransactionDispute> transactionDisputes = new HashSet<>();
 }

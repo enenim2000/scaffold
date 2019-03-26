@@ -4,6 +4,7 @@ import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,12 +18,6 @@ import java.util.Set;
 @Entity
 @Table(name = "account_providers")
 public class AccountProvider extends BaseModel {
-
-    @Transient
-    public static String searchables = "name,code";
-
-    @Transient
-    public static String table = "account_providers";
 
     @NotNull
     @Column(unique=true, length = 50)
@@ -44,10 +39,12 @@ public class AccountProvider extends BaseModel {
     @JsonBackReference
     @OneToMany(mappedBy = "accountProvider", fetch = FetchType.LAZY)
     @JsonProperty("vendor_accounts")
+    @ApiModelProperty(required = true, hidden = true)
     private Set<VendorAccount> vendorAccounts = new HashSet<>();
 
     @JsonBackReference
     @OneToMany(mappedBy = "accountProvider", fetch = FetchType.LAZY)
     @JsonProperty("consumer_accounts")
+    @ApiModelProperty(required = true, hidden = true)
     private Set<ConsumerAccount> consumerAccounts = new HashSet<>();
 }

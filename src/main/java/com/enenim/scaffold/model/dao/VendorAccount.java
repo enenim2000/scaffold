@@ -2,7 +2,9 @@ package com.enenim.scaffold.model.dao;
 
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.model.BaseModel;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,5 +35,7 @@ public class VendorAccount extends BaseModel {
 
     @NotNull
     @OneToOne
+    @JsonBackReference
+    @ApiModelProperty(required = true, hidden = true)
     private Vendor vendor;
 }

@@ -5,6 +5,7 @@ import com.enenim.scaffold.enums.TransactionStatus;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -59,17 +60,19 @@ public class Transaction extends BaseModel {
     @JsonProperty("date_completed")
     private Date dateCompleted;
 
-    @JsonBackReference
-    @OneToMany(mappedBy = "transaction", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    private Set<ServiceForm> serviceForms;
-
     @ManyToOne
+    @JsonBackReference
+    @ApiModelProperty(required = true, hidden = true)
     private Consumer consumer;
 
     @ManyToOne
+    @JsonBackReference
+    @ApiModelProperty(required = true, hidden = true)
     private Branch branch;
 
     @ManyToOne
+    @JsonBackReference
+    @ApiModelProperty(required = true, hidden = true)
     private Staff staff;
 
     @NotNull
@@ -83,4 +86,9 @@ public class Transaction extends BaseModel {
     @NotNull
     @ManyToOne
     private PaymentMethod paymentMethod;
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "transaction", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ApiModelProperty(required = true, hidden = true)
+    private Set<ServiceForm> serviceForms;
 }

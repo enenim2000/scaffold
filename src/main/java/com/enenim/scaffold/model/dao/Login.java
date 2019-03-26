@@ -5,6 +5,7 @@ import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -49,21 +50,26 @@ public class Login extends BaseModel {
 
     @JsonBackReference
     @OneToOne(mappedBy = "login", fetch = FetchType.LAZY)
+    @ApiModelProperty(required = true, hidden = true)
     private SecretQuestion secretQuestion;
 
     @JsonBackReference
     @OneToMany(mappedBy = "login", fetch = FetchType.LAZY)
+    @ApiModelProperty(required = true, hidden = true)
     private Set<Audit> audits = new HashSet<>();
 
     @JsonBackReference
     @OneToMany(mappedBy = "login", fetch = FetchType.LAZY)
+    @ApiModelProperty(required = true, hidden = true)
     private Set<Notification> notifications  = new HashSet<>();
 
     @JsonBackReference
     @OneToMany(mappedBy = "login", fetch = FetchType.LAZY)
+    @ApiModelProperty(required = true, hidden = true)
     private Set<PasswordReset> passwordResets = new HashSet<>();
 
     @JsonBackReference
     @OneToMany(mappedBy = "login", fetch = FetchType.LAZY)
+    @ApiModelProperty(required = true, hidden = true)
     private Set<Tracker> trackers = new HashSet<>();
 }
