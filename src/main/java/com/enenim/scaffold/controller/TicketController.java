@@ -3,8 +3,8 @@ package com.enenim.scaffold.controller;
 import com.enenim.scaffold.annotation.*;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.dto.request.Request;
-import com.enenim.scaffold.dto.request.part.TicketCommentRequest;
 import com.enenim.scaffold.dto.request.TicketOpenRequest;
+import com.enenim.scaffold.dto.request.part.TicketCommentRequest;
 import com.enenim.scaffold.dto.response.CollectionResponse;
 import com.enenim.scaffold.dto.response.ModelResponse;
 import com.enenim.scaffold.dto.response.PageResponse;
@@ -38,6 +38,7 @@ import static com.enenim.scaffold.constant.RouteConstant.*;
 @RestController
 @RequestMapping("/tickets")
 public class TicketController {
+
     private final VendorService vendorService;
     private final TicketService ticketService;
     private final ConsumerService consumerService;

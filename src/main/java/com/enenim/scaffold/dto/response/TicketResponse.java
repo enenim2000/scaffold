@@ -3,12 +3,12 @@ package com.enenim.scaffold.dto.response;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.enums.TicketStatus;
 import com.enenim.scaffold.model.BaseModel;
-import com.enenim.scaffold.model.dao.Ticket;
 import com.enenim.scaffold.shared.TicketHistory;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.ToString;
+import com.enenim.scaffold.model.dao.Ticket;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.List;
 
