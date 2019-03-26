@@ -62,8 +62,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        System.out.println("request.getRequestURI() = " + request.getRequestURI());
-        System.out.println("request.getRequestURI() = " + request.getPathInfo());
         if(request.getRequestURI().contains("swagger")){
             return true;
         }
@@ -106,8 +104,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         if(handlerMethod.getMethod().isAnnotationPresent(DataDecrypt.class)){
             decrypt(interceptorParamater);
         }
-
-        System.out.println(" About to return true ");
 
         return true;
     }
