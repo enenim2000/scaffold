@@ -70,7 +70,7 @@ public class VendorController {
     public Response<ModelResponse<Vendor>> createVendor(@RequestParam("vendor") String vendorRequest, @RequestParam(value = "file", required = false) MultipartFile file){
         VendorRequest2 request = JsonConverter.getObject(vendorRequest, VendorRequest2.class);
         Vendor vendor = request.buildModel();
-        vendor.setCommonProperties(passwordEncoder);
+        vendor.setCommonProperties();
         vendor.setVerified(VerifyStatus.VERIFIED);
         storeVendorLogo(vendor, file);
         return new Response<>(new ModelResponse<>(vendorService.saveVendor(vendor)));
@@ -83,7 +83,7 @@ public class VendorController {
         }
 
         Vendor vendor = request.getBody().buildModel();
-        vendor.setCommonProperties(passwordEncoder);
+        vendor.setCommonProperties();
         vendor.skipAuthorization(true);
         vendor = vendorService.saveVendor(vendor);
 

@@ -5,13 +5,13 @@ import com.enenim.scaffold.enums.VendorType;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.interfaces.IAudit;
 import com.enenim.scaffold.model.BaseModel;
+import com.enenim.scaffold.util.AESUtil;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.RandomStringUtils;
-import com.enenim.scaffold.util.PasswordEncoder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -123,10 +123,10 @@ public class Vendor extends BaseModel implements IAudit{
     @OneToMany(mappedBy = "vendor", fetch = FetchType.EAGER)
     private Set<Service> services = new HashSet<>();
 
-    public void setCommonProperties(PasswordEncoder passwordEncoder){
+    public void setCommonProperties(){
         setSlug(RandomStringUtils.randomAlphanumeric(30));
-        setTestSecret(passwordEncoder.encode(new Date().toString() + Math.random()));
-        setSecret(passwordEncoder.encode(new Date().toString() + Math.random()));
+        setTestSecret(AESUtil.encrypt(new Date().toString() + Math.random()));
+        setSecret(AESUtil.encrypt( Math.random() + new Date().toString()));
         setCode(RandomStringUtils.randomAlphanumeric(10));
     }
 }

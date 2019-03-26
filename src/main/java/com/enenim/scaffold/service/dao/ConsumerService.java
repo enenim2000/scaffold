@@ -33,10 +33,6 @@ public class ConsumerService extends BaseModelService<ConsumerRequest>{
         return consumerRepository.save(consumer);
     }
 
-    public Object toggle(Long id) {
-        return consumerRepository.toggle(id);
-    }
-
     @Override
     public void validateDependencies(ConsumerRequest request) {
 
