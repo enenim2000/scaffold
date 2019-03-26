@@ -1,13 +1,13 @@
 package com.enenim.scaffold;
 
 import com.enenim.scaffold.config.FileStorageProperties;
+import com.enenim.scaffold.util.PasswordEncoder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 @SpringBootApplication
@@ -21,8 +21,8 @@ public class ScaffoldApplication {
 	}
 
 	@Bean
-	public BCryptPasswordEncoder bCryptPasswordEncoder() {
-		return new BCryptPasswordEncoder();
+	public PasswordEncoder PasswordEncoder() {
+		return new PasswordEncoder();
 	}
 
 	@Bean

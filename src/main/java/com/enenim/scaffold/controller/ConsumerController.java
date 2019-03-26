@@ -5,6 +5,7 @@ import com.enenim.scaffold.constant.AssetBaseConstant;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.constant.RouteConstant;
 import com.enenim.scaffold.dto.request.*;
+import com.enenim.scaffold.dto.request.part.TransactionFilterRequest;
 import com.enenim.scaffold.dto.response.*;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.TicketStatus;
@@ -18,12 +19,12 @@ import com.enenim.scaffold.service.cache.SharedExpireCacheService;
 import com.enenim.scaffold.service.dao.*;
 import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.ObjectMapperUtil;
+import com.enenim.scaffold.util.PasswordEncoder;
 import com.enenim.scaffold.util.RequestUtil;
 import com.enenim.scaffold.util.message.CommonMessage;
 import com.enenim.scaffold.util.message.SpringMessage;
 import com.enenim.scaffold.util.setting.ConsumerSystemSetting;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,9 +33,13 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.util.Optional;
 
+<<<<<<< HEAD
 import static com.enenim.scaffold.constant.RouteConstant.ADMINISTRATION_FEEDBACK_SHOW;
 import static com.enenim.scaffold.constant.RouteConstant.ADMINISTRATION_SETTING_SHOW;
 import static com.enenim.scaffold.constant.RouteConstant.ADMINISTRATION_TICKET_SHOW;
+=======
+import static com.enenim.scaffold.constant.RouteConstant.*;
+>>>>>>> 98bb1336b34a3f9f7afac2da65661e88f3acda99
 
 @RestController
 @RequestMapping("/user/consumers")
@@ -45,23 +50,25 @@ public class ConsumerController {
     private final MailSenderService mailSenderService;
     private final FileStorageService fileStorageService;
     private final SharedExpireCacheService sharedExpireCacheService;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final PasswordEncoder passwordEncoder;
     private final ConsumerSettingService consumerSettingService;
     private final UserResolverService userResolverService;
     private final TransactionService transactionService;
     private final TicketService ticketService;
+    private final FeedbackService feedbackService;
 
-    public ConsumerController(ConsumerService consumerService, LoginService loginService, MailSenderService mailSenderService, FileStorageService fileStorageService, SharedExpireCacheService sharedExpireCacheService, BCryptPasswordEncoder bCryptPasswordEncoder, ConsumerSettingService consumerSettingService, UserResolverService userResolverService, TransactionService transactionService, TicketService ticketService) {
+    public ConsumerController(ConsumerService consumerService, LoginService loginService, MailSenderService mailSenderService, FileStorageService fileStorageService, SharedExpireCacheService sharedExpireCacheService, PasswordEncoder passwordEncoder, ConsumerSettingService consumerSettingService, UserResolverService userResolverService, TransactionService transactionService, TicketService ticketService, FeedbackService feedbackService) {
         this.consumerService = consumerService;
         this.loginService = loginService;
         this.mailSenderService = mailSenderService;
         this.fileStorageService = fileStorageService;
         this.sharedExpireCacheService = sharedExpireCacheService;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.passwordEncoder = passwordEncoder;
         this.consumerSettingService = consumerSettingService;
         this.userResolverService = userResolverService;
         this.transactionService = transactionService;
         this.ticketService = ticketService;
+        this.feedbackService = feedbackService;
     }
 
     @Get
@@ -104,7 +111,7 @@ public class ConsumerController {
             login.setUsername(consumer.getEmail());
             login.setUserType(RoleConstant.CONSUMER);
             login.setUserId(consumer.getId());
-            login.setPassword(bCryptPasswordEncoder.encode(request.getBody().getPassword()));
+            login.setPassword(passwordEncoder.encode(request.getBody().getPassword()));
             login = loginService.saveLogin(login);
             if(!StringUtils.isEmpty(login.getId())){
                 mailSenderService.send(consumer);
@@ -147,7 +154,7 @@ public class ConsumerController {
             if(StringUtils.isEmpty(request.getBody().getPassword())){
                 throw new ScaffoldException("consumer_password_required");
             }
-            login.setPassword(bCryptPasswordEncoder.encode(request.getBody().getPassword()));
+            login.setPassword(passwordEncoder.encode(request.getBody().getPassword()));
         }
         login = loginService.saveLogin(login);
         if(!StringUtils.isEmpty(login)){
@@ -210,17 +217,21 @@ public class ConsumerController {
         return new Response<>(new CollectionResponse<>(consumerSettingService.getConsumerSystemSettings(id)));
     }
 
-    @Get("/{id}/transactions/{status}")
+    @Get({"/{id}/transactions", "/{id}/transactions/{status}"})
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
     @Permission(ADMINISTRATION_SETTING_SHOW)
     public Response<PageResponse<Transaction>> getConsumerTransactions(@PathVariable Long id, @PathVariable("status") Optional<TicketStatus> status, @RequestBody TransactionFilterRequest filter) {
         return new Response<>(new PageResponse<>(transactionService.getConsumerTransactions(filter, userResolverService.resolveUserId(id))));
     }
 
-    @Get("/{id}/tickets/{status}")
+    @Get({"/{id}/tickets", "/{id}/tickets/{status}"})
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
     @Permission(ADMINISTRATION_TICKET_SHOW)
+<<<<<<< HEAD
     public Response<PageResponse<Ticket>> getConsumerTickets(@PathVariable Long id, @PathVariable("status") Optional<TicketStatus> status) {
+=======
+    public Response<PageResponse<TicketResponse>> getConsumerTickets(@PathVariable Long id, @PathVariable("status") Optional<TicketStatus> status) {
+>>>>>>> 98bb1336b34a3f9f7afac2da65661e88f3acda99
         id = userResolverService.resolveUserId(id);
         if(status.isPresent()){
             return new Response<>(new PageResponse<>(ticketService.getTickets(id, status.get())));
@@ -239,9 +250,22 @@ public class ConsumerController {
 
     @Get("/{id}/feedback")
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
+<<<<<<< HEAD
     @Permission(ADMINISTRATION_FEEDBACK_SHOW)
     public Response<PageResponse<Feedback>> getConsumerFeedbacks(@PathVariable Long id) {
         return null; //new Response<>(new PageResponse<>(feedbackService.getFeedback(userResolverService.resolveUserId(id))));
+=======
+    @Permission(ADMINISTRATION_CONSUMER_FEEDBACK)
+    public Response<PageResponse<FeedbackResponse>> getConsumerFeedback(@PathVariable Long id) {
+        return new Response<>(new PageResponse<>(feedbackService.getConsumerFeedbackResponses(userResolverService.resolveUserId(id))));
+    }
+
+    @Get("/{id}/feedback/{feedback-id}")
+    @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
+    @Permission(ADMINISTRATION_CONSUMER_FEEDBACK_SHOW)
+    public Response<ModelResponse<FeedbackResponse>> getConsumerFeedback(@PathVariable Long id, @PathVariable("feedback-id") Long feedbackId) {
+        return new Response<>(new ModelResponse<>(feedbackService.getConsumerFeedback(userResolverService.resolveUserId(id), feedbackId)));
+>>>>>>> 98bb1336b34a3f9f7afac2da65661e88f3acda99
     }
 
     private void storeConsumerLogo(Consumer consumer, MultipartFile file){

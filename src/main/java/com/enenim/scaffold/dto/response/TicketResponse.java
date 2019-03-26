@@ -1,16 +1,31 @@
 package com.enenim.scaffold.dto.response;
 
+import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.enums.TicketStatus;
 import com.enenim.scaffold.model.BaseModel;
+import com.enenim.scaffold.shared.TicketHistory;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.ToString;
+import com.enenim.scaffold.model.dao.Ticket;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
+
+import java.util.List;
 
 @Getter
 @Setter
 @ToString
 public class TicketResponse extends BaseModel {
+
+    public TicketResponse(Ticket ticket){
+        setLastComment(ticket.getComment());
+        setLastCommentUserId(ticket.getConsumer().getId());
+        setLastCommentUserType(RoleConstant.CONSUMER);
+        setSubject(ticket.getSubject());
+        setTransactionReference(ticket.getTransactionReference());
+        setStatus(ticket.getStatus());
+        setHistory(TicketHistory.getTicketHistories(ticket.getHistory()));
+    }
 
     @JsonProperty("transaction_reference")
     private String transactionReference;
@@ -24,9 +39,9 @@ public class TicketResponse extends BaseModel {
     private String lastCommentUserType;
 
     @JsonProperty("last_comment_user_id")
-    private String lastCommentUserId;
+    private Long lastCommentUserId;
 
-    private String history;
+    private List<TicketHistory> history;
 
     private TicketStatus status;
 }

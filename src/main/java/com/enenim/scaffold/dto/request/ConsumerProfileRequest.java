@@ -1,9 +1,8 @@
 package com.enenim.scaffold.dto.request;
 
-import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.Gender;
-import com.enenim.scaffold.enums.VerifyStatus;
-import com.enenim.scaffold.model.BaseModel;
+import com.enenim.scaffold.model.dao.Consumer;
+import com.enenim.scaffold.util.ObjectMapperUtil;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
@@ -13,7 +12,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class ConsumerProfileRequest extends BaseModel {
+public class ConsumerProfileRequest extends RequestBody<Consumer> {
 
     @JsonProperty("first_name")
     @SerializedName("first_name")
@@ -47,7 +46,13 @@ public class ConsumerProfileRequest extends BaseModel {
     @JsonProperty("logo_url")
     private String logoUrl;
 
-    private VerifyStatus verified;
+    @Override
+    Consumer buildModel() {
+        return ObjectMapperUtil.map(this, Consumer.class);
+    }
 
-    private EnabledStatus enabled;
+    @Override
+    Consumer buildModel(Consumer model) {
+        return ObjectMapperUtil.map(this, model);
+    }
 }

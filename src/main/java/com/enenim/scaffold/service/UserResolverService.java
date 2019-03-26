@@ -4,26 +4,27 @@ import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.exception.ScaffoldException;
 import com.enenim.scaffold.exception.UnAuthorizedException;
 import com.enenim.scaffold.model.cache.LoginCache;
-import com.enenim.scaffold.model.dao.Vendor;
 import com.enenim.scaffold.model.dao.Consumer;
 import com.enenim.scaffold.model.dao.Staff;
-import com.enenim.scaffold.service.dao.VendorService;
+import com.enenim.scaffold.model.dao.Vendor;
 import com.enenim.scaffold.service.dao.ConsumerService;
 import com.enenim.scaffold.service.dao.StaffService;
+import com.enenim.scaffold.service.dao.VendorUserService;
 import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.RequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 @Service
 public class UserResolverService {
     private final StaffService staffService;
-    private final VendorService vendorService;
+    private final VendorUserService vendorService;
     private final ConsumerService consumerService;
 
     @Autowired
-    public UserResolverService(StaffService staffService, VendorService vendorService, ConsumerService consumerService) {
+    public UserResolverService(StaffService staffService, VendorUserService vendorService, ConsumerService consumerService) {
         this.staffService = staffService;
         this.vendorService = vendorService;
         this.consumerService = consumerService;
@@ -59,12 +60,25 @@ public class UserResolverService {
         if(RoleConstant.STAFF.equalsIgnoreCase(role)) {
             Staff staff = JsonConverter.getObject(user, Staff.class);
             RequestUtil.setStaff(staff);
+            RequestUtil.setFullname(staff.getFullName());
         }
         else if(RoleConstant.VENDOR.equalsIgnoreCase(role)){
-            RequestUtil.setVendor(JsonConverter.getObject(user, Vendor.class));
+            Vendor vendor = JsonConverter.getObject(user, Vendor.class);
+            RequestUtil.setVendor(vendor);
+            if(StringUtils.isEmpty(vendor.getTradingName().trim())){
+                RequestUtil.setFullname(RequestUtil.getLoginToken().getUsername());
+            }else {
+                RequestUtil.setFullname(vendor.getTradingName());
+            }
         }
         else if(RoleConstant.CONSUMER.equalsIgnoreCase(role)){
-            RequestUtil.setConsumer(JsonConverter.getObject(user, Consumer.class));
+            Consumer consumer = JsonConverter.getObject(user, Consumer.class);
+            RequestUtil.setConsumer(consumer);
+            String name = consumer.getFirstName() + " " + consumer.getLastName();
+            if(StringUtils.isEmpty(name.trim())){
+                name = RequestUtil.getLoginToken().getUsername();
+            }
+            RequestUtil.setFullname(name);
         }
         else {
             throw new UnAuthorizedException("invalid_role", role);

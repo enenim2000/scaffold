@@ -33,7 +33,7 @@ public class VendorRequest2 extends RequestBody<Vendor>{
 
     @JsonProperty("phone_number")
     @SerializedName("phone_number")
-    @NotBlank(message = "@{vendor.phone_number.required}")
+    @NotBlank(message = "@{phone_number.required}")
     private String phoneNumber;
 
     @Override

@@ -12,14 +12,14 @@ import lombok.ToString;
 @ToString
 public class SignUpVerifyRequest extends RequestBody<Consumer>{
 
-    //@NotBlank(message = "@{consumer.password.required}")
+    //@NotBlank(message = "@{password.required}")
     private String password;
 
     @JsonProperty("date_of_birth")
     private String dateOfBirth;
 
     @JsonProperty("phone_number")
-    //@NotBlank(message = "@{consumer.phone_number.required}")
+    //@NotBlank(message = "@{phone_number.required}")
     private String phoneNumber;
 
     @Override

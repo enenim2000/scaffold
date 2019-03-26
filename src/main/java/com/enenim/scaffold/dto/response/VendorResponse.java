@@ -1,7 +1,7 @@
 package com.enenim.scaffold.dto.response;
 
-import com.enenim.scaffold.enums.VendorType;
 import com.enenim.scaffold.enums.EnabledStatus;
+import com.enenim.scaffold.enums.VendorType;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.model.BaseModel;
 import com.enenim.scaffold.model.dao.VendorAccount;
@@ -10,9 +10,6 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
-import javax.persistence.Column;
-import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -31,8 +28,6 @@ public class VendorResponse extends BaseModel {
 
     private String code;
 
-    @NotNull
-    @Column(unique = true, length = 100)
     @JsonProperty("trading_name")
     @SerializedName("trading_name")
     private String tradingName;
@@ -43,14 +38,11 @@ public class VendorResponse extends BaseModel {
     @SerializedName("logo_path")
     private String logoPath;
 
-    @NotNull
     private VendorType type = VendorType.REGULAR;
 
-    @NotNull
-    private VerifyStatus verified = VerifyStatus.NOT_VERIFIED;
+    private VerifyStatus verified;
 
-    @NotNull
-    private EnabledStatus enabled = EnabledStatus.ENABLED;
+    private EnabledStatus enabled;
 
     @JsonProperty("vendor_account")
     @SerializedName("vendor_account")

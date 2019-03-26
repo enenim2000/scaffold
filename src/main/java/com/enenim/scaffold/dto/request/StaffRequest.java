@@ -31,7 +31,7 @@ public class StaffRequest extends RequestBody<Staff>{
 	@JsonProperty("fullname")
 	private String fullName;
 
-	@NotBlank(message = "@{staff.email.required")
+	@NotBlank(message = "@{email.required")
 	@Email(message = "@{staff.email.pattern}")
 	private String email;
 

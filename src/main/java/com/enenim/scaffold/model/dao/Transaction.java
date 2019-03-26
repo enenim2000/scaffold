@@ -59,14 +59,6 @@ public class Transaction extends BaseModel {
     @JsonProperty("date_completed")
     private Date dateCompleted;
 
-    /*@NotNull
-    @ManyToOne
-    private Service service;*/
-
-    /*@JsonBackReference
-    @ManyToMany(mappedBy = "transactions")
-    private Set<ServiceForm> serviceForms = new HashSet<>();*/
-
     @JsonBackReference
     @OneToMany(mappedBy = "transaction", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private Set<ServiceForm> serviceForms;

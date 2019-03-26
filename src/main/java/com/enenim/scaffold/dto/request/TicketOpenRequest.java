@@ -12,15 +12,15 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @Setter
 @ToString
-public class TicketRequest extends RequestBody<Ticket>{
+public class TicketOpenRequest extends RequestBody<Ticket>{
 
-	@NotBlank(message = "@{ticket.transaction_reference.required")
+	@NotBlank(message = "@{transaction_reference.required")
 	@JsonProperty("transaction_reference")
 	private String transactionReference;
 
 	@JsonProperty("consumer_id")
-	@NotBlank(message = "@{ticket.consumer_id.required")
-	private String consumerId;
+	@NotBlank(message = "@{consumer_id.required")
+	private Long consumerId;
 
 	@NotBlank(message = "@{ticket.subject.required")
 	private String subject;

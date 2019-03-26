@@ -22,10 +22,10 @@ public interface TransactionRepository extends BaseRepository<Transaction, Long>
     @Query("select t from Transaction t where t.createdAt between ?1 and ?2 and t.status in ?3 and (t.createdAt like ?4 or t.consumer.firstName like ?4 or t.consumer.lastName like ?4) and t.consumer.id = ?5")
     Page<Transaction> findConsumerTransactionsBySearchTerm(Date startDate, Date endDate, List<TransactionStatus> statuses, String searchTerm, Long userId, Pageable pageable);
 
-    @Query("select t from Transaction t where t.createdAt between ?1 and ?2 and t.status in ?3 and t.serviceForms.service.vendor.id = ?4")
+    @Query("select t from Transaction t join t.serviceForms sf where t.createdAt between ?1 and ?2 and t.status in ?3 and sf.service.vendor.id = ?4")
     Page<Transaction> findVendorTransactions(Date startDate, Date endDate, List<TransactionStatus> statuses, Long userId, Pageable pageable);
 
-    @Query("select t from Transaction t where t.createdAt between ?1 and ?2 and t.status in ?3 and (t.createdAt like ?4 or t.serviceForms.service.vendor.tradingName like ?4 or t.serviceForms.service.vendor.tradingName like ?4) and t.serviceForms.service.vendor.id = ?5")
+    @Query("select t from Transaction t join t.serviceForms sf where t.createdAt between ?1 and ?2 and t.status in ?3 and (t.createdAt like ?4 or sf.service.vendor.tradingName like ?4 or sf.service.vendor.tradingName like ?4) and sf.service.vendor.id = ?5")
     Page<Transaction> findVendorTransactionsBySearchTerm(Date startDate, Date endDate, List<TransactionStatus> statuses, String searchTerm, Long userId, Pageable pageable);
 
 }
