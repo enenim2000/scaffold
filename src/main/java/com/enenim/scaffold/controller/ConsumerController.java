@@ -33,13 +33,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.util.Optional;
 
-<<<<<<< HEAD
-import static com.enenim.scaffold.constant.RouteConstant.ADMINISTRATION_FEEDBACK_SHOW;
-import static com.enenim.scaffold.constant.RouteConstant.ADMINISTRATION_SETTING_SHOW;
-import static com.enenim.scaffold.constant.RouteConstant.ADMINISTRATION_TICKET_SHOW;
-=======
 import static com.enenim.scaffold.constant.RouteConstant.*;
->>>>>>> 98bb1336b34a3f9f7afac2da65661e88f3acda99
 
 @RestController
 @RequestMapping("/user/consumers")
@@ -227,11 +221,7 @@ public class ConsumerController {
     @Get({"/{id}/tickets", "/{id}/tickets/{status}"})
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
     @Permission(ADMINISTRATION_TICKET_SHOW)
-<<<<<<< HEAD
-    public Response<PageResponse<Ticket>> getConsumerTickets(@PathVariable Long id, @PathVariable("status") Optional<TicketStatus> status) {
-=======
     public Response<PageResponse<TicketResponse>> getConsumerTickets(@PathVariable Long id, @PathVariable("status") Optional<TicketStatus> status) {
->>>>>>> 98bb1336b34a3f9f7afac2da65661e88f3acda99
         id = userResolverService.resolveUserId(id);
         if(status.isPresent()){
             return new Response<>(new PageResponse<>(ticketService.getTickets(id, status.get())));
@@ -250,11 +240,6 @@ public class ConsumerController {
 
     @Get("/{id}/feedback")
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
-<<<<<<< HEAD
-    @Permission(ADMINISTRATION_FEEDBACK_SHOW)
-    public Response<PageResponse<Feedback>> getConsumerFeedbacks(@PathVariable Long id) {
-        return null; //new Response<>(new PageResponse<>(feedbackService.getFeedback(userResolverService.resolveUserId(id))));
-=======
     @Permission(ADMINISTRATION_CONSUMER_FEEDBACK)
     public Response<PageResponse<FeedbackResponse>> getConsumerFeedback(@PathVariable Long id) {
         return new Response<>(new PageResponse<>(feedbackService.getConsumerFeedbackResponses(userResolverService.resolveUserId(id))));
@@ -265,7 +250,6 @@ public class ConsumerController {
     @Permission(ADMINISTRATION_CONSUMER_FEEDBACK_SHOW)
     public Response<ModelResponse<FeedbackResponse>> getConsumerFeedback(@PathVariable Long id, @PathVariable("feedback-id") Long feedbackId) {
         return new Response<>(new ModelResponse<>(feedbackService.getConsumerFeedback(userResolverService.resolveUserId(id), feedbackId)));
->>>>>>> 98bb1336b34a3f9f7afac2da65661e88f3acda99
     }
 
     private void storeConsumerLogo(Consumer consumer, MultipartFile file){

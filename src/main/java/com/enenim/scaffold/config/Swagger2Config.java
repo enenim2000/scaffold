@@ -22,6 +22,25 @@ public class Swagger2Config {
                 .basePackage("com.enenim.scaffold.controller"))
             .paths(PathSelectors.regex("/.*"))
             .build().apiInfo(apiEndPointsInfo());
+
+    /*public Docket api() {
+        return new Docket(DocumentationType.SWAGGER_2).globalOperationParameters(new ArrayList<Parameter>(){{
+
+            new ParameterBuilder().name("token").description("Auth token")
+                    .modelRef(new ModelRef("string")).parameterType("token")
+                    .required(true)
+                    .build();
+
+            new ParameterBuilder()
+                    .name("api-key")
+                    .description("Swagger Api_key")
+                    .modelRef(new ModelRef("string"))
+                    .parameterType("api-key")
+                    .required(true)
+                    .build();
+
+        }}).select();*/
+
     }
 
     private ApiInfo apiEndPointsInfo() {

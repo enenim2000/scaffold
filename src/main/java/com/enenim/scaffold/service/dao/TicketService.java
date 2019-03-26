@@ -30,11 +30,7 @@ public class TicketService {
         return ticketRepository.findTicketByConsumerAndStatus(consumerId, status, PageRequestUtil.getPageRequest());
     }
 
-<<<<<<< HEAD
-    public Ticket getConsumerTicket(Long consumerId, Long ticketId){
-=======
     public TicketResponse getConsumerTicket(Long consumerId, Long ticketId){
->>>>>>> 98bb1336b34a3f9f7afac2da65661e88f3acda99
         return ticketRepository.findTicketByIdAndConsumerId(consumerId, ticketId);
     }
 
