@@ -34,7 +34,4 @@ public class PaymentChannelService {
     public Optional<PaymentChannel> getPaymentChannelByCode(String code) {
         return paymentChannelRepository.findPaymentChannelByCode(code);
     }
-
-    public void toggle(Long id) {
-    }
 }

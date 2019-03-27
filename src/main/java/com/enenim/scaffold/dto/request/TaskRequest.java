@@ -13,10 +13,10 @@ import javax.validation.constraints.NotBlank;
 @ToString
 public class TaskRequest extends RequestBody<Task>{
 
-    @NotBlank(message = "@{task.module.required")
+    @NotBlank(message = "@{task.module.required}")
     private String module;
 
-    @NotBlank(message = "@{task.name.required")
+    @NotBlank(message = "@{task.name.required}")
     private String name;
 
     @NotBlank(message = "@{task.description.required}")

@@ -13,13 +13,13 @@ import javax.validation.constraints.NotBlank;
 @ToString
 public class BranchRequest extends RequestBody<Branch>{
 
-	@NotBlank(message = "@{branch.sol.required")
+	@NotBlank(message = "@{branch.sol.required}")
 	private String sol;
 
-	@NotBlank(message = "@{branch.name.required")
+	@NotBlank(message = "@{branch.name.required}")
 	private String name;
 
-	@NotBlank(message = "@{branch.address.required")
+	@NotBlank(message = "@{branch.address.required}")
 	private String address;
 
 	@Override

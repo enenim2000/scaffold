@@ -14,18 +14,18 @@ import javax.validation.constraints.NotBlank;
 @ToString
 public class TicketOpenRequest extends RequestBody<Ticket>{
 
-	@NotBlank(message = "@{transaction_reference.required")
+	@NotBlank(message = "@{transaction_reference.required}")
 	@JsonProperty("transaction_reference")
 	private String transactionReference;
 
 	@JsonProperty("consumer_id")
-	@NotBlank(message = "@{consumer_id.required")
+	@NotBlank(message = "@{consumer_id.required}")
 	private Long consumerId;
 
-	@NotBlank(message = "@{ticket.subject.required")
+	@NotBlank(message = "@{ticket.subject.required}")
 	private String subject;
 
-	@NotBlank(message = "@{ticket.comment.required")
+	@NotBlank(message = "@{ticket.comment.required}")
 	private String comment;
 
 	@Override

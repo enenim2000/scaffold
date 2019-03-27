@@ -13,7 +13,7 @@ import javax.validation.constraints.NotBlank;
 @ToString
 public class LoginRequest extends RequestBody<Login>{
 
-    @NotBlank(message = "@{login.username.required")
+    @NotBlank(message = "@{login.username.required}")
     private String username;
 
     @NotBlank(message = "@{login.password.required}")

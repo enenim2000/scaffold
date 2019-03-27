@@ -1,4 +1,4 @@
-package com.enenim.scaffold.controller;
+package com.enenim.scaffold.todos.controller;
 
 import com.enenim.scaffold.annotation.Get;
 import com.enenim.scaffold.annotation.Permission;

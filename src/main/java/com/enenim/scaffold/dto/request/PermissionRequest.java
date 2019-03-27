@@ -14,7 +14,6 @@ public class PermissionRequest extends RequestBody<Group>{
 
     private List<String> tasks;
 
-
     @Override
     public Group buildModel() {
         return new Group();

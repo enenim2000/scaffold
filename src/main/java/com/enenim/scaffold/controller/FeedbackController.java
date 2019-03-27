@@ -19,6 +19,7 @@ import com.enenim.scaffold.service.dao.FeedbackService;
 import com.enenim.scaffold.service.dao.VendorService;
 import com.enenim.scaffold.shared.FeedbackReview;
 import com.enenim.scaffold.util.JsonConverter;
+import com.enenim.scaffold.util.RequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -60,7 +61,7 @@ public class FeedbackController {
     }
 
     @Post
-    @Role({RoleConstant.CONSUMER})
+    @Role({RoleConstant.CONSUMER, RoleConstant.STAFF})
     @Permission(ADMINISTRATION_FEEDBACK_CREATE)
     public Response<ModelResponse<Feedback>> createFeedback(@Valid @RequestBody Request<FeedbackRequest> request){
         Feedback feedback = new Feedback();
@@ -78,6 +79,10 @@ public class FeedbackController {
             feedbackReview.setServiceName(service.getName());
             feedbackReview.setServiceId(service.getId());
             reviews.add(feedbackReview);
+        }
+
+        if(!RequestUtil.getLoginToken().getUserType().equalsIgnoreCase(RoleConstant.STAFF)){
+            feedback.skipAuthorization(true);
         }
 
         feedback.setReview( JsonConverter.getJson(reviews) );

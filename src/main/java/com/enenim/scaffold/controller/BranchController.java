@@ -60,11 +60,4 @@ public class BranchController {
         Branch branch = branchService.getBranch(id);
         return new Response<>(new ModelResponse<>(branchService.saveBranch(request.getBody().buildModel(branch))));
     }
-
-    @Put("/{id}/toggle")
-    @Role({RoleConstant.STAFF})
-    @Permission(ADMINISTRATION_BRANCH_TOGGLE)
-    public Response<Branch> toggleBranch(@PathVariable Long id){
-        return null;
-    }
 }

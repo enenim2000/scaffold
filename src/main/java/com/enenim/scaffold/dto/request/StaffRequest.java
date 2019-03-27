@@ -19,19 +19,19 @@ import javax.validation.constraints.NotBlank;
 @ToString
 public class StaffRequest extends RequestBody<Staff>{
 
-	@NotBlank(message = "@{staff.employee_id.required")
+	@NotBlank(message = "@{staff.employee_id.required}")
 	@JsonProperty("employee_id")
 	private String employeeId;
 
-	@NotBlank(message = "@{staff.active_hour_id.required")
+	@NotBlank(message = "@{staff.active_hour_id.required}")
 	@JsonProperty("active_hour_id")
 	private Long activeHourId;
 
-	@NotBlank(message = "@{staff.fullname.required")
+	@NotBlank(message = "@{staff.fullname.required}")
 	@JsonProperty("fullname")
 	private String fullName;
 
-	@NotBlank(message = "@{email.required")
+	@NotBlank(message = "@{email.required}")
 	@Email(message = "@{staff.email.pattern}")
 	private String email;
 
@@ -41,7 +41,7 @@ public class StaffRequest extends RequestBody<Staff>{
 	@JsonProperty("weekend_login")
 	private WeekendLogin weekendLogin;
 
-	@NotBlank(message = "@{staff.group_id.required")
+	@NotBlank(message = "@{staff.group_id.required}")
 	@JsonProperty("group_id")
 	private Long groupId;
 

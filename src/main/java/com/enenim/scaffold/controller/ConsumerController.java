@@ -69,7 +69,7 @@ public class ConsumerController {
     }
 
     @Get
-    @Role({RoleConstant.CONSUMER, RoleConstant.STAFF})
+    @Role({RoleConstant.STAFF})
     @Permission(RouteConstant.USER_CONSUMER_INDEX)
     public Response<PageResponse<Consumer>> getConsumers() {
         return new Response<>(new PageResponse<>(consumerService.getConsumers()));
@@ -115,14 +115,10 @@ public class ConsumerController {
             consumer.setEnabled(EnabledStatus.ENABLED);
             consumer.skipAuthorization(true);
             consumer = consumerService.saveConsumer(consumer);
-
-            //Save consumer settings to Consumer settings table
             consumerSettingService.saveConsumerSettings( consumerSettingService.getConsumerSettings(consumer) );
-
             loginService.updateVerifyStatus(VerifyStatus.VERIFIED, consumer.getEmail());
             sharedExpireCacheService.delete(cacheCode);
             RequestUtil.setMessage(CommonMessage.msg("consumer_code_verified"));
-
             return new Response<>(new ModelResponse<>(consumer));
         }
         throw new ScaffoldException("invalid_expired_code");
@@ -159,28 +155,28 @@ public class ConsumerController {
 
     @Get("/{id}/settings/{key}")
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
-    @Permission(ADMINISTRATION_SETTING_SHOW)
+    @Permission(USER_CONSUMER_SETTING_SHOW)
     public Response<ModelResponse<ConsumerSystemSetting>> getSetting(@PathVariable Long id, @PathVariable String key) {
         return new Response<>(new ModelResponse<>(consumerSettingService.getConsumerSystemSetting(id, key)));
     }
 
     @Get("/{id}/settings")
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
-    @Permission(ADMINISTRATION_SETTING_SHOW)
+    @Permission(USER_CONSUMER_SETTING_INDEX)
     public Response<CollectionResponse<ConsumerSystemSetting>> getSettings(@PathVariable Long id) {
         return new Response<>(new CollectionResponse<>(consumerSettingService.getConsumerSystemSettings(id)));
     }
 
     @Get({"/{id}/transactions"})
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
-    @Permission(ADMINISTRATION_SETTING_SHOW)
+    @Permission(USER_CONSUMER_TRANSACTION_INDEX)
     public Response<PageResponse<Transaction>> getConsumerTransactions(@PathVariable Long id, @RequestBody TransactionFilterRequest filter) {
         return new Response<>(new PageResponse<>(transactionService.getConsumerTransactions(filter, userResolverService.resolveUserId(id))));
     }
 
     @Get({"/{id}/tickets", "/{id}/tickets/{status}"})
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
-    @Permission(ADMINISTRATION_TICKET_SHOW)
+    @Permission(USER_CONSUMER_TICKET_INDEX)
     public Response<PageResponse<TicketResponse>> getConsumerTickets(@PathVariable Long id, @PathVariable("status") Optional<TicketStatus> status) {
         id = userResolverService.resolveUserId(id);
         if(status.isPresent()){
@@ -192,7 +188,7 @@ public class ConsumerController {
 
     @Get("/{id}/tickets/{ticket-id}")
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
-    @Permission(ADMINISTRATION_TICKET_SHOW)
+    @Permission(USER_CONSUMER_TICKET_SHOW)
     public Response<ModelResponse<TicketResponse>> getConsumerTicket(@PathVariable Long id, @PathVariable("ticket-id") Long ticketId) {
         return new Response<>(new ModelResponse<>(
                 ObjectMapperUtil.map(ticketService.getConsumerTicket(userResolverService.resolveUserId(id), ticketId), TicketResponse.class)));
@@ -200,14 +196,14 @@ public class ConsumerController {
 
     @Get("/{id}/feedback")
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
-    @Permission(ADMINISTRATION_CONSUMER_FEEDBACK)
+    @Permission(USER_CONSUMER_FEEDBACK_INDEX)
     public Response<PageResponse<FeedbackResponse>> getConsumerFeedback(@PathVariable Long id) {
         return new Response<>(new PageResponse<>(feedbackService.getConsumerFeedbackResponses(userResolverService.resolveUserId(id))));
     }
 
     @Get("/{id}/feedback/{feedback-id}")
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
-    @Permission(ADMINISTRATION_CONSUMER_FEEDBACK_SHOW)
+    @Permission(USER_CONSUMER_FEEDBACK_SHOW)
     public Response<ModelResponse<FeedbackResponse>> getConsumerFeedback(@PathVariable Long id, @PathVariable("feedback-id") Long feedbackId) {
         return new Response<>(new ModelResponse<>(feedbackService.getConsumerFeedback(userResolverService.resolveUserId(id), feedbackId)));
     }

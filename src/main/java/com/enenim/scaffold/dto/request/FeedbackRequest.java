@@ -16,15 +16,15 @@ import java.util.List;
 @ToString
 public class FeedbackRequest extends RequestBody<Feedback>{
 
-	@NotBlank(message = "@{transaction_reference.required")
+	@NotBlank(message = "@{transaction_reference.required}")
 	@JsonProperty("transaction_reference")
 	private String transactionReference;
 
 	@JsonProperty("consumer_id")
-	@NotBlank(message = "@{consumer_id.required")
+	@NotBlank(message = "@{consumer_id.required}")
 	private Long consumerId;
 
-	@NotBlank(message = "@{feedback.subject.required")
+	@NotBlank(message = "@{feedback.subject.required}")
 	private String subject;
 
 	private List<FeedbackReviewRequest> reviews;
