@@ -3,7 +3,6 @@ package com.enenim.scaffold.model.dao;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,9 +29,6 @@ public class Currency extends BaseModel {
     @NotNull
     @Column(unique = true, length = 10)
     private String html;
-
-    @JsonProperty("code_digit")
-    private Integer codeDigit = 0;
 
     @NotNull
     private EnabledStatus enabled = EnabledStatus.ENABLED;

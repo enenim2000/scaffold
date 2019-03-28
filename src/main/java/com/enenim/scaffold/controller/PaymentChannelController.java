@@ -9,7 +9,6 @@ import com.enenim.scaffold.dto.response.PageResponse;
 import com.enenim.scaffold.dto.response.Response;
 import com.enenim.scaffold.model.dao.PaymentChannel;
 import com.enenim.scaffold.service.dao.PaymentChannelService;
-import com.enenim.scaffold.util.RequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -49,7 +48,6 @@ public class PaymentChannelController {
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_PAYMENT_CHANNEL_CREATE)
     public Response<ModelResponse<PaymentChannel>> createPaymentChannel(@Valid @RequestBody Request<PaymentChannelRequest> request){
-        RequestUtil.setCommonRequestProperties(request);
         return new Response<>(new ModelResponse<>(paymentChannelService.savePaymentChannel(request.getBody().buildModel())));
     }
 
@@ -57,7 +55,6 @@ public class PaymentChannelController {
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_PAYMENT_CHANNEL_UPDATE)
     public Response<ModelResponse<PaymentChannel>> updatePaymentChannel(@PathVariable Long id, @RequestBody Request<PaymentChannelRequest> request){
-        RequestUtil.setCommonRequestProperties(request);
         PaymentChannel paymentChannel = paymentChannelService.getPaymentChannel(id);
         return new Response<>(new ModelResponse<>(paymentChannelService.savePaymentChannel(request.getBody().buildModel(paymentChannel))));
     }

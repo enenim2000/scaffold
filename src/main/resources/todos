@@ -41,7 +41,6 @@ transactions/{reference}/tickets
 getTicketsByReference(){}
 
 
-
 <<<Notification>>>
 This should be part of consumer settings
 
@@ -67,21 +66,6 @@ The last column store a list of json object
 getFeedbackByConsumer
 getFeedbackByVendor
 getFeedbackByReference
-
-
-
-<<<ConsumerProfile>>>
-ConsumerProfile{phone_number,bvn, firstname, lastname,gender,youtube_url,facebook_url, twitter_url, instagram_url,logo_url,status,[secret_questions]}
-consumers/{id}/profiles
-
-get consumer by id;
-typecast the json string of ConsumerProfile into object
-use the info in ConsumerProfile to update consumer,
-update the consumer photo
-Hence no need for ConsumerProfileController just leverage the ConsumerController
-
-Use FormParam due to logo, hence ConsumerProfile will come as a json string
-*Note status(enabled, disabled, or block, deactivated)
 
 
 
