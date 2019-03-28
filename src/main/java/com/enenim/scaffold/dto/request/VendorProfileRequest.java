@@ -15,7 +15,7 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @ToString
 @Embeddable
-public class VendorRequest extends RequestBody<Vendor>{
+public class VendorProfileRequest extends RequestBody<Vendor>{
 
     @NotBlank(message = "@{vendor.name.required}")
     private String name;
@@ -32,6 +32,22 @@ public class VendorRequest extends RequestBody<Vendor>{
     @SerializedName("phone_number")
     @NotBlank(message = "@{phone_number.required}")
     private String phoneNumber;
+
+    @JsonProperty("youtube_url")
+    @SerializedName("youtube_url")
+    private String youtubeUrl;
+
+    @JsonProperty("facebook_url")
+    @SerializedName("facebook_url")
+    private String facebookUrl;
+
+    @JsonProperty("twitter_url")
+    @SerializedName("twitter_url")
+    private String twitterUrl;
+
+    @JsonProperty("logo_url")
+    @SerializedName("logo_url")
+    private String logoUrl;
 
     @Override
     public Vendor buildModel() {

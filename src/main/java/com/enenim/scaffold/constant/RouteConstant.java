@@ -2,7 +2,7 @@ package com.enenim.scaffold.constant;
 
 public interface RouteConstant {
     //Modules
-    String USER = "app";
+    String USER = "user";
     String REPORT = "report";
     String SERVICE = "service";
     String VENDOR = "vendor";
@@ -107,6 +107,7 @@ public interface RouteConstant {
     //Setting sub-modules
     String SETTING = DOT + "setting" + DOT;
     String ADMINISTRATION_SETTING_INDEX = ADMINISTRATION + SETTING + INDEX;
+    String ADMINISTRATION_SETTING_SHOW = ADMINISTRATION + SETTING + SHOW;
     String ADMINISTRATION_SETTING_ADD = ADMINISTRATION + SETTING + "add";
     String ADMINISTRATION_SETTING_UPDATE = ADMINISTRATION + SETTING + UPDATE;
     String ADMINISTRATION_SETTING_RESET = ADMINISTRATION + SETTING + RESET;
@@ -173,8 +174,10 @@ public interface RouteConstant {
     String VENDOR_SUBMODULE = DOT + "vendor" + DOT;
     String USER_VENDOR_INDEX = USER + VENDOR_SUBMODULE + INDEX;
     String USER_VENDOR_CREATE = USER + VENDOR_SUBMODULE + CREATE;
+    String USER_VENDOR_CHANGE_PASSWORD = USER + VENDOR_SUBMODULE + "change_password";
     String USER_VENDOR_SHOW = USER + VENDOR_SUBMODULE + SHOW;
     String USER_VENDOR_UPDATE = USER + VENDOR_SUBMODULE + UPDATE;
+    String USER_VENDOR_PROFILE = USER + VENDOR_SUBMODULE + "profile";
     String USER_VENDOR_AUDITS = USER + VENDOR_SUBMODULE + "audits";
     String USER_VENDOR_ACCOUNTLOOKUP = USER + VENDOR_SUBMODULE + "account-lookup";
     String USER_VENDOR_LISTS = USER + VENDOR_SUBMODULE + "lists";

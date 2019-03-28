@@ -53,12 +53,14 @@ public class VendorController {
     }
 
     @Get
+    @Role({RoleConstant.STAFF, RoleConstant.VENDOR})
     @Permission(RouteConstant.USER_VENDOR_INDEX)
     public Response<PageResponse<Vendor>> getVendors() {
         return new Response<>(new PageResponse<>(vendorService.getVendors()));
     }
 
     @Get("/{id}")
+    @Role({RoleConstant.STAFF, RoleConstant.VENDOR})
     @Permission(RouteConstant.USER_VENDOR_SHOW)
     public Response<ModelResponse<Vendor>> showVendor(@PathVariable Long id) {
         return new Response<>(new ModelResponse<>(vendorService.getVendor(id)));
@@ -121,6 +123,8 @@ public class VendorController {
     }
 
     @Post("/{email}/change-password")
+    @Role({RoleConstant.VENDOR})
+    @Permission(RouteConstant.USER_VENDOR_CHANGE_PASSWORD)
     public Response<BooleanResponse> changePassword(@PathVariable("email") String email, @Valid @RequestBody Request<VendorChangePasswordRequest> request){
 
         if(!request.getBody().getPassword().equals(request.getBody().getConfirmPassword())){
@@ -143,9 +147,10 @@ public class VendorController {
     }
 
     //Header => Content-Type = multipart/form-data
-    @PutMapping(value = "/{id}/details")
-    @Role({RoleConstant.VENDOR})
-    public Response<ModelResponse<VendorResponse>> updateVendorDetails(@PathVariable("id") Long id, @RequestPart("vendor") String vendor, @RequestPart(value = "file", required = false) MultipartFile file){
+    @PutMapping(value = "/{id}/profile")
+    @Role({RoleConstant.VENDOR, RoleConstant.STAFF})
+    @Permission(RouteConstant.USER_VENDOR_PROFILE)
+    public Response<ModelResponse<Vendor>> updateVendorDetails(@PathVariable("id") Long id, @RequestPart("vendor") String vendor, @RequestPart(value = "file", required = false) MultipartFile file){
 
         Vendor vendorModel = vendorService.getVendor(id);
 
@@ -153,21 +158,19 @@ public class VendorController {
             throw new ScaffoldException("code_not_verified");
         }
 
-        VendorRequest request = JsonConverter.getObject(vendor, VendorRequest.class);
+        VendorProfileRequest request = JsonConverter.getObject(vendor, VendorProfileRequest.class);
 
         vendorService.validateDependencies(request);
 
-        vendorModel.setAddress(request.getAddress());
-        vendorModel.setName(request.getName());
-        vendorModel.setPhoneNumber(request.getPhoneNumber());
-        vendorModel.setTradingName(request.getTradingName());
+        vendorModel = ObjectMapperUtil.map(request, vendorModel);
+
         vendorModel.skipAuthorization(true);
 
         storeVendorLogo(vendorModel, file);
 
         vendorModel = vendorService.saveVendor(vendorModel);
 
-        return new Response<>(new ModelResponse<>(ObjectMapperUtil.map(vendorModel, VendorResponse.class)));
+        return new Response<>(new ModelResponse<>(vendorModel));
     }
 
     @Post("/{email}/code/re-send")

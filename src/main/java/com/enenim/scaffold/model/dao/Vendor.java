@@ -68,6 +68,22 @@ public class Vendor extends BaseModel implements IAudit{
     @SerializedName("trading_name")
     private String tradingName;
 
+    @JsonProperty("youtube_url")
+    @SerializedName("youtube_url")
+    private String youtubeUrl;
+
+    @JsonProperty("facebook_url")
+    @SerializedName("facebook_url")
+    private String facebookUrl;
+
+    @JsonProperty("twitter_url")
+    @SerializedName("twitter_url")
+    private String twitterUrl;
+
+    @JsonProperty("logo_url")
+    @SerializedName("logo_url")
+    private String logoUrl;
+
     @Column(unique = true, length = 50)
     private String slug;
 

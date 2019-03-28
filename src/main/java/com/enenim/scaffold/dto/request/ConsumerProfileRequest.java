@@ -35,15 +35,19 @@ public class ConsumerProfileRequest extends RequestBody<Consumer> {
     private Gender gender;
 
     @JsonProperty("youtube_url")
+    @SerializedName("youtube_url")
     private String youtubeUrl;
 
     @JsonProperty("facebook_url")
+    @SerializedName("facebook_url")
     private String facebookUrl;
 
     @JsonProperty("twitter_url")
+    @SerializedName("twitter_url")
     private String twitterUrl;
 
     @JsonProperty("logo_url")
+    @SerializedName("logo_url")
     private String logoUrl;
 
     @Override

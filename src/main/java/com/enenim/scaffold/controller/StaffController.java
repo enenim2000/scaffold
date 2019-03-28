@@ -64,11 +64,4 @@ public class StaffController {
         Staff staff = staffService.getStaff(id);
         return new Response<>(new ModelResponse<>(staffService.saveStaff(request.getBody().buildModel(staff))));
     }
-
-    @Put("/{id}/toggle")
-    @Role({RoleConstant.STAFF})
-    @Permission(USER_STAFF_TOGGLE)
-    public Response<Staff> toggleStaff(@PathVariable Long id){
-        return null;
-    }
 }

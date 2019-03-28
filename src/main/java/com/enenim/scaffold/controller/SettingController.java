@@ -36,6 +36,8 @@ public class SettingController {
     }
 
     @Get
+    @Role({RoleConstant.STAFF})
+    @Permission(ADMINISTRATION_SETTING_INDEX)
     public Response<CollectionResponse<SettingListCategory>> getSettings() {
         return new Response<>(new CollectionResponse<>(settingCacheService.getSystemSettings()));
     }
@@ -96,14 +98,14 @@ public class SettingController {
         return new Response<>(new BooleanResponse(settingCacheService.syncSettings()));
     }
 
-    @Put("/categories/{key}")
+    @Get("/categories/{key}")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_SETTING_CATEGORY)
     public Response<ModelResponse<SettingMapCategory>> getSettingsByCategory(@PathVariable("key") String key) {
         return new Response<>(new ModelResponse<>(settingCacheService.getSettingsByCategory(key)));
     }
 
-    @Put("/categorized")
+    @Get("/categorized")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_SETTING_CATEGORIES)
     public Response<ModelResponse<HashMap<String, SettingMapCategory>>> getCategorizedSettings() {

@@ -1,6 +1,6 @@
 package com.enenim.scaffold.service.dao;
 
-import com.enenim.scaffold.dto.request.VendorRequest;
+import com.enenim.scaffold.dto.request.VendorProfileRequest;
 import com.enenim.scaffold.model.dao.Vendor;
 import com.enenim.scaffold.repository.dao.VendorRepository;
 import com.enenim.scaffold.util.PageRequestUtil;
@@ -9,7 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 @Service
-public class VendorUserService extends BaseModelService<VendorRequest>{
+public class VendorUserService extends BaseModelService<VendorProfileRequest>{
     private final VendorRepository vendorRepository;
 
     @Autowired
@@ -42,7 +42,7 @@ public class VendorUserService extends BaseModelService<VendorRequest>{
     }
 
     @Override
-    public void validateDependencies(VendorRequest request) {
+    public void validateDependencies(VendorProfileRequest request) {
 
     }
 }
