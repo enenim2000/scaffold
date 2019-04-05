@@ -9,6 +9,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Embeddable;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 
 @Getter
@@ -48,6 +49,9 @@ public class VendorProfileRequest extends RequestBody<Vendor>{
     @JsonProperty("logo_url")
     @SerializedName("logo_url")
     private String logoUrl;
+
+    @Valid
+    private ContactRequest contact;
 
     @Override
     public Vendor buildModel() {

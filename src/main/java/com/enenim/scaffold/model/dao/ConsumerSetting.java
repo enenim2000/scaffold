@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @Entity
-@Table(name = "consumer_settings", uniqueConstraints = @UniqueConstraint(columnNames = {"consumer_id", "settingKey"}))
+@Table(name = "consumer_settings", uniqueConstraints = @UniqueConstraint(columnNames = {"consumer_id", "_key"}))
 public class ConsumerSetting extends BaseModel {
 
     @NotNull
@@ -20,6 +20,7 @@ public class ConsumerSetting extends BaseModel {
     private String categoryKey;
 
     @NotNull
+    @Column(name = "_key")
     @JsonProperty("setting_key")
     private String settingKey;
 

@@ -85,6 +85,11 @@ public class ConsumerController {
 
     @Post("/sign-up")
     public Response<ModelResponse<Consumer>> signUpConsumers(@Valid @RequestBody Request<ConsumerRequest> request){
+
+        if(!request.getBody().getPassword().equals(request.getBody().getConfirmPassword())){
+            throw new ScaffoldException("password_mismatch");
+        }
+
         consumerService.validateDependencies(request.getBody());
         Consumer consumer = request.getBody().buildModel();
         consumer.skipAuthorization(true);
@@ -97,6 +102,7 @@ public class ConsumerController {
             login.setPassword(passwordEncoder.encode(request.getBody().getPassword()));
             login = loginService.saveLogin(login);
             if(!StringUtils.isEmpty(login.getId())){
+                System.out.println("about to send mail " + login);
                 mailSenderService.send(consumer);
             }
             RequestUtil.setMessage(CommonMessage.msg("consumer_signup_success"));

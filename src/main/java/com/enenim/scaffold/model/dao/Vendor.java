@@ -7,6 +7,7 @@ import com.enenim.scaffold.interfaces.IAudit;
 import com.enenim.scaffold.model.BaseModel;
 import com.enenim.scaffold.util.AESUtil;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModelProperty;
@@ -48,9 +49,23 @@ public class Vendor extends BaseModel implements IAudit{
     private String email;
 
     @Column(length = 20)
+    @JsonProperty("office_hour")
+    @SerializedName("office_hour")
+    private String officeHour;
+
+    @Column(length = 20)
+    @JsonProperty("company_size")
+    @SerializedName("company_size")
+    private String companySize;
+
+    @Column(length = 20)
     @JsonProperty("phone_number")
     @SerializedName("phone_number")
     private String phoneNumber;
+
+    @Column(length = 25)
+    @JsonProperty("tel")
+    private String tel;
 
     @Column(unique = true, length = 100)
     private String code;
@@ -113,6 +128,12 @@ public class Vendor extends BaseModel implements IAudit{
     @ApiModelProperty(required = true, hidden = true)
     private VendorAccount vendorAccount;
 
+    @OneToOne(mappedBy = "vendor", cascade = CascadeType.ALL)
+    @JsonProperty("contact")
+    @SerializedName("contact")
+    @JsonManagedReference
+    private Contact contact;
+
     @ManyToMany
     @JoinTable(name = "vendor_payment_channel",
             joinColumns = @JoinColumn(name = "vendor_id"),
@@ -158,8 +179,8 @@ public class Vendor extends BaseModel implements IAudit{
 
     public void setCommonProperties(){
         setSlug(RandomStringUtils.randomAlphanumeric(30));
-        setTestSecret(AESUtil.encrypt(new Date().toString() + Math.random()));
-        setSecret(AESUtil.encrypt( Math.random() + new Date().toString()));
+        setTestSecret(AESUtil.encrypt(new Date().toString() + RandomStringUtils.randomAlphanumeric(20)));
+        setSecret(AESUtil.encrypt( RandomStringUtils.randomAlphanumeric(20) + new Date().toString()));
         setCode(RandomStringUtils.randomAlphanumeric(10));
     }
 }

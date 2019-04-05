@@ -45,7 +45,7 @@ public class SettingConfigUtil {
     private static String[] CATEGORY_KEYS = {"contact_info_config", "action_center_config", "security_center_config", "language_support_config", "settlement_preference_config", "platform_advert_config"};
 
     private static final HashMap<String, SettingListCategory> CATEGORY_DESCRIPTION = new HashMap<String, SettingListCategory>(){{
-        put(CATEGORY_KEYS[0], new SettingListCategory(CATEGORY_KEYS[0], "Contact Information"));
+        put(CATEGORY_KEYS[0], new SettingListCategory(CATEGORY_KEYS[0], "ContactRequest Information"));
         put(CATEGORY_KEYS[1], new SettingListCategory(CATEGORY_KEYS[1] ,"Action Center"));
         put(CATEGORY_KEYS[2], new SettingListCategory(CATEGORY_KEYS[2] ,"Security Center"));
         put(CATEGORY_KEYS[3], new SettingListCategory(CATEGORY_KEYS[3] ,"Language Support"));

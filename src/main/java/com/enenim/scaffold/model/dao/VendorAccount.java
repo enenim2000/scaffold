@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "vendor_accounts", uniqueConstraints = @UniqueConstraint(columnNames = {"account_provider_id", "accountNumber"}))
 public class VendorAccount extends BaseModel {
+
     @NotNull
     @Column(length = 20)
     @JsonProperty("account_number")

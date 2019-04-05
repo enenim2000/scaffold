@@ -5,10 +5,14 @@ import com.enenim.scaffold.constant.AssetBaseConstant;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.constant.RouteConstant;
 import com.enenim.scaffold.dto.request.*;
-import com.enenim.scaffold.dto.response.*;
+import com.enenim.scaffold.dto.response.BooleanResponse;
+import com.enenim.scaffold.dto.response.ModelResponse;
+import com.enenim.scaffold.dto.response.PageResponse;
+import com.enenim.scaffold.dto.response.Response;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
+import com.enenim.scaffold.model.dao.Contact;
 import com.enenim.scaffold.model.dao.Login;
 import com.enenim.scaffold.model.dao.Vendor;
 import com.enenim.scaffold.service.FileStorageService;
@@ -163,6 +167,12 @@ public class VendorController {
         vendorService.validateDependencies(request);
 
         vendorModel = ObjectMapperUtil.map(request, vendorModel);
+
+        if(StringUtils.isEmpty(vendorModel.getContact())){
+            vendorModel.setContact(ObjectMapperUtil.map(request.getContact(), Contact.class));
+        }else {
+            vendorModel.setContact(ObjectMapperUtil.map(request.getContact(), vendorModel.getContact()));
+        }
 
         vendorModel.skipAuthorization(true);
 
