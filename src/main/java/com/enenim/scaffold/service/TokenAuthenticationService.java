@@ -19,7 +19,6 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -97,13 +96,10 @@ public class TokenAuthenticationService {
         saveToken(token);
     }
 
-    @Async
     public void saveToken(LoginCache token){
-        System.out.println("saveToken <<token>> = " + JsonConverter.getJsonRecursive(token));
         loginCacheService.save(token);
     }
 
-    @Async
     public void refreshTracker(Tracker tracker, Date date){
         tracker.setTimeOfLastActivity(date);
         trackerService.saveTracker(tracker);

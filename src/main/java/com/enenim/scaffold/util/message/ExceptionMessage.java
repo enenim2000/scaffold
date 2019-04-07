@@ -8,9 +8,6 @@ public class ExceptionMessage {
     private static final String FILE_NAME = "exception";
 
     public static String msg(String key) {
-        if(RequestUtil.getLang() == null){
-            RequestUtil.setLang(SpringMessage.msg("lang"));
-        }
         return PropertyUtil.msg(key, RequestUtil.getLang(), FILE_NAME);
     }
 

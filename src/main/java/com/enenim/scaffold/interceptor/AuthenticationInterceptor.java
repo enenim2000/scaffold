@@ -19,10 +19,11 @@ import com.enenim.scaffold.service.dao.LoginService;
 import com.enenim.scaffold.service.dao.PaymentChannelService;
 import com.enenim.scaffold.service.dao.TaskService;
 import com.enenim.scaffold.shared.Channel;
+import com.enenim.scaffold.util.RequestCache;
 import com.enenim.scaffold.util.RequestUtil;
-import com.enenim.scaffold.util.setting.SystemSetting;
 import com.enenim.scaffold.util.message.SpringMessage;
 import com.enenim.scaffold.util.setting.SettingCacheService;
+import com.enenim.scaffold.util.setting.SystemSetting;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -73,20 +74,35 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             return true;
         }
 
-        RequestUtil.setLang(SpringMessage.msg("lang"));
-
-        validateApiKey();
-
         HandlerMethod handlerMethod = (HandlerMethod)handler;
 
-        InterceptorParamater interceptorParamater = new InterceptorParamater(request, response, handler);
+        PaymentChannel paymentChannel = validateApiKey();
 
         /*
          * Added to allow none secured route to be accessible
          */
         if(!isSecuredRoute(handlerMethod)) return true;
 
-        validateToken();
+        LoginCache loginToken = validateToken();
+
+        Login login = loginService.getLogin(loginToken.getId());
+
+        tokenAuthenticationService.validateLoginStatus(login);
+
+        Date date = new Date();
+
+        RequestUtil.setSessionId(loginToken.getTracker().getSessionId());
+        RequestUtil.setRequestCache(new RequestCache());
+
+        tokenAuthenticationService.refreshToken(loginToken, date);
+        tokenAuthenticationService.refreshTracker(loginToken.getTracker(), date);
+
+        InterceptorParamater interceptorParamater = new InterceptorParamater(request, response, handler);
+
+        RequestUtil.setLoginToken(loginToken);
+        RequestUtil.setLogin(login);
+        RequestUtil.setLang(SpringMessage.msg("lang"));
+        RequestUtil.setChannel(paymentChannel);
 
         if(handlerMethod.getMethod().isAnnotationPresent(Role.class)){
             validateRole(interceptorParamater);
@@ -108,25 +124,26 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
-        RequestUtil.setMessage("");
+
     }
 
     @Override
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
+        RequestUtil.removeRequestCache();
     }
 
-    private void validateApiKey(){
+    private PaymentChannel validateApiKey(){
         Channel channel = apiKeyService.validateKey(RequestUtil.getApiKey());
         Optional<PaymentChannel> paymentChannel = paymentChannelService.getPaymentChannelByCode(channel.getCode());
         if(!paymentChannel.isPresent()) throw new ScaffoldException("channel_not_configured");
         if(paymentChannel.get().getEnabled() != EnabledStatus.ENABLED) throw new ScaffoldException("channel_disabled");
-        RequestUtil.setChannel(paymentChannel.get());
+        return paymentChannel.get();
     }
 
     /**
      * This method validate the token in the decodeToken() and store the token in the request object
      */
-    private void validateToken(){
+    private LoginCache validateToken(){
 
         LoginCache loginToken = tokenAuthenticationService.decodeToken();
 
@@ -134,22 +151,13 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         SystemSetting systemSetting = settingCacheService.getSystemSetting("idle_timeout");
 
-        int minIdleTimeout = Integer.valueOf(systemSetting.getDetail().getValue());
-        long milIdleTimeout = minIdleTimeout * 60 * 1000;
+        long minIdleTimeout = Integer.valueOf(systemSetting.getDetail().getValue());
 
-        if(loginToken.hasExpired(milIdleTimeout))throw new ScaffoldException("session_expired");
+        if(loginToken.hasExpired(minIdleTimeout)){
+            throw new ScaffoldException("session_expired");
+        }
 
-        Login login = loginService.getLogin(loginToken.getId());
-
-        tokenAuthenticationService.validateLoginStatus(login);
-
-        Date date = new Date();
-
-        tokenAuthenticationService.refreshToken(loginToken, date);
-        tokenAuthenticationService.refreshTracker(loginToken.getTracker(), date);
-
-        RequestUtil.setLoginToken(loginToken);
-        RequestUtil.setLogin(login);
+        return loginToken;
     }
 
     private void validateRole(InterceptorParamater interceptorParamater){

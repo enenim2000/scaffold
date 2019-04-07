@@ -26,6 +26,7 @@ public class MailSignUpService implements IMailService {
     public void send(Object obj){
         Consumer consumer = (Consumer)obj;
         String code = CommonUtil.getCode();
+        System.out.println("code = " + code);
         Mail mail = new Mail();
         mail.setTo(consumer.getEmail());
         mail.setSubject(SpringMessage.msg("app_name") + " Registration");

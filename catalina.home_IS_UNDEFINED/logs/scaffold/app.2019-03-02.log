@@ -1,2 +1,0 @@
-2019-03-02 05:02:12 WARN [HikariPool-1 housekeeper] c.z.h.p.HikariPool
-                [HikariPool.java:758] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2d3h16m5s552ms52µs28ns).

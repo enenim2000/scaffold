@@ -3,7 +3,7 @@ package com.enenim.scaffold.model.dao;
 import com.enenim.scaffold.enums.LoggedIn;
 import com.enenim.scaffold.model.BaseModel;
 import com.enenim.scaffold.util.JsonDateSerializer;
-import com.enenim.scaffold.util.PasswordEncoder;
+import com.enenim.scaffold.util.RandomUtil;
 import com.enenim.scaffold.util.RequestUtil;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -35,7 +35,7 @@ public class Tracker extends BaseModel {
         setIpAddress(RequestUtil.getIpAddress());
         setUserAgent(RequestUtil.getUserAgent());
         setLoggedIn(LoggedIn.USER_LOGGED_IN);
-        setSessionId(new PasswordEncoder().encode(date.toString()) + Math.random());
+        setSessionId(RandomUtil.getUniqueCharacters());
         setFailedAttempts(0);
         setTimeOfLastActivity(date);
         setLogin(login);

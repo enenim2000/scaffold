@@ -52,8 +52,6 @@ public class LoginCacheService {
      * @return LoginCache
      */
     public LoginCache get(String h, String hk) {
-        System.out.println("h = " + h);
-        System.out.println("hk = " + hk);
         Map<String, LoginCache> loginsPerGroup = hashOps.get(LOGIN, h);
         if(!StringUtils.isEmpty(loginsPerGroup) && !loginsPerGroup.entrySet().isEmpty()){
             return loginsPerGroup.get(hk);
