@@ -1,10 +1,10 @@
 package com.enenim.scaffold.service.dao;
 
-import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.model.dao.Consumer;
 import com.enenim.scaffold.model.dao.ConsumerSetting;
 import com.enenim.scaffold.repository.dao.ConsumerSettingRepository;
-import com.enenim.scaffold.util.RequestUtil;
+import com.enenim.scaffold.service.UserResolverService;
+import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.setting.ConsumerSettingConfigUtil;
 import com.enenim.scaffold.util.setting.ConsumerSettingMapCategory;
 import com.enenim.scaffold.util.setting.ConsumerSystemSetting;
@@ -20,20 +20,16 @@ import java.util.List;
 @Service
 public class ConsumerSettingService{
     private final ConsumerSettingRepository consumerSettingRepository;
+    private final UserResolverService userResolverService;
 
     @Autowired
-    public ConsumerSettingService(ConsumerSettingRepository consumerSettingRepository) {
+    public ConsumerSettingService(ConsumerSettingRepository consumerSettingRepository, UserResolverService userResolverService) {
         this.consumerSettingRepository = consumerSettingRepository;
+        this.userResolverService = userResolverService;
     }
 
     public List<ConsumerSetting> getConsumerSettings(Long id){
-        Long consumerId = 0L;
-        if(RequestUtil.getLogin().getUserType().equalsIgnoreCase(RoleConstant.STAFF)){
-            consumerId = id;
-        }else if(RequestUtil.getLogin().getUserType().equalsIgnoreCase(RoleConstant.CONSUMER) && !StringUtils.isEmpty(RequestUtil.getConsumer())){
-            consumerId = RequestUtil.getConsumer().getId();
-        }
-        return consumerSettingRepository.findByConsumerId(consumerId);
+        return consumerSettingRepository.findByConsumerId(userResolverService.resolveUserId(id));
     }
 
     public ConsumerSetting getConsumerSetting(Long id){
@@ -62,6 +58,9 @@ public class ConsumerSettingService{
                 consumerSettings.add(consumerSetting);
             }
         }
+
+        System.out.println("JsonConverter.getJson(consumerSettings = " + JsonConverter.getJson(consumerSettings));
+
         return consumerSettings;
     }
 

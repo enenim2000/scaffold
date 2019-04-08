@@ -5,6 +5,8 @@ import com.enenim.scaffold.enums.AuditStatus;
 import com.enenim.scaffold.model.cache.LoginCache;
 import com.enenim.scaffold.model.dao.*;
 import com.enenim.scaffold.util.message.SpringMessage;
+import com.enenim.scaffold.util.setting.ConsumerSystemSetting;
+import com.enenim.scaffold.util.setting.VendorSystemSetting;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -235,12 +237,20 @@ public class RequestUtil {
         return getRequestCache().getUserAction();
     }
 
-    public static void setConsumerSettings(HashMap<String, ConsumerSetting> consumerSettings){
-        getRequest().setAttribute("consumer_settings", consumerSettings);
+    public static void setConsumerSystemSettings(HashMap<String, ConsumerSystemSetting> ConsumerSystemSettings){
+        getRequestCache().setConsumerSystemSettings(ConsumerSystemSettings);
     }
 
-    public static HashMap<String, ConsumerSetting> getConsumerSettings(){
-        return getRequestCache().getConsumerSettings();
+    public static HashMap<String, ConsumerSystemSetting> getConsumerSystemSettings(){
+        return getRequestCache().getConsumerSystemSettings();
+    }
+
+    public static void setVendorSystemSettings(HashMap<String, VendorSystemSetting> vendorSystemSettings){
+        getRequestCache().setVendorSystemSettings(vendorSystemSettings);
+    }
+
+    public static HashMap<String, VendorSystemSetting> getVendorSystemSettings(){
+        return getRequestCache().getVendorSystemSettings();
     }
 
     public static String getLang(){
@@ -270,6 +280,5 @@ public class RequestUtil {
         RequestUtil.setUserAgent(userAgent);
         RequestUtil.setIpAdress(ipAddress);
         RequestUtil.setRID(Security.encypt(getRequest().getRequestURI() + getRequest().getMethod() + getRequestBody()));
-
     }
 }

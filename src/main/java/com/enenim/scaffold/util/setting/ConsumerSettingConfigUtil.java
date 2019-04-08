@@ -43,7 +43,7 @@ public class ConsumerSettingConfigUtil {
         put(CATEGORY_KEYS[2], NOTIFICATION_CONFIG);
     }};
     
-    public static HashMap<String, ConsumerSettingMapCategory> getConsumerSettingAsMap(){
+    private static HashMap<String, ConsumerSettingMapCategory> getConsumerSettingAsMap(){
 
         HashMap<String, ConsumerSettingMapCategory> settingCategories = new HashMap<>();
 

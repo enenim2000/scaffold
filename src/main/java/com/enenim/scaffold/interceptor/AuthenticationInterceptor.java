@@ -15,6 +15,7 @@ import com.enenim.scaffold.model.dao.Staff;
 import com.enenim.scaffold.service.ApiKeyService;
 import com.enenim.scaffold.service.TokenAuthenticationService;
 import com.enenim.scaffold.service.UserResolverService;
+import com.enenim.scaffold.service.dao.ConsumerSettingService;
 import com.enenim.scaffold.service.dao.LoginService;
 import com.enenim.scaffold.service.dao.PaymentChannelService;
 import com.enenim.scaffold.service.dao.TaskService;
@@ -49,8 +50,9 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     private final PaymentChannelService paymentChannelService;
     private final TaskService taskService;
     private final LoginService loginService;
+    private final ConsumerSettingService consumerSettingService;
 
-    public AuthenticationInterceptor(TokenAuthenticationService tokenAuthenticationService, SettingCacheService settingCacheService, UserResolverService userResolverService, ApiKeyService apiKeyService, PaymentChannelService paymentChannelService, TaskService taskService, LoginService loginService) {
+    public AuthenticationInterceptor(TokenAuthenticationService tokenAuthenticationService, SettingCacheService settingCacheService, UserResolverService userResolverService, ApiKeyService apiKeyService, PaymentChannelService paymentChannelService, TaskService taskService, LoginService loginService, ConsumerSettingService consumerSettingService) {
         this.tokenAuthenticationService = tokenAuthenticationService;
         this.settingCacheService = settingCacheService;
         this.userResolverService = userResolverService;
@@ -58,6 +60,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         this.paymentChannelService = paymentChannelService;
         this.taskService = taskService;
         this.loginService = loginService;
+        this.consumerSettingService = consumerSettingService;
     }
 
     @Override
@@ -96,6 +99,12 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         tokenAuthenticationService.refreshToken(loginToken, date);
         tokenAuthenticationService.refreshTracker(loginToken.getTracker(), date);
+
+        if(loginToken.getUserType().equalsIgnoreCase(RoleConstant.CONSUMER)){
+            RequestUtil.setConsumerSystemSettings(consumerSettingService.getConsumerSystemSettingsMap( loginToken.getUserId() ));
+        }else if (loginToken.getUserType().equalsIgnoreCase(RoleConstant.VENDOR)){
+            RequestUtil.setVendorSystemSettings(null);
+        }
 
         InterceptorParamater interceptorParamater = new InterceptorParamater(request, response, handler);
 
