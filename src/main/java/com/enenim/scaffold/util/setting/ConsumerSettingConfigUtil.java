@@ -5,7 +5,9 @@ import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.RequestUtil;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class ConsumerSettingConfigUtil {
 
@@ -98,7 +100,21 @@ public class ConsumerSettingConfigUtil {
         return filteredConsumerSettings;
     }
 
+    private static List<ConsumerSystemSetting> getFilteredConsumerSettingList(){
+        List<ConsumerSystemSetting> consumerSystemSettings = new ArrayList<>();
+        for(HashMap.Entry<String, ConsumerSystemSetting> settingEntry : MEMORY_SETTINGS_BY_KEY.entrySet()){
+            if(settingEntry.getValue().getDetail().getUserTypes().contains(RequestUtil.getLogin().getUserType())){
+                consumerSystemSettings.add(settingEntry.getValue());
+            }
+        }
+        return consumerSystemSettings;
+    }
+
     public static HashMap<String, ConsumerSettingMapCategory> getMemoryConsumerSettings() {
         return getFilteredConsumerSettings();
+    }
+
+    public static List<ConsumerSystemSetting> getMemoryConsumerSettingList() {
+        return getFilteredConsumerSettingList();
     }
 }

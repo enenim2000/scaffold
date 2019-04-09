@@ -173,18 +173,11 @@ public class ConsumerController {
         return new Response<>(new CollectionResponse<>(consumerSettingService.getConsumerSystemSettings(id)));
     }
 
-    @Put("/settings/sync")
+    @Put("/{id}/settings/sync")
     @Role({RoleConstant.STAFF})
     @Permission(USER_CONSUMER_SETTING_SYNC)
-    public Response<BooleanResponse> syncConsumerSettings() {
-        return new Response<>(new BooleanResponse<>(consumerSettingService.getConsumerSystemSettings(id)));
-    }
-
-    @Put("/sync")
-    @Role({RoleConstant.STAFF})
-    @Permission(ADMINISTRATION_SETTING_SYNC)
-    public Response<BooleanResponse> syncSettings() {
-        return new Response<>(new BooleanResponse(settingCacheService.syncSettings()));
+    public Response<BooleanResponse> syncConsumerSettings(@PathVariable("id") Long id) {
+        return new Response<>(new BooleanResponse(consumerSettingService.syncConsumerSettings(id)));
     }
 
     @Get({"/{id}/transactions"})

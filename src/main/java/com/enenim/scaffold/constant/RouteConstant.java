@@ -283,6 +283,7 @@ public interface RouteConstant {
     String USER_CONSUMER_SHOW = USER + CONSUMER_SUBMODULE + SHOW;
     String USER_CONSUMER_SETTING_SHOW = USER + ".consumer_setting."+ SHOW;
     String USER_CONSUMER_SETTING_INDEX = USER + ".consumer_setting."+ INDEX;
+    String USER_CONSUMER_SETTING_SYNC = USER + ".consumer_setting."+ SYNC;
     String USER_CONSUMER_TICKET_SHOW = USER + ".consumer_ticket."+ SHOW;
     String USER_CONSUMER_TICKET_INDEX = USER + ".consumer_ticket."+ INDEX;
     String USER_CONSUMER_FEEDBACK_SHOW = USER + ".consumer_feedback."+ SHOW;

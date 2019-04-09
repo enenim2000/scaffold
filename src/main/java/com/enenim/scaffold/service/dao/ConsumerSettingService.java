@@ -16,16 +16,19 @@ import org.springframework.util.StringUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ConsumerSettingService{
     private final ConsumerSettingRepository consumerSettingRepository;
     private final UserResolverService userResolverService;
+    private final ConsumerService consumerService;
 
     @Autowired
-    public ConsumerSettingService(ConsumerSettingRepository consumerSettingRepository, UserResolverService userResolverService) {
+    public ConsumerSettingService(ConsumerSettingRepository consumerSettingRepository, UserResolverService userResolverService, ConsumerService consumerService) {
         this.consumerSettingRepository = consumerSettingRepository;
         this.userResolverService = userResolverService;
+        this.consumerService = consumerService;
     }
 
     public List<ConsumerSetting> getConsumerSettings(Long id){
@@ -107,5 +110,37 @@ public class ConsumerSettingService{
             consumerSystemSetting.getDetail().setValue( consumerSetting.getValue() );
         }
         return consumerSystemSetting;
+    }
+
+    public boolean syncConsumerSettings(Long consumerId){
+        consumerId = userResolverService.resolveUserId(consumerId);
+        Consumer consumer = consumerService.getConsumer(consumerId);
+        List<ConsumerSetting> dbConsumerSystemSettings = consumerSettingRepository.findByConsumerId(consumerId);
+        Map<String, ConsumerSetting> dbConsumerSettingsMap = new HashMap<>();
+
+        for(ConsumerSetting consumerSetting : dbConsumerSystemSettings){
+            dbConsumerSettingsMap.put(consumerSetting.getSettingKey(), consumerSetting);
+        }
+
+        List<ConsumerSystemSetting> consumerSystemSettings = ConsumerSettingConfigUtil.getMemoryConsumerSettingList();
+
+        List<ConsumerSetting> newConsumerSettings = new ArrayList<>();
+
+        for(ConsumerSystemSetting setting : consumerSystemSettings){
+            if(!dbConsumerSettingsMap.containsKey(setting.getSettingKey())){
+                ConsumerSetting consumerSetting = new ConsumerSetting();
+                consumerSetting.setConsumer(consumer);
+                consumerSetting.setValue(setting.getDetail().getValue());
+                consumerSetting.setSettingKey(setting.getSettingKey());
+                consumerSetting.setCategoryKey(setting.getCategoryKey());
+                newConsumerSettings.add(consumerSetting);
+            }
+        }
+
+        if(!newConsumerSettings.isEmpty()){
+            newConsumerSettings = consumerSettingRepository.saveAll(newConsumerSettings);
+        }
+
+        return newConsumerSettings.size() > 0;
     }
 }

@@ -32,9 +32,9 @@ public class ApplicationStartup implements ApplicationRunner {
 
         System.out.println("settings = " + JsonConverter.getJsonRecursive(SettingConfigUtil.getSystemSettings()));
 
-        System.out.println("\n About to load consumer system config into memory \n");
+        System.out.println("\n About to load consumer setting config into memory \n");
         ConsumerSettingConfigUtil.loadConsumerSystemSettings();
-        System.out.println("\n Finished loading consumer system config into memory \n");
+        System.out.println("\n Finished loading consumer setting config into memory \n");
 
     }
 }

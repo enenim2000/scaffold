@@ -10,8 +10,6 @@ public class ConsumerSettingMapCategory {
     private String description;
     private HashMap<String, ConsumerSystemSetting> settings = new HashMap<>();
 
-    public ConsumerSettingMapCategory(){}
-
     public ConsumerSettingMapCategory(String key, String description){
         this.key = key;
         this.description = description;
