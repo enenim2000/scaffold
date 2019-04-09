@@ -86,6 +86,10 @@ public class UserAccountController {
 				tokenAuthenticationService.saveToken(loginToken);
 
 				if(loginToken.getUserType().equalsIgnoreCase(RoleConstant.CONSUMER)){
+					//Sync consumer settings after every login, to pick new settings from config and update
+					consumerSettingService.syncConsumerSettings(loginToken.getUserId());
+
+					//Pull consumer settings config and save to redis cache
 					consumerSettingCacheService.saveConsumerSetting(loginToken.getUserId(), consumerSettingService.getConsumerSystemSettingsMap(loginToken.getUserId()));
 				}
 
