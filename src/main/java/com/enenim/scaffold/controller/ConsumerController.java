@@ -183,7 +183,7 @@ public class ConsumerController {
     @Get({"/{id}/transactions"})
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
     @Permission(USER_CONSUMER_TRANSACTION_INDEX)
-    public Response<PageResponse<Transaction>> getConsumerTransactions(@PathVariable Long id, @RequestBody TransactionFilterRequest filter) {
+    public Response<PageResponse<Transaction>> getConsumerTransactions(@PathVariable Long id, @Valid @RequestBody TransactionFilterRequest filter) {
         return new Response<>(new PageResponse<>(transactionService.getConsumerTransactions(filter, userResolverService.resolveUserId(id))));
     }
 

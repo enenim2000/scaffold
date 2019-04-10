@@ -27,5 +27,4 @@ public interface TransactionRepository extends BaseRepository<Transaction, Long>
 
     @Query("select t from Transaction t join t.serviceForms sf where t.createdAt between ?1 and ?2 and t.status in ?3 and (t.createdAt like ?4 or sf.service.vendor.tradingName like ?4 or sf.service.vendor.tradingName like ?4) and sf.service.vendor.id = ?5")
     Page<Transaction> findVendorTransactionsBySearchTerm(Date startDate, Date endDate, List<TransactionStatus> statuses, String searchTerm, Long userId, Pageable pageable);
-
 }

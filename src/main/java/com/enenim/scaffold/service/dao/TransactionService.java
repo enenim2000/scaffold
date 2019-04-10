@@ -47,6 +47,15 @@ public class TransactionService {
         }
     }
 
+    public Page<Transaction> getVendorTransactions(TransactionFilterRequest filter, Long consumerId){
+        TransactionFilter transactionFilter = new TransactionFilter(filter);
+        if(StringUtils.isEmpty(transactionFilter.getSearchTerm())){
+            return transactionRepository.findVendorTransactions(transactionFilter.getStartDate(), transactionFilter.getEndDate(), transactionFilter.getStatuses(), consumerId, PageRequestUtil.getPageRequest() );
+        }else{
+            return transactionRepository.findVendorTransactionsBySearchTerm( transactionFilter.getStartDate(), transactionFilter.getEndDate(), transactionFilter.getStatuses(), transactionFilter.getSearchTerm(), consumerId, PageRequestUtil.getPageRequest() );
+        }
+    }
+
     @Data
     private class TransactionFilter {
         private Date startDate;

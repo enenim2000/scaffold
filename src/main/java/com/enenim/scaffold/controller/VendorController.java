@@ -5,6 +5,7 @@ import com.enenim.scaffold.constant.AssetBaseConstant;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.constant.RouteConstant;
 import com.enenim.scaffold.dto.request.*;
+import com.enenim.scaffold.dto.request.part.TransactionFilterRequest;
 import com.enenim.scaffold.dto.response.BooleanResponse;
 import com.enenim.scaffold.dto.response.ModelResponse;
 import com.enenim.scaffold.dto.response.PageResponse;
@@ -12,13 +13,14 @@ import com.enenim.scaffold.dto.response.Response;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
-import com.enenim.scaffold.model.dao.Contact;
-import com.enenim.scaffold.model.dao.Login;
-import com.enenim.scaffold.model.dao.Vendor;
+import com.enenim.scaffold.model.dao.*;
 import com.enenim.scaffold.service.FileStorageService;
 import com.enenim.scaffold.service.MailSenderService;
+import com.enenim.scaffold.service.UserResolverService;
 import com.enenim.scaffold.service.cache.SharedExpireCacheService;
 import com.enenim.scaffold.service.dao.LoginService;
+import com.enenim.scaffold.service.dao.TransactionService;
+import com.enenim.scaffold.service.dao.VendorService;
 import com.enenim.scaffold.service.dao.VendorUserService;
 import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.ObjectMapperUtil;
@@ -35,39 +37,48 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 
+import static com.enenim.scaffold.constant.RouteConstant.USER_VENDOR_SERVICE_INDEX;
+import static com.enenim.scaffold.constant.RouteConstant.USER_VENDOR_TRANSACTION_INDEX;
+
 @RestController
 @RequestMapping("/vendors")
 public class VendorController {
 
-    private final VendorUserService vendorService;
+    private final VendorUserService vendorUserService;
     private final LoginService loginService;
     private final MailSenderService mailSenderService;
     private final SharedExpireCacheService sharedExpireCacheService;
     private final PasswordEncoder passwordEncoder;
     private final FileStorageService fileStorageService;
+    private final UserResolverService userResolverService;
+    private final TransactionService transactionService;
+    private final VendorService vendorService;
 
     @Autowired
-    public VendorController(VendorUserService vendorService, LoginService loginService, MailSenderService mailSenderService, SharedExpireCacheService sharedExpireCacheService, PasswordEncoder passwordEncoder, FileStorageService fileStorageService) {
-        this.vendorService = vendorService;
+    public VendorController(VendorUserService vendorUserService, LoginService loginService, MailSenderService mailSenderService, SharedExpireCacheService sharedExpireCacheService, PasswordEncoder passwordEncoder, FileStorageService fileStorageService, UserResolverService userResolverService, TransactionService transactionService, VendorService vendorService) {
+        this.vendorUserService = vendorUserService;
         this.loginService = loginService;
         this.mailSenderService = mailSenderService;
         this.sharedExpireCacheService = sharedExpireCacheService;
         this.passwordEncoder = passwordEncoder;
         this.fileStorageService = fileStorageService;
+        this.userResolverService = userResolverService;
+        this.transactionService = transactionService;
+        this.vendorService = vendorService;
     }
 
     @Get
     @Role({RoleConstant.STAFF, RoleConstant.VENDOR})
     @Permission(RouteConstant.USER_VENDOR_INDEX)
     public Response<PageResponse<Vendor>> getVendors() {
-        return new Response<>(new PageResponse<>(vendorService.getVendors()));
+        return new Response<>(new PageResponse<>(vendorUserService.getVendors()));
     }
 
     @Get("/{id}")
     @Role({RoleConstant.STAFF, RoleConstant.VENDOR})
     @Permission(RouteConstant.USER_VENDOR_SHOW)
     public Response<ModelResponse<Vendor>> showVendor(@PathVariable Long id) {
-        return new Response<>(new ModelResponse<>(vendorService.getVendor(id)));
+        return new Response<>(new ModelResponse<>(vendorUserService.getVendor(id)));
     }
 
     @Post
@@ -79,7 +90,7 @@ public class VendorController {
         vendor.setCommonProperties();
         vendor.setVerified(VerifyStatus.VERIFIED);
         storeVendorLogo(vendor, file);
-        return new Response<>(new ModelResponse<>(vendorService.saveVendor(vendor)));
+        return new Response<>(new ModelResponse<>(vendorUserService.saveVendor(vendor)));
     }
 
     @Post("/sign-up")
@@ -91,7 +102,7 @@ public class VendorController {
         Vendor vendor = request.getBody().buildModel();
         vendor.setCommonProperties();
         vendor.skipAuthorization(true);
-        vendor = vendorService.saveVendor(vendor);
+        vendor = vendorUserService.saveVendor(vendor);
 
         if(!StringUtils.isEmpty(vendor)){
             Login login = new Login();
@@ -117,7 +128,7 @@ public class VendorController {
             Vendor vendor = JsonConverter.getObject(value, Vendor.class);
             vendor.setVerified(VerifyStatus.VERIFIED);
             vendor.skipAuthorization(true);
-            vendor = vendorService.saveVendor(vendor);
+            vendor = vendorUserService.saveVendor(vendor);
             loginService.updateVerifyStatus(VerifyStatus.VERIFIED, vendor.getEmail());
             sharedExpireCacheService.delete(cacheCode);
             RequestUtil.setMessage(CommonMessage.msg("vendor_code_verified"));
@@ -156,7 +167,7 @@ public class VendorController {
     @Permission(RouteConstant.USER_VENDOR_PROFILE)
     public Response<ModelResponse<Vendor>> updateVendorDetails(@PathVariable("id") Long id, @RequestPart("vendor") String vendor, @RequestPart(value = "file", required = false) MultipartFile file){
 
-        Vendor vendorModel = vendorService.getVendor(id);
+        Vendor vendorModel = vendorUserService.getVendor(id);
 
         if(vendorModel.getVerified() == VerifyStatus.NOT_VERIFIED){
             throw new ScaffoldException("code_not_verified");
@@ -164,7 +175,7 @@ public class VendorController {
 
         VendorProfileRequest request = JsonConverter.getObject(vendor, VendorProfileRequest.class);
 
-        vendorService.validateDependencies(request);
+        vendorUserService.validateDependencies(request);
 
         vendorModel = ObjectMapperUtil.map(request, vendorModel);
 
@@ -178,14 +189,14 @@ public class VendorController {
 
         storeVendorLogo(vendorModel, file);
 
-        vendorModel = vendorService.saveVendor(vendorModel);
+        vendorModel = vendorUserService.saveVendor(vendorModel);
 
         return new Response<>(new ModelResponse<>(vendorModel));
     }
 
     @Post("/{email}/code/re-send")
     public Response<BooleanResponse> reSendCode(@PathVariable("email") String email){
-        Vendor vendor = vendorService.getVendorByEmail(email);
+        Vendor vendor = vendorUserService.getVendorByEmail(email);
         if(!StringUtils.isEmpty(vendor)){
             if (vendor.getVerified() == VerifyStatus.NOT_VERIFIED){
                 mailSenderService.send(vendor);
@@ -201,7 +212,7 @@ public class VendorController {
     @Role({RoleConstant.STAFF, RoleConstant.VENDOR})
     @Permission(RouteConstant.USER_VENDOR_GOLIVE)
     public Response<BooleanResponse> goLiveToggle(@PathVariable Long id){
-        Vendor vendor = vendorService.getVendor(id);
+        Vendor vendor = vendorUserService.getVendor(id);
         if(StringUtils.isEmpty(vendor.getAddress())){
             throw new ScaffoldException("biiler_address_required");
         }
@@ -209,7 +220,7 @@ public class VendorController {
             throw new ScaffoldException("vendor_logo_required");
         }
         vendor.setEnabled(EnabledStatus.ENABLED);
-        vendor = vendorService.saveVendor(vendor);
+        vendor = vendorUserService.saveVendor(vendor);
         boolean allow = false;
         if(vendor.getEnabled() == EnabledStatus.ENABLED){
             allow = true;
@@ -221,7 +232,21 @@ public class VendorController {
     @Role({RoleConstant.STAFF})
     @Permission(RouteConstant.USER_VENDOR_TOGGLE)
     public Response<BooleanResponse> toggle(@PathVariable Long id){
-        return new Response<>(new BooleanResponse(vendorService.toggle(id)));
+        return new Response<>(new BooleanResponse(vendorUserService.toggle(id)));
+    }
+
+    @Get({"/{id}/transactions"})
+    @Role({RoleConstant.STAFF, RoleConstant.VENDOR})
+    @Permission(USER_VENDOR_TRANSACTION_INDEX)
+    public Response<PageResponse<Transaction>> getVendorTransactions(@PathVariable Long id, @Valid @RequestBody TransactionFilterRequest filter) {
+        return new Response<>(new PageResponse<>(transactionService.getVendorTransactions(filter, userResolverService.resolveUserId(id))));
+    }
+
+    @Get({"/{id}/services"})
+    @Role({RoleConstant.STAFF, RoleConstant.VENDOR})
+    @Permission(USER_VENDOR_SERVICE_INDEX)
+    public Response<PageResponse<Service>> getVendorServices(@PathVariable Long id) {
+        return new Response<>(new PageResponse<>(vendorService.getVendorServices(userResolverService.resolveUserId(id))));
     }
 
     private void storeVendorLogo(Vendor vendor, MultipartFile file){
