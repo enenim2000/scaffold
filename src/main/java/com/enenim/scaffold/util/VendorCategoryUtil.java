@@ -19,15 +19,15 @@ public class VendorCategoryUtil {
 
     public static List<VendorCategory> getVendorCategories(){
         List<VendorCategory> vendorCategories = new ArrayList<>();
-        for(Map.Entry entry : VENDOR_CATEGORIES.entrySet()){
-            VendorCategory vendorCategory = (VendorCategory) entry.getValue();
-            vendorCategory.setKey((String) entry.getKey());
+        for(Map.Entry<String, VendorCategory> entry : VENDOR_CATEGORIES.entrySet()){
+            VendorCategory vendorCategory = entry.getValue();
+            vendorCategory.setKey(entry.getKey());
             vendorCategories.add(vendorCategory);
         }
         return vendorCategories;
     }
 
-    private static VendorCategory getVendorCategory(String key){
+    public static VendorCategory getVendorCategory(String key){
         return VENDOR_CATEGORIES.get(key);
     }
 }

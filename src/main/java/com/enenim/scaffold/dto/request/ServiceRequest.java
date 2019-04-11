@@ -9,7 +9,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.validation.constraints.NotBlank;
-import java.util.List;
 
 @Getter
 @Setter
@@ -39,12 +38,8 @@ public class ServiceRequest extends RequestBody<Service>{
 	private String slug;
 
 	@NotBlank
-	@JsonProperty("category_ids")
-	private List<Long> categoryIds;
-
-	@NotBlank
-	@JsonProperty("vendor_id")
-	private Long vendorId;
+	@JsonProperty("category")
+	private String category;
 
 	@NotBlank
 	@JsonProperty("currency_id")

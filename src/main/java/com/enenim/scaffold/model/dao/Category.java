@@ -51,7 +51,7 @@ public class Category extends BaseModel {
     @NotNull
     private EnabledStatus enabled = EnabledStatus.ENABLED;
 
-    @JsonBackReference
+    /*@JsonBackReference
     @ManyToMany
     @JoinTable(name = "category_service",
             joinColumns = @JoinColumn(name = "category_id"),
@@ -59,7 +59,7 @@ public class Category extends BaseModel {
             uniqueConstraints = @UniqueConstraint(columnNames = {"category_id", "service_id"})
     )
     @ApiModelProperty(required = true, hidden = true)
-    private Set<Service> services = new HashSet<>();
+    private Set<Service> services = new HashSet<>();*/
 
     @JsonBackReference
     @ManyToMany(mappedBy = "categories")

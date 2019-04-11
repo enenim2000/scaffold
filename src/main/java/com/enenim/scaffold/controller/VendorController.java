@@ -6,10 +6,7 @@ import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.constant.RouteConstant;
 import com.enenim.scaffold.dto.request.*;
 import com.enenim.scaffold.dto.request.part.TransactionFilterRequest;
-import com.enenim.scaffold.dto.response.BooleanResponse;
-import com.enenim.scaffold.dto.response.ModelResponse;
-import com.enenim.scaffold.dto.response.PageResponse;
-import com.enenim.scaffold.dto.response.Response;
+import com.enenim.scaffold.dto.response.*;
 import com.enenim.scaffold.enums.EnabledStatus;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.exception.ScaffoldException;
@@ -30,8 +27,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.util.HashSet;
-import java.util.Set;
 
 import static com.enenim.scaffold.constant.RouteConstant.*;
 
@@ -248,19 +243,34 @@ public class VendorController {
         return new Response<>(new PageResponse<>(vendorService.getVendorServices(userResolverService.resolveUserId(id))));
     }
 
+    @Get({"/services/categories"})
+    @Role({RoleConstant.STAFF, RoleConstant.VENDOR})
+    @Permission(USER_VENDOR_SERVICE_CATEGORY)
+    public Response<CollectionResponse<VendorCategory>> getServiceCategories() {
+        return new Response<>(new CollectionResponse<>( VendorCategoryUtil.getVendorCategories() ));
+    }
+
+    @Get({"/services/categories/{key}"})
+    @Role({RoleConstant.STAFF, RoleConstant.VENDOR})
+    @Permission(USER_VENDOR_SERVICE_CATEGORY)
+    public Response<ModelResponse<VendorCategory>> getServiceCategory(@PathVariable String key) {
+        return new Response<>(new ModelResponse<>( VendorCategoryUtil.getVendorCategory(key) ));
+    }
+
     @Post({"/{id}/services"})
     @Role({RoleConstant.STAFF, RoleConstant.VENDOR})
     @Permission(USER_VENDOR_SERVICE_CREATE)
-    public Response<ModelResponse<Service>> createVendorService(@Valid @RequestBody Request<ServiceRequest> request) {
-
+    public Response<ModelResponse<Service>> createVendorService(@PathVariable Long id, @Valid @RequestBody Request<ServiceRequest> request) {
         Service service = request.getBody().buildModel();
-        Set<Category> categories = new HashSet<>(categoryService.getCategories(request.getBody().getCategoryIds()));
-        service.setCategories( categories  );
         service.setCurrency( currencyService.getCurrency(request.getBody().getCurrencyId()) );
-        service.setVendor( vendorUserService.getVendor(request.getBody().getVendorId()) );
-
+        service.setVendor( vendorUserService.getVendor(userResolverService.resolveUserId(id)) );
         service.setCode(RandomUtil.getCode());
-
+        service.setCategory(request.getBody().getCategory());
+        VendorCategory vendorCategory = VendorCategoryUtil.getVendorCategory(request.getBody().getCategory());
+        if(StringUtils.isEmpty(vendorCategory)){
+            throw new ScaffoldException("service_category_not_found");
+        }
+        service.setPayload(vendorCategory.getPayload());
         return new Response<>(new ModelResponse<>(vendorService.saveVendorService(service)));
     }
 
