@@ -23,7 +23,7 @@ public class VendorService {
         return serviceRepository.findVendorServices(vendorId, PageRequestUtil.getPageRequest());
     }
 
-    public Service saveVendorService( Service service){
+    public Service saveVendorService(Service service){
         return serviceRepository.save(service);
     }
 }

@@ -18,6 +18,10 @@ public class RandomUtil {
         return salt.toString();
     }
 
+    public static String getCode(){
+        return getCharacters(10).toUpperCase();
+    }
+
     public static String getUniqueCharacters(){
 
         String unique = new BCryptPasswordEncoder().encode(new Date() + RandomUtil.getCharacters());

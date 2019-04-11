@@ -18,14 +18,8 @@ import com.enenim.scaffold.service.FileStorageService;
 import com.enenim.scaffold.service.MailSenderService;
 import com.enenim.scaffold.service.UserResolverService;
 import com.enenim.scaffold.service.cache.SharedExpireCacheService;
-import com.enenim.scaffold.service.dao.LoginService;
-import com.enenim.scaffold.service.dao.TransactionService;
-import com.enenim.scaffold.service.dao.VendorService;
-import com.enenim.scaffold.service.dao.VendorUserService;
-import com.enenim.scaffold.util.JsonConverter;
-import com.enenim.scaffold.util.ObjectMapperUtil;
-import com.enenim.scaffold.util.PasswordEncoder;
-import com.enenim.scaffold.util.RequestUtil;
+import com.enenim.scaffold.service.dao.*;
+import com.enenim.scaffold.util.*;
 import com.enenim.scaffold.util.message.CommonMessage;
 import com.enenim.scaffold.util.message.SpringMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +30,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.util.HashSet;
+import java.util.Set;
 
-import static com.enenim.scaffold.constant.RouteConstant.USER_VENDOR_SERVICE_INDEX;
-import static com.enenim.scaffold.constant.RouteConstant.USER_VENDOR_TRANSACTION_INDEX;
+import static com.enenim.scaffold.constant.RouteConstant.*;
 
 @RestController
 @RequestMapping("/vendors")
@@ -53,9 +48,11 @@ public class VendorController {
     private final UserResolverService userResolverService;
     private final TransactionService transactionService;
     private final VendorService vendorService;
+    private final CategoryService categoryService;
+    private final CurrencyService currencyService;
 
     @Autowired
-    public VendorController(VendorUserService vendorUserService, LoginService loginService, MailSenderService mailSenderService, SharedExpireCacheService sharedExpireCacheService, PasswordEncoder passwordEncoder, FileStorageService fileStorageService, UserResolverService userResolverService, TransactionService transactionService, VendorService vendorService) {
+    public VendorController(VendorUserService vendorUserService, LoginService loginService, MailSenderService mailSenderService, SharedExpireCacheService sharedExpireCacheService, PasswordEncoder passwordEncoder, FileStorageService fileStorageService, UserResolverService userResolverService, TransactionService transactionService, VendorService vendorService, CategoryService categoryService, CurrencyService currencyService) {
         this.vendorUserService = vendorUserService;
         this.loginService = loginService;
         this.mailSenderService = mailSenderService;
@@ -65,6 +62,8 @@ public class VendorController {
         this.userResolverService = userResolverService;
         this.transactionService = transactionService;
         this.vendorService = vendorService;
+        this.categoryService = categoryService;
+        this.currencyService = currencyService;
     }
 
     @Get
@@ -247,6 +246,22 @@ public class VendorController {
     @Permission(USER_VENDOR_SERVICE_INDEX)
     public Response<PageResponse<Service>> getVendorServices(@PathVariable Long id) {
         return new Response<>(new PageResponse<>(vendorService.getVendorServices(userResolverService.resolveUserId(id))));
+    }
+
+    @Post({"/{id}/services"})
+    @Role({RoleConstant.STAFF, RoleConstant.VENDOR})
+    @Permission(USER_VENDOR_SERVICE_CREATE)
+    public Response<ModelResponse<Service>> createVendorService(@Valid @RequestBody Request<ServiceRequest> request) {
+
+        Service service = request.getBody().buildModel();
+        Set<Category> categories = new HashSet<>(categoryService.getCategories(request.getBody().getCategoryIds()));
+        service.setCategories( categories  );
+        service.setCurrency( currencyService.getCurrency(request.getBody().getCurrencyId()) );
+        service.setVendor( vendorUserService.getVendor(request.getBody().getVendorId()) );
+
+        service.setCode(RandomUtil.getCode());
+
+        return new Response<>(new ModelResponse<>(vendorService.saveVendorService(service)));
     }
 
     private void storeVendorLogo(Vendor vendor, MultipartFile file){

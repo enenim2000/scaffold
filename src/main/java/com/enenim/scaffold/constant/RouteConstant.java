@@ -175,6 +175,7 @@ public interface RouteConstant {
     String USER_VENDOR_ACCOUNTLOOKUP = USER + VENDOR_SUBMODULE + "account-lookup";
     String USER_VENDOR_TRANSACTION_INDEX = USER + ".vendor_transaction."+ INDEX;
     String USER_VENDOR_SERVICE_INDEX = USER + ".vendor_service."+ INDEX;
+    String USER_VENDOR_SERVICE_CREATE = USER + ".vendor_service."+ CREATE;
     String USER_VENDOR_SIGNUPACCOUNT = USER + VENDOR_SUBMODULE + "signUpAccount";
     String USER_VENDOR_SIGNUPACCOUNTOTP = USER + VENDOR_SUBMODULE + "signUpAccountOtp";
     String USER_VENDOR_SIGNUPACCOUNTVERIFY = USER + VENDOR_SUBMODULE + "signUpAccountVerify";

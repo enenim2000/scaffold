@@ -55,14 +55,12 @@ public class Service extends BaseModel {
     @Column(unique = true, length = 200)
     private String slug = "";
 
-    @NotNull
-    private String category;
-
     /**
      * Copy the payload from the service category and save it in this field,
      * So that we can edit/customize each vendor's service payload
      */
     @Lob
+    @NotNull
     private String payload;
 
     @NotNull
