@@ -43,11 +43,10 @@ public class VendorController {
     private final UserResolverService userResolverService;
     private final TransactionService transactionService;
     private final VendorService vendorService;
-    private final CategoryService categoryService;
     private final CurrencyService currencyService;
 
     @Autowired
-    public VendorController(VendorUserService vendorUserService, LoginService loginService, MailSenderService mailSenderService, SharedExpireCacheService sharedExpireCacheService, PasswordEncoder passwordEncoder, FileStorageService fileStorageService, UserResolverService userResolverService, TransactionService transactionService, VendorService vendorService, CategoryService categoryService, CurrencyService currencyService) {
+    public VendorController(VendorUserService vendorUserService, LoginService loginService, MailSenderService mailSenderService, SharedExpireCacheService sharedExpireCacheService, PasswordEncoder passwordEncoder, FileStorageService fileStorageService, UserResolverService userResolverService, TransactionService transactionService, VendorService vendorService, CurrencyService currencyService) {
         this.vendorUserService = vendorUserService;
         this.loginService = loginService;
         this.mailSenderService = mailSenderService;
@@ -57,7 +56,6 @@ public class VendorController {
         this.userResolverService = userResolverService;
         this.transactionService = transactionService;
         this.vendorService = vendorService;
-        this.categoryService = categoryService;
         this.currencyService = currencyService;
     }
 
@@ -245,14 +243,14 @@ public class VendorController {
 
     @Get({"/services/categories"})
     @Role({RoleConstant.STAFF, RoleConstant.VENDOR})
-    @Permission(USER_VENDOR_SERVICE_CATEGORY)
+    @Permission(VENDOR_SERVICE_CATEGORY_INDEX)
     public Response<CollectionResponse<VendorCategory>> getServiceCategories() {
         return new Response<>(new CollectionResponse<>( VendorCategoryUtil.getVendorCategories() ));
     }
 
     @Get({"/services/categories/{key}"})
     @Role({RoleConstant.STAFF, RoleConstant.VENDOR})
-    @Permission(USER_VENDOR_SERVICE_CATEGORY)
+    @Permission(VENDOR_SERVICE_CATEGORY_SHOW)
     public Response<ModelResponse<VendorCategory>> getServiceCategory(@PathVariable String key) {
         return new Response<>(new ModelResponse<>( VendorCategoryUtil.getVendorCategory(key) ));
     }
