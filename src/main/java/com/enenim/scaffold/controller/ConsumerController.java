@@ -39,7 +39,7 @@ import java.util.Optional;
 import static com.enenim.scaffold.constant.RouteConstant.*;
 
 @RestController
-@RequestMapping("/user/consumers")
+@RequestMapping("/consumers")
 public class ConsumerController {
 
     private final ConsumerService consumerService;

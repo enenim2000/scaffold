@@ -103,8 +103,12 @@ public class ConsumerSettingConfigUtil {
     private static List<ConsumerSystemSetting> getFilteredConsumerSettingList(){
         List<ConsumerSystemSetting> consumerSystemSettings = new ArrayList<>();
         for(HashMap.Entry<String, ConsumerSystemSetting> settingEntry : MEMORY_SETTINGS_BY_KEY.entrySet()){
-            if(settingEntry.getValue().getDetail().getUserTypes().contains(RequestUtil.getLogin().getUserType())){
+            if(StringUtils.isEmpty(RequestUtil.getRequest()) || StringUtils.isEmpty(RequestUtil.getLogin())){
                 consumerSystemSettings.add(settingEntry.getValue());
+            }else{
+                if(settingEntry.getValue().getDetail().getUserTypes().contains(RequestUtil.getLogin().getUserType())){
+                    consumerSystemSettings.add(settingEntry.getValue());
+                }
             }
         }
         return consumerSystemSettings;

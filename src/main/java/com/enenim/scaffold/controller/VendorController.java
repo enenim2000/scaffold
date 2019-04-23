@@ -268,7 +268,7 @@ public class VendorController {
         if(StringUtils.isEmpty(vendorCategory)){
             throw new ScaffoldException("service_category_not_found");
         }
-        service.setPayload(vendorCategory.getPayload());
+        //service.setPayload(vendorCategory.getPayload());
         return new Response<>(new ModelResponse<>(vendorService.saveVendorService(service)));
     }
 

@@ -20,9 +20,11 @@ import com.enenim.scaffold.service.dao.LoginService;
 import com.enenim.scaffold.service.dao.PaymentChannelService;
 import com.enenim.scaffold.service.dao.TaskService;
 import com.enenim.scaffold.shared.Channel;
+import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.RequestCache;
 import com.enenim.scaffold.util.RequestUtil;
 import com.enenim.scaffold.util.message.SpringMessage;
+import com.enenim.scaffold.util.setting.ConsumerSettingConfigUtil;
 import com.enenim.scaffold.util.setting.SettingCacheService;
 import com.enenim.scaffold.util.setting.SystemSetting;
 import lombok.Data;
@@ -127,6 +129,8 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         if(handlerMethod.getMethod().isAnnotationPresent(DataDecrypt.class)){
             decrypt(interceptorParamater);
         }
+
+        System.out.println("consumer settings = " + JsonConverter.getJsonRecursive(ConsumerSettingConfigUtil.getMemoryConsumerSettingList()));
 
         return true;
     }

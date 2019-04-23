@@ -15,33 +15,27 @@ import javax.validation.constraints.NotBlank;
 @ToString
 public class ServiceRequest extends RequestBody<Service>{
 
-	@NotBlank
+	@NotBlank(message = "@{service.name.required}")
 	private String name;
 
-	@NotBlank
+	@NotBlank(message = "@{service.amount_type.required}")
 	@JsonProperty("amount_type")
 	private AmountType amountType = AmountType.VARIABLE_AMOUNT;
 
-	@NotBlank
+	@NotBlank(message = "@{service.amount.required}")
 	private double amount = 0.00;
 
-	@NotBlank
-	private double surcharge = 0.00;
-
-	@NotBlank
+	@NotBlank(message = "@{service.discount.required}")
 	private double discount = 0.00;
 
-	@NotBlank
+	@NotBlank(message = "@{service.description.required}")
 	private String description;
 
-	@NotBlank
-	private String slug;
-
-	@NotBlank
+	@NotBlank(message = "@{service.category.required}")
 	@JsonProperty("category")
 	private String category;
 
-	@NotBlank
+	@NotBlank(message = "@{service.currency.required}")
 	@JsonProperty("currency_id")
 	private Long currencyId;
 

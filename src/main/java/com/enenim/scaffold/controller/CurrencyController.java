@@ -31,14 +31,14 @@ public class CurrencyController {
     }
 
     @Get
-    @Role({RoleConstant.STAFF})
+    @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
     @Permission(ADMINISTRATION_CURRENCY_INDEX)
     public Response<PageResponse<Currency>> getCurrency(){
         return new Response<>(new PageResponse<>(currencyService.getCurrencies()));
     }
 
     @Get("/{id}")
-    @Role({RoleConstant.STAFF})
+    @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
     @Permission(ADMINISTRATION_CURRENCY_SHOW)
     public Response<ModelResponse<Currency>> getCurrency(@PathVariable Long id){
         return new Response<>(new ModelResponse<>(currencyService.getCurrency(id)));

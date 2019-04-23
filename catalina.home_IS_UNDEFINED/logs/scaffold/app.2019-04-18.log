@@ -1,0 +1,831 @@
+2019-04-18 14:08:27 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:50] Starting ScaffoldApplication on ETZ-PERFECT-TEC with PID 15228 (C:\Users\asukwo.enenim\IdeaProjects\scaffold\target\classes started by Asukwo.Enenim in C:\Users\asukwo.enenim\IdeaProjects\scaffold)
+2019-04-18 14:08:27 DEBUG [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:53] Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+2019-04-18 14:08:27 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [SpringApplication.java:684] The following profiles are active: dev
+2019-04-18 14:08:27 INFO [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext
+                [AbstractApplicationContext.java:590] Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5b1bc530: startup date [Thu Apr 18 14:08:27 WAT 2019]; root of context hierarchy
+2019-04-18 14:08:31 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate
+                [RepositoryConfigurationDelegate.java:172] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate
+                [RepositoryConfigurationDelegate.java:172] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AccountProviderRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ActiveHourRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AuditRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AuthorizationRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.BranchRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.CategoryRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerAccountRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerSettingRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.CurrencyRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.DisputeMessageRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.FeedbackRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.GroupRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LogEventRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LoginRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LogWebServiceRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PasswordResetRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PaymentChannelRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PublicHolidayRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ServiceFormRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ServiceRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.SettingRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.StaffRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TaskRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TicketRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TrackerRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TransactionRepository.
+2019-04-18 14:08:37 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.VendorRepository.
+2019-04-18 14:08:39 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker
+                [PostProcessorRegistrationDelegate.java:326] Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$cc81f0c2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-18 14:08:39 INFO [restartedMain] o.s.w.s.a.s.AnnotationActionEndpointMapping
+                [AbstractAddressingEndpointMapping.java:236] Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2019-04-18 14:08:39 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker
+                [PostProcessorRegistrationDelegate.java:326] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$27ea2bc3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-18 14:08:43 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer
+                [TomcatWebServer.java:91] Tomcat initialized with port(s): 6677 (http)
+2019-04-18 14:08:43 INFO [restartedMain] o.a.c.h.Http11NioProtocol
+                [DirectJDKLog.java:180] Initializing ProtocolHandler ["http-nio-6677"]
+2019-04-18 14:08:43 INFO [restartedMain] o.a.c.c.StandardService
+                [DirectJDKLog.java:180] Starting service [Tomcat]
+2019-04-18 14:08:43 INFO [restartedMain] o.a.c.c.StandardEngine
+                [DirectJDKLog.java:180] Starting Servlet Engine: Apache Tomcat/8.5.34
+2019-04-18 14:08:43 INFO [localhost-startStop-1] o.a.c.c.AprLifecycleListener
+                [DirectJDKLog.java:180] The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_144\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\sybase\DataAccess\ADONET\dll;C:\sybase\DataAccess\OLEDB\dll;C:\sybase\DataAccess\ODBC\dll;C:\sybase\RPL-12_5\bin;C:\sybase\Shared\Sybase Central 4.3;C:\sybase\OCS-12_5\lib3p;C:\sybase\OCS-12_5\dll;C:\sybase\OCS-12_5\bin;C:\sybase\ASE-12_5\dll;C:\sybase\ASE-12_5\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Broadcom\Broadcom 802.11;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Strawberry\perl\bin;C:\Strawberry\perl\site\bin;C:\Strawberry\c\bin;C:\Dwimperl\perl\bin;C:\Dwimperl\perl\site\bin;C:\Dwimperl\c\bin;C:\Program Files\PuTTY\;C:\Program Files\nodejs\;C:\apache-maven-3.6.0\bin;C:\Program Files\Git\bin\git.exe;C:\Program Files\Git\cmd;.]
+2019-04-18 14:08:45 INFO [localhost-startStop-1] o.a.c.c.C.[.[.[/]
+                [DirectJDKLog.java:180] Initializing Spring embedded WebApplicationContext
+2019-04-18 14:08:45 INFO [localhost-startStop-1] o.s.w.c.ContextLoader
+                [ServletWebServerApplicationContext.java:285] Root WebApplicationContext: initialization completed in 17928 ms
+2019-04-18 14:08:47 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-04-18 14:08:47 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-04-18 14:08:47 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'sessionRepositoryFilter' to: [/*]
+2019-04-18 14:08:47 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-04-18 14:08:47 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-04-18 14:08:47 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'requestContextFilter' to: [/*]
+2019-04-18 14:08:47 INFO [localhost-startStop-1] o.s.b.w.s.DelegatingFilterProxyRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-04-18 14:08:47 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'httpTraceFilter' to: [/*]
+2019-04-18 14:08:47 INFO [localhost-startStop-1] o.s.b.w.s.ServletRegistrationBean
+                [ServletRegistrationBean.java:187] Servlet dispatcherServlet mapped to [/]
+2019-04-18 14:08:47 INFO [localhost-startStop-1] o.s.b.w.s.ServletRegistrationBean
+                [ServletRegistrationBean.java:187] Servlet messageDispatcherServlet mapped to [/services/*]
+2019-04-18 14:08:48 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean
+                [LocalContainerEntityManagerFactoryBean.java:361] Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-04-18 14:08:48 INFO [restartedMain] o.h.j.i.u.LogHelper
+                [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-04-18 14:08:49 INFO [restartedMain] o.h.Version
+                [Version.java:45] HHH000412: Hibernate Core {5.2.17.Final}
+2019-04-18 14:08:49 INFO [restartedMain] o.h.c.Environment
+                [Environment.java:213] HHH000206: hibernate.properties not found
+2019-04-18 14:08:49 INFO [restartedMain] o.h.a.c.Version
+                [JavaReflectionManager.java:66] HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-04-18 14:08:50 INFO [restartedMain] c.z.h.HikariDataSource
+                [HikariDataSource.java:110] HikariPool-1 - Starting...
+2019-04-18 14:08:50 INFO [restartedMain] c.z.h.HikariDataSource
+                [HikariDataSource.java:123] HikariPool-1 - Start completed.
+2019-04-18 14:08:51 INFO [restartedMain] o.h.d.Dialect
+                [Dialect.java:157] HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2019-04-18 14:09:00 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean
+                [AbstractEntityManagerFactoryBean.java:415] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-04-18 14:09:02 INFO [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator
+                [QueryTranslatorFactoryInitiator.java:47] HHH000397: Using ASTQueryTranslatorFactory
+2019-04-18 14:09:04 WARN [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration
+                [JpaBaseConfiguration.java:237] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/account-providers/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.AccountProvider>> com.enenim.scaffold.controller.AccountProviderController.getAccountProvider(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/account-providers],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.AccountProvider>> com.enenim.scaffold.controller.AccountProviderController.getAccountProvider()
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/account-providers],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.AccountProvider>> com.enenim.scaffold.controller.AccountProviderController.createAccountProvider(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.AccountProviderRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/account-providers/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.AccountProvider>> com.enenim.scaffold.controller.AccountProviderController.updateAccountProvider(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.AccountProviderRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/assets/consumers/images/{fileName:.+}],methods=[GET]}" onto public org.springframework.http.ResponseEntity<org.springframework.core.io.Resource> com.enenim.scaffold.controller.AssetsController.getConsumerLogo(java.lang.String,javax.servlet.http.HttpServletRequest)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/assets/vendors/images/{fileName:.+}],methods=[GET]}" onto public org.springframework.http.ResponseEntity<org.springframework.core.io.Resource> com.enenim.scaffold.controller.AssetsController.getVendorLogo(java.lang.String,javax.servlet.http.HttpServletRequest)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/branches/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Branch>> com.enenim.scaffold.controller.BranchController.updateBranch(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.BranchRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/branches],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Branch>> com.enenim.scaffold.controller.BranchController.createBranch(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.BranchRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/branches],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Branch>> com.enenim.scaffold.controller.BranchController.getBranch()
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/branches/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Branch>> com.enenim.scaffold.controller.BranchController.getBranch(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/settings],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.util.setting.ConsumerSystemSetting>> com.enenim.scaffold.controller.ConsumerController.getSettings(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.getConsumers()
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.showConsumer(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/sign-up],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.signUpConsumers(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.ConsumerRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{code}/verify],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.verifyCode(java.lang.String) throws java.lang.Exception
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{email}/code/re-send],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.ConsumerController.reSendCode(java.lang.String)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/profile],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.dto.response.ConsumerProfileResponse>> com.enenim.scaffold.controller.ConsumerController.consumerProfile(java.lang.Long,java.lang.String,org.springframework.web.multipart.MultipartFile)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/settings/{key}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.util.setting.ConsumerSystemSetting>> com.enenim.scaffold.controller.ConsumerController.getSetting(java.lang.Long,java.lang.String)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/settings/sync],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.ConsumerController.syncConsumerSettings(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/transactions],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Transaction>> com.enenim.scaffold.controller.ConsumerController.getConsumerTransactions(java.lang.Long,com.enenim.scaffold.dto.request.part.TransactionFilterRequest)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/tickets || /user/consumers/{id}/tickets/{status}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.dto.response.TicketResponse>> com.enenim.scaffold.controller.ConsumerController.getConsumerTickets(java.lang.Long,java.util.Optional<com.enenim.scaffold.enums.TicketStatus>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/tickets/{ticket-id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.dto.response.TicketResponse>> com.enenim.scaffold.controller.ConsumerController.getConsumerTicket(java.lang.Long,java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/feedback/{feedback-id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.dto.response.FeedbackResponse>> com.enenim.scaffold.controller.ConsumerController.getConsumerFeedback(java.lang.Long,java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/feedback],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.dto.response.FeedbackResponse>> com.enenim.scaffold.controller.ConsumerController.getConsumerFeedback(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/currencies/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Currency>> com.enenim.scaffold.controller.CurrencyController.getCurrency(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/currencies],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Currency>> com.enenim.scaffold.controller.CurrencyController.getCurrency()
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/currencies],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Currency>> com.enenim.scaffold.controller.CurrencyController.createCurrency(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.CurrencyRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/currencies/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Currency>> com.enenim.scaffold.controller.CurrencyController.updateCurrency(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.CurrencyRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/feedback/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.dto.response.FeedbackResponse>> com.enenim.scaffold.controller.FeedbackController.getFeedback(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/feedback],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.dto.response.FeedbackResponse>> com.enenim.scaffold.controller.FeedbackController.getFeedback()
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/feedback],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Feedback>> com.enenim.scaffold.controller.FeedbackController.createFeedback(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.FeedbackRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Group> com.enenim.scaffold.controller.GroupController.update(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.GroupRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/tasks],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.GroupController.getPermission(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Group> com.enenim.scaffold.controller.GroupController.createGroup(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.GroupRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Group>> com.enenim.scaffold.controller.GroupController.getGroups()
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/authorizations],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.GroupController.getPermissionAuthorizations(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/authorizations],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Group>> com.enenim.scaffold.controller.GroupController.updatePermissionAuthorizations(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.PermissionRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Group> com.enenim.scaffold.controller.GroupController.show(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/tasks],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Group>> com.enenim.scaffold.controller.GroupController.updatePermission(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.PermissionRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/payment-channels/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.PaymentChannel>> com.enenim.scaffold.controller.PaymentChannelController.getPaymentChannel(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/payment-channels],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.PaymentChannel>> com.enenim.scaffold.controller.PaymentChannelController.getPaymentChannel()
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/payment-channels],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.PaymentChannel>> com.enenim.scaffold.controller.PaymentChannelController.createPaymentChannel(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.PaymentChannelRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/payment-channels/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.PaymentChannel>> com.enenim.scaffold.controller.PaymentChannelController.updatePaymentChannel(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.PaymentChannelRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings/categories/{key}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.util.setting.SettingMapCategory>> com.enenim.scaffold.controller.SettingController.getSettingsByCategory(java.lang.String)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings/categorized],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<java.util.HashMap<java.lang.String, com.enenim.scaffold.util.setting.SettingMapCategory>>> com.enenim.scaffold.controller.SettingController.getCategorizedSettings()
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.util.setting.SettingListCategory>> com.enenim.scaffold.controller.SettingController.getSettings()
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings/{key}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.util.setting.SystemSetting>> com.enenim.scaffold.controller.SettingController.getSetting(java.lang.String)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings/{key}/reset],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.util.setting.SystemSetting>> com.enenim.scaffold.controller.SettingController.resetSettings(java.lang.String)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings/{key}/add],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.util.setting.SystemSetting>> com.enenim.scaffold.controller.SettingController.addSettings(java.lang.String)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.util.setting.SystemSetting>> com.enenim.scaffold.controller.SettingController.saveSetting(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.SettingRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings/sync],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.SettingController.syncSettings()
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.getStaff(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.getStaff()
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}/lookup],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.lookupStaff(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.createStaff(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.StaffRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.updateStaff(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.StaffRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.TaskController.getTask(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks/sync],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.TaskController.syncTasks()
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.TaskController.getTasks()
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.TaskController.updateTask(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.TaskRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/tickets/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Ticket>> com.enenim.scaffold.controller.TicketController.getTicket(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/tickets],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Ticket>> com.enenim.scaffold.controller.TicketController.createTicket(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.TicketOpenRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/tickets/{id}/comments],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Ticket>> com.enenim.scaffold.controller.TicketController.updateTicket(java.lang.Long,com.enenim.scaffold.dto.request.part.TicketCommentRequest)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/tickets/{id}/comments],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.shared.TicketHistory>> com.enenim.scaffold.controller.TicketController.serviceComment(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/tickets/{id}/services/{service-id}/comments],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.shared.TicketHistory>> com.enenim.scaffold.controller.TicketController.serviceComment(java.lang.Long,java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/tickets],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Ticket>> com.enenim.scaffold.controller.TicketController.getTickets()
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/transactions],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Transaction>> com.enenim.scaffold.controller.TransactionController.getTransactions()
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/transactions/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Transaction>> com.enenim.scaffold.controller.TransactionController.getTransaction(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/transactions],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Transaction>> com.enenim.scaffold.controller.TransactionController.createTransaction(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.TransactionRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/transactions/{reference}/services],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.model.dao.Service>> com.enenim.scaffold.controller.TransactionController.getTransactionServices(java.lang.String)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/accounts/authenticate],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.StringResponse> com.enenim.scaffold.controller.UserAccountController.accountAuth(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.LoginRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/accounts/logout],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.UserAccountController.logout()
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Vendor>> com.enenim.scaffold.controller.VendorController.createVendor(java.lang.String,org.springframework.web.multipart.MultipartFile)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Vendor>> com.enenim.scaffold.controller.VendorController.getVendors()
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/{email}/change-password],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.VendorController.changePassword(java.lang.String,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.VendorChangePasswordRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/sign-up],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Vendor>> com.enenim.scaffold.controller.VendorController.signUpVendor(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.VendorSignUpRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Vendor>> com.enenim.scaffold.controller.VendorController.showVendor(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/{id}/go-alive],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.VendorController.goLiveToggle(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/{id}/profile],methods=[PUT]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Vendor>> com.enenim.scaffold.controller.VendorController.updateVendorDetails(java.lang.Long,java.lang.String,org.springframework.web.multipart.MultipartFile)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/{id}/transactions],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Transaction>> com.enenim.scaffold.controller.VendorController.getVendorTransactions(java.lang.Long,com.enenim.scaffold.dto.request.part.TransactionFilterRequest)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/{id}/services],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Service>> com.enenim.scaffold.controller.VendorController.getVendorServices(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/services/categories],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.util.VendorCategory>> com.enenim.scaffold.controller.VendorController.getServiceCategories()
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/services/categories/{key}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.util.VendorCategory>> com.enenim.scaffold.controller.VendorController.getServiceCategory(java.lang.String)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/{id}/services],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Service>> com.enenim.scaffold.controller.VendorController.createVendorService(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.ServiceRequest>)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/{id}/toggle],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.VendorController.toggle(java.lang.Long)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/{code}/verify],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Vendor>> com.enenim.scaffold.controller.VendorController.verifyCode(java.lang.String) throws java.lang.Exception
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/{email}/code/re-send],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.VendorController.reSendCode(java.lang.String)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/swagger-resources/configuration/ui]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/swagger-resources]}" onto public org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/swagger-resources/configuration/security]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-04-18 14:09:05 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-18 14:09:06 INFO [restartedMain] o.s.b.a.e.w.EndpointLinksResolver
+                [EndpointLinksResolver.java:59] Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-04-18 14:09:06 INFO [restartedMain] o.s.b.a.e.w.s.WebMvcEndpointHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-18 14:09:06 INFO [restartedMain] o.s.b.a.e.w.s.WebMvcEndpointHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-18 14:09:06 INFO [restartedMain] o.s.b.a.e.w.s.WebMvcEndpointHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-18 14:09:06 INFO [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration
+                [UserDetailsServiceAutoConfiguration.java:86] 
+
+Using generated security password: 5224e775-eb6e-49cc-b3d4-c870cedeed94
+
+2019-04-18 14:09:06 INFO [restartedMain] o.s.s.w.DefaultSecurityFilterChain
+                [DefaultSecurityFilterChain.java:43] Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2019-04-18 14:09:06 INFO [restartedMain] o.s.s.w.DefaultSecurityFilterChain
+                [DefaultSecurityFilterChain.java:43] Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@391c8e75, org.springframework.security.web.context.SecurityContextPersistenceFilter@78616a1b, org.springframework.security.web.header.HeaderWriterFilter@66cef5d6, org.springframework.security.web.authentication.logout.LogoutFilter@7d5c0dca, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3c10d9b9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7cdb262, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2d9f4f90, org.springframework.security.web.session.SessionManagementFilter@2964cd6d, org.springframework.security.web.access.ExceptionTranslationFilter@317c907a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@79ccf58e]
+2019-04-18 14:09:06 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor
+                [ExecutorConfigurationSupport.java:171] Initializing ExecutorService 
+2019-04-18 14:09:06 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor
+                [ExecutorConfigurationSupport.java:171] Initializing ExecutorService  'taskExecutor'
+2019-04-18 14:09:07 INFO [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping
+                [PropertySourcedRequestMappingHandlerMapping.java:69] Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-04-18 14:09:07 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-18 14:09:07 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerAdapter
+                [RequestMappingHandlerAdapter.java:588] Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5b1bc530: startup date [Thu Apr 18 14:08:27 WAT 2019]; root of context hierarchy
+2019-04-18 14:09:07 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-18 14:09:07 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-18 14:09:07 INFO [restartedMain] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver
+                [ExceptionHandlerExceptionResolver.java:288] Detected @ExceptionHandler methods in exceptionHandlingController
+2019-04-18 14:09:07 INFO [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping
+                [WelcomePageHandlerMapping.java:61] Adding welcome page template: index
+2019-04-18 14:09:10 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext
+                [AbstractApplicationContext.java:558] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'enableRedisKeyspaceNotificationsInitializer' defined in class path resource [org/springframework/boot/autoconfigure/session/RedisSessionConfiguration$SpringBootRedisHttpSessionConfiguration.class]: Invocation of init method failed; nested exception is org.springframework.data.redis.RedisConnectionFailureException: Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+2019-04-18 14:09:10 INFO [restartedMain] o.s.j.e.a.AnnotationMBeanExporter
+                [MBeanExporter.java:451] Unregistering JMX-exposed beans on shutdown
+2019-04-18 14:09:10 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor
+                [ExecutorConfigurationSupport.java:208] Shutting down ExecutorService 'taskExecutor'
+2019-04-18 14:09:10 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean
+                [AbstractEntityManagerFactoryBean.java:597] Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-04-18 14:09:10 INFO [restartedMain] c.z.h.HikariDataSource
+                [HikariDataSource.java:381] HikariPool-1 - Shutdown initiated...
+2019-04-18 14:09:10 INFO [restartedMain] c.z.h.HikariDataSource
+                [HikariDataSource.java:383] HikariPool-1 - Shutdown completed.
+2019-04-18 14:09:10 INFO [restartedMain] o.a.c.c.StandardService
+                [DirectJDKLog.java:180] Stopping service [Tomcat]
+2019-04-18 14:09:10 INFO [restartedMain] o.s.b.a.l.ConditionEvaluationReportLoggingListener
+                [ConditionEvaluationReportLoggingListener.java:101] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-04-18 14:09:10 ERROR [restartedMain] o.s.b.SpringApplication
+                [SpringApplication.java:863] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'enableRedisKeyspaceNotificationsInitializer' defined in class path resource [org/springframework/boot/autoconfigure/session/RedisSessionConfiguration$SpringBootRedisHttpSessionConfiguration.class]: Invocation of init method failed; nested exception is org.springframework.data.redis.RedisConnectionFailureException: Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1699)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:573)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:759)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:780)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1277)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1265)
+	at com.enenim.scaffold.ScaffoldApplication.main(ScaffoldApplication.java:20)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.data.redis.RedisConnectionFailureException: Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:286)
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.getConnection(JedisConnectionFactory.java:469)
+	at org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration$EnableRedisKeyspaceNotificationsInitializer.afterPropertiesSet(RedisHttpSessionConfiguration.java:284)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1758)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1695)
+	... 21 common frames omitted
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at redis.clients.util.Pool.getResource(Pool.java:53)
+	at redis.clients.jedis.JedisPool.getResource(JedisPool.java:226)
+	at redis.clients.jedis.JedisPool.getResource(JedisPool.java:16)
+	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:276)
+	... 25 common frames omitted
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: java.net.ConnectException: Connection refused: connect
+	at redis.clients.jedis.Connection.connect(Connection.java:207)
+	at redis.clients.jedis.BinaryClient.connect(BinaryClient.java:93)
+	at redis.clients.jedis.BinaryJedis.connect(BinaryJedis.java:1767)
+	at redis.clients.jedis.JedisFactory.makeObject(JedisFactory.java:106)
+	at org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:889)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:433)
+	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:362)
+	at redis.clients.util.Pool.getResource(Pool.java:49)
+	... 28 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at redis.clients.jedis.Connection.connect(Connection.java:184)
+	... 35 common frames omitted
+2019-04-18 14:43:49 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:50] Starting ScaffoldApplication on ETZ-PERFECT-TEC with PID 13020 (C:\Users\asukwo.enenim\IdeaProjects\scaffold\target\classes started by Asukwo.Enenim in C:\Users\asukwo.enenim\IdeaProjects\scaffold)
+2019-04-18 14:43:49 DEBUG [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:53] Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+2019-04-18 14:43:49 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [SpringApplication.java:684] The following profiles are active: dev
+2019-04-18 14:43:49 INFO [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext
+                [AbstractApplicationContext.java:590] Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1d3a7f51: startup date [Thu Apr 18 14:43:49 WAT 2019]; root of context hierarchy
+2019-04-18 14:43:52 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate
+                [RepositoryConfigurationDelegate.java:172] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate
+                [RepositoryConfigurationDelegate.java:172] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AccountProviderRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ActiveHourRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AuditRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.AuthorizationRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.BranchRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.CategoryRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerAccountRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ConsumerSettingRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.CurrencyRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.DisputeMessageRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.FeedbackRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.GroupRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LogEventRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LoginRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.LogWebServiceRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PasswordResetRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PaymentChannelRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.PublicHolidayRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ServiceFormRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.ServiceRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.SettingRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.StaffRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TaskRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TicketRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TrackerRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.TransactionRepository.
+2019-04-18 14:43:53 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport
+                [RepositoryConfigurationExtensionSupport.java:291] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.enenim.scaffold.repository.dao.VendorRepository.
+2019-04-18 14:43:54 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker
+                [PostProcessorRegistrationDelegate.java:326] Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$8a95796] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-18 14:43:54 INFO [restartedMain] o.s.w.s.a.s.AnnotationActionEndpointMapping
+                [AbstractAddressingEndpointMapping.java:236] Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2019-04-18 14:43:54 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker
+                [PostProcessorRegistrationDelegate.java:326] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$64119297] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-18 14:43:55 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer
+                [TomcatWebServer.java:91] Tomcat initialized with port(s): 6677 (http)
+2019-04-18 14:43:55 INFO [restartedMain] o.a.c.h.Http11NioProtocol
+                [DirectJDKLog.java:180] Initializing ProtocolHandler ["http-nio-6677"]
+2019-04-18 14:43:55 INFO [restartedMain] o.a.c.c.StandardService
+                [DirectJDKLog.java:180] Starting service [Tomcat]
+2019-04-18 14:43:55 INFO [restartedMain] o.a.c.c.StandardEngine
+                [DirectJDKLog.java:180] Starting Servlet Engine: Apache Tomcat/8.5.34
+2019-04-18 14:43:55 INFO [localhost-startStop-1] o.a.c.c.AprLifecycleListener
+                [DirectJDKLog.java:180] The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_144\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\sybase\DataAccess\ADONET\dll;C:\sybase\DataAccess\OLEDB\dll;C:\sybase\DataAccess\ODBC\dll;C:\sybase\RPL-12_5\bin;C:\sybase\Shared\Sybase Central 4.3;C:\sybase\OCS-12_5\lib3p;C:\sybase\OCS-12_5\dll;C:\sybase\OCS-12_5\bin;C:\sybase\ASE-12_5\dll;C:\sybase\ASE-12_5\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Broadcom\Broadcom 802.11;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Strawberry\perl\bin;C:\Strawberry\perl\site\bin;C:\Strawberry\c\bin;C:\Dwimperl\perl\bin;C:\Dwimperl\perl\site\bin;C:\Dwimperl\c\bin;C:\Program Files\PuTTY\;C:\Program Files\nodejs\;C:\apache-maven-3.6.0\bin;C:\Program Files\Git\bin\git.exe;C:\Program Files\Git\cmd;.]
+2019-04-18 14:43:55 INFO [localhost-startStop-1] o.a.c.c.C.[.[.[/]
+                [DirectJDKLog.java:180] Initializing Spring embedded WebApplicationContext
+2019-04-18 14:43:55 INFO [localhost-startStop-1] o.s.w.c.ContextLoader
+                [ServletWebServerApplicationContext.java:285] Root WebApplicationContext: initialization completed in 6684 ms
+2019-04-18 14:43:57 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-04-18 14:43:57 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-04-18 14:43:57 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'sessionRepositoryFilter' to: [/*]
+2019-04-18 14:43:57 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-04-18 14:43:57 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-04-18 14:43:57 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'requestContextFilter' to: [/*]
+2019-04-18 14:43:57 INFO [localhost-startStop-1] o.s.b.w.s.DelegatingFilterProxyRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-04-18 14:43:57 INFO [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean
+                [AbstractFilterRegistrationBean.java:245] Mapping filter: 'httpTraceFilter' to: [/*]
+2019-04-18 14:43:57 INFO [localhost-startStop-1] o.s.b.w.s.ServletRegistrationBean
+                [ServletRegistrationBean.java:187] Servlet dispatcherServlet mapped to [/]
+2019-04-18 14:43:57 INFO [localhost-startStop-1] o.s.b.w.s.ServletRegistrationBean
+                [ServletRegistrationBean.java:187] Servlet messageDispatcherServlet mapped to [/services/*]
+2019-04-18 14:43:58 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean
+                [LocalContainerEntityManagerFactoryBean.java:361] Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-04-18 14:43:58 INFO [restartedMain] o.h.j.i.u.LogHelper
+                [LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-04-18 14:43:59 INFO [restartedMain] o.h.Version
+                [Version.java:45] HHH000412: Hibernate Core {5.2.17.Final}
+2019-04-18 14:43:59 INFO [restartedMain] o.h.c.Environment
+                [Environment.java:213] HHH000206: hibernate.properties not found
+2019-04-18 14:43:59 INFO [restartedMain] o.h.a.c.Version
+                [JavaReflectionManager.java:66] HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-04-18 14:44:00 INFO [restartedMain] c.z.h.HikariDataSource
+                [HikariDataSource.java:110] HikariPool-1 - Starting...
+2019-04-18 14:44:01 INFO [restartedMain] c.z.h.HikariDataSource
+                [HikariDataSource.java:123] HikariPool-1 - Start completed.
+2019-04-18 14:44:01 INFO [restartedMain] o.h.d.Dialect
+                [Dialect.java:157] HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2019-04-18 14:44:10 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean
+                [AbstractEntityManagerFactoryBean.java:415] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-04-18 14:44:12 INFO [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator
+                [QueryTranslatorFactoryInitiator.java:47] HHH000397: Using ASTQueryTranslatorFactory
+2019-04-18 14:44:14 WARN [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration
+                [JpaBaseConfiguration.java:237] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/account-providers/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.AccountProvider>> com.enenim.scaffold.controller.AccountProviderController.getAccountProvider(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/account-providers],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.AccountProvider>> com.enenim.scaffold.controller.AccountProviderController.getAccountProvider()
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/account-providers],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.AccountProvider>> com.enenim.scaffold.controller.AccountProviderController.createAccountProvider(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.AccountProviderRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/account-providers/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.AccountProvider>> com.enenim.scaffold.controller.AccountProviderController.updateAccountProvider(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.AccountProviderRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/assets/consumers/images/{fileName:.+}],methods=[GET]}" onto public org.springframework.http.ResponseEntity<org.springframework.core.io.Resource> com.enenim.scaffold.controller.AssetsController.getConsumerLogo(java.lang.String,javax.servlet.http.HttpServletRequest)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/assets/vendors/images/{fileName:.+}],methods=[GET]}" onto public org.springframework.http.ResponseEntity<org.springframework.core.io.Resource> com.enenim.scaffold.controller.AssetsController.getVendorLogo(java.lang.String,javax.servlet.http.HttpServletRequest)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/branches/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Branch>> com.enenim.scaffold.controller.BranchController.updateBranch(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.BranchRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/branches],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Branch>> com.enenim.scaffold.controller.BranchController.createBranch(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.BranchRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/branches],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Branch>> com.enenim.scaffold.controller.BranchController.getBranch()
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/branches/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Branch>> com.enenim.scaffold.controller.BranchController.getBranch(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/settings/sync],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.ConsumerController.syncConsumerSettings(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/transactions],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Transaction>> com.enenim.scaffold.controller.ConsumerController.getConsumerTransactions(java.lang.Long,com.enenim.scaffold.dto.request.part.TransactionFilterRequest)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/tickets || /user/consumers/{id}/tickets/{status}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.dto.response.TicketResponse>> com.enenim.scaffold.controller.ConsumerController.getConsumerTickets(java.lang.Long,java.util.Optional<com.enenim.scaffold.enums.TicketStatus>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/tickets/{ticket-id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.dto.response.TicketResponse>> com.enenim.scaffold.controller.ConsumerController.getConsumerTicket(java.lang.Long,java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/feedback/{feedback-id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.dto.response.FeedbackResponse>> com.enenim.scaffold.controller.ConsumerController.getConsumerFeedback(java.lang.Long,java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/feedback],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.dto.response.FeedbackResponse>> com.enenim.scaffold.controller.ConsumerController.getConsumerFeedback(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/settings],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.util.setting.ConsumerSystemSetting>> com.enenim.scaffold.controller.ConsumerController.getSettings(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.getConsumers()
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.showConsumer(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/sign-up],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.signUpConsumers(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.ConsumerRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{code}/verify],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Consumer>> com.enenim.scaffold.controller.ConsumerController.verifyCode(java.lang.String) throws java.lang.Exception
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{email}/code/re-send],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.ConsumerController.reSendCode(java.lang.String)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/profile],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.dto.response.ConsumerProfileResponse>> com.enenim.scaffold.controller.ConsumerController.consumerProfile(java.lang.Long,java.lang.String,org.springframework.web.multipart.MultipartFile)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/consumers/{id}/settings/{key}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.util.setting.ConsumerSystemSetting>> com.enenim.scaffold.controller.ConsumerController.getSetting(java.lang.Long,java.lang.String)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/currencies/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Currency>> com.enenim.scaffold.controller.CurrencyController.getCurrency(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/currencies],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Currency>> com.enenim.scaffold.controller.CurrencyController.getCurrency()
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/currencies],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Currency>> com.enenim.scaffold.controller.CurrencyController.createCurrency(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.CurrencyRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/currencies/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Currency>> com.enenim.scaffold.controller.CurrencyController.updateCurrency(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.CurrencyRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/feedback/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.dto.response.FeedbackResponse>> com.enenim.scaffold.controller.FeedbackController.getFeedback(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/feedback],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.dto.response.FeedbackResponse>> com.enenim.scaffold.controller.FeedbackController.getFeedback()
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/feedback],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Feedback>> com.enenim.scaffold.controller.FeedbackController.createFeedback(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.FeedbackRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Group> com.enenim.scaffold.controller.GroupController.update(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.GroupRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/tasks],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.GroupController.getPermission(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Group> com.enenim.scaffold.controller.GroupController.createGroup(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.GroupRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Group>> com.enenim.scaffold.controller.GroupController.getGroups()
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/authorizations],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.GroupController.getPermissionAuthorizations(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/authorizations],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Group>> com.enenim.scaffold.controller.GroupController.updatePermissionAuthorizations(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.PermissionRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.model.dao.Group> com.enenim.scaffold.controller.GroupController.show(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/groups/{id}/tasks],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Group>> com.enenim.scaffold.controller.GroupController.updatePermission(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.PermissionRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/payment-channels/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.PaymentChannel>> com.enenim.scaffold.controller.PaymentChannelController.getPaymentChannel(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/payment-channels],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.PaymentChannel>> com.enenim.scaffold.controller.PaymentChannelController.getPaymentChannel()
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/payment-channels],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.PaymentChannel>> com.enenim.scaffold.controller.PaymentChannelController.createPaymentChannel(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.PaymentChannelRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/payment-channels/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.PaymentChannel>> com.enenim.scaffold.controller.PaymentChannelController.updatePaymentChannel(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.PaymentChannelRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings/categories/{key}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.util.setting.SettingMapCategory>> com.enenim.scaffold.controller.SettingController.getSettingsByCategory(java.lang.String)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings/categorized],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<java.util.HashMap<java.lang.String, com.enenim.scaffold.util.setting.SettingMapCategory>>> com.enenim.scaffold.controller.SettingController.getCategorizedSettings()
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.util.setting.SettingListCategory>> com.enenim.scaffold.controller.SettingController.getSettings()
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings/{key}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.util.setting.SystemSetting>> com.enenim.scaffold.controller.SettingController.getSetting(java.lang.String)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings/{key}/reset],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.util.setting.SystemSetting>> com.enenim.scaffold.controller.SettingController.resetSettings(java.lang.String)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings/{key}/add],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.util.setting.SystemSetting>> com.enenim.scaffold.controller.SettingController.addSettings(java.lang.String)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.util.setting.SystemSetting>> com.enenim.scaffold.controller.SettingController.saveSetting(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.SettingRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/settings/sync],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.SettingController.syncSettings()
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.getStaff(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.getStaff()
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}/lookup],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.lookupStaff(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.createStaff(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.StaffRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/staff/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Staff>> com.enenim.scaffold.controller.StaffController.updateStaff(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.StaffRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.TaskController.getTask(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.TaskController.getTasks()
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks/sync],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.TaskController.syncTasks()
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/administration/tasks/{id}],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Task>> com.enenim.scaffold.controller.TaskController.updateTask(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.TaskRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/tickets],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Ticket>> com.enenim.scaffold.controller.TicketController.getTickets()
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/tickets/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Ticket>> com.enenim.scaffold.controller.TicketController.getTicket(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/tickets],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Ticket>> com.enenim.scaffold.controller.TicketController.createTicket(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.TicketOpenRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/tickets/{id}/comments],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Ticket>> com.enenim.scaffold.controller.TicketController.updateTicket(java.lang.Long,com.enenim.scaffold.dto.request.part.TicketCommentRequest)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/tickets/{id}/services/{service-id}/comments],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.shared.TicketHistory>> com.enenim.scaffold.controller.TicketController.serviceComment(java.lang.Long,java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/tickets/{id}/comments],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.shared.TicketHistory>> com.enenim.scaffold.controller.TicketController.serviceComment(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/transactions/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Transaction>> com.enenim.scaffold.controller.TransactionController.getTransaction(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/transactions],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Transaction>> com.enenim.scaffold.controller.TransactionController.createTransaction(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.TransactionRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/transactions/{reference}/services],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.model.dao.Service>> com.enenim.scaffold.controller.TransactionController.getTransactionServices(java.lang.String)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/transactions],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Transaction>> com.enenim.scaffold.controller.TransactionController.getTransactions()
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/accounts/logout],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.UserAccountController.logout()
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/user/accounts/authenticate],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.StringResponse> com.enenim.scaffold.controller.UserAccountController.accountAuth(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.LoginRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/{id}/toggle],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.VendorController.toggle(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/{id}/profile],methods=[PUT]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Vendor>> com.enenim.scaffold.controller.VendorController.updateVendorDetails(java.lang.Long,java.lang.String,org.springframework.web.multipart.MultipartFile)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/{id}/transactions],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Transaction>> com.enenim.scaffold.controller.VendorController.getVendorTransactions(java.lang.Long,com.enenim.scaffold.dto.request.part.TransactionFilterRequest)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/{id}/services],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Service>> com.enenim.scaffold.controller.VendorController.getVendorServices(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/services/categories],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.CollectionResponse<com.enenim.scaffold.util.VendorCategory>> com.enenim.scaffold.controller.VendorController.getServiceCategories()
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/services/categories/{key}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.util.VendorCategory>> com.enenim.scaffold.controller.VendorController.getServiceCategory(java.lang.String)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/{id}/services],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Service>> com.enenim.scaffold.controller.VendorController.createVendorService(java.lang.Long,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.ServiceRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/{code}/verify],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Vendor>> com.enenim.scaffold.controller.VendorController.verifyCode(java.lang.String) throws java.lang.Exception
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/{email}/code/re-send],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.VendorController.reSendCode(java.lang.String)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Vendor>> com.enenim.scaffold.controller.VendorController.createVendor(java.lang.String,org.springframework.web.multipart.MultipartFile)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.PageResponse<com.enenim.scaffold.model.dao.Vendor>> com.enenim.scaffold.controller.VendorController.getVendors()
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/{email}/change-password],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.VendorController.changePassword(java.lang.String,com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.VendorChangePasswordRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/sign-up],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Vendor>> com.enenim.scaffold.controller.VendorController.signUpVendor(com.enenim.scaffold.dto.request.Request<com.enenim.scaffold.dto.request.VendorSignUpRequest>)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/{id}],methods=[GET],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.ModelResponse<com.enenim.scaffold.model.dao.Vendor>> com.enenim.scaffold.controller.VendorController.showVendor(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/vendors/{id}/go-alive],methods=[PUT],consumes=[application/json],produces=[application/json]}" onto public com.enenim.scaffold.dto.response.Response<com.enenim.scaffold.dto.response.BooleanResponse> com.enenim.scaffold.controller.VendorController.goLiveToggle(java.lang.Long)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/swagger-resources/configuration/ui]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/swagger-resources]}" onto public org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/swagger-resources/configuration/security]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-04-18 14:44:15 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-18 14:44:16 INFO [restartedMain] o.s.b.a.e.w.EndpointLinksResolver
+                [EndpointLinksResolver.java:59] Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-04-18 14:44:16 INFO [restartedMain] o.s.b.a.e.w.s.WebMvcEndpointHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-18 14:44:16 INFO [restartedMain] o.s.b.a.e.w.s.WebMvcEndpointHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-18 14:44:16 INFO [restartedMain] o.s.b.a.e.w.s.WebMvcEndpointHandlerMapping
+                [AbstractHandlerMethodMapping.java:549] Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-18 14:44:17 INFO [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration
+                [UserDetailsServiceAutoConfiguration.java:86] 
+
+Using generated security password: 5ba2226e-3e33-4e57-a5e6-37df0c1c10dd
+
+2019-04-18 14:44:17 INFO [restartedMain] o.s.s.w.DefaultSecurityFilterChain
+                [DefaultSecurityFilterChain.java:43] Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2019-04-18 14:44:17 INFO [restartedMain] o.s.s.w.DefaultSecurityFilterChain
+                [DefaultSecurityFilterChain.java:43] Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@287de777, org.springframework.security.web.context.SecurityContextPersistenceFilter@2156b314, org.springframework.security.web.header.HeaderWriterFilter@1052e2b2, org.springframework.security.web.authentication.logout.LogoutFilter@2cb4a3b6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@28218bfa, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@54265000, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7884d962, org.springframework.security.web.session.SessionManagementFilter@25bce5f5, org.springframework.security.web.access.ExceptionTranslationFilter@5a814f42, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@35b0e02f]
+2019-04-18 14:44:17 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor
+                [ExecutorConfigurationSupport.java:171] Initializing ExecutorService 
+2019-04-18 14:44:17 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor
+                [ExecutorConfigurationSupport.java:171] Initializing ExecutorService  'taskExecutor'
+2019-04-18 14:44:17 INFO [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping
+                [PropertySourcedRequestMappingHandlerMapping.java:69] Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-04-18 14:44:18 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-18 14:44:21 INFO [restartedMain] o.s.w.s.m.m.a.RequestMappingHandlerAdapter
+                [RequestMappingHandlerAdapter.java:588] Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1d3a7f51: startup date [Thu Apr 18 14:43:49 WAT 2019]; root of context hierarchy
+2019-04-18 14:44:21 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-18 14:44:21 INFO [restartedMain] o.s.w.s.h.SimpleUrlHandlerMapping
+                [AbstractUrlHandlerMapping.java:373] Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-18 14:44:21 INFO [restartedMain] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver
+                [ExceptionHandlerExceptionResolver.java:288] Detected @ExceptionHandler methods in exceptionHandlingController
+2019-04-18 14:44:21 INFO [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping
+                [WelcomePageHandlerMapping.java:61] Adding welcome page template: index
+2019-04-18 14:44:24 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer
+                [OptionalLiveReloadServer.java:57] LiveReload server is running on port 35729
+2019-04-18 14:44:24 INFO [restartedMain] o.s.j.e.a.AnnotationMBeanExporter
+                [MBeanExporter.java:433] Registering beans for JMX exposure on startup
+2019-04-18 14:44:24 INFO [restartedMain] o.s.j.e.a.AnnotationMBeanExporter
+                [MBeanExporter.java:895] Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-04-18 14:44:24 INFO [restartedMain] o.s.j.e.a.AnnotationMBeanExporter
+                [MBeanExporter.java:668] Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-04-18 14:44:24 INFO [restartedMain] o.s.c.s.DefaultLifecycleProcessor
+                [DefaultLifecycleProcessor.java:356] Starting beans in phase 2147483647
+2019-04-18 14:44:24 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper
+                [DocumentationPluginsBootstrapper.java:151] Context refreshed
+2019-04-18 14:44:25 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper
+                [DocumentationPluginsBootstrapper.java:154] Found 1 custom documentation plugin(s)
+2019-04-18 14:44:25 INFO [restartedMain] s.d.s.w.s.ApiListingReferenceScanner
+                [ApiListingReferenceScanner.java:41] Scanning for api listing references
+2019-04-18 14:44:25 INFO [restartedMain] s.d.s.w.r.o.CachingOperationNameGenerator
+                [CachingOperationNameGenerator.java:40] Generating unique operation named: getAccountProviderUsingGET_1
+2019-04-18 14:44:25 INFO [restartedMain] s.d.s.w.r.o.CachingOperationNameGenerator
+                [CachingOperationNameGenerator.java:40] Generating unique operation named: getBranchUsingGET_1
+2019-04-18 14:44:25 INFO [restartedMain] s.d.s.w.r.o.CachingOperationNameGenerator
+                [CachingOperationNameGenerator.java:40] Generating unique operation named: getConsumerFeedbackUsingGET_1
+2019-04-18 14:44:25 INFO [restartedMain] s.d.s.w.r.o.CachingOperationNameGenerator
+                [CachingOperationNameGenerator.java:40] Generating unique operation named: getConsumerTicketsUsingGET_1
+2019-04-18 14:44:26 INFO [restartedMain] s.d.s.w.r.o.CachingOperationNameGenerator
+                [CachingOperationNameGenerator.java:40] Generating unique operation named: getCurrencyUsingGET_1
+2019-04-18 14:44:26 INFO [restartedMain] s.d.s.w.r.o.CachingOperationNameGenerator
+                [CachingOperationNameGenerator.java:40] Generating unique operation named: getFeedbackUsingGET_1
+2019-04-18 14:44:26 INFO [restartedMain] s.d.s.w.r.o.CachingOperationNameGenerator
+                [CachingOperationNameGenerator.java:40] Generating unique operation named: getPaymentChannelUsingGET_1
+2019-04-18 14:44:26 INFO [restartedMain] s.d.s.w.r.o.CachingOperationNameGenerator
+                [CachingOperationNameGenerator.java:40] Generating unique operation named: getSettingUsingGET_1
+2019-04-18 14:44:26 INFO [restartedMain] s.d.s.w.r.o.CachingOperationNameGenerator
+                [CachingOperationNameGenerator.java:40] Generating unique operation named: getSettingsUsingGET_1
+2019-04-18 14:44:26 INFO [restartedMain] s.d.s.w.r.o.CachingOperationNameGenerator
+                [CachingOperationNameGenerator.java:40] Generating unique operation named: getStaffUsingGET_1
+2019-04-18 14:44:26 INFO [restartedMain] s.d.s.w.r.o.CachingOperationNameGenerator
+                [CachingOperationNameGenerator.java:40] Generating unique operation named: serviceCommentUsingGET_1
+2019-04-18 14:44:26 INFO [restartedMain] s.d.s.w.r.o.CachingOperationNameGenerator
+                [CachingOperationNameGenerator.java:40] Generating unique operation named: reSendCodeUsingPOST_1
+2019-04-18 14:44:26 INFO [restartedMain] s.d.s.w.r.o.CachingOperationNameGenerator
+                [CachingOperationNameGenerator.java:40] Generating unique operation named: verifyCodeUsingPUT_1
+2019-04-18 14:44:26 INFO [restartedMain] o.s.s.a.ScheduledAnnotationBeanPostProcessor
+                [ScheduledAnnotationBeanPostProcessor.java:276] No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2019-04-18 14:44:26 INFO [restartedMain] o.a.c.h.Http11NioProtocol
+                [DirectJDKLog.java:180] Starting ProtocolHandler ["http-nio-6677"]
+2019-04-18 14:44:26 INFO [restartedMain] o.a.t.u.n.NioSelectorPool
+                [DirectJDKLog.java:180] Using a shared selector for servlet write/read
+2019-04-18 14:44:27 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer
+                [TomcatWebServer.java:206] Tomcat started on port(s): 6677 (http) with context path ''
+2019-04-18 14:44:27 INFO [restartedMain] c.e.s.ScaffoldApplication
+                [StartupInfoLogger.java:59] Started ScaffoldApplication in 38.799 seconds (JVM running for 42.049)

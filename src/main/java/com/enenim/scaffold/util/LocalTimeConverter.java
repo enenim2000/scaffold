@@ -1,10 +1,11 @@
 package com.enenim.scaffold.util;
 
-import org.jetbrains.annotations.NotNull;
+
 import org.springframework.boot.context.properties.ConfigurationPropertiesBinding;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
+import javax.validation.constraints.NotNull;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
