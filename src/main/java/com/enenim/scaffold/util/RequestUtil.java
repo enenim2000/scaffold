@@ -39,7 +39,7 @@ public class RequestUtil {
     }
 
     public static RequestCache getRequestCache(){
-        return REQUEST_CACHE.get(getSessionId());
+        return StringUtils.isEmpty(REQUEST_CACHE.get(getSessionId())) ? new RequestCache() : REQUEST_CACHE.get(getSessionId());
     }
 
     public static HttpServletRequest getRequest(){
@@ -211,10 +211,7 @@ public class RequestUtil {
     }
 
     public static Authorization getAuthorization(){
-        if(!StringUtils.isEmpty(getRequestCache())){
-            return getRequestCache().getAuthorization();
-        }
-        return null;
+        return getRequestCache().getAuthorization();
     }
 
     public static void setAuthorization(Authorization authorization){

@@ -5,7 +5,6 @@ import com.enenim.scaffold.enums.VendorType;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.interfaces.IAudit;
 import com.enenim.scaffold.model.BaseModel;
-import com.enenim.scaffold.util.AESUtil;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -17,7 +16,6 @@ import org.apache.commons.lang3.RandomStringUtils;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,9 +24,6 @@ import java.util.Set;
 @Entity
 @Table(name = "vendors")
 public class Vendor extends BaseModel implements IAudit{
-
-    @Transient
-    Login login;
 
     public Vendor() {
     }
@@ -178,9 +173,9 @@ public class Vendor extends BaseModel implements IAudit{
     private Set<Service> services = new HashSet<>();
 
     public void setCommonProperties(){
-        setSlug(RandomStringUtils.randomAlphanumeric(30));
-        setTestSecret(AESUtil.encrypt(new Date().toString() + RandomStringUtils.randomAlphanumeric(20)));
-        setSecret(AESUtil.encrypt( RandomStringUtils.randomAlphanumeric(20) + new Date().toString()));
-        setCode(RandomStringUtils.randomAlphanumeric(10));
+        setSlug(RandomStringUtils.randomAlphanumeric(20).toUpperCase().toUpperCase());
+        setTestSecret("TEST|" + RandomStringUtils.randomAlphanumeric(30).toUpperCase());
+        setSecret("LIVE|" + RandomStringUtils.randomAlphanumeric(30).toUpperCase());
+        setCode(RandomStringUtils.randomAlphanumeric(10).toUpperCase());
     }
 }
