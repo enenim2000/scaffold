@@ -26,7 +26,6 @@ public class PageRequestUtil {
     }
 
     private static int getPage(){
-        /* Subtract one getFrom the value because PageRequest.of() first parameter starts getFrom 0 index */
         return Integer.valueOf(RequestUtil.getRequest().getParameter(PAGE) != null ? RequestUtil.getRequest().getParameter(PAGE) : "1") - 1;
     }
 

@@ -33,7 +33,7 @@ public class CurrencyController {
     @Get
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
     @Permission(ADMINISTRATION_CURRENCY_INDEX)
-    public Response<PageResponse<Currency>> getCurrency(){
+    public Response<PageResponse<Currency>> getCurrencies(){
         return new Response<>(new PageResponse<>(currencyService.getCurrencies()));
     }
 

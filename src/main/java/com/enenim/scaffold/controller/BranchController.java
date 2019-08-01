@@ -33,7 +33,7 @@ public class BranchController {
     @Get
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_BRANCH_INDEX)
-    public Response<PageResponse<Branch>> getBranch(){
+    public Response<PageResponse<Branch>> getBranches(){
         return new Response<>(new PageResponse<>(branchService.getBranches()));
     }
 

@@ -33,7 +33,7 @@ public class PaymentChannelController {
     @Get
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_PAYMENT_CHANNEL_INDEX)
-    public Response<PageResponse<PaymentChannel>> getPaymentChannel(){
+    public Response<PageResponse<PaymentChannel>> getPaymentChannels(){
         return new Response<>(new PageResponse<>(paymentChannelService.getPaymentChannels()));
     }
 

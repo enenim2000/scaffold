@@ -33,7 +33,7 @@ public class AccountProviderController {
     @Get
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_ACCOUNT_PROVIDER_INDEX)
-    public Response<PageResponse<AccountProvider>> getAccountProvider(){
+    public Response<PageResponse<AccountProvider>> getAccountProviders(){
         return new Response<>(new PageResponse<>(accountProviderService.getAccountProviders()));
     }
 

@@ -68,6 +68,8 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
+        /* Must be remove for production environment **/
+
         boolean isSwagger = request.getRequestURI().contains("/v2/api-docs")
                 || request.getRequestURI().contains("/configuration/ui")
                 || request.getRequestURI().contains("/swagger-resources")

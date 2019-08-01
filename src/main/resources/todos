@@ -1,21 +1,4 @@
 
-create crud operation for:
--AccountProvider
--Currency
--PaymentChannel
--PaymentMethod
-
-
-Map<Vendorcategorykey, List<Vendor>>
-Map<Servicecategorykey, List<Service>>
-Map<VendorId, List<Service>>
-
-
-
-Map<Vendorcategorykey, Map<VendorId,Vendor>>
-Map<Servicecategorykey, Map<ServiceId, Service>>
-Map<VendorId, Map<ServiceId, ""Service>>
-
 
 <<<Support>>>
 Ticket{consumer_id, reference, subject, last_comment, last_comment_user_type, last_comment_user_id,
@@ -67,6 +50,48 @@ getFeedbackByConsumer
 getFeedbackByVendor
 getFeedbackByReference
 
+
+
+Barter Process Flow From dashboard
+------------------------------------------------------------------------------------------------------------------------
+- A consumer create a BarterProduct
+- On each product, there is a button with description "Find a suitable pair for exchange"
+- On click of button, a new interface is presented to user, with pre-filled products of same category for exchange;
+  with search fields to narrow down displayed items, each item will have brief description that summarises products details
+  and upon click of item, more details will be shown to user
+-The consumer click on "Pair item"
+-The system will alert the consumer that owns the paired product via mail or sms or push notification, and a chat channel
+  will be created having this transaction reference. The system sends/share phone/contact details of each consumer on how to complete the
+  the transaction
+
+
+
+
+Barter Process Flow from home page
+------------------------------------------------------------------------------------------------------------------------
+-Consumer click on "Barter tab"
+-Products from limited categories, having purchase-status available are displayed to the consumer
+-The consumer click on the preferred one
+-If the consumer is not logged-in the system first display a sign-in form before proceeding: the system retrieves products
+    created by this consumer having purchase-status available. The consumer click on the item he wants to pair with the already
+    selected item, or there is option to create new product on the fly if the product is not in the user's item list
+-The system will alert the consumer that owns the paired product via mail or sms or push notification, and a chat channel
+   will be created having this transaction reference. The system sends/share phone/contact details of each consumer on how to complete the
+   the transaction
+
+
+
+
+
+
+BarterTransaction{
+    String id
+    Sting transaction_reference
+    Consumer initiating_consumer
+    Consumer paired_consumer
+    Product initiating_product
+    Product pair_product
+}
 
 
 

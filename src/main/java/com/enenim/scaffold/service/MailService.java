@@ -27,7 +27,6 @@ public class MailService {
         this.emailSender = emailSender;
     }
 
-
     public void sendMail(Mail mail){
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper;
