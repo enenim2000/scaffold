@@ -56,10 +56,9 @@ public class TransactionController {
 
     @Post
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
-    public Response<ModelResponse<Transaction>> createTransaction(@Valid @RequestBody Request<TransactionRequest> request){
+    public Response<ModelResponse<Transaction>> createTransaction(@Valid @RequestBody TransactionRequest transactionRequest){
 
         Transaction transaction = new Transaction();
-        TransactionRequest transactionRequest = request.getBody();
         transaction.setBranch(RequestUtil.getLoginToken().getUserType().equalsIgnoreCase(RoleConstant.STAFF) ? RequestUtil.getStaff().getBranch() : null);
         transaction.setCurrency(null);
         transaction.setPaymentChannel(RequestUtil.getChannel());

@@ -21,7 +21,7 @@ public class SettingService{
     }
 
     public Setting getSetting(String key) {
-        return settingRepository.findSettingByKey(key);
+        return settingRepository.findSettingByKey(key).orElse(null);
     }
 
     public Setting getSetting(Long id) {

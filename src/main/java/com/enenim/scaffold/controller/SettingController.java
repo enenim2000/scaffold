@@ -5,15 +5,14 @@ import com.enenim.scaffold.annotation.Permission;
 import com.enenim.scaffold.annotation.Put;
 import com.enenim.scaffold.annotation.Role;
 import com.enenim.scaffold.constant.RoleConstant;
-import com.enenim.scaffold.dto.request.Request;
 import com.enenim.scaffold.dto.request.SettingRequest;
 import com.enenim.scaffold.dto.response.BooleanResponse;
 import com.enenim.scaffold.dto.response.CollectionResponse;
 import com.enenim.scaffold.dto.response.ModelResponse;
-import com.enenim.scaffold.dto.response.Response;
 import com.enenim.scaffold.model.dao.Setting;
 import com.enenim.scaffold.service.dao.SettingService;
 import com.enenim.scaffold.util.setting.*;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,29 +37,37 @@ public class SettingController {
     @Get
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_SETTING_INDEX)
-    public Response<CollectionResponse<SettingListCategory>> getSettings() {
-        return new Response<>(new CollectionResponse<>(settingCacheService.getSystemSettings()));
+    @ApiOperation(value = "Get Categorized Settings",
+            notes = "This endpoint retrieved all settings grouped by category and as a list")
+    public CollectionResponse<SettingListCategory> getSettings() {
+        return new CollectionResponse<>(settingCacheService.getSystemSettings());
     }
 
     @Get("/{key}")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_SETTING_SHOW)
-    public Response<ModelResponse<SystemSetting>> getSetting(@PathVariable String key) {
-        return new Response<>(new ModelResponse<>(settingCacheService.getSystemSetting(key)));
+    @ApiOperation(value = "Get Setting",
+            notes = "This endpoint retrieved setting by Key")
+    public ModelResponse<SystemSetting> getSetting(@PathVariable String key) {
+        return new ModelResponse<>(settingCacheService.getSystemSetting(key));
     }
 
     @Put
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_SETTING_UPDATE)
-    public Response<ModelResponse<SystemSetting>> saveSetting(@RequestBody Request<SettingRequest> request){
-        Setting setting = settingService.saveSetting(request.getBody().buildModel());
-        return new Response<>(new ModelResponse<>(settingCacheService.getSystemSetting(setting.getSettingKey())));
+    @ApiOperation(value = "Update Setting",
+            notes = "This endpoint update a setting")
+    public ModelResponse<SystemSetting> saveSetting(@RequestBody SettingRequest request){
+        Setting setting = settingService.saveSetting(request.buildModel());
+        return new ModelResponse<>(settingCacheService.getSystemSetting(setting.getSettingKey()));
     }
 
     @Put("/{key}/add")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_SETTING_ADD)
-    public Response<ModelResponse<SystemSetting>> addSettings(@PathVariable("key") String key) {
+    @ApiOperation(value = "Add new Setting",
+            notes = "This endpoint add a new setting")
+    public ModelResponse<SystemSetting> addSettings(@PathVariable("key") String key) {
         SystemSetting systemSetting = settingCacheService.getSystemSetting(key);
         Setting setting = settingService.getSetting(key);
         if(StringUtils.isEmpty(setting)){
@@ -70,13 +77,15 @@ public class SettingController {
         setting.setSettingKey(systemSetting.getSettingKey());
         setting.setValue(systemSetting.getDetail().getValue());
         setting = settingService.saveSetting(setting);
-        return new Response<>(new ModelResponse<>(settingCacheService.updateSystemSetting(setting)));
+        return new ModelResponse<>(settingCacheService.updateSystemSetting(setting));
     }
 
     @Put("/{key}/reset")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_SETTING_RESET)
-    public Response<ModelResponse<SystemSetting>> resetSettings(@PathVariable("key") String key) {
+    @ApiOperation(value = "Reset Setting",
+            notes = "This endpoint reset a setting to default")
+    public ModelResponse<SystemSetting> resetSettings(@PathVariable("key") String key) {
         SystemSetting systemSetting = SettingConfigUtil.getSystemSetting(key);
         Setting setting = settingService.getSetting(key);
         if(StringUtils.isEmpty(setting)){
@@ -88,27 +97,33 @@ public class SettingController {
             setting.setValue(systemSetting.getDetail().getValue());
         }
         setting = settingService.saveSetting(setting);
-        return new Response<>(new ModelResponse<>(settingCacheService.updateSystemSetting(setting)));
+        return new ModelResponse<>(settingCacheService.updateSystemSetting(setting));
     }
 
     @Put("/sync")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_SETTING_SYNC)
-    public Response<BooleanResponse> syncSettings() {
-        return new Response<>(new BooleanResponse(settingCacheService.syncSettings()));
+    @ApiOperation(value = "Sync Setting",
+            notes = "This endpoint sync database with config settings")
+    public BooleanResponse syncSettings() {
+        return new BooleanResponse(settingCacheService.syncSettings());
     }
 
     @Get("/categories/{key}")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_SETTING_CATEGORY)
-    public Response<ModelResponse<SettingMapCategory>> getSettingsByCategory(@PathVariable("key") String key) {
-        return new Response<>(new ModelResponse<>(settingCacheService.getSettingsByCategory(key)));
+    @ApiOperation(value = "Get Settings",
+            notes = "This endpoint retrieved settings for a category and group the settings as a map")
+    public ModelResponse<SettingMapCategory> getSettingsByCategory(@PathVariable("key") String key) {
+        return new ModelResponse<>(settingCacheService.getSettingsByCategory(key));
     }
 
     @Get("/categorized")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_SETTING_CATEGORIES)
-    public Response<ModelResponse<HashMap<String, SettingMapCategory>>> getCategorizedSettings() {
-        return new Response<>(new ModelResponse<>(settingCacheService.getCategorizedSettings()));
+    @ApiOperation(value = "Get All Settings",
+            notes = "This endpoint retrieved all settings grouped by category and as a map")
+    public ModelResponse<HashMap<String, SettingMapCategory>> getCategorizedSettings() {
+        return new ModelResponse<>(settingCacheService.getCategorizedSettings());
     }
 }

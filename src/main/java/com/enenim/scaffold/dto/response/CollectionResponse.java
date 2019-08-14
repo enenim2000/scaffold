@@ -1,8 +1,6 @@
 package com.enenim.scaffold.dto.response;
 
-import com.enenim.scaffold.shared.MetaData;
 import com.enenim.scaffold.util.RequestUtil;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -18,12 +16,8 @@ public class CollectionResponse<T> {
 
     private Collection<T> data;
 
-    @JsonProperty("meta_data")
-    private MetaData metaData;
-
     public CollectionResponse(Collection<T> result) {
         setMessage(RequestUtil.getMessage());
         setData(result);
-        setMetaData(null);
     }
 }

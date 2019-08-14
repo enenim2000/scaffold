@@ -4,7 +4,6 @@ import com.enenim.scaffold.annotation.*;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.dto.request.GroupRequest;
 import com.enenim.scaffold.dto.request.PermissionRequest;
-import com.enenim.scaffold.dto.request.Request;
 import com.enenim.scaffold.dto.response.CollectionResponse;
 import com.enenim.scaffold.dto.response.ModelResponse;
 import com.enenim.scaffold.dto.response.PageResponse;
@@ -27,7 +26,6 @@ import java.util.Set;
 
 import static com.enenim.scaffold.constant.RouteConstant.ADMINISTRATION_PERMISSION_SHOW;
 import static com.enenim.scaffold.constant.RouteConstant.ADMINISTRATION_PERMISSION_UPDATE;
-
 
 @RestController
 @RequestMapping("/administration/groups")
@@ -53,13 +51,13 @@ public class GroupController {
     }
 
     @Post
-    public Response <Group> createGroup(@RequestBody Request<GroupRequest> request) {
-        return new Response <>(groupService.saveGroup(request.getBody().buildModel()));
+    public Response <Group> createGroup(@RequestBody GroupRequest request) {
+        return new Response <>(groupService.saveGroup(request.buildModel()));
     }
 
     @Put("/{id}")
-    public Response <Group> update(@PathVariable Long id, @RequestBody Request<GroupRequest> request) {
-        return new Response <>(groupService.saveGroup(request.getBody().buildModel(groupService.getGroup(id))));
+    public Response <Group> update(@PathVariable Long id, @RequestBody GroupRequest request) {
+        return new Response <>(groupService.saveGroup(request.buildModel(groupService.getGroup(id))));
     }
 
     @Get("/{id}/tasks")
@@ -72,8 +70,8 @@ public class GroupController {
     @Put("/{id}/tasks")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_PERMISSION_UPDATE)
-    public Response<ModelResponse<Group>> updatePermission(@PathVariable Long id, @RequestBody Request<PermissionRequest> request){
-        List<String> tasks = request.getBody().getTasks();
+    public Response<ModelResponse<Group>> updatePermission(@PathVariable Long id, @RequestBody PermissionRequest request){
+        List<String> tasks = request.getTasks();
 
         Set<String> dependentTasks = new HashSet<>();
 
@@ -108,8 +106,8 @@ public class GroupController {
     @Put("/{id}/authorizations")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_PERMISSION_UPDATE)
-    public Response<ModelResponse<Group>> updatePermissionAuthorizations(@PathVariable Long id, @RequestBody Request<PermissionRequest> request){
-        Set<Task> tasks = taskService.findTasksByRoutes(request.getBody().getTasks());
+    public Response<ModelResponse<Group>> updatePermissionAuthorizations(@PathVariable Long id, @RequestBody PermissionRequest request){
+        Set<Task> tasks = taskService.findTasksByRoutes(request.getTasks());
         Group group = groupService.updatePermissionAuthorizations(tasks, id);
         return new Response<>(new ModelResponse<>(group));
     }

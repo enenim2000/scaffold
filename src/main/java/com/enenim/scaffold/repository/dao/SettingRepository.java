@@ -6,12 +6,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Repository
 @Transactional
 public interface SettingRepository extends BaseRepository<Setting, Long>{
 
     @Query("select s from Setting s where s.settingKey = ?1")
-    Setting findSettingByKey(String key);
+    Optional<Setting> findSettingByKey(String key);
 
 }

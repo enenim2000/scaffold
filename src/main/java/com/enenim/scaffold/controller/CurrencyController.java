@@ -3,7 +3,6 @@ package com.enenim.scaffold.controller;
 import com.enenim.scaffold.annotation.*;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.dto.request.CurrencyRequest;
-import com.enenim.scaffold.dto.request.Request;
 import com.enenim.scaffold.dto.response.ModelResponse;
 import com.enenim.scaffold.dto.response.PageResponse;
 import com.enenim.scaffold.dto.response.Response;
@@ -47,16 +46,16 @@ public class CurrencyController {
     @Post
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_CURRENCY_CREATE)
-    public Response<ModelResponse<Currency>> createCurrency(@Valid @RequestBody Request<CurrencyRequest> request){
-        return new Response<>(new ModelResponse<>(currencyService.saveCurrency(request.getBody().buildModel())));
+    public Response<ModelResponse<Currency>> createCurrency(@Valid @RequestBody CurrencyRequest request){
+        return new Response<>(new ModelResponse<>(currencyService.saveCurrency(request.buildModel())));
     }
 
     @Put("/{id}")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_CURRENCY_UPDATE)
-    public Response<ModelResponse<Currency>> updateCurrency(@PathVariable Long id, @RequestBody Request<CurrencyRequest> request){
+    public Response<ModelResponse<Currency>> updateCurrency(@PathVariable Long id, @RequestBody CurrencyRequest request){
         Currency currency = currencyService.getCurrency(id);
-        return new Response<>(new ModelResponse<>(currencyService.saveCurrency(request.getBody().buildModel(currency))));
+        return new Response<>(new ModelResponse<>(currencyService.saveCurrency(request.buildModel(currency))));
     }
 
 }

@@ -95,7 +95,7 @@ public class SettingConfigUtil {
         for(HashMap.Entry<String, HashMap<String, String>> categoryEntry : SETTING_CONFIG.entrySet()){
 
             SettingListCategory listCategory = CATEGORY_DESCRIPTION.get(categoryEntry.getKey());
-            SettingMapCategory category = new SettingMapCategory(listCategory.getKey(), listCategory.getDescription());
+            SettingMapCategory category = new SettingMapCategory(listCategory.getCategoryKey(), listCategory.getDescription());
 
             HashMap<String, SystemSetting> systemSettings = new HashMap<>();
 

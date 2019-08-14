@@ -2,7 +2,6 @@ package com.enenim.scaffold.controller;
 
 import com.enenim.scaffold.annotation.*;
 import com.enenim.scaffold.constant.RoleConstant;
-import com.enenim.scaffold.dto.request.Request;
 import com.enenim.scaffold.dto.request.TicketOpenRequest;
 import com.enenim.scaffold.dto.request.part.TicketCommentRequest;
 import com.enenim.scaffold.dto.response.CollectionResponse;
@@ -69,20 +68,20 @@ public class TicketController {
     @Post
     @Role({RoleConstant.CONSUMER})
     @Permission(ADMINISTRATION_TICKET_CREATE)
-    public Response<ModelResponse<Ticket>> createTicket(@Valid @RequestBody Request<TicketOpenRequest> request){
+    public Response<ModelResponse<Ticket>> createTicket(@Valid @RequestBody TicketOpenRequest request){
 
-        Long userId = userResolverService.resolveUserId(request.getBody().getConsumerId());
+        Long userId = userResolverService.resolveUserId(request.getConsumerId());
         String userType = RequestUtil.getLoginToken().getUserType();
 
-        Ticket ticket = request.getBody().buildModel();
+        Ticket ticket = request.buildModel();
         ticket.setStatus(TicketStatus.OPEN);
         ticket.setConsumer( consumerService.getConsumer( userId ) );
-        ticket.setTransactionReference(request.getBody().getTransactionReference());
-        ticket.setComment(request.getBody().getComment());
-        ticket.setSubject(request.getBody().getSubject());
+        ticket.setTransactionReference(request.getTransactionReference());
+        ticket.setComment(request.getComment());
+        ticket.setSubject(request.getSubject());
 
         TicketHistory ticketHistory = new TicketHistory();
-        ticketHistory.setComment(request.getBody().getComment());
+        ticketHistory.setComment(request.getComment());
         ticketHistory.setDate(DateUtil.formatDateTime(new Date()));
         ticketHistory.setUserId(userId);
         ticketHistory.setUserType(userType);

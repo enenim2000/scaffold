@@ -6,7 +6,6 @@ import com.enenim.scaffold.annotation.Post;
 import com.enenim.scaffold.annotation.Role;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.dto.request.FeedbackRequest;
-import com.enenim.scaffold.dto.request.Request;
 import com.enenim.scaffold.dto.request.part.FeedbackReviewRequest;
 import com.enenim.scaffold.dto.response.FeedbackResponse;
 import com.enenim.scaffold.dto.response.ModelResponse;
@@ -63,15 +62,15 @@ public class FeedbackController {
     @Post
     @Role({RoleConstant.CONSUMER, RoleConstant.STAFF})
     @Permission(ADMINISTRATION_FEEDBACK_CREATE)
-    public Response<ModelResponse<Feedback>> createFeedback(@Valid @RequestBody Request<FeedbackRequest> request){
+    public Response<ModelResponse<Feedback>> createFeedback(@Valid @RequestBody FeedbackRequest request){
         Feedback feedback = new Feedback();
-        feedback.setConsumer( consumerService.getConsumer(request.getBody().getConsumerId()) );
-        feedback.setSubject(request.getBody().getSubject());
-        feedback.setTransactionReference(request.getBody().getTransactionReference());
+        feedback.setConsumer( consumerService.getConsumer(request.getConsumerId()) );
+        feedback.setSubject(request.getSubject());
+        feedback.setTransactionReference(request.getTransactionReference());
 
         List<FeedbackReview> reviews = new ArrayList<>();
 
-        for(FeedbackReviewRequest review : request.getBody().getReviews()){
+        for(FeedbackReviewRequest review : request.getReviews()){
             Service service = vendorService.getVendorService(review.getServiceId());
             FeedbackReview feedbackReview = new FeedbackReview();
             feedbackReview.setComment(review.getComment());

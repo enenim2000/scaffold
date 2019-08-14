@@ -4,7 +4,6 @@ import com.enenim.scaffold.annotation.Get;
 import com.enenim.scaffold.annotation.Post;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.dto.request.LoginRequest;
-import com.enenim.scaffold.dto.request.Request;
 import com.enenim.scaffold.dto.response.BooleanResponse;
 import com.enenim.scaffold.dto.response.Response;
 import com.enenim.scaffold.dto.response.StringResponse;
@@ -62,11 +61,11 @@ public class UserAccountController {
 		this.consumerSettingService = consumerSettingService;
 	}
 
-	@Post("/authenticate")
-	public Response<StringResponse> accountAuth(@Valid @RequestBody Request<LoginRequest> request) {
-		Login login = loginService.getLoginByUsername(request.getBody().getUsername());
+	@Post("/sign-in")
+	public StringResponse accountAuth(@Valid @RequestBody LoginRequest request) {
+		Login login = loginService.getLoginByUsername(request.getUsername());
 
-		if (!StringUtils.isEmpty(login) && passwordEncoder.matches(request.getBody().getPassword(), login.getPassword())) {
+		if (!StringUtils.isEmpty(login) && passwordEncoder.matches(request.getPassword(), login.getPassword())) {
 
 			Date date = new Date();
 			Tracker tracker = new Tracker(login, date);
@@ -94,13 +93,13 @@ public class UserAccountController {
 				}
 
 				RequestUtil.setMessage(CommonMessage.msg("successful_logged_in"));
-				return new Response<>(new StringResponse(token));
+				return new StringResponse(token);
 			}
 		}
 		throw new UnAuthorizedException("invalid_login");
 	}
 
-	@Get("/logout")
+	@Get("/sign-out")
 	public Response<BooleanResponse> logout() {
 		Boolean logoutStatus = tokenAuthenticationService.logout();
 		if(logoutStatus){

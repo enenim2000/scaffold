@@ -86,12 +86,12 @@ public class VendorController {
     }
 
     @Post("/sign-up")
-    public Response<ModelResponse<Vendor>> signUpVendor(@Valid @RequestBody Request<VendorSignUpRequest> request){
-        if(!request.getBody().getPassword().equals(request.getBody().getConfirmPassword())){
+    public Response<ModelResponse<Vendor>> signUpVendor(@Valid @RequestBody VendorSignUpRequest request){
+        if(!request.getPassword().equals(request.getConfirmPassword())){
             throw new ScaffoldException("password_mismatch");
         }
 
-        Vendor vendor = request.getBody().buildModel();
+        Vendor vendor = request.buildModel();
         vendor.setCommonProperties();
         vendor.skipAuthorization(true);
         vendor = vendorUserService.saveVendor(vendor);
@@ -101,7 +101,7 @@ public class VendorController {
             login.setUsername(vendor.getEmail());
             login.setUserType(RoleConstant.VENDOR);
             login.setUserId(vendor.getId());
-            login.setPassword(passwordEncoder.encode(request.getBody().getPassword()));
+            login.setPassword(passwordEncoder.encode(request.getPassword()));
             login = loginService.saveLogin(login);
             if(!StringUtils.isEmpty(login.getId())){
                 mailSenderService.send(vendor);
@@ -132,20 +132,20 @@ public class VendorController {
     @Post("/{email}/change-password")
     @Role({RoleConstant.VENDOR})
     @Permission(RouteConstant.USER_VENDOR_CHANGE_PASSWORD)
-    public Response<BooleanResponse> changePassword(@PathVariable("email") String email, @Valid @RequestBody Request<VendorChangePasswordRequest> request){
+    public Response<BooleanResponse> changePassword(@PathVariable("email") String email, @Valid @RequestBody VendorChangePasswordRequest request){
 
-        if(!request.getBody().getPassword().equals(request.getBody().getConfirmPassword())){
+        if(!request.getPassword().equals(request.getConfirmPassword())){
             throw new ScaffoldException("password_mismatch");
         }
 
         Login login = loginService.getLoginByUsername(email);
 
-        if(!passwordEncoder.matches(request.getBody().getOldPassword(), login.getPassword())){
+        if(!passwordEncoder.matches(request.getOldPassword(), login.getPassword())){
             throw new ScaffoldException("old_password_mismatch");
         }
 
         if(!StringUtils.isEmpty(login)){
-            login.setPassword(passwordEncoder.encode(request.getBody().getPassword()));
+            login.setPassword(passwordEncoder.encode(request.getPassword()));
             loginService.saveLogin(login);
             return new Response<>(new BooleanResponse(true));
         }
@@ -258,13 +258,13 @@ public class VendorController {
     @Post({"/{id}/services"})
     @Role({RoleConstant.STAFF, RoleConstant.VENDOR})
     @Permission(USER_VENDOR_SERVICE_CREATE)
-    public Response<ModelResponse<Service>> createVendorService(@PathVariable Long id, @Valid @RequestBody Request<ServiceRequest> request) {
-        Service service = request.getBody().buildModel();
-        service.setCurrency( currencyService.getCurrency(request.getBody().getCurrencyId()) );
+    public Response<ModelResponse<Service>> createVendorService(@PathVariable Long id, @Valid @RequestBody ServiceRequest request) {
+        Service service = request.buildModel();
+        service.setCurrency( currencyService.getCurrency(request.getCurrencyId()) );
         service.setVendor( vendorUserService.getVendor(userResolverService.resolveUserId(id)) );
         service.setCode(RandomUtil.getCode());
-        service.setCategory(request.getBody().getCategory());
-        VendorCategory vendorCategory = VendorCategoryUtil.getVendorCategory(request.getBody().getCategory());
+        service.setCategory(request.getCategory());
+        VendorCategory vendorCategory = VendorCategoryUtil.getVendorCategory(request.getCategory());
         if(StringUtils.isEmpty(vendorCategory)){
             throw new ScaffoldException("service_category_not_found");
         }

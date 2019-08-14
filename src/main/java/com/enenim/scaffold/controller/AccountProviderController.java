@@ -3,7 +3,6 @@ package com.enenim.scaffold.controller;
 import com.enenim.scaffold.annotation.*;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.dto.request.AccountProviderRequest;
-import com.enenim.scaffold.dto.request.Request;
 import com.enenim.scaffold.dto.response.ModelResponse;
 import com.enenim.scaffold.dto.response.PageResponse;
 import com.enenim.scaffold.dto.response.Response;
@@ -47,16 +46,16 @@ public class AccountProviderController {
     @Post
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_ACCOUNT_PROVIDER_CREATE)
-    public Response<ModelResponse<AccountProvider>> createAccountProvider(@Valid @RequestBody Request<AccountProviderRequest> request){
-        return new Response<>(new ModelResponse<>(accountProviderService.saveAccountProvider(request.getBody().buildModel())));
+    public Response<ModelResponse<AccountProvider>> createAccountProvider(@Valid @RequestBody AccountProviderRequest request){
+        return new Response<>(new ModelResponse<>(accountProviderService.saveAccountProvider(request.buildModel())));
     }
 
     @Put("/{id}")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_ACCOUNT_PROVIDER_UPDATE)
-    public Response<ModelResponse<AccountProvider>> updateAccountProvider(@PathVariable Long id, @RequestBody Request<AccountProviderRequest> request){
+    public Response<ModelResponse<AccountProvider>> updateAccountProvider(@PathVariable Long id, @RequestBody AccountProviderRequest request){
         AccountProvider accountProvider = accountProviderService.getAccountProvider(id);
-        return new Response<>(new ModelResponse<>(accountProviderService.saveAccountProvider(request.getBody().buildModel(accountProvider))));
+        return new Response<>(new ModelResponse<>(accountProviderService.saveAccountProvider(request.buildModel(accountProvider))));
     }
 
 }

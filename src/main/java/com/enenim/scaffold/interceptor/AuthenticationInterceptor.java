@@ -28,6 +28,7 @@ import com.enenim.scaffold.util.setting.ConsumerSettingConfigUtil;
 import com.enenim.scaffold.util.setting.SettingCacheService;
 import com.enenim.scaffold.util.setting.SystemSetting;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -42,6 +43,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.Optional;
 
+@Slf4j
 @Component
 public class AuthenticationInterceptor implements HandlerInterceptor {
 
@@ -188,6 +190,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             Staff staff = RequestUtil.getStaff();
             HandlerMethod handlerMethod = (HandlerMethod)interceptorParamater.getHandler();
             String route = handlerMethod.getMethod().getAnnotation(Permission.class).value();
+            log.info("Staff: {}", staff);
             if(!staff.getGroup().getRole().equalsIgnoreCase("System")){
                 if(!staff.getGroup().getTasks().contains( taskService.getTaskByRoute(route) )) {
                     throw new ScaffoldException("access_denied", HttpStatus.FORBIDDEN);
@@ -215,7 +218,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             this.response = new ContentCachingResponseWrapper(httpServletResponse);
             this.handler = handler;
             RequestUtil.setAuthorization(null);
-            RequestUtil.setCommonRequestProperties(null);
+            RequestUtil.setCommonRequestProperties();
         }
     }
 }

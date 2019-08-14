@@ -5,7 +5,6 @@ import com.enenim.scaffold.annotation.Permission;
 import com.enenim.scaffold.annotation.Put;
 import com.enenim.scaffold.annotation.Role;
 import com.enenim.scaffold.constant.RoleConstant;
-import com.enenim.scaffold.dto.request.Request;
 import com.enenim.scaffold.dto.request.TaskRequest;
 import com.enenim.scaffold.dto.response.BooleanResponse;
 import com.enenim.scaffold.dto.response.ModelResponse;
@@ -56,9 +55,9 @@ public class TaskController {
     @Put("/{id}")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_TASK_UPDATE)
-    public Response<ModelResponse<Task>> updateTask(@PathVariable Long id, @Valid @RequestBody Request<TaskRequest> request) {
+    public Response<ModelResponse<Task>> updateTask(@PathVariable Long id, @Valid @RequestBody TaskRequest request) {
         Task task = taskService.getTask(id);
-        return new Response<>(new ModelResponse<>(taskService.saveTask(request.getBody().buildModel(task))));
+        return new Response<>(new ModelResponse<>(taskService.saveTask(request.buildModel(task))));
     }
 
     @Put("/sync")

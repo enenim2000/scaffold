@@ -47,17 +47,15 @@ public class BranchController {
     @Post
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_BRANCH_CREATE)
-    public Response<ModelResponse<Branch>> createBranch(@Valid @RequestBody Request<BranchRequest> request){
-        RequestUtil.setCommonRequestProperties(request);
-        return new Response<>(new ModelResponse<>(branchService.saveBranch(request.getBody().buildModel())));
+    public Response<ModelResponse<Branch>> createBranch(@Valid @RequestBody BranchRequest request){
+        return new Response<>(new ModelResponse<>(branchService.saveBranch(request.buildModel())));
     }
 
     @Put("/{id}")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_BRANCH_UPDATE)
-    public Response<ModelResponse<Branch>> updateBranch(@PathVariable Long id, @RequestBody Request<BranchRequest> request){
-        RequestUtil.setCommonRequestProperties(request);
+    public Response<ModelResponse<Branch>> updateBranch(@PathVariable Long id, @RequestBody BranchRequest request){
         Branch branch = branchService.getBranch(id);
-        return new Response<>(new ModelResponse<>(branchService.saveBranch(request.getBody().buildModel(branch))));
+        return new Response<>(new ModelResponse<>(branchService.saveBranch(request.buildModel(branch))));
     }
 }

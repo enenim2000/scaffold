@@ -6,7 +6,6 @@ import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.constant.RouteConstant;
 import com.enenim.scaffold.dto.request.ConsumerProfileRequest;
 import com.enenim.scaffold.dto.request.ConsumerRequest;
-import com.enenim.scaffold.dto.request.Request;
 import com.enenim.scaffold.dto.request.part.TransactionFilterRequest;
 import com.enenim.scaffold.dto.response.*;
 import com.enenim.scaffold.enums.EnabledStatus;
@@ -84,14 +83,14 @@ public class ConsumerController {
     }
 
     @Post("/sign-up")
-    public Response<ModelResponse<Consumer>> signUpConsumers(@Valid @RequestBody Request<ConsumerRequest> request){
+    public Response<ModelResponse<Consumer>> signUpConsumers(@Valid @RequestBody ConsumerRequest request){
 
-        if(!request.getBody().getPassword().equals(request.getBody().getConfirmPassword())){
+        if(!request.getPassword().equals(request.getConfirmPassword())){
             throw new ScaffoldException("password_mismatch");
         }
 
-        consumerService.validateDependencies(request.getBody());
-        Consumer consumer = request.getBody().buildModel();
+        consumerService.validateDependencies(request);
+        Consumer consumer = request.buildModel();
         consumer.skipAuthorization(true);
         consumer = consumerService.saveConsumer(consumer);
         if(!StringUtils.isEmpty(consumer)){
@@ -99,7 +98,7 @@ public class ConsumerController {
             login.setUsername(consumer.getEmail());
             login.setUserType(RoleConstant.CONSUMER);
             login.setUserId(consumer.getId());
-            login.setPassword(passwordEncoder.encode(request.getBody().getPassword()));
+            login.setPassword(passwordEncoder.encode(request.getPassword()));
             login = loginService.saveLogin(login);
             if(!StringUtils.isEmpty(login.getId())){
                 System.out.println("about to send mail " + login);

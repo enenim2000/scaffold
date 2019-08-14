@@ -1,8 +1,7 @@
 package com.enenim.scaffold.util;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.*;
@@ -10,7 +9,6 @@ import com.google.gson.*;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 
@@ -25,7 +23,8 @@ public class JsonConverter {
         }else {
             json = getJsonRecursive(obj);
         }
-        return getGson().fromJson(json, clazz);
+        //return getGson().fromJson(json, clazz);
+        return fromJson(json, clazz);
     }
 
     public static <T> String getJson(T element) {
@@ -33,7 +32,8 @@ public class JsonConverter {
     }
 
     public static <T> String getJsonRecursive(T element) {
-        ObjectMapper mapper = new ObjectMapper();
+        return toJson(element);
+        /*ObjectMapper mapper = new ObjectMapper();
         mapper.setDefaultPropertyInclusion(
                 JsonInclude.Value.construct(JsonInclude.Include.ALWAYS, JsonInclude.Include.NON_NULL));
         try {
@@ -41,7 +41,7 @@ public class JsonConverter {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             return null;
-        }
+        }*/
     }
 
     public static Gson getGson(){
@@ -57,5 +57,26 @@ public class JsonConverter {
             return new JsonPrimitive(src);
         });
         return  gsonBuilder.create();
+    }
+
+    private static ObjectMapper getConverter() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    }
+
+    private static String toJson(Object obj) {
+        try {
+            return getConverter().writeValueAsString(obj);
+        } catch (JsonProcessingException e) {
+            return null;
+        }
+    }
+
+    private static <T> T fromJson(String json, Class<T> clazz) {
+        try {
+            return getConverter().readValue(json, clazz);
+        } catch (IOException e) {
+            return null;
+        }
     }
 }

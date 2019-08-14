@@ -254,28 +254,12 @@ public class RequestUtil {
         return StringUtils.isEmpty(getRequestCache()) || StringUtils.isEmpty(getRequestCache().getLang()) ? SpringMessage.msg("lang") : getRequestCache().getLang();
     }
 
-    public static void setCommonRequestProperties(Object request){
-        String ipAddress;
-        String userAgent;
-
-        Map<String, Object> requestMap = CommonUtil.toMap(request);
-
-        if(requestMap.containsKey(CommonConstant.IP_ADDRESS)){
-            ipAddress = (String) requestMap.get(CommonConstant.IP_ADDRESS);
-        }else {
-            ipAddress = RequestUtil.getRequest().getParameter(CommonConstant.IP_ADDRESS);
-        }
-
-        if(requestMap.containsKey(CommonConstant.USER_AGENT)){
-            userAgent = (String) requestMap.get(CommonConstant.USER_AGENT);
-        }else {
-            userAgent = RequestUtil.getRequest().getParameter(CommonConstant.USER_AGENT);
-        }
-
-        RequestUtil.setRequestBody(requestMap.get("data"));
-
+    public static void setCommonRequestProperties(){
+        String ipAddress = RequestUtil.getRequest().getParameter(CommonConstant.IP_ADDRESS);
+        String userAgent = RequestUtil.getRequest().getParameter(CommonConstant.USER_AGENT);
         RequestUtil.setUserAgent(userAgent);
         RequestUtil.setIpAdress(ipAddress);
-        RequestUtil.setRID(Security.encypt(getRequest().getRequestURI() + getRequest().getMethod() + getRequestBody()));
+        //RequestUtil.setRequestBody(requestMap.get("data"));
+        //RequestUtil.setRID(Security.encypt(getRequest().getRequestURI() + getRequest().getMethod() + getRequestBody()));
     }
 }

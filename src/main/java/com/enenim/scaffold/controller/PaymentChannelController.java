@@ -3,7 +3,6 @@ package com.enenim.scaffold.controller;
 import com.enenim.scaffold.annotation.*;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.dto.request.PaymentChannelRequest;
-import com.enenim.scaffold.dto.request.Request;
 import com.enenim.scaffold.dto.response.ModelResponse;
 import com.enenim.scaffold.dto.response.PageResponse;
 import com.enenim.scaffold.dto.response.Response;
@@ -47,16 +46,16 @@ public class PaymentChannelController {
     @Post
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_PAYMENT_CHANNEL_CREATE)
-    public Response<ModelResponse<PaymentChannel>> createPaymentChannel(@Valid @RequestBody Request<PaymentChannelRequest> request){
-        return new Response<>(new ModelResponse<>(paymentChannelService.savePaymentChannel(request.getBody().buildModel())));
+    public Response<ModelResponse<PaymentChannel>> createPaymentChannel(@Valid @RequestBody PaymentChannelRequest request){
+        return new Response<>(new ModelResponse<>(paymentChannelService.savePaymentChannel(request.buildModel())));
     }
 
     @Put("/{id}")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_PAYMENT_CHANNEL_UPDATE)
-    public Response<ModelResponse<PaymentChannel>> updatePaymentChannel(@PathVariable Long id, @RequestBody Request<PaymentChannelRequest> request){
+    public Response<ModelResponse<PaymentChannel>> updatePaymentChannel(@PathVariable Long id, @RequestBody PaymentChannelRequest request){
         PaymentChannel paymentChannel = paymentChannelService.getPaymentChannel(id);
-        return new Response<>(new ModelResponse<>(paymentChannelService.savePaymentChannel(request.getBody().buildModel(paymentChannel))));
+        return new Response<>(new ModelResponse<>(paymentChannelService.savePaymentChannel(request.buildModel(paymentChannel))));
     }
 
 }
