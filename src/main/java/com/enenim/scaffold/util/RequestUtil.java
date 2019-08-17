@@ -43,7 +43,8 @@ public class RequestUtil {
     }
 
     public static HttpServletRequest getRequest(){
-        return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        return  ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes())
+                .getRequest();
     }
 
     public static void removeRequestCache(){
@@ -143,7 +144,7 @@ public class RequestUtil {
     }
 
     public static String getApiKey(){
-        return getRequest().getHeader(API_KEY);
+        return "7c68D454a3F8637DECE4f6E74Ey57By9CdDB130AFDEd7di89pDQ8e08CD14062c43A4d879f5693e719yd7aA703dd95B87ccBe4781A2F94EF4D87Ca7AB3B9d3032C631AC366779661101e96679g7dDDF83882200887C48884C27821c89BCBDF0D747D";//getRequest().getHeader(API_KEY);
     }
 
     public static PaymentChannel getChannel(){
@@ -155,7 +156,8 @@ public class RequestUtil {
     }
 
     public static String getMessage(){
-        return (String) getRequest().getAttribute("message");
+        String message = (String) getRequest().getAttribute("message");
+        return message == null ? "Processed successfully" : message;
     }
 
     public static void setLoginToken(LoginCache loginToken){

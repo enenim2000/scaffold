@@ -24,7 +24,6 @@ import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.RequestCache;
 import com.enenim.scaffold.util.RequestUtil;
 import com.enenim.scaffold.util.message.SpringMessage;
-import com.enenim.scaffold.util.setting.ConsumerSettingConfigUtil;
 import com.enenim.scaffold.util.setting.SettingCacheService;
 import com.enenim.scaffold.util.setting.SystemSetting;
 import lombok.Data;
@@ -107,7 +106,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         tokenAuthenticationService.refreshTracker(loginToken.getTracker(), date);
 
         if(loginToken.getUserType().equalsIgnoreCase(RoleConstant.CONSUMER)){
-            RequestUtil.setConsumerSystemSettings(consumerSettingService.getConsumerSystemSettingsMap( loginToken.getUserId() ));
+            RequestUtil.setConsumerSystemSettings(consumerSettingService.getConsumerSystemSettingsMap( loginToken.getUserId(), RoleConstant.CONSUMER));
         }else if (loginToken.getUserType().equalsIgnoreCase(RoleConstant.VENDOR)){
             RequestUtil.setVendorSystemSettings(null);
         }
@@ -133,8 +132,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         if(handlerMethod.getMethod().isAnnotationPresent(DataDecrypt.class)){
             decrypt(interceptorParamater);
         }
-
-        System.out.println("consumer settings = " + JsonConverter.getJsonRecursive(ConsumerSettingConfigUtil.getMemoryConsumerSettingList()));
 
         return true;
     }
@@ -190,7 +187,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             Staff staff = RequestUtil.getStaff();
             HandlerMethod handlerMethod = (HandlerMethod)interceptorParamater.getHandler();
             String route = handlerMethod.getMethod().getAnnotation(Permission.class).value();
-            log.info("Staff: {}", staff);
+            log.info("Staff: {}", JsonConverter.getJsonRecursive(staff));
             if(!staff.getGroup().getRole().equalsIgnoreCase("System")){
                 if(!staff.getGroup().getTasks().contains( taskService.getTaskByRoute(route) )) {
                     throw new ScaffoldException("access_denied", HttpStatus.FORBIDDEN);

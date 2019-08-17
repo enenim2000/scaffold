@@ -1,6 +1,6 @@
 package com.enenim.scaffold.annotation;
 
-import com.enenim.scaffold.util.PasswordConstraintValidator;
+import com.enenim.scaffold.util.ValidPasswordValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -12,12 +12,12 @@ import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Documented
-@Constraint(validatedBy = PasswordConstraintValidator.class)
+@Constraint(validatedBy = ValidPasswordValidator.class)
 @Target({ TYPE, FIELD, ANNOTATION_TYPE })
 @Retention(RUNTIME)
 public @interface ValidPassword {
-
-    String message() default "Please enter password that contains numbers and special character";
+ 
+    String message() default "Invalid Password";
  
     Class<?>[] groups() default {};
  

@@ -4,6 +4,7 @@ import com.enenim.scaffold.enums.LoginStatus;
 import com.enenim.scaffold.enums.VerifyStatus;
 import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -27,6 +28,7 @@ public class Login extends BaseModel {
     @Column(unique = true, length = 70)
     private String username;
 
+    @JsonIgnore
     @Column
     private String password;
 
@@ -48,7 +50,6 @@ public class Login extends BaseModel {
     @NotNull
     private VerifyStatus verifyStatus = VerifyStatus.NOT_VERIFIED;
 
-    @JsonBackReference
     @OneToOne(mappedBy = "login", fetch = FetchType.LAZY)
     @ApiModelProperty(required = true, hidden = true)
     private SecretQuestion secretQuestion;
@@ -68,8 +69,8 @@ public class Login extends BaseModel {
     @ApiModelProperty(required = true, hidden = true)
     private Set<PasswordReset> passwordResets = new HashSet<>();
 
-    @JsonBackReference
+    /*@JsonBackReference
     @OneToMany(mappedBy = "login", fetch = FetchType.LAZY)
     @ApiModelProperty(required = true, hidden = true)
-    private Set<Tracker> trackers = new HashSet<>();
+    private Set<Tracker> trackers = new HashSet<>();*/
 }

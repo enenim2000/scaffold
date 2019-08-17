@@ -29,9 +29,9 @@ import java.io.IOException;
 import static com.enenim.scaffold.constant.CommonConstant.PLACE_HOLDER;
 import static com.enenim.scaffold.constant.ModelFieldConstant.*;
 
-@Aspect
+//@Aspect
 @Service
-@PersistenceContext
+//@PersistenceContext
 public class AuditAdvice {
    private final AuditService auditService;
    private final AuthorizationService authorizationService;

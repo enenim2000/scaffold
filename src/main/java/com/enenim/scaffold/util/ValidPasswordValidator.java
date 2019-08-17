@@ -11,10 +11,8 @@ import javax.validation.ConstraintValidatorContext;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
-public class PasswordConstraintValidator implements ConstraintValidator<ValidPassword, String> {
+public class ValidPasswordValidator implements ConstraintValidator<ValidPassword, String> {
 
     private DictionaryRule dictionaryRule;
 
@@ -66,15 +64,6 @@ public class PasswordConstraintValidator implements ConstraintValidator<ValidPas
 
         RuleResult result = validator.validate(new PasswordData(password));
 
-        if (result.isValid()) {
-            return true;
-        }
-
-        List<String> messages = validator.getMessages(result);
-        String messageTemplate = messages.stream().collect(Collectors.joining(","));
-        context.buildConstraintViolationWithTemplate(messageTemplate)
-                .addConstraintViolation()
-                .disableDefaultConstraintViolation();
-        return false;
+        return result.isValid();
     }
 }

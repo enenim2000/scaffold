@@ -62,7 +62,7 @@ public class UserAccountController {
 	}
 
 	@Post("/sign-in")
-	public StringResponse accountAuth(@Valid @RequestBody LoginRequest request) {
+	public StringResponse signIn(@Valid @RequestBody LoginRequest request) {
 		Login login = loginService.getLoginByUsername(request.getUsername());
 
 		if (!StringUtils.isEmpty(login) && passwordEncoder.matches(request.getPassword(), login.getPassword())) {
@@ -84,15 +84,19 @@ public class UserAccountController {
 				String token = tokenAuthenticationService.encodeToken(loginToken);
 				tokenAuthenticationService.saveToken(loginToken);
 
-				if(loginToken.getUserType().equalsIgnoreCase(RoleConstant.CONSUMER)){
+				if(loginToken.getUserType().equalsIgnoreCase(RoleConstant.CONSUMER) || loginToken.getUserType().equalsIgnoreCase(RoleConstant.STAFF)){
+					System.out.println("\n 11 \n");
 					//Sync consumer settings after every login, to pick new settings from config and update
-					consumerSettingService.syncConsumerSettings(loginToken.getUserId());
+					consumerSettingService.syncConsumerSettings(loginToken.getUserId(), login.getUserType());
+
+					System.out.println("\n 22 \n");
 
 					//Pull consumer settings config and save to redis cache
-					consumerSettingCacheService.saveConsumerSetting(loginToken.getUserId(), consumerSettingService.getConsumerSystemSettingsMap(loginToken.getUserId()));
+					consumerSettingCacheService.saveConsumerSetting(loginToken.getUserId(), consumerSettingService.getConsumerSystemSettingsMap(loginToken.getUserId(), login.getUserType()));
 				}
 
 				RequestUtil.setMessage(CommonMessage.msg("successful_logged_in"));
+
 				return new StringResponse(token);
 			}
 		}
@@ -100,7 +104,7 @@ public class UserAccountController {
 	}
 
 	@Get("/sign-out")
-	public Response<BooleanResponse> logout() {
+	public Response<BooleanResponse> signOut() {
 		Boolean logoutStatus = tokenAuthenticationService.logout();
 		if(logoutStatus){
 			RequestUtil.setMessage(CommonMessage.msg("successful_logged_out"));

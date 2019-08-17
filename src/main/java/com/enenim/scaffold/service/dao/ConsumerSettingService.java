@@ -5,6 +5,7 @@ import com.enenim.scaffold.model.dao.ConsumerSetting;
 import com.enenim.scaffold.repository.dao.ConsumerSettingRepository;
 import com.enenim.scaffold.service.UserResolverService;
 import com.enenim.scaffold.util.JsonConverter;
+import com.enenim.scaffold.util.RequestUtil;
 import com.enenim.scaffold.util.setting.ConsumerSettingConfigUtil;
 import com.enenim.scaffold.util.setting.ConsumerSettingMapCategory;
 import com.enenim.scaffold.util.setting.ConsumerSystemSetting;
@@ -48,8 +49,8 @@ public class ConsumerSettingService{
         consumerSettingRepository.saveAll(consumerSettings);
     }
 
-    public List<ConsumerSetting> getConsumerSettings(Consumer consumer){
-        HashMap<String, ConsumerSettingMapCategory> categoryMap = ConsumerSettingConfigUtil.getMemoryConsumerSettings();
+    public List<ConsumerSetting> getConsumerSettings(Consumer consumer, String userType){
+        HashMap<String, ConsumerSettingMapCategory> categoryMap = ConsumerSettingConfigUtil.getMemoryConsumerSettings(userType);
         List<ConsumerSetting> consumerSettings = new ArrayList<>();
         for(HashMap.Entry<String, ConsumerSettingMapCategory> categoryEntry : categoryMap.entrySet()){
             for(HashMap.Entry<String, ConsumerSystemSetting> settingEntry : categoryEntry.getValue().getSettings().entrySet()){
@@ -70,7 +71,7 @@ public class ConsumerSettingService{
     public List<ConsumerSystemSetting> getConsumerSystemSettings(Long consumerId){
         List<ConsumerSetting> consumerSettings = getConsumerSettings(consumerId);
 
-        HashMap<String, ConsumerSettingMapCategory> categoryMap = ConsumerSettingConfigUtil.getMemoryConsumerSettings();
+        HashMap<String, ConsumerSettingMapCategory> categoryMap = ConsumerSettingConfigUtil.getMemoryConsumerSettings(RequestUtil.getLogin().getUserType());
 
         List<ConsumerSystemSetting> consumerSystemSettings =  new ArrayList<>();
 
@@ -85,19 +86,21 @@ public class ConsumerSettingService{
         return consumerSystemSettings;
     }
 
-    public HashMap<String, ConsumerSystemSetting> getConsumerSystemSettingsMap(Long consumerId){
+    public HashMap<String, ConsumerSystemSetting> getConsumerSystemSettingsMap(Long consumerId, String userType){
         List<ConsumerSetting> consumerSettings = getConsumerSettings(consumerId);
 
-        HashMap<String, ConsumerSettingMapCategory> categoryMap = ConsumerSettingConfigUtil.getMemoryConsumerSettings();
+        HashMap<String, ConsumerSettingMapCategory> categoryMap = ConsumerSettingConfigUtil.getMemoryConsumerSettings(userType);
 
         HashMap<String, ConsumerSystemSetting> consumerSystemSettings =  new HashMap<>();
 
         for(ConsumerSetting consumerSetting : consumerSettings){
-            ConsumerSystemSetting consumerSystemSetting = categoryMap.get(consumerSetting.getCategoryKey()).getSettings().get(consumerSetting.getSettingKey());
-            if(!StringUtils.isEmpty(consumerSystemSetting)){
-                consumerSystemSetting.getDetail().setValue( consumerSetting.getValue() );
+            if(!StringUtils.isEmpty(categoryMap.get(consumerSetting.getCategoryKey()))) {
+                ConsumerSystemSetting consumerSystemSetting = categoryMap.get(consumerSetting.getCategoryKey()).getSettings().get(consumerSetting.getSettingKey());
+                if(!StringUtils.isEmpty(consumerSystemSetting)){
+                    consumerSystemSetting.getDetail().setValue( consumerSetting.getValue() );
+                }
+                consumerSystemSettings.put(consumerSetting.getSettingKey(), consumerSystemSetting);
             }
-            consumerSystemSettings.put(consumerSetting.getSettingKey(), consumerSystemSetting);
         }
 
         return consumerSystemSettings;
@@ -105,14 +108,14 @@ public class ConsumerSettingService{
 
     public ConsumerSystemSetting getConsumerSystemSetting(Long consumerId, String settingKey){
         ConsumerSetting consumerSetting = consumerSettingRepository.findByConsumerIdAndKey(consumerId, settingKey);
-        ConsumerSystemSetting  consumerSystemSetting = ConsumerSettingConfigUtil.getMemoryConsumerSettings().get(consumerSetting.getCategoryKey()).getSettings().get(consumerSetting.getSettingKey());
+        ConsumerSystemSetting  consumerSystemSetting = ConsumerSettingConfigUtil.getMemoryConsumerSettings(RequestUtil.getLogin().getUserType()).get(consumerSetting.getCategoryKey()).getSettings().get(consumerSetting.getSettingKey());
         if(!StringUtils.isEmpty(consumerSystemSetting)){
             consumerSystemSetting.getDetail().setValue( consumerSetting.getValue() );
         }
         return consumerSystemSetting;
     }
 
-    public boolean syncConsumerSettings(Long consumerId){
+    public boolean syncConsumerSettings(Long consumerId, String userType){
         consumerId = userResolverService.resolveUserId(consumerId);
         Consumer consumer = consumerService.getConsumer(consumerId);
         List<ConsumerSetting> dbConsumerSystemSettings = consumerSettingRepository.findByConsumerId(consumerId);
@@ -122,7 +125,7 @@ public class ConsumerSettingService{
             dbConsumerSettingsMap.put(consumerSetting.getSettingKey(), consumerSetting);
         }
 
-        List<ConsumerSystemSetting> consumerSystemSettings = ConsumerSettingConfigUtil.getMemoryConsumerSettingList();
+        List<ConsumerSystemSetting> consumerSystemSettings = ConsumerSettingConfigUtil.getMemoryConsumerSettingList(userType);
 
         List<ConsumerSetting> newConsumerSettings = new ArrayList<>();
 

@@ -110,17 +110,24 @@ public class ConsumerController {
         throw new ScaffoldException("signup_failed");
     }
 
-    @Put("/{code}/verify")
-    public Response<ModelResponse<Consumer>> verifyCode(@PathVariable("code") String code) throws Exception {
+    @PutMapping(value = "/{code}/verify", produces = "application/json")
+    public Response<ModelResponse<Consumer>> verifyCode(@PathVariable("code") String code) {
         String cacheCode = SharedExpireCacheService.SINGUP + SharedExpireCacheService.SEPARATOR + code;
+
+        System.out.println("cacheCode: " + cacheCode);
+
         Object value = sharedExpireCacheService.get(cacheCode);
+
+        System.out.println("cacheCode value: " + JsonConverter.getJson(value));
+
         if(!StringUtils.isEmpty(value)){
-            Consumer consumer = JsonConverter.getObject(value, Consumer.class);
+            Consumer consumer = ObjectMapperUtil.map(value, Consumer.class);
+            System.out.println("consumer: " + consumer);
             consumer.setVerified(VerifyStatus.VERIFIED);
             consumer.setEnabled(EnabledStatus.ENABLED);
             consumer.skipAuthorization(true);
             consumer = consumerService.saveConsumer(consumer);
-            consumerSettingService.saveConsumerSettings( consumerSettingService.getConsumerSettings(consumer) );
+            //consumerSettingService.saveConsumerSettings( consumerSettingService.getConsumerSettings(consumer) );
             loginService.updateVerifyStatus(VerifyStatus.VERIFIED, consumer.getEmail());
             sharedExpireCacheService.delete(cacheCode);
             RequestUtil.setMessage(CommonMessage.msg("consumer_code_verified"));
@@ -129,7 +136,7 @@ public class ConsumerController {
         throw new ScaffoldException("invalid_expired_code");
     }
 
-    @Post("/{email}/code/re-send")
+    @PostMapping(value = "/{email}/code/re-send", produces = "application/json")
     public Response<BooleanResponse> reSendCode(@PathVariable("email") String email){
         Consumer consumer = consumerService.getConsumerByEmail(email);
         if(!StringUtils.isEmpty(consumer)){
@@ -176,7 +183,7 @@ public class ConsumerController {
     @Role({RoleConstant.STAFF})
     @Permission(USER_CONSUMER_SETTING_SYNC)
     public Response<BooleanResponse> syncConsumerSettings(@PathVariable("id") Long id) {
-        return new Response<>(new BooleanResponse(consumerSettingService.syncConsumerSettings(id)));
+        return new Response<>(new BooleanResponse(consumerSettingService.syncConsumerSettings(id, RequestUtil.getLogin().getUserType())));
     }
 
     @Get({"/{id}/transactions"})
@@ -189,7 +196,7 @@ public class ConsumerController {
     @Get({"/{id}/tickets", "/{id}/tickets/{status}"})
     @Role({RoleConstant.STAFF, RoleConstant.CONSUMER})
     @Permission(USER_CONSUMER_TICKET_INDEX)
-    public Response<PageResponse<TicketResponse>> getConsumerTickets(@PathVariable Long id, @PathVariable("status") Optional<TicketStatus> status) {
+    public Response<PageResponse<TicketResponse>> getConsumerTickets(@PathVariable Long id, @PathVariable(value = "status", required = false) Optional<TicketStatus> status) {
         id = userResolverService.resolveUserId(id);
         if(status.isPresent()){
             return new Response<>(new PageResponse<>(ticketService.getTickets(id, status.get())));

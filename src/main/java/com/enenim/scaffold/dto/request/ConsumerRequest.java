@@ -1,6 +1,5 @@
 package com.enenim.scaffold.dto.request;
 
-import com.enenim.scaffold.annotation.ValidPassword;
 import com.enenim.scaffold.model.dao.Consumer;
 import com.enenim.scaffold.util.ObjectMapperUtil;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -29,12 +28,10 @@ public class ConsumerRequest extends RequestBody<Consumer>{
     private String email;
 
     @NotBlank(message = "@{password.required}")
-    @ValidPassword(message = "@{password.strength.required}")
     private String password;
 
     @NotBlank(message = "@{confirm_password.required}")
     @JsonProperty("confirm_password")
-    @ValidPassword(message = "@{password.strength.required}")
     private String confirmPassword;
 
     @Override

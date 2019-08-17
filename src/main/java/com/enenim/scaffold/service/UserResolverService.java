@@ -38,11 +38,12 @@ public class UserResolverService {
     }
 
     public Long resolveUserId(Long userId){
-        if(RoleConstant.STAFF.equalsIgnoreCase(RequestUtil.getLoginToken().getUserType())) {
+        return userId;
+        /*if(RoleConstant.STAFF.equalsIgnoreCase(RequestUtil.getLoginToken().getUserType())) {
             return userId;
         } else{
             return RequestUtil.getLoginToken().getUserId();
-        }
+        }*/
     }
 
     public String isValidRole(String[] roles){

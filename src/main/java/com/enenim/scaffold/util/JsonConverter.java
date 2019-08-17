@@ -23,25 +23,15 @@ public class JsonConverter {
         }else {
             json = getJsonRecursive(obj);
         }
-        //return getGson().fromJson(json, clazz);
-        return fromJson(json, clazz);
+        return getGson().fromJson(json, clazz);
     }
 
     public static <T> String getJson(T element) {
-        return getGson().toJson(element);
+        return toJson(element);
     }
 
     public static <T> String getJsonRecursive(T element) {
         return toJson(element);
-        /*ObjectMapper mapper = new ObjectMapper();
-        mapper.setDefaultPropertyInclusion(
-                JsonInclude.Value.construct(JsonInclude.Include.ALWAYS, JsonInclude.Include.NON_NULL));
-        try {
-            return mapper.writeValueAsString(element);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-            return null;
-        }*/
     }
 
     public static Gson getGson(){

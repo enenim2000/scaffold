@@ -4,6 +4,7 @@ import com.enenim.scaffold.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @Entity
+@ToString
 @Table(name = "settings")
 public class Setting extends BaseModel{
 

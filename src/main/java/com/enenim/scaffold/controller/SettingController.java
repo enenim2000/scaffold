@@ -6,6 +6,7 @@ import com.enenim.scaffold.annotation.Put;
 import com.enenim.scaffold.annotation.Role;
 import com.enenim.scaffold.constant.RoleConstant;
 import com.enenim.scaffold.dto.request.SettingRequest;
+import com.enenim.scaffold.dto.request.SettingResetRequest;
 import com.enenim.scaffold.dto.response.BooleanResponse;
 import com.enenim.scaffold.dto.response.CollectionResponse;
 import com.enenim.scaffold.dto.response.ModelResponse;
@@ -14,11 +15,9 @@ import com.enenim.scaffold.service.dao.SettingService;
 import com.enenim.scaffold.util.setting.*;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 
 import static com.enenim.scaffold.constant.RouteConstant.*;
@@ -57,12 +56,15 @@ public class SettingController {
     @Permission(ADMINISTRATION_SETTING_UPDATE)
     @ApiOperation(value = "Update Setting",
             notes = "This endpoint update a setting")
-    public ModelResponse<SystemSetting> saveSetting(@RequestBody SettingRequest request){
-        Setting setting = settingService.saveSetting(request.buildModel());
-        return new ModelResponse<>(settingCacheService.getSystemSetting(setting.getSettingKey()));
+    public ModelResponse<SystemSetting> saveSetting(@Valid @RequestBody SettingRequest request){
+        System.out.println("setting1: " + request.buildModel());
+        Setting setting = settingService.getSetting(request.getSettingKey());
+        setting = settingService.saveSetting(request.buildModel(setting));
+        System.out.println("setting2: " + setting);
+        return new ModelResponse<>(settingCacheService.updateSystemSetting(setting));
     }
 
-    @Put("/{key}/add")
+    @PutMapping("/{key}/add")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_SETTING_ADD)
     @ApiOperation(value = "Add new Setting",
@@ -80,14 +82,14 @@ public class SettingController {
         return new ModelResponse<>(settingCacheService.updateSystemSetting(setting));
     }
 
-    @Put("/{key}/reset")
+    @PutMapping("/reset")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_SETTING_RESET)
     @ApiOperation(value = "Reset Setting",
             notes = "This endpoint reset a setting to default")
-    public ModelResponse<SystemSetting> resetSettings(@PathVariable("key") String key) {
-        SystemSetting systemSetting = SettingConfigUtil.getSystemSetting(key);
-        Setting setting = settingService.getSetting(key);
+    public ModelResponse<SystemSetting> resetSettings(@Valid @RequestBody SettingResetRequest request) {
+        SystemSetting systemSetting = SettingConfigUtil.getConfiguredSystemSetting(request.getCategoryKey(), request.getSettingKey());
+        Setting setting = settingService.getSetting(systemSetting.getSettingKey());
         if(StringUtils.isEmpty(setting)){
             setting = new Setting();
             setting.setCategoryKey(systemSetting.getCategoryKey());
@@ -100,7 +102,7 @@ public class SettingController {
         return new ModelResponse<>(settingCacheService.updateSystemSetting(setting));
     }
 
-    @Put("/sync")
+    @PutMapping("/sync")
     @Role({RoleConstant.STAFF})
     @Permission(ADMINISTRATION_SETTING_SYNC)
     @ApiOperation(value = "Sync Setting",

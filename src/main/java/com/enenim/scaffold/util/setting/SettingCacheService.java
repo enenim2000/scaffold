@@ -2,6 +2,8 @@ package com.enenim.scaffold.util.setting;
 
 import com.enenim.scaffold.model.dao.Setting;
 import com.enenim.scaffold.service.dao.SettingService;
+import com.enenim.scaffold.util.JsonConverter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @Service
 public class SettingCacheService {
     private SettingService settingService;
@@ -18,6 +21,7 @@ public class SettingCacheService {
     }
 
     public Boolean multipleSessionIsEnabled() {
+        System.out.println("enable_multiple_login: " + JsonConverter.getJsonRecursive(SettingConfigUtil.getSystemSetting("enable_multiple_login")));
         String value = SettingConfigUtil.getSystemSetting("enable_multiple_login").getDetail().getValue();
         return value.equalsIgnoreCase("yes");
     }

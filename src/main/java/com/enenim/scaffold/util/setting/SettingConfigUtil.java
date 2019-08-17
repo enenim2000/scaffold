@@ -2,6 +2,7 @@ package com.enenim.scaffold.util.setting;
 
 import com.enenim.scaffold.model.dao.Setting;
 import com.enenim.scaffold.util.JsonConverter;
+import com.google.gson.Gson;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
@@ -103,8 +104,14 @@ public class SettingConfigUtil {
                 SystemSetting systemSetting = new SystemSetting();
                 systemSetting.setSettingKey(settingEntry.getKey());
                 systemSetting.setCategoryKey(categoryEntry.getKey());
+
                 System.out.println(" settingEntry.getValue() = " + settingEntry.getValue());
-                systemSetting.setDetail(JsonConverter.getObject(settingEntry.getValue(), SystemSettingDetail.class));
+
+
+                systemSetting.setDetail(new Gson().fromJson(settingEntry.getValue(), SystemSettingDetail.class));
+
+                System.out.println("*** systemSetting ***" + systemSetting);
+
                 systemSettings.put(settingEntry.getKey(), systemSetting);
             }
 
@@ -112,7 +119,6 @@ public class SettingConfigUtil {
 
             settingCategories.put(category.getKey(), category);
         }
-
         return settingCategories;
     }
 
@@ -125,6 +131,9 @@ public class SettingConfigUtil {
     }
 
     static SystemSetting updateSystemSetting(Setting setting){
+
+        System.out.println("*** updateSystemSetting ***");
+
         if(!StringUtils.isEmpty(setting)){
             SystemSetting systemSetting = MEMORY_SETTINGS_BY_KEY.get(setting.getSettingKey());
             systemSetting.getDetail().setValue(setting.getValue());
@@ -190,6 +199,10 @@ public class SettingConfigUtil {
 
     public static SystemSetting getSystemSetting(String key){
         return MEMORY_SETTINGS_BY_KEY.get(key);
+    }
+
+    public static SystemSetting getConfiguredSystemSetting(String categoryKey, String settingKey){
+        return getSettingAsMap().get(categoryKey).getSettings().get(settingKey);
     }
 
     public static List<Setting> getSettings(){

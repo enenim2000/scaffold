@@ -10,6 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class LoginService {
     private final LoginRepository loginRepository;
@@ -28,7 +30,8 @@ public class LoginService {
     }
 
     public Login getLoginByUsername(String username) {
-        return loginRepository.findByUsername(username).orElse(null);
+        Optional<Login> login = loginRepository.findByUsername(username);
+        return login.orElse(null);
     }
 
     public Login saveLogin(Login login) {

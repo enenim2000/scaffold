@@ -1,6 +1,7 @@
 package com.enenim.scaffold.dto.request;
 
 import com.enenim.scaffold.model.dao.Setting;
+import com.enenim.scaffold.util.ObjectMapperUtil;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,11 +27,11 @@ public class SettingRequest extends RequestBody<Setting> {
 
     @Override
     public Setting buildModel() {
-        return null;
+        return ObjectMapperUtil.map(this, Setting.class);
     }
 
     @Override
-    public Setting buildModel(Setting model) {
-        return null;
+    public Setting buildModel(Setting setting) {
+        return ObjectMapperUtil.map(this, setting);
     }
 }

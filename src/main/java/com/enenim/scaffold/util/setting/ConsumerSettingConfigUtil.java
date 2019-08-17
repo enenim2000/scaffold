@@ -1,8 +1,8 @@
 package com.enenim.scaffold.util.setting;
 
 import com.enenim.scaffold.constant.RoleConstant;
-import com.enenim.scaffold.util.JsonConverter;
 import com.enenim.scaffold.util.RequestUtil;
+import com.google.gson.Gson;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
@@ -60,7 +60,7 @@ public class ConsumerSettingConfigUtil {
                 ConsumerSystemSetting consumerSystemSetting = new ConsumerSystemSetting();
                 consumerSystemSetting.setSettingKey(settingEntry.getKey());
                 consumerSystemSetting.setCategoryKey(categoryEntry.getKey());
-                consumerSystemSetting.setDetail(JsonConverter.getObject(settingEntry.getValue(), ConsumerSystemSettingDetail.class));
+                consumerSystemSetting.setDetail(new Gson().fromJson(settingEntry.getValue(), ConsumerSystemSettingDetail.class));
                 consumerSystemSettings.put(settingEntry.getKey(), consumerSystemSetting);
             }
 
@@ -84,12 +84,11 @@ public class ConsumerSettingConfigUtil {
         }
     }
 
-    private static HashMap<String, ConsumerSettingMapCategory> getFilteredConsumerSettings(){
+    private static HashMap<String, ConsumerSettingMapCategory> getFilteredConsumerSettings(String userType){
         HashMap<String, ConsumerSettingMapCategory> filteredConsumerSettings = new HashMap<>();
         for(HashMap.Entry<String, ConsumerSettingMapCategory> categoryEntry : MEMORY_SETTINGS_BY_CATEGORY.entrySet()){
             for(HashMap.Entry<String, ConsumerSystemSetting> settingEntry : categoryEntry.getValue().getSettings().entrySet()){
-
-                if(settingEntry.getValue().getDetail().getUserTypes().contains(RequestUtil.getLogin().getUserType())){
+                if(settingEntry.getValue().getDetail().getUserTypes().contains(userType)){
                     if(StringUtils.isEmpty(filteredConsumerSettings.get(categoryEntry.getKey()))){
                         filteredConsumerSettings.put(categoryEntry.getKey(), MEMORY_SETTINGS_BY_CATEGORY.get(categoryEntry.getKey()));
                     }
@@ -100,13 +99,13 @@ public class ConsumerSettingConfigUtil {
         return filteredConsumerSettings;
     }
 
-    private static List<ConsumerSystemSetting> getFilteredConsumerSettingList(){
+    private static List<ConsumerSystemSetting> getFilteredConsumerSettingList(String userType){
         List<ConsumerSystemSetting> consumerSystemSettings = new ArrayList<>();
         for(HashMap.Entry<String, ConsumerSystemSetting> settingEntry : MEMORY_SETTINGS_BY_KEY.entrySet()){
             if(StringUtils.isEmpty(RequestUtil.getRequest()) || StringUtils.isEmpty(RequestUtil.getLogin())){
                 consumerSystemSettings.add(settingEntry.getValue());
             }else{
-                if(settingEntry.getValue().getDetail().getUserTypes().contains(RequestUtil.getLogin().getUserType())){
+                if(settingEntry.getValue().getDetail().getUserTypes().contains(userType)){
                     consumerSystemSettings.add(settingEntry.getValue());
                 }
             }
@@ -114,11 +113,11 @@ public class ConsumerSettingConfigUtil {
         return consumerSystemSettings;
     }
 
-    public static HashMap<String, ConsumerSettingMapCategory> getMemoryConsumerSettings() {
-        return getFilteredConsumerSettings();
+    public static HashMap<String, ConsumerSettingMapCategory> getMemoryConsumerSettings(String userType) {
+        return getFilteredConsumerSettings(userType);
     }
 
-    public static List<ConsumerSystemSetting> getMemoryConsumerSettingList() {
-        return getFilteredConsumerSettingList();
+    public static List<ConsumerSystemSetting> getMemoryConsumerSettingList(String userType) {
+        return getFilteredConsumerSettingList(userType);
     }
 }
